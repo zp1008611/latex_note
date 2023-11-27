@@ -1,0 +1,111 @@
+\chapter{The Riesz Representation Theorem}\label{chp:1_3}
+
+
+\begin{definition}{Linear Functional}{}
+    (1) A linear functional on a vector space $\mathcal{X}$ is a linear mapping $f:\mathcal{X}\rightarrow \F$:
+    \begin{align*}
+        f(\alpha x+\beta y)= \alpha f(x)+\beta f(y), \forall x,y\in \mathcal{X}, \alpha,\beta \in \F.
+    \end{align*}
+    (2) A linear functional $f$ on a normed space $(\mathcal{X},||\cdot||)$ is called a bouned linear functional if
+    there exists $C\geqs 0$ such that $|f(x)|\leqs C||x||$ for each $x\in \mathcal{X}$.      
+\end{definition}
+
+
+\begin{proposition}{}{bouded operator equivalent}
+    Let $\hH$ be a Hilbert space and $f:\hH\rightarrow \F$ a linear functional. The following statements are equivalent.\\
+    (1) $f$ is continuous at $x=0$.\\
+    (2) $f$ is continuous.\\
+    (3) $f$ is bounded.\\
+    (4) $N(f)$ is closed in $\hH$.
+\end{proposition}
+
+Note that the bounded linear functionals forms a vector space $\mathcal{H}^*$: $0\in \mathcal{H}^*$, if $f_i\in \mathcal{H}^*$ and $\alpha_i\in \F$ then
+$\alpha_1f_1+\alpha_2f_2\in \mathcal{H}^*$. We will now explain how to define a norm on $\mathcal{H}^*$.
+
+\begin{definition}{}{norm bounded linear funcional}
+    For a bounded linear functional $f\in \mathcal{H}^*$, its norm is defined as 
+    \begin{align*}
+        ||f||_{\mathcal{H}^*} = \sup_{||x||_{\mathcal{H}}\leqs 1}|f(x)|.
+    \end{align*}
+\end{definition}
+
+For convenience, the following content will follow the convention: $||f||=||f||_{\mathcal{H}^*}, ||x||=||x||_{\mathcal{H}}$.
+Let's check three properties fo the norm:\\
+(1) $||f||\geqs0$; $||f||=0\Leftrightarrow f=0$\\
+(2) $||\alpha f|| =|\alpha| ||f||$\\
+(3) \begin{align*}
+    ||f_1+f_2|| &= \sup_{||x||\leqs 1}|(f_1+f_2)(x)|\\
+                &= \sup_{||x||\leqs 1}|f_1(x)+f_2(x)|\\
+                &\leqs \sup_{||x||\leqs 1}|f_1(x)| + \sup_{||x||\leqs 1}|f_2(x)|\\
+                &= ||f_1||+||f_2||
+\end{align*}
+    
+\begin{proposition}{}{}
+    If $f$ is a bounded linear functional, then\\
+    (1) $|f(x)|\leqs ||f||\cdot ||x||$ for every $x\in \mathcal{H}$.\\
+    (2) \begin{align*}
+        ||f|| &= \sup_{||x||=1}|f(x)|\\
+              &= \sup_{x\in \hH \setminus\{0\}} \frac{|f(x)|}{||x||}\\
+              &= \inf\{c>0||f(x)|\leqs c||x||,x\in \hH\}. 
+    \end{align*}
+\end{proposition}
+
+\begin{proposition}{}{}
+    If $y\in \hH$, then 
+    \begin{align}
+        f_y(x)=<x,y>
+        \label{eq:inner product functional}
+    \end{align} 
+    is a bounded linear funcional on $\hH$, with $||f_y||=||y||$.
+\end{proposition}
+\begin{proof}
+    For $x_1,x_2\in\hH$, $\alpha,\beta\in\F$, 
+    \begin{align*}
+        f_y(\alpha x_1+\beta x_2)=<\alpha x_1+\beta x_2,y>= \alpha<x_1,y>+\beta<x_2,y>=\alpha f_y(x_1)+\beta f_y(x_2).
+    \end{align*}
+    Hence, $f_y$ is linear. 
+    By the Cauchy-Schwarz inequality, for $x\in\hH$,
+    \begin{align*}
+        |f_y(x)|=|<x,y>|\leqs ||x||||y||. 
+    \end{align*}
+    Hence, $f_y$ is bounded and $||f_y||=\sup_{x\in \hH \setminus\{0\}} \frac{|f_y(x)|}{||x||}\leqs ||y||$. Then $||f_y|| = \sup_{||x||=1}|f(x)|\leqs ||y||$. 
+    Moreover, $||\frac{y}{||y||}||=1$ and $f(\frac{y}{||y||})=<\frac{y}{||y||},y>=||y||$. Hence, $||f_y||=||y||$. 
+\end{proof}
+
+One of the fundamental facts about Hilbert spaces is that all bounded linear
+functionals are of the form (\ref{eq:inner product functional}). In other words, 
+every bounded linear functional on $\hH$ can be identified with a unique point in the space itself.
+% Fix $y_0\in \hH$, then $x\mapsto <x,y_0>$ defines a linear functional $f$. By Cauchy Schwarz inequality, for all $x\in \hH\setminus \{0\}$, 
+% Now we introduce the self-duality property of the Hilbert space.
+
+\begin{theorem}{}{}
+    If $f$ is a bounded linear functional on $\hH$, then there is a unique vector $y\in\hH$ such that
+    \begin{align}
+        f(x) = <x,y>, \forall x\in \hH.
+    \end{align}
+    Moreover, $||f||=||y||$
+\end{theorem}
+
+\begin{proofsolution}
+    By proposition\ref{prop:bouded operator equivalent}, $\mathcal{M} = N(f)$ is closed in $\hH$. If $\mathcal{M}=\hH$, $f(x)=0$, $y=0$ is desired requestd.
+    If $\mathcal{M}\neq \hH$, then $f\neq 0$ and so  there exists some $u_1\in\hH$ so that $f(u_1)\neq 0$, and we take $u_1'=\frac{u_1}{f(u_1)}$ so that $f(u_1')=1$. We can then define the nonempty set
+    \begin{align*}
+        S = \{u\in\hH:f(u)=1\}=f^{-1}({1}),
+    \end{align*}
+    which is closed because $f$ is continuous and $\{1\}$ is closed, and the preimage of a closed set by a continuous function is a closed set. We claim that $S$ is convex: indeed, if $u_1,u_2\in S$ and $t\in [0,1]$, then
+    \begin{align*}
+        f(tu_1+(1-t)u_2) = tf(u_1)+(1-t)f(u_2) = t+1-t=1,
+    \end{align*}
+    so that $tu_1+(1-t)u_2\in S$. So by theorem\ref{thm:closed convex smallest norm}, there exists $u_0\in S$ so that $||u_0|| = \inf_{u\in S}||u||$, and
+    we define $y=\frac{u_0}{||u_0||^2}$ (noting that $u_0\neq 0$ because $0\notin S$).\\ 
+    We claim  that this is the $y$ that we want; in other words, let's check that $f(x) = <x, y>$.
+    By proposition\ref{prop:bouded operator equivalent}, $N(f)$ is closed and convex in $\hH$. Then we can check that $S=\{u_0+w:w\in N(f)\}$ ($f(u_0+w)=1$,then TRS$\subset S$; $\hH=N(f)\bigoplus N(f)^{\perp}$)
+\end{proofsolution}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://web.mat.bham.ac.uk/~malevao/MSM3P21/l15.pdf}{lecture notes from brmh}
+    \item \href{https://math.stackexchange.com/questions/3699482/riesz-representation-theorem-geometric-intuition}{Riesz Representation Theorem geometric intuition}
+    \item \href{https://users.math.msu.edu/users/banelson/teaching/920/chI_notes.pdf}{lecture notes from msu}
+    \item \href{https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/resources/mit18_102s21_lec17/}{lecture notes from mit}
+\end{itemize}

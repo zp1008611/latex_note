@@ -1,0 +1,326 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%% preamble %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[mono=false]{libertine} % new linux font, ignore mono
+
+\usepackage{luatex85}
+
+%\renewcommand{\baselinestretch}{1.05}
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,amsfonts,dsfont}
+\usepackage{epsfig,graphicx}
+\usepackage{tabularx}
+\usepackage{blkarray}
+\usepackage{slashed}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{caption}
+% \usepackage{fullpage}
+\usepackage{lipsum} % provides dummy text for testing
+\usepackage[toc,title,titletoc,header]{appendix}
+\usepackage{minitoc}
+\usepackage{color}
+\usepackage{multicol} % two-col ToC
+\usepackage{bm}
+\usepackage{imakeidx} % before hyperref
+\usepackage{hyperref}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+
+% link colors settings
+\hypersetup{
+    colorlinks=true,
+    citecolor=magenta,
+    linkcolor=blue,
+    filecolor=green,      
+    urlcolor=cyan,
+    % hypertexnames=false,
+}
+\usepackage[capitalise]{cleveref}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage[linesnumbered,ruled,vlined,algosection]{algorithm2e}
+\SetCommentSty{textsf}
+\usepackage{epigraph}
+\epigraphwidth=1.0\linewidth
+\epigraphrule=0pt
+
+% adjust margin
+\usepackage[margin=2.3cm]{geometry}
+\headheight13.6pt
+
+
+\usepackage{graphicx}
+\usepackage[justification=centering]{caption} % 图注居中
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+
+
+
+
+\setstretch{1.2}
+% \geometry{
+%     textheight=9in,
+%     textwidth=5.5in,
+%     top=1in,
+%     headheight=12pt,
+%     headsep=25pt,
+%     footskip=30pt
+% }
+
+
+
+
+
+%%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{thmtools}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{enumerate}
+
+\colorlet{LightGreen}{Green!15} %def
+\colorlet{LightBlue}{Blue!15} %thm
+\colorlet{LightOrange}{Orange!15} %lem
+\colorlet{LightGray}{Gray!15}  %prop
+\colorlet{LightRed}{Red!40} %cor
+\colorlet{LightYellow}{Yellow!15} %exa
+
+
+% \newtcbtheorem[
+%   number within = chapter % 按每个 chapter 分别编号
+% ]{definition% 环境名
+% }{Definition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+% }{
+%   attach title to upper = \par\vspace{1ex}, % 不要单独的标题栏，定理名完了之后分段，加上适量空白
+%   separator sign = \quad, % 定理编号和定理名字之间用什么分隔；默认是冒号
+%   sharp corners, % 直角；默认是圆角
+%   enhanced jigsaw, frame hidden, % 隐藏 tcb 边框
+%   colback = LightGreen, % 背景色
+%   coltitle = blue!20!cyan!80!black, % 标题（定理编号和名字）的颜色
+%   fonttitle = \sffamily\small, % 标题（定理编号和名字）的字体
+%   description font = \normalsize, % 定理名字的字体
+%   fontupper = \normalfont, % box 内的字体
+% }{def% label 前缀
+% }
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{definition% 环境名
+}{Definition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Green!5,
+  colframe=Green!50!black,
+  fonttitle=\sffamily\small
+}{def% label 前缀
+}
+
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{theorem% 环境名
+}{Theorem% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=yellow!10,
+  colframe=yellow!50!black,
+  fonttitle=\sffamily\small
+}{thm% label 前缀
+}
+
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{proposition% 环境名
+}{Proposition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Red!5,
+  colframe=Red!50!black,
+  fonttitle=\sffamily\small
+}{prop% label 前缀
+}
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{corollary% 环境名
+}{Corollary% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Blue!5,
+  colframe=Blue!50!black,
+  fonttitle=\sffamily\small
+}{cor% label 前缀
+}
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{lemma% 环境名
+}{Lemma% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Gray!10,
+  colframe=Gray!50!black,
+  fonttitle=\sffamily\small
+}{lem% label 前缀
+}
+
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{example}
+{Example}%
+  {
+    enhanced, breakable,
+    colback = white, colframe = purple, colbacktitle = purple,
+    attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
+    boxed title style = {sharp corners},
+    fonttitle=\sffamily\small
+  }
+{exa}
+
+
+\newtcbtheorem[
+  number within = chapter % 按每个 chapter 分别编号
+]{exercise}
+{Exercise}%
+  {
+    enhanced, breakable,
+    colback = white, colframe = cyan, colbacktitle = cyan,
+    attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
+    boxed title style = {sharp corners},
+    fonttitle=\sffamily\small
+  }
+{exer}
+
+
+% \declaretheorem[numberwithin=chapter,shaded={rulecolor=LightGreen,
+% rulewidth=2pt,bgcolor=LightGreen,
+% textwidth=12em}]{definition}
+
+\usepackage{changepage}
+\newenvironment{remark}{\underline{\textbf{Remark.}}}{\par}
+
+\newenvironment{proofsolution}
+    {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}\begin{proof}[\textit Proof.~]}
+    {\end{proof}\end{adjustwidth}}
+
+
+%%%%%%%%%%%%%%%% index %%%%%%%%%%%%%%%%%%%%%
+\begin{filecontents}{index.ist}
+% https://tex.stackexchange.com/questions/65247/index-with-an-initial-letter-of-the-group
+headings_flag 1
+heading_prefix "{\\centering\\large \\textbf{"
+heading_suffix "}}\\nopagebreak\n"
+delim_0 "\\nobreak\\dotfill"
+\end{filecontents}
+\newcommand{\myindex}[1]{\index{#1} \emph{#1}}
+\makeindex[columns=3, intoc, title=Alphabetical Index, options= -s index.ist]
+%%%%%%%%%%%%%%%% index %%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%% ToC %%%%%%%%%%%%%%%%%%%%%
+% Link Chapter title to ToC: https://tex.stackexchange.com/questions/32495/linking-the-section-text-to-the-toc
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}{\chaptertitlename\ {\thechapter}}{20pt}{\hyperlink{chap-\thechapter}{\Huge#1}
+\addtocontents{toc}{\protect\hypertarget{chap-\thechapter}{}}}
+\titleformat{name=\chapter,numberless}
+  {\normalfont\huge\bfseries}{}{-20pt}{\Huge#1}
+
+%%%%%%%%%%%%%%%%%%% fancyhdr %%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy} % enable fancy page style
+\renewcommand{\headrulewidth}{0.0pt} % comment if you want the rule
+\fancyhf{} % clear header and footer
+\fancyhead[lo,le]{\leftmark}
+\fancyhead[re,ro]{\rightmark}
+\fancyfoot[CE,CO]{\hyperref[toc-contents]{\thepage}}
+
+% https://tex.stackexchange.com/questions/550520/making-each-page-number-link-back-to-beginning-of-chapter-or-section
+\makeatletter
+\def\chaptermark#1{\markboth{\protect\hyper@linkstart{link}{\@currentHref}{Chapter \thechapter ~ #1}\protect\hyper@linkend}{}}
+\def\sectionmark#1{\markright{\protect\hyper@linkstart{link}{\@currentHref}{\thesection ~ #1}\protect\hyper@linkend}}
+\makeatother
+%%%%%%%%%%%%%%%%%%% fancyhdr %%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
+\usepackage[doi=false,url=false,isbn=false,style=alphabetic,backend=biber,backref=true]{biblatex}
+\addbibresource{bib.bib}
+
+\newbibmacro{string+doiurlisbn}[1]{%
+  \iffieldundef{doi}{%
+    \iffieldundef{url}{%
+      \iffieldundef{isbn}{%
+        \iffieldundef{issn}{%
+          #1%
+        }{%
+          \href{http://books.google.com/books?vid=ISSN\thefield{issn}}{#1}%
+        }%
+      }{%
+        \href{http://books.google.com/books?vid=ISBN\thefield{isbn}}{#1}%
+      }%
+    }{%
+      \href{\thefield{url}}{#1}%
+    }%
+  }{%
+    \href{http://dx.doi.org/\thefield{doi}}{#1}%
+  }%
+}
+
+% https://tex.stackexchange.com/questions/94089/remove-quotes-from-inbook-reference-title-with-biblatex
+\DeclareFieldFormat[article,incollection,inproceedings,book,misc]{title}{\usebibmacro{string+doiurlisbn}{\mkbibemph{#1}}}
+% https://tex.stackexchange.com/questions/454672/biblatex-journal-name-non-italic
+\DeclareFieldFormat{journaltitle}{#1\isdot}
+\DeclareFieldFormat{booktitle}{#1\isdot}
+% https://tex.stackexchange.com/questions/10682/suppress-in-biblatex
+\renewbibmacro{in:}{}
+% add video field: https://tex.stackexchange.com/questions/111846/biblatex-2-custom-fields-only-one-is-working
+\DeclareSourcemap{
+    \maps[datatype=bibtex]{
+      \map{
+        \step[fieldsource=video]
+        \step[fieldset=usera,origfieldval]
+    }
+  }
+}
+\DeclareFieldFormat{usera}{\href{#1}{\textsc{Online video}}}
+\AtEveryBibitem{
+    \csappto{blx@bbx@\thefield{entrytype}}{% put at end of entry
+        \iffieldundef{usera}{}{\space \printfield{usera}}
+    }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%notations%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}} 
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\J}{\ensuremath{\mathbb{J}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\K}{\ensuremath{\mathbb{K}}}
+\newcommand{\Zo}{\ensuremath{\mathbb{Z}_{\geqslant 0}}} % 非负整数集
+\newcommand{\Zi}{\ensuremath{\mathbb{Z}_{\geqslant 1}}} % 正整数集
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\im}{\mathrm{im}\,}                         % 映射的像
+\newcommand{\leqs}{\leqslant}
+\newcommand{\geqs}{\geqslant}
+\newcommand{\ci}{\mathrm{i}}
+\newcommand{\hH}{\mathcal{H}}
+\newcommand{\hK}{\mathcal{K}}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}

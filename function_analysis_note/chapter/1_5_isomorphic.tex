@@ -1,0 +1,28 @@
+\chapter{Isomorphic Hilbert Spaces and the Fourier 
+Transform for the Circle}\label{chp:1_5}
+
+\begin{definition}{}{isomorphism}
+    If $\hH$ and $\hK$ are Hilbert spaces, an isomorphism between $\hH$ and $\hK$
+    is linear surjection $U:\hH\rightarrow \hK$ such that
+    \begin{align*}
+        <Uh,Ug>=<h,g>
+    \end{align*}
+    for all $h,g\in \hH$. In this case $\hH$ and $\hK$ are said to be isomorphic.
+\end{definition}
+
+\begin{remark}
+    Many call what we call an isomorphism a unitary operator
+\end{remark}
+
+Isomorphism defined above is an equivalent relation:\\
+(1) $<id h,id g>= <h,g>$\\
+(2) $<h,g>=<U^{-1}Uh,U^{-1}Ug>=<Uh,Ug>$\\
+(3) $<h,g>=<Uh,Ug>=<VUh,VUg>$
+
+
+from the previous definition, we know that isomorphism preserves inner product.
+Now we claim that isomorphism preserves distance and completeness. 
+
+\begin{proposition}{}{}
+    If $V:\hH\rightarrow \hK$ is a linear map between Hilbert space, then $V$ is an isometry iff $<Vh,Vg>=<h,g>$ for all $h,g\in \hH$.
+\end{proposition}

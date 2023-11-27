@@ -1,0 +1,15 @@
+
+
+\usepackage[center]{titlesec}%chapter1修改为第1章
+\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
+\titleformat{\section}{\raggedright\Large\bfseries}{\,\thesection\,}{1em}{}
+\titleformat{\subsection}{\raggedright\large\bfseries}{\,\thesubsection\,}{1em}{}
+
+
+\usepackage{caption}
+\captionsetup[figure]{name=图}
+
+\newcommand\figref{\textbf{图}~\ref}
+\newcommand\thmref{\textbf{定理}~\ref}
+\newcommand\equref{\textbf{式}~\ref}
+\newcommand\exaref{\textbf{例}~\ref}

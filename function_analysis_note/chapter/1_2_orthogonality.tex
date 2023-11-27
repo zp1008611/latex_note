@@ -1,0 +1,199 @@
+\chapter{Orthogonality}\label{chp:1_2}
+
+
+\begin{definition}{}{}
+    If $\mathcal{H}$ is a Hilbert space, we say $x,y\in \mathcal{H}$ are orthogonality if $<x,y>=0$, 
+    in which case we write $x\perp y$.  We say subsets $A,B$ are orthogonal if $x\perp y$ 
+    for all $x\in A$ and $y\in B$, and we write $A\perp B$. 
+\end{definition}
+
+\begin{theorem}{The Pythagorean Theorem}{}
+    If $x_1,x_2,...,x_n\in\hH$ and $x_j\perp x_k$ for $j\neq k$, then
+    \begin{align*}
+        ||\sum\limits_{j=1}^{n}x_j||^2=\sum\limits_{j=1}^{n}||x_j||^2.
+    \end{align*}
+\end{theorem}
+\begin{proofsolution}
+    When $n=2$, expanding the left side.
+    Then use induction.
+\end{proofsolution}
+
+\begin{remark}
+    The pythagorean theorem is strongly related to orthogonality.
+\end{remark}
+
+
+\begin{definition}{}{}
+    For any subset $A\subset \hH$, define $A^{\perp}=\{x\in \hH|<y,x>=0,\forall y\in A\}$.  
+\end{definition}
+
+
+\begin{definition}{Linear Span, Closed Linear Span}{}
+    If $A\subset \hH$, let $span(A):=$ the intersetion of all linear subspaces of $\hH$ that contain $A$.
+    $span(A)$ is called the linear span of $A$.
+    Let $\overline{span(A)}:=$ the intersetion of all closed linear subspaces of $\hH$ that contain $A$.
+    $\overline{span(A)}$ is called the closed linear span of $A$.
+\end{definition}
+
+\begin{proposition}{}{}
+    (1) $span(A)$ is the smallest linear subspace of $\hH$ that contains $A$.\\
+    (2) $span(A)=\{\sum\limits_{k=1}^{n}\alpha_kx_k|n\geqs 1,\alpha_k\in \F,x_k\in A\}$.
+\end{proposition}
+
+For convenience, we use the notation $A\leqs \hH$ to signify  that $A$ is a closed linear subspace of $\hH$.
+
+\begin{proposition}{}{}
+    (1) $\overline{span(A)}\leqs \hH$\\
+    (2) $\overline{span(A)}$ is the smallest closed linear subspace of $\hH$ that contains $A$.\\
+    (3) $\overline{span(A)}=$ the closure of $\{\sum\limits_{k=1}^{n}\alpha_kx_k|n\geqs 1,\alpha_k\in \F,x_k\in A\}$.
+\end{proposition}
+
+\begin{proposition}{}{}
+    For any $A\subset \hH$,\\
+    (1) $A^{\perp}\leqs\hH$\\
+    (2) $(span(A))^{\perp}=A^{\perp}$\\
+    (3) $\overline{A}^{\perp} = A^{\perp}$\\    
+    (4) $\overline{span(A)}^{\perp}=A^{\perp}$\\
+\end{proposition}
+
+\begin{proof}
+    (1) Suppose $\{y_n\}\in A^{\perp}$ with $y_n\rightarrow x_0\in \hH$. Since $<x_n$, 
+\end{proof}
+
+\begin{definition}{Direct Sum}{}
+    $\mathcal{M}_1,\mathcal{M}_2\leqs \hH$. We write 
+    \begin{align*}
+        \hH=\mathcal{M}_1 \bigoplus \mathcal{M}_2, 
+    \end{align*} 
+    if $\mathcal{M}_1\cap \mathcal{M}_2=\{0\}$ and for every $x\in\hH$ there exist $v_i\in \mathcal{M}_i$ with $v_1+v_2=x$.
+\end{definition}
+
+\begin{proposition}{}{}
+If $\mathcal{M}\leqs \hH$, then
+    \begin{align*}
+        \hH = \mathcal{M}\bigoplus \mathcal{M}^{\perp}
+    \end{align*}
+\end{proposition}
+
+\begin{definition}{Dense Subset}{}
+    Let $(\mathcal{X},||\cdot||)$ be a normed space and $A\subset \mathcal{X}$. Then $A$ is dense in $\mathcal{X}$ if $\overline{A}=\mathcal{X}$. 
+\end{definition}
+
+In Conway textbook, non-closed subspaces are called "linear manifolds", but we will not adopt this convention.
+
+\begin{proposition}{}{}
+    Let $\mathcal{K}$ be a(not necessarily closed) subspace of $\hH$. Then $\mathcal{K}$ is dense iff $\mathcal{K}^{\perp}=\{0\}$.
+\end{proposition}
+
+
+\begin{definition}{Convex Sets}{convex set}
+    A subset $A$ of a vector space $\mathcal{X}$ is called convex if 
+    \begin{align*}
+        \forall x,y\in A, t\in [0,1], tx+(1-t)y\in A.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}{}{}
+    (1) Every subspace is convex.\\
+    (2) In a normed linear space, the open ball $B(x,\epsilon)$ is convex.\\
+    (3) If $A\subset\mathcal{X}$ is convex and $x\in \mathcal{X}$, then $A+x:=\{y+x|y\in A\}$ is convex.
+\end{proposition}
+\begin{proof}
+    (3) $A$ is convex, then $\forall a,b\in A, t\in[0,1]$, $ta+(1-t)b\in A$. Then $t(a+x)+(1-t)(b+x)=ta+(1-t)b+x\in A+x$.
+    Hence $A+x$ is convex.
+\end{proof}
+\begin{theorem}{}{closed convex smallest norm}
+    Every none-empty closed convex subset $A$ of $\hH$ has a unique element of smallest norm, i.e.
+    \begin{align*}
+        \exists ! a\in A, ||a|| = \inf_{b\in A}||b||.
+    \end{align*}
+\end{theorem}
+
+\begin{proofsolution}
+    Let $\delta=\inf\{||x|||x\in A\}$. Since $A$ is convex, $x+y\in A(\forall x,y\in A$). Then, by the parallelogram law,
+    \begin{align*}
+        ||x-y||^2=2(||x||^2+||y||^2)-||x+y||^2\leqs 2(||x||^2+||y||^2)-4\delta^2.
+    \end{align*}
+    Existence follows: by the definition of infimum, we can choose $\{y_n\}_{n=1}^{\infty}\subset A$ for which $||y_n||\rightarrow \delta$. 
+    Then when $n,m\rightarrow 0$,
+    \begin{align*}
+        ||y_n-y_m||^2\leqs 2(||y_n||^2+||y_m||^2)-4\delta^2\rightarrow 0.
+    \end{align*}
+    Hence, $\{y_n\}$ is Cauchy. By completeness, $\exists y\in \hH$ for which $y_n\rightarrow y$, and since $A$ is closed, $y\in A$. 
+    Also $||y||=\lim_{n\rightarrow \infty} ||y_n||=\delta$. \\
+    Uniqueness follows: if $||x||=||y||=\delta$, then $||x-y||^2\leqs 4\delta^2-4\delta^2=0$, so $x=y$.
+\end{proofsolution}
+
+\begin{corollary}{}{closed convex closet point}
+    If $A$ is a nonempty closed convex set in $\hH$ and $x\in \hH$, then there exists a unique closest element of $A$ to $x$.
+\end{corollary}
+\begin{proof}
+    Since $A$ is closed and convex, $A-x$ is closed and convex. By thm\ref{thm:closed convex smallest norm}, let $z_0$ be the unique element of smallest norm in $A-x$
+    and let $y_0=z_0+x$. Then $y_0\in A$ and $||y_0-x||=||z_0||=\inf_{z\in A-x}||z|| = \inf_{y\in A} ||y-x||$. 
+    Hence, $y$ is the unique closest element of $A$ to $x$. 
+\end{proof}
+
+Since the closet point from closed convex set to point can be obtained, we can define the distance about these two object.
+
+\begin{definition}{}{}
+    If $A$ is a nonempty closed convex set in $\hH$ and $x\in \hH$, we define the distance from $A$ to $x$:
+    \begin{align*}
+        \text{dist}(x,A):= \inf_{y\in A}||y-x||.
+    \end{align*}
+\end{definition}
+
+
+If the convex set in cor\ref{cor:closed convex closet point} is in fact a closed linear subspace 
+of $\hH$, more can be said.
+
+\begin{theorem}{}{orthogonal distance}
+    If $\mathcal{M}$ is a closed linear subspace of $\hH$, $x\in \hH$, and $y_0$ is the unique element of $\mathcal{M}$ such that $||y_0-x|| =\text{dist}(x,\mathcal{M})$ , then $x-y_0\perp \mathcal{M}$. 
+    Conversely, if $y_0\in\mathcal{M}$ such that $x-y_0\perp\mathcal{M}$, then $||x-y_0||=\text{dist}(x,\mathcal{M})$.
+\end{theorem}
+
+\begin{proofsolution}
+    You can refer to the lecture notes from brmh.
+    % Suppose that $\text{dist}(x,\mathcal{M})=||x-y_0||$. Let $y\in \mathcal{M}$ be an arbitrary vector with $||y||=1$; put $\alpha:=<x-y_0,y>$. Then 
+\end{proofsolution}
+
+
+
+Note that Theorem\ref{thm:orthogonal distance}, together with the uniqueness statement in 
+corollary\ref{cor:closed convex closet point}, shows that if $\mathcal{M}$ is a closed linear subspace of $\hH$ and $x\in \hH$, 
+then there is a unique element $y_0\in A$ such that $x -y_0\perp \mathcal{M}$. Thus a function 
+$P: \hH\rightarrow \mathcal{M}$ can be defined by $Px = y_0$.
+
+
+\begin{definition}{}{projection}
+    If $\mathcal{M}\leqs \hH$ and $P: \hH\rightarrow \mathcal{M}$ given by $Px = y_0$, 
+    where $y_0$ is the unique element in $A$ such that $x -y_0\perp \mathcal{M}$.
+    Then $P$ is called the orthogonal projection of $\hH$ onto $\mathcal{M}$. If we wish to show this dependence of $P$ on $\mathcal{M}$, 
+we will denote the orthogonal projection of $\hH$ onto $\mathcal{M}$ by $P_{\mathcal{M}}$.
+\end{definition}
+\begin{remark}
+    $P$ is onto.
+\end{remark}
+
+
+\begin{theorem}{}{}
+    If $P$ is the orthogonal projection of $\hH$ onto $\mathcal{M}$, then\\
+    (1) $P$ is a linear transformation on $\hH$,\\
+    (2) $||Px||\leqs ||x||$ for every $x$ in $\hH$,\\
+    (3) $P^2=P$,\\
+    (4) $N(P) = \mathcal{M}^{\perp}$ and $R(P)=\mathcal{M}$, \\
+    (5) $I-P$ is the orthogonal projection of $\hH$ onto $\mathcal{M}^{\perp}$.
+\end{theorem}
+
+\begin{corollary}{}{}
+    If $\mathcal{M}\leqs \hH$, then $(\mathcal{M}^{\perp})^{\perp}=\mathcal{M}$. 
+\end{corollary}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://sites.math.washington.edu/~burke/crs/555/555_notes/hilbert.pdf}{lecture notes from washington university}
+    \item \href{https://web.mat.bham.ac.uk/~malevao/MSM3P21/l12.pdf}{lecture notes from brmh}
+    \item \href{https://web.eecs.umich.edu/~fessler/course/600/l/l03.pdf}{lecture notes from umich}
+    \item \href{https://users.math.msu.edu/users/banelson/teaching/920/chI_notes.pdf}{lecture notes from msu}
+\end{itemize}
+
+

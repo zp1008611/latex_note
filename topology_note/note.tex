@@ -1,0 +1,70 @@
+% \documentclass[11pt,twoside]{book} %纸质版用twoside
+\documentclass[12pt,oneside]{book} %电子版用oneside
+\usepackage{setspace}
+
+% \documentclass{article}
+
+\input{notes_template.tex}
+
+%%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+\input{./glossaries.tex}
+%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+% \usepackage[record,abbreviations,symbols,stylemods={list,tree,mcols}]{glossaries-extra}
+%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+
+
+\input{./macros.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% begin of document %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{\bf \huge Study Notes of Topology}
+\author{Pei Zhong}
+\date{Update on \today}
+
+\maketitle
+
+% \newpage
+% \let\cleardoublepag\clearpage
+
+\tableofcontents
+
+\begin{spacing}{1}
+
+%%%%%%%%%%%%%%update progress%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%update progress end%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%preface%%%%%%%%%%%%%
+
+\input{chapter/preface.tex}
+\input{chapter/0_1_preliminary.tex}
+%%%%%%%%%%%%%preface end%%%%%%%%%%%%%
+
+\part{Topology Space and Continuity}
+\input{chapter/1_1_topology.tex}
+\input{chapter/1_2_continuity_homeomorphism.tex}
+\input{chapter/1_3_basis_product.tex}
+
+\part{Topology Invariant}
+\input{chapter/countability_separation.tex}
+\input{chapter/compactness.tex}
+
+
+
+
+
+\end{spacing}
+\end{document}

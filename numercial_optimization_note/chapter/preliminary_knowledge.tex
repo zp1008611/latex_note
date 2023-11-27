@@ -1,0 +1,251 @@
+\chapter{Preliminary Knowledge}
+
+The goal of this chapter is to refresh your memory on some
+topics in linear algebra and multivariable calculus that will be
+relevant to the following content. You can use this as a reference
+throughout the semester. 
+
+\section{Inner Products and Norms}
+\subsection{Inner Products}
+Without hypotheses, we use $x\in \R^n$ to denote vectors of $\R^n$ with $x=(x_1,x_2,\cdots,x_n)$ and $x\geqs y$ to denote point-wise order $x_i\geqs y_i,1\leqs i \leqs n$. Then, $\R^n_+$ and $\R^n_{++}$ are defined by $\R^n_+:=\{x\in \R^n\mid x\geqs 0\}$ and  $\R^n_+:=\{x\in \R^n\mid x> 0\}$. Besides, $e_i$ is the $i$-th 
+standard basis $e_i=(0,\cdot,0,\mathop{1}\limits^{i},0,\cdots,0)^T$.
+\begin{definition}{Inner product and vector norm}{Inner product}
+    (i) For given vectors $x,y\in \R^n$, their \textbf{inner product} and the induce \textbf{Euclidean norm}(or, \textbf{$l^2$-norm}) are defined by
+    \begin{align*}
+        \inner{x}{y} &:=x^Ty = \sum_{i=1}^nx_iy_i\\
+        \norm{x}_2 &:=(\inner{x}{x})^{\frac{1}{2}} = \left(\sum\limits_{i=1}^nx_i^2\right)^{\frac{1}{2}}. 
+    \end{align*}
+
+    (ii) For a given vector $x\in \R^n$, the \textbf{$l^1$-norm} and \textbf{$l^{\infty}$-norm} are defined by
+    \begin{align*}
+        \norm{x}_1=\sum_{i=1}^n|x_i|,\norm{x}_{\infty}=\max_{1\leqs i \leqs n}|x_i|.
+    \end{align*}
+\end{definition}
+\begin{proposition}{Fundamental properties of norm}{}
+    For $l^p$-norm $\norm{\cdot}_p,p=1,2,\infty$ of the vectors $x,y\in \R^n$, one have
+
+    (i) Positive defininteness: $\norm{x}_p\geqs 0$ and $\norm{x}_p=0\Leftrightarrow x = 0$.
+
+    (ii) Positive Homogeneity: $\norm{kx}_p = k\norm{x}_p$ for $k\geqs 0$.
+
+    (iii) Subadditivity: $\norm{x+y}_p\leqs \norm{x}_p + \norm{y}_p$.
+\end{proposition}
+\begin{remark}
+    Essentially, any functional $p:\R^n\to \R_+$ satisfying the above three properties is a norm of $\R^n$.
+\end{remark}
+
+The following inequality plays a important role in theoretical analysis.
+\begin{theorem}{Cauchy-Schwarz Inequality}{}
+    \begin{equation*}
+        \inner{x}{y}=x^Ty\leqs \norm{x}_2\norm{y}_2, x,y\in \R^n,
+    \end{equation*}
+    the equality holds if and only if $x = ky,k\in \R$ i.e. $x,y$ are parallel.
+\end{theorem}
+
+\subsection{Vector Norms}
+
+\subsection{Matrix Norms}
+Analogous to vector norm, we could define norm for matrices, here are some frequently used matrix norms:
+\begin{definition}{matrix norms}{}
+    For a given matrix $A\in \R^{n\times n},$ there are some norms as following:
+
+    (i) \textbf{Frobenius norm}: $\norm{A}_F:=\left(\sum\limits_{i=1}^n\sum\limits_{j=1}^na_{ij}^2\right)^{\frac{1}{2}}$.
+
+  (ii) \textbf{$2$-norm}, or \textbf{spectral norm}: $\norm{A}_2:=\max\limits_{\norm{x}_2=1}\norm{Ax}_2$.
+\end{definition}
+
+\begin{definition}{condition number}{}
+    For a given matrix $A\in \R^{n\times n}$, the condition of $A$ is defined as
+    \begin{align*}
+        \kappa(A) = ||A||_2\cdot ||A^{-1}||_2,
+    \end{align*}
+    If $A$ is singular then $\kappa(A)=\infty$. 
+    In numerical analysis the condition number of a matrix $A$ is is a way of describing how well or badly the system
+    $Ax=b$ could be approximated. If $\kappa(A)$ is small the problem is well-conditioned and if
+    $\kappa(A)$ is large the problem is rather ill-conditioned.
+\end{definition}
+\begin{remark}
+    If $A$ is a symmetric matrix, another expression for the condition number is $\kappa(A) = |\frac{\lambda_{max}}{\lambda_{min}}|$, where $\lambda_{max}$ and $\lambda_{min}$
+    denote the largest and smallest eigenvalues of $A$.
+\end{remark}
+
+\begin{theorem}{Spectral norm characterization}{equivalent characterization of 2-norm of matrix}
+    For a given matrix $A\in \R^{n\times n}$,
+    \begin{equation*}
+        \norm{A}_2=\max_{\norm{x}=1}\norm{Ax}_2=\left(\lambda_{\max}(A^TA)\right)^{\frac{1}{2}},
+    \end{equation*}
+    in which $\lambda_{\max}(A)$ is the maximal eigenvalues of $A$. Furthermore, by notation $\lambda(A)$ denoted the set of all eigenvalues of $A$, we have $\norm{A}_2=\max(|\lambda(A)|)$ when $A$ is symmetric.
+\end{theorem}
+\begin{proof}
+    By Cauchy-Schwarz inequality one have
+    \begin{equation*}
+        \norm{Ax}_2^2=\inner{Ax}{Ax}=x^T(A^TAx)\leqs \norm{x}_2\norm{A^TAx}_2=\norm{A^TAx}_2,\forall \ x\in \R^n,\norm{x}=1,
+    \end{equation*}
+    and the equality holds if and only if $x,A^TAx$ are parallel, that is $A^TAx =\lambda x$ for some $\lambda\in \R$ i.e. $x$ is an eigenvector of $A^TA$ associated with eigenvalue $\lambda$. Hence
+    \begin{equation*}
+        \max_{\norm{x}_2=1}\norm{Ax}_2\leqs \max_{\norm{x}_2=1}\left(\norm{x}_2\norm{A^TAx}_2\right)^{\frac{1}{2}}\leqs \max_{\norm{x}_2=1}\left(\norm{x}_2(\lambda\norm{x}_2)\right)^{\frac{1}{2}}\leqs (\lambda_{\max}(A^TA))^{\frac{1}{2}},
+    \end{equation*}
+    and there is eigenvector $x^*$ associated with maximal eigenvalue $\lambda_{\max}$ of $A^TA$ such that $\norm{Ax^*}_2=(\lambda_{\max}(A^TA))^{\frac{1}{2}}$, therefore $\max\limits_{\norm{x}_2=1}\norm{Ax}_2=(\lambda_{\max}(A^TA))^{\frac{1}{2}}$.
+
+    When $A$ is symmetric, $\lambda_{\max}(A^TA)=\lambda_{\max}(A^2)=(\max(|\lambda(A)|))^2$, then the conclusion is obvious.
+\end{proof}
+
+The next property of $2$-norm is common in theoretical analysis. Its proof is similar to theorem \ref{thm:equivalent characterization of 2-norm of matrix} hence it is remained to an exercise.
+
+\begin{corollary}{Compatibility of $2$-norm}{}
+For a given $A\in \R^{n\times n},x\in \R^n$,
+
+(i) $\norm{Ax}_2\leqs \norm{A}_2\norm{x}_2$.
+
+(ii) When $A$ is symmetric, the quadratic form has the attained upper bound and lower bound
+\begin{equation}
+    \lambda_{\min}(A)\norm{x}_2\leqs x^TAx\leqs \lambda_{\max}(A)\norm{x}_2.
+\end{equation}
+
+(iii) As a corollary of (ii), $A$ is positive (semi-)definited if and only if $\lambda_{\min}(A)>0(\geqs 0)$.
+\end{corollary}
+
+
+\section{Quadratic Form}
+
+The theoretical analysis and algorithm design always involve matrix, especially symmetric positive definited matrix. We briefly introduction the concept of quadratic form.
+\begin{definition}{Quadratic form}{}
+    Give a multivariate quadratic function $f:\R^n\to \R,$
+    \begin{equation*}
+        f(x_1,x_2,\cdots,x_n) = a_{11}x_1^2+\cdots+a_{nn}x^2_n+2a_{12}x_1x_2+\cdots + 2a_{n-1,n}x_{n-1}x_n =\sum_{i=1}^n\sum_{j=1}^na_{ij}x_ix_j,
+    \end{equation*}
+    one rewrite $f$ as 
+    \begin{equation*}
+        f(x) = \frac{1}{2}x^TAx,x=(x_1,\cdots,x_n)^T,A=\begin{bmatrix}
+        a_{11}&a_{12}&\cdots & a_{1n}\\
+        a_{12}&a_{22}&\cdots & a_{2n}\\
+        \vdots&\vdots&\ddots&\vdots\\
+        a_{1n}&a_{2n}&\cdots & a_{n n}\\
+        \end{bmatrix},
+    \end{equation*}
+    such form is called \textbf{quadratic form}, the symmetric matrix $A$ is called coefficient matrix for $f$. Besides, a symmetric matrix $A$ is said to be \textbf{positive (semi-)definited} if quadratic form $\frac{1}{2}x^TAx>0(\geqs 0)$ for every nonzero vector $x\in \R^n,x\ne 0$.
+\end{definition}
+\begin{remark}
+    Quadratic form also could be rewritten to inner product form $\frac{1}{2}x^TAx = \frac{1}{2}\inner{x}{Ax}$. Note that since $A$ is symmetric then $\inner{x}{Ax} = \inner{Ax}{x}$. Actually, by definition $\inner{x}{Ay}=\inner{A^Tx}{y}$ holds for every $x\in \R^n,y\in \R^m,A\in \R^{n\times m}$.
+\end{remark}
+
+
+\section{Differentiation}
+\begin{definition}{Gradient and Hessian}{Gradient and Hessian}
+    Let $f:\R^n\to \R$ be a multivariate function, the partially derivative of component $x_i$, is defined by 
+    \begin{equation*}
+        \frac{\partial f}{\partial x_i}:=\lim\limits_{t\downarrow 0}\dfrac{f(x + te_i)-f(x)}{t} = f_{i}'(x_i),
+    \end{equation*}
+    that is derivative of function $f(x)$ as a function of $x_i$ alone. By notation $f_{i}'(x)$ denoted derivative function $\frac{\partial f}{\partial x_i}$, the definition of second-order partially derivative is defined natrually,
+    \begin{equation*}
+        \dfrac{\partial^2 f}{\partial x_i\partial x_j} := \dfrac{\partial f_i'}{\partial x_j} = \dfrac{\partial }{\partial x_j}\left(\dfrac{\partial f}{\partial x_i}\right).
+    \end{equation*}
+
+    (i) The \textbf{gradient} of $f$, is vector consists of partially derivatives $\nabla f(x):= (\frac{\partial f}{\partial x_1},\cdots,\frac{\partial f}{\partial x_n})^T$.
+
+    (ii) The \textbf{Hessian} of $f$, is matrix consists of second-order partially derivatives
+    \begin{equation*}
+        \nabla^2f(x):=\begin{bmatrix}
+            \frac{\partial^2 f}{\partial x_1^2}&\frac{\partial^2 f}{\partial x_1\partial x_2}&\cdots&\frac{\partial^2 f}{\partial x_1\partial x_n}\\
+            \frac{\partial^2 f}{\partial x_1\partial x_2}&\frac{\partial^2 f}{\partial x_2^2}&\cdots&\frac{\partial^2 f}{\partial x_2\partial x_n}\\
+            \vdots&\vdots&\ddots&\vdots\\
+            \frac{\partial^2 f}{\partial x_1\partial x_n}&\frac{\partial^2 f}{\partial x_2\partial x_n}&\cdots&\frac{\partial^2 f}{\partial x_n^2}
+        \end{bmatrix}.
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    Almost every case we considered, $\nabla^2 f(x)$ is symmetric i.e. $\frac{\partial^2 f}{\partial x_i\partial x_j}=\frac{\partial^2 f}{\partial x_j\partial x_i}$.
+\end{remark}
+
+\begin{definition}{Jacobian}{}
+    Consider vector-valued function $f:\R^n\to \R^m,f=(f_1(x),\cdots,f_m(x))^T$, the \textbf{Jacobian} of $f$ is matrix consists of partially derivatives with dimension $m\times n$,
+ \begin{equation*}
+     J(f) = \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1}&\frac{\partial f_1}{\partial x_2}&\cdots&\frac{\partial f_1}{\partial x_n}\\
+             \frac{\partial f_2}{\partial x_1}&\frac{\partial f_2}{\partial x_2}&\cdots&\frac{\partial f_2}{\partial x_n}\\
+            \vdots&\vdots&\ddots&\vdots\\
+             \frac{\partial f_m}{\partial x_1}&\frac{\partial f_m}{\partial x_2}&\cdots&\frac{\partial f_m}{\partial x_n}
+        \end{bmatrix}.
+ \end{equation*}
+\end{definition}
+\begin{remark}
+    One could see that $\nabla^2 f(x) = J(\nabla f(x))$.
+\end{remark}
+
+
+
+\begin{definition}{vector}{}
+    A vector is a matrix with only one column. Thus, all vectors are inherently column vectors. 
+\end{definition}
+
+\begin{remark}
+    We follows the convention of the gradient being a column vector, while the derivative is a row vector. 
+\end{remark}
+
+\begin{definition}{Jacobian Matrix}{Jacobian Matrix}
+    Let $y=f(x)$ where $y$ is an $m$-element vector, and $x$ is an $n$-element vector. The symbol
+    \begin{equation}\label{eq:Jacobian Matrix}
+        \frac{\partial y}{\partial x} 
+        = \begin{pmatrix}
+            \frac{\partial y_1}{\partial x_1}& \frac{\partial y_1}{\partial x_2} & ... & \frac{\partial y_1}{\partial x_n}\\
+            \frac{\partial y_2}{\partial x_1}& \frac{\partial y_2}{\partial x_2} & ... & \frac{\partial y_2}{\partial x_n}\\
+            ...& ... & ... & ...\\
+            \frac{\partial y_m}{\partial x_1}& \frac{\partial y_m}{\partial x_2} & ... & \frac{\partial y_m}{\partial x_n}
+        \end{pmatrix}
+    \end{equation}
+    will denote the $m\times n$ matrix of first-order partial derivatives of the function from $x$ to $y$. Such a matrix is called the Jacobian martix of the function $f$. ($J_{ij}=\frac{\partial y_i}{\partial x_j}$)
+\end{definition}
+
+\begin{remark}
+    If $x$ is actually a scalar in \eqref{eq:Jacobian Matrix}, then the resulting Jacobian matrix is a $m\times 1$ matrix;
+    that is, a single column(a vector). 
+    On the other hand, if $y$ is actually a scalar in \eqref{eq:Jacobian Matrix} , then the resulting Jacobian matrix is a $1\times n$ matrix; 
+    that is, a single row (the transpose of a vector).
+\end{remark}
+\begin{remark}
+    We follows the convention of\ $\frac{\partial y^T}{\partial x}=(\frac{\partial y}{\partial x})^T$
+\end{remark}
+
+\section{Approximation Method}
+\subsection{First-order Approximation}
+
+\subsection{Second-order Approximation}
+
+\subsection{Approximation with Integral}
+
+
+
+\section{Reference}
+\begin{itemize}
+    \item matrix norm: \href{https://www.sjsu.edu/faculty/guangliang.chen/Math253S20/lec7matrixnorm.pdf}{lecture notes from sjsu}
+    \item quadratic form: \href{https://ocw.mit.edu/courses/15-084j-nonlinear-programming-spring-2004/resources/lec4_quad_form/}{lecture notes from mit}
+    \item understand matrix norm using function analysis : \href{https://sites.math.washington.edu/~greenbau/Math_554/Course_Notes/ch1.3new.pdf}{lecture notes from }
+\end{itemize}
+
+% \begin{itemize}
+%     \item $x=(x_1,x_2,...,x_n)^T$, $x_i\in \R$
+%     \item $F(\alpha)=(h_1(\alpha),h_2(\alpha),...,h_n(\alpha))^T$, $h_i:\R\rightarrow \R$, $F:\R^n\rightarrow \R$
+%         \begin{itemize}
+%             \item[*] $\frac{dF}{d\alpha}=(\frac{dh_1}{d\alpha},\frac{dh_2}{d\alpha},...,\frac{dh_n}{d\alpha})^T$ 
+%         \end{itemize}
+%     \item $f(x),f:\R^n\rightarrow \R$
+%         \begin{itemize}
+%             \item[*] $\frac{\partial f}{\partial x}=(\nabla f(x))^T=(\frac{\partial f}{\partial x_1},\frac{\partial f}{\partial x_2},...,\frac{\partial f}{\partial x_n})$
+%             \item[*] 
+%             \begin{align*}
+%                 \frac{\partial^2 f}{\partial x^2}=\frac{\frac{\partial f}{\partial x}}{\partial x}
+%                                 &= \begin{pmatrix}
+%                                     \frac{\partial f}{\partial x_1\partial x_1}& \frac{\partial f}{\partial x_1\partial x_2} & ... & \frac{\partial f}{\partial x_1\partial x_n}\\
+%                                     \frac{\partial f}{\partial x_2\partial x_1}& \frac{\partial f}{\partial x_2\partial x_2} & ... & \frac{\partial f}{\partial x_2\partial x_n}\\
+%                                     ...& ... & ... & ...\\
+%                                     \frac{\partial f}{\partial x_n\partial x_1}& \frac{\partial f}{\partial x_2\partial x_n} & ... & \frac{\partial f}{\partial x_n\partial x_n}
+%                                 \end{pmatrix}\\
+%                                 &= \nabla^2 f(x)                                                                                                                
+%             \end{align*}
+%         \end{itemize}
+%     \item $f(\alpha v)$, $\alpha\in \R$, $v\in \R^n$, $f:\R^n\rightarrow \R$
+%     \begin{itemize}
+%         \item[*] $\frac{\partial f}{\partial \alpha} = \frac{\partial f}{\partial x}\frac{\partial x}{\partial \alpha}=(\nabla f(x))^T\cdot v$, $x=\alpha v$. 
+%         \item[*] $\frac{\partial^2 f}{\partial \alpha^2} = \frac{\frac{\partial f}{\partial x}v}{\partial \alpha}$, $\frac{}{}$
+%     \end{itemize}
+% \end{itemize}

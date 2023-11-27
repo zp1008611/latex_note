@@ -1,0 +1,219 @@
+\chapter{Descent Algorithms}\label{chp:descent algorithms}
+
+\section{Motivation}
+
+Let's recall our unconstrained optimization problem:
+\begin{equation*}
+    \min_{x} f(x), 
+\end{equation*}
+where $f:\R^n\rightarrow \R$.
+
+\par
+\noindent \textbf{Where we stand so far:}
+\begin{itemize}
+    \item Learned about some structural properties of local optimal solutions (first
+    and second order conditions for optimality).
+    \item Learned that for convex problems, local optima are automatically global.
+\end{itemize}
+\par 
+But how to find a local optimum?
+How to even find a stationary point (i.e., a point where the gradient
+vanishes)? Recall that this would suffice for global optimality if is
+convex.
+We now begin to see some algorithms for this purpose. 
+These will be iterative algorithms: start at a point, jump to a new point
+that hopefully has a lower objective value and continue. 
+
+
+\section{Descent Algorithms Overview}
+\subsection{Iterative Form}
+\noindent \textbf{General form of the iterations:}
+\begin{equation*}
+    x_{k+1} = x_k+\alpha_k d_k
+\end{equation*}
+\noindent where,
+\begin{itemize}
+    \item $k\in \Z_+$ : iteration number
+    \item $x_k\in \R^n$ : current point
+    \item $d_k\in R^n$ : direction to move along at iteration $k$
+    \item $x_{k+1} \in \R^n$: next point
+    \item $\alpha_k \in \R_+$: step size at iteration $k$.
+\end{itemize}
+\noindent Goal is to make the sequence $\{f(x_k)\}$
+decrease as much as possible. But how to choose $d_k$? How to choose $\alpha_k$?
+In first order method, the direction to move along at step is chosen
+"based on information from" $\nabla f(x)$". Why is $\nabla f(x)$ a natural vector to look at? Lemmas \ref{lem:maximum rate of decrease} and \ref{lem:descent direction} below provide two reasons.
+
+\begin{lemma}{}{maximum rate of decrease}
+    $f\in C^1$. Consider yourself sitting at a point $x\in \R^n$ and looking (locally) at
+    the value of the function $f$ in all directions around you. The direction with the
+    maximum rate of decrease is along $-\nabla f(x)$. 
+\end{lemma}
+
+
+\begin{remark}
+    When we speak of direction, the magnitude of the vector does not
+matter; e.g., $\nabla f(X), 5\nabla f(x), \frac{\nabla f(x)}{20}$
+ all are in the same direction.
+\end{remark}
+
+\begin{proofsolution}
+    Consider a point $x$, a direction $d$, and the univariate function
+    \begin{equation*}
+        g(\alpha) = f(x+\alpha \frac{d}{||d||}). 
+    \end{equation*}
+    As the rate of change of $f$ at $x$ in direction $d$(derivative in direction $d$) is
+    \begin{align*}
+        \nabla_d f(x) &= \lim_{\alpha \rightarrow 0}\frac{f(x+\alpha \frac{d}{||d||}) - f(x)}{\alpha}=\lim_{\alpha\rightarrow 0}\frac{g(\alpha)-g(0)}{\alpha}=g'(0)\\
+                &=(\nabla f(x))^T\frac{d}{||d||}=\frac{1}{||d||}<\nabla f(x),d>, 
+    \end{align*}
+    by the Cauchy-Schwarz inequality, we have:
+    \begin{align*}
+        -\frac{d}{||d||}\cdot ||\nabla f(x)|| \cdot ||d||\leq \frac{1}{||d||}<\nabla f(x),d>\leq \frac{d}{||d||}\cdot ||\nabla f(x)|| \cdot ||d||, 
+    \end{align*}
+    which after simplifying gives
+    \begin{align*}
+        -||\nabla f(x)|| \leq \frac{1}{||d||}<\nabla f(x),d>\leq||\nabla f(x)|| .  
+    \end{align*}
+    So $\nabla_d f(x)$ cannot be larger than $||f(x)||$, or smaller than $-||f(x)||$. However, if we take $d=\nabla f(x)$, the right inequality is achieved:
+    \begin{align*}
+        \frac{1}{||\nabla f(x)||}<\nabla f(x),\nabla f(x)>=\frac{1}{||\nabla f(x)||}\cdot ||\nabla f(x)||^2=||\nabla f(x)||. 
+    \end{align*}
+    Similarly, if we take $d=-\nabla f(x)$, then the left inequality is achieved. 
+\end{proofsolution}
+
+
+\begin{definition}{}{descent direction}
+    For a given point $x\in R^n$, a direction $d\in \R^n$ is called a desent direction, if there exists $\bar{\alpha}>0$ such that
+    \begin{align*}
+        f(x+\alpha d)<f(x),\forall \alpha\in (0,\bar{\alpha})
+    \end{align*}
+\end{definition}
+
+\begin{lemma}{}{descent direction}
+    {
+        Consider a point $x\in \R^n$. Any direction $d$ satisfying
+        \begin{align*}
+            \inner{\nabla f(x)}{d}<0
+        \end{align*}
+        is a descent direction.(In particular, $- \nabla f(x)$ is a desent direction.)
+    }
+\end{lemma}
+
+\begin{remark}
+    The condition $<\nabla f(x),d><0$ in Lemma \ref{lem:descent direction} geometrically means that
+the vectors and make an angle of more than 90 degrees (on the plane
+that contains them). \\
+Why?(Hint: $<\nabla f(x),d>=||\nabla f(x)||\cdot ||d||\cdot cos\theta$)
+\end{remark}
+
+\begin{proofsolution}
+    By Taylor's theorem, we have
+    \begin{align*}
+        f(x+\alpha d) = f(x) + \alpha \nabla f(x)^T d + o(\alpha).
+    \end{align*}
+    Since $\lim_{\alpha\rightarrow 0} \frac{|o(\alpha)|}{\alpha}=0$, there exists $\bar{\alpha}>0$ such that
+    \begin{align*}
+        \frac{|o(\alpha)|}{\alpha}<|\nabla f(x)^Td|,\forall \alpha\in(0,\bar{\alpha}).
+    \end{align*}
+    This, together with our assumption that $\nabla f(x)^Td<0$, implies that $\forall \alpha\in (0,\bar{\alpha})$ we must have:
+    \begin{align*}
+        f(x+\alpha d)&<f(x)+\alpha \nabla f(x)^T d + \alpha |\nabla f(x)^Td|\\
+                    &<f(x)+\alpha \nabla f(x)^T d - \alpha \nabla f(x)^Td\\
+                    &<f(x)
+    \end{align*}
+    Hence, by Definition \ref{def:descent direction} , $d$ is a descent direction.
+\end{proofsolution}
+
+\begin{lemma}{}{descent direction with pdmatrix}
+    Consider any positive definite matrix $B$. For any point $x$, 
+ with $\nabla f(x)\neq 0$, the direction $-B\nabla f(x)$ is a descent direction. 
+\end{lemma}
+\begin{proofsolution}
+    By the assumption that $B$ is positive define, we have 
+    \begin{align*}
+        \inner{\nabla f(x)}{-B\nabla f(x)}=-\nabla f(x)^TB\nabla f(x)<0.
+    \end{align*}
+\end{proofsolution}
+
+Lemma \ref{lem:descent direction with pdmatrix} suggets a general paradigm for our descent algorithms:
+\begin{align*}
+    x_{k+1} = x_k - \alpha_k B_k \nabla f(x_k), (\text{with}\ B_k\succ 0, \forall k).
+\end{align*}
+
+\noindent \textbf{Common choices of descent direction:}
+\begin{itemize}
+    \item Steepest Descent: $B_k=I,\forall k$.
+    \item[] Simplest descent direction but not always the fastest.
+    \item  Newton Direction: $B_k=(\nabla^2 f(x_k))^{-1}$, assuming $\nabla^2 f(x)\succ 0, \forall k$.
+    \item[]  More expensive, but can have much faster convergence.
+    \item Modified Newton Direction: $B_k=(\nabla^2f(x_0))^{-1},\forall k$
+    \item[] Compute Newton direction only at the beginning, or once every M steps.
+\end{itemize}
+
+\noindent \textbf{Common choices of the step size $\alpha_k$: }
+\begin{itemize}
+    \item Constant step size: $\alpha_k=s,\forall k(s>0)$
+        \begin{itemize}
+            \item[*] Simplest rule to implement, but may not converge if $s$ too large; may
+            be too slow if $s$ too small.
+        \end{itemize}
+    \item Diminishing step size: $\alpha_k\rightarrow 0$, $\sum\limits_{k=1}^{\infty}\alpha_k = \infty$. (e.g., $\alpha_k=\frac{1}{k}$)
+    \item Minimization rule (exact line search): $\alpha_k = argmin_{\alpha\geq 0} f(x_k+\alpha_k d_k)$
+        \begin{itemize}
+            \item[*] A minimization problem itself, but an easier one (one dimensional).
+            \item[*] If $f$ convex, the one dimensional minimization problem also convex  
+        \end{itemize}
+    \item Successive step size reduction: well-known examples are Armijo rule
+    and Wolf rule. We will cover Armijo
+    in the following chapter.
+        \begin{itemize}
+            \item[*] Try to ensure enough decrease in line search without spending time
+            to solve $\alpha_k$ to optimality.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Stopping Criteria}
+Once we have a rule for choosing the search direction and the step size,
+we are good to go for running the algorithm. Typically the initial point $x_0$ is picked randomly, or if we have a guess for
+the location of local minima, we pick $x_0$ close to them. But when to stop the algorithm? Some common choices ( $\epsilon>0$ is a small prescribed threshold):
+\begin{itemize}
+    \item $||\nabla f(x)||<\epsilon$
+    \item[]  {If we have $\nabla f(x_k)=0$, our iterates stop moving. 
+    We have found a point satisfying the first order necessary condition for optimality. 
+    This is what we are aiming for. }
+    \item $|f(x_{k+1})-f(x_k)|<\epsilon$
+    \item[]  Improvements in function value are saturating.
+    \item $||x_{k+1}-x_k||<\epsilon$
+    \item[] Movement between iterates has become small.
+\end{itemize}
+
+
+
+
+
+\section{Rates of Convergence}
+Now we make precise a useful notion of speed or rate of convergence, which is convenient for our convergence analysis.
+
+\begin{definition}{}{}
+    {
+    Let $\{x_k\}$ converge to $x^*$. We say the convergence is of order $p$($\geq 1$) and with factor $\gamma$($>0$), if $\exists k_0$ such that $\forall k\geq k_0$, 
+    \begin{align*}
+        ||x_{k+1}-x^*|| \leq \gamma || x_k -x^*||^p.
+    \end{align*}
+    }
+\end{definition}
+Make sure the following comments make sense:
+
+
+
+
+
+
+
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://www.princeton.edu/~aaa/Public/Teaching/ORF363_COS323/F14/ORF363_COS323_F14_Lec8.pdf}{lecture notes from princeton university}
+\end{itemize}

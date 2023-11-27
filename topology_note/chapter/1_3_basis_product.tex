@@ -1,0 +1,33 @@
+\chapter{Topological basis and Product Space}\label{chp:1_3}
+
+Let's recall the euclidean topology in $\R$, 
+\begin{align*}
+    \tau_e = \{U:U=U_i(a_i,b_i),a_i<b_i\in\R\}.
+\end{align*}
+It seems like the entire collection of sets
+in $\tau_e$ can be specified by declaring that just the usual open intervals are open. Once these
+“special sets” are known to be open, we get all the other sets for free by taking unions.
+These special collections of sets are called bases of topologies.
+
+\begin{definition}{}{}
+    Let $(X,\tau)$ be a topological space. 
+    A collection $\mathcal{B}$ of open subsets of $X$ is said to be a basis for the topology $\tau$
+    if for each $U\in \tau$, $U=\cup_{i\in I} B_i$, where $I$ is a index set and $B_i\in\mathcal{B}$.
+\end{definition}
+
+\begin{remark}
+    If $\mathcal{B}$ is a basis for a topology $\tau$ on a set $X$ then
+    a subset $U$ of $X$ is in $\tau$ iff it is a union of members of $\mathcal{B}$.
+    So $\mathcal{B}$ "generates" the topology $\tau$ in the following sense:
+    if we told what sets are members of $\mathcal{B}$ then we can determine the members of $\tau$ -- 
+    they are just all the sets which are unions of members of $\mathcal{B}$.
+\end{remark}
+
+\begin{example}{}{}
+    $\mathcal{B}=\{(a,b):a,b\in\R,a<b\}$ is a basis for $(\R,\tau_e)$.
+\end{example}
+
+\begin{example}{}{}
+    $\mathcal{B}=\{\{x\}:x\in X\}$ is a basis for $(X,\tau_d)$. 
+\end{example}
+

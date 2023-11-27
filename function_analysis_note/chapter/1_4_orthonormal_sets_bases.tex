@@ -1,0 +1,232 @@
+\chapter{Orthonormal Sets of Vectors and Bases}\label{chp:1_4}
+
+
+
+It will be shown in this chapter that, as in Euclidean space, each Hilbert 
+space can be coordinatized. The vehicle for introducing the coordinates is 
+an orthonormal basis. The corresponding vectors in $\F^d$ are the vectors 
+$\{e_1, e_2, ... , e_d\}$, where $e_k$ is the $d$-tuple having a $1$ in the $k$th place and zeros elsewhere.
+
+\begin{definition}{}{}
+    A subset $A\subset \hH$ is said to orthogonal if $<x,y>=0$, for all $x,y\in A$ such that $x\neq y$. 
+    We say it is orthonormal if we further regive $||x||=1$ for all $x\in A$. 
+\end{definition}
+
+\begin{remark}
+    Orthogonal set can contain zero vector, but orthonormal set can not. 
+\end{remark}
+
+
+
+Subsets $\mathscr{E}, V$ mentioned below can be finite, countably infinite and uncoutably infinite. 
+
+\begin{proposition}{}{}
+    Let $V$ be an orthogonal subset of $\hH$. Then
+    \begin{align*}
+        \sum\limits_{v} \{v:v\in V\}
+    \end{align*}
+    converges iff 
+    \begin{align*}
+        \sum\limits_{v} ||v||^2<\infty.
+    \end{align*}
+\end{proposition}
+\begin{proof}
+    Let $s_k$ be the sequence of partial sums of the given series. By the Pythagorean theorem, 
+    \begin{align*}
+        ||s_i-s_j||^2 = ||\sum\limits_{n=i+1}^{j}v_n||^2 = \sum\limits_{n=i+1}^{j}||v_n||^2.
+    \end{align*}
+    for all $i\leqs j$. Then
+    \begin{align*}
+        & \sum\limits_{n=1}^{\infty} v_n\ converges\\
+        & \Leftrightarrow \{s_k\} \ is\  a\  \ Cauchy\  sequence\\
+        & \Leftrightarrow \sum\limits_{n=i+1}^{j}||v_n||^2\rightarrow 0,\ i,j\rightarrow \infty\\
+        & \Leftrightarrow \sum\limits_{n=1}^{\infty} ||v_n||^2<\infty.
+    \end{align*}
+\end{proof}
+
+\begin{corollary}{}{$ell^2$-linear combinations converges}
+    Let $\{u_n\}$ be an orthonormal sequence of vectors in a Hilbert space, and let {an}
+    be a sequence of real(complex) numbers. Then the series 
+    \begin{align*}
+        \sum\limits_{n=1}^{\infty} a_nu_n.
+    \end{align*}
+    converges iff $\{a_n\}$ lies in $\ell^2$.
+\end{corollary}
+
+\begin{proof}
+    Let $s_k$ be the sequence of partial sums of the given series. By the Pythagorean theorem, 
+    \begin{align*}
+        ||s_i-s_j||^2 = ||\sum\limits_{n=i+1}^{j}||a_nu_n||^2 = \sum\limits_{n=i+1}^{j}|a_n|^2||u_n||^2= \sum\limits_{n=i+1}^{j}|a_n|^2.
+    \end{align*}
+    for all $i\leqs j$. Then
+    \begin{align*}
+        & \sum\limits_{n=1}^{\infty} a_nu_n\ converges\\
+        & \Leftrightarrow \sum\limits_{n=1}^{\infty} |a_n|^2<\infty.
+    \end{align*}
+\end{proof}
+
+In general, if $\{a_n\}$ is an $\ell^2$ sequence set, then the sum
+\begin{align*}
+    \sum\limits_{n=1}^{\infty} a_nu_n
+\end{align*}
+is called a $ell^2$-linear combintion of the vectors $\{u_n\}$. By corollary\ref{cor:$ell^2$-linear combinations converges}, 
+every $\ell^2$-linear combination orthonormal vectors in a Hilbert space converges.
+
+\begin{definition}{Fourier Coefficients}{}
+    If $\{v_n\}$ is an orthogonal set of $\hH$ and $x\in \hH$. 
+    Then $<u_n,x>$ is called the Fourier coefficients of $x$ 
+    with respect to the orthonormal set $\{v_n\}$.
+\end{definition}
+
+When an orthonormal set is finite in $\hH$, we have
+
+\begin{theorem}{}{fourier coefficients theorem}
+    Let $\{u_1,u_2,...,u_k\}$ is an orthonormal set in $\hH$ and $x=\sum\limits_{i=1}^{k}a_iu_i$, then $a_i=<u_i,x>$ ($1\leqs j\leqs k$) and
+    $||x||^2=\sum\limits_{i=1}^{k}|a_i|^2$. 
+\end{theorem}
+
+\begin{proofsolution}
+    $<u_i,x>=\sum\limits_{j=1}^{k}<u_i,u_j>=a_i<u_i,u_i>=a_i$. Then use Pythagorean Theorem, we get
+    \begin{align*}
+        ||x||^2=||\sum\limits_{j=1}^{k} a_iu_i||^2=\sum\limits_{j=1}^{k}||a_iu_i||^2=\sum\limits_{j=1}^{k}|a_i|^2.
+    \end{align*}
+\end{proofsolution}
+
+\begin{definition}{}{}
+    $\{x_1,..., x_k\}$ is said to be linearly dependent, if there exist scalars $a_1,a_2,...,a_k$, not all zero, such that
+    \begin{align*}
+        a_1x_1+...+a_kx_k=0
+    \end{align*}
+    where $0$ denotes the zero vector.
+    An infinite set of vectors is linearly independent if every nonempty finite subset is linearly independent.
+\end{definition}
+
+
+\begin{corollary}{}{}
+    Every orthonormal set is linearly independent.
+\end{corollary}
+\begin{proof}
+    If the set is finite. Suppose $\{u_1,...,u_k\}$ is an orthonormal set. Assume $b_1u_1+...b_ku_k=0$, then $b_1u_1=-\sum\limits_{i=2}^{k}b_iu_i$. 
+    By theorem\ref{thm:fourier coefficients theorem}, $b_i=<u_i,u_1>=0$($2\leqs i\leqs k$). Then $b_1u_1=0$.
+    Since $u_1\neq 0$, $b_1=0$. Hence, $b_i=0$ for all $1\leqs i\leqs k$ and so $\{u_1,...,u_k\}$ is linearly independent.
+    If the set is infinite, the above proof can show that every nonempty finite subset is linearly independent and so the set is linearly independent.
+\end{proof}
+
+
+Now we consider the question: Does the orthonormal set always exist? The following theorem tell us we can always construct an orthonormal set.
+
+\begin{theorem}{The Gram-Schmidt Orthogonalization Process}{}
+    If $\{x_1,...,x_k\}$ is a linearly independent subset of $\hH$, 
+    then there is an orthonormal set $\{u_1,...,u_k\}$ such that $span(\{u_1,...,u_k\})= span(\{x_1,...,x_k\})$.
+\end{theorem}
+\begin{proofsolution}
+    Define $\{u_k\}$ inductivey. Start with $u_1=\frac{x_1}{||x_1||}$. 
+    Suppose for $k-1$, $u_1,...,u_{k-1}$ exist. Let $v_k = x_k-\sum\limits_{j=1}^{k-1}<u_j,x_k>u_j$ and $u_k = \frac{v_k}{||v_k||}$.
+    Then $<u_k,u_j>=\frac{1}{||v_k||}(<x_k,u_j>-<u_j,x_k><u_j,u_j>)=0$ and $||u_k||=1$.
+    Hence, we can $\{u_1,...,u_k\}$ is an orthonormal set. 
+    from the construct process of $u_j(1\leqs j \leqs k)$, we can know $u_j\in span(\{x_1,...,x_k\})$ and so $span(\{u_1,...,u_k\})\subset span(\{x_1,...,x_k\})$. 
+    Since $\{u_1,...,u_k\}$ is linearly independent, $dim(span(\{u_1,...,u_k\}))=n$. Hence, $span(\{u_1,...,u_k\})= span(\{x_1,...,x_k\})$.
+\end{proofsolution}
+
+
+Now we consider the following question: How can we determine $Px_0$ when $x_0$ and the subspace
+$\mathcal{M}$ are given? When $\mathcal{M}$ is finite, we have
+
+\begin{proposition}{}{finite projection representaion}
+    Let $\mathcal{M}=\overline{span(\{u_1,...,u_k\})}$. Then $\forall x\in \hH$, the vector
+    \begin{align*}
+        y = \sum\limits_{i=1}^{k} <u_i,x> u_i
+    \end{align*}
+    is the projection of $x$ onto $\mathcal{M}$. 
+\end{proposition}
+
+\begin{proof}
+    Observe that $<u_i,y>=<u_i,x>$ for each $i$, and hence $<u_i,x-y> = 0$ for each $i$. Hence, $x-y\perp \mathcal{M}$. 
+    By theorem\ref{thm:orthogonal distance} and definition\ref{def:projection}, $y$ is the projection of $x$ onto $\mathcal{M}$. 
+\end{proof}
+
+Now we generalize this proposition when $\mathcal{M}$ is infinite.
+
+\begin{lemma}{}{}
+    Let $\{u_n\}$ be an orthonormal set in $\hH$ and $x\in \hH$. Then 
+    \begin{align*}
+        \sum\limits_{n=1}^{\infty} <u_n,x>^2\leqs ||x||^2, 
+    \end{align*} 
+    which implies $\{<u_n,x>\}$ is a $\ell^2$ sequence.\\
+\end{lemma}
+
+\begin{proof}
+    Let $N\in\N$, then by proposition\ref{prop:finite projection representaion}, 
+    \begin{align*}
+        y_N = \sum\limits_{n=1}^{N}<u_n,x>u_n
+    \end{align*}
+    be the projection fo $x$ onto $span(\{u_1,...,u_N\})$. Then $x-y_N\perp y_N$, so by the Pythagorean theorem
+    \begin{align*}
+        ||x||^2 = ||y_N+x-y_N||^2 = ||y_N||^2 + ||x-y_N||^2 \geqs ||y_N||^2= \sum\limits_{n=1}^{N} <u_n,x>^2.
+    \end{align*}
+    This holds for all $N \in \N$, so the desired inequality follows. 
+\end{proof}
+
+\begin{theorem}{}{}
+    Let $\{u_n\}$ be an orthonormal set in $\hH$ and $x\in\hH$. $\mathcal{M}$ is $\overline{span(\{u_n\})}$. Then
+    \begin{align*}
+        y=\sum\limits_{n=1}^{\infty} <u_n,x>u_n
+    \end{align*}
+    is the projection of $x$ onto the $\mathcal{M}$.
+\end{theorem}
+
+\begin{proofsolution}
+    Since $\{u_n,x\}$ is a $ell^2$ sequence, and thus the sum for $y$ converges. Then,
+    \begin{align*}
+        <u_i,
+    \end{align*}
+\end{proofsolution}
+
+In particular, if $\overline{span(\{u_n\})}=\hH$, then every $x\in \hH$ may be expanded in terms of elements of $\{u_n\}$. The following theorem gives equivalent conditions for this property of $\{u_n\}$.
+
+\begin{theorem}{}{orthonormal basis equivalent}
+    If $\{u_n\}$ is an orthonormal subset of $\hH$, then the following conditions are equivalent:\\
+    (1) $\{u_n\}$ is a maximal orthonormal set.\\
+    (2) $\overline{span(\{u_n\})}=\hH$;\\
+    (3) $||x||=\sum\limits_{n=1}^{\infty}|<u_n,x>|^2$ for all $x\in\hH$ (Parsevars Identity);\\
+    (4) $x=\sum\limits_{n=1}^{\infty}<u_n,x>u_n$ for all $x\in \hH$;\\
+    (5) $<u_n,x>=0$ for all $n$ implies $x=0$;
+\end{theorem}
+\begin{proofsolution}
+    (1)$\Rightarrow$ (2): Since $\{u_n\}$ is maximal, $span(\{u_n\})^{\perp} = \{0\}$. 
+    Let $\mathcal{M} = \overline{span(\{u_n\})}$, then $\mathcal{M}^{\perp}=\{0\}$. Since $\mathcal{M}^{\perp}\bigoplus \mathcal{M} = \hH$ , $\mathcal{M} = \overline{span(\{u_n\})}=\hH$.
+    \\
+    (2)$\Rightarrow$ (3): 
+\end{proofsolution}
+
+
+\begin{definition}{}{}
+    An orthonormal set $\{u_n\}$ in $\hH$ satisfying any of the equivalent conditions (1)-(5) in theorem\ref{thm:orthonormal basis equivalent} 
+    is called a complete orthonormal set(or a complete orthonormal system) or an orthonormal basis in $\hH$. 
+\end{definition}
+
+\begin{remark}
+    If $\hH$ is infinite dimensional, an orthonormal basis is not a basis in the usual
+    definition of a basis for a vector space (i.e., each $x\in\hH$ has a unique representation as a
+    finite linear combination of basis elements). Such a basis in this context is called a Hamel
+    basis.
+\end{remark}
+
+\begin{theorem}{}{}
+    Every Hilbert space $\hH$ has an orthonormal basis. If $\{u_n\}$ is an orthonormal set, then $\hH$ has an orthonormal basis containing $\{u_n\}$. 
+\end{theorem}
+
+\begin{proofsolution}
+    referring to \href{https://www.math.ucdavis.edu/~hunter/book/ch6.pdf}{lecture notes from ucdavis}
+\end{proofsolution}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://web.mat.bham.ac.uk/~malevao/MSM3P21/l14.pdf}{lecture notes from brmh}
+    \item \href{https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/resources/mit18_102s21_lec14/}{lecture notes from mit}
+    \item \href{https://www.math.ucdavis.edu/%7Ehunter/book/ch6.pdf}{lecture notes from ucdavis}
+    \item \href{https://sites.math.washington.edu/~burke/crs/555/555_notes/hilbert.pdf}{lecture notes from washington}
+    \item \href{https://e.math.cornell.edu/people/belk/measuretheory/HilbertSpaces.pdf}{lecture notes from cornell}
+    \item \href{https://www.math.cuhk.edu.hk/course_builder/1415/math5011/functional%20Analysis%202014.pdf}{lecture notes from cuhk}
+\end{itemize}

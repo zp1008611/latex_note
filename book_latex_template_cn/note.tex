@@ -1,0 +1,192 @@
+\documentclass[12pt,oneside,UTF8]{ctexbook} %电子版用oneside
+\CTEXsetup[format={\Large\bfseries}]{section} % 小标题靠左
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% – text font –
+% compile using Xelatex
+%%%%%%%%%%%%%%%%%%%%%%%
+% – 中文字体 –
+%\setmainfont{Microsoft YaHei} % 微软雅黑
+%\setmainfont{YouYuan} % 幼圆
+% \setmainfont{NSimSun} % 新宋体
+% \setmainfont{KaiTi} % 楷体
+% \setmainfont{SimSun} % 宋体
+%\setmainfont{SimHei} % 黑体
+
+\usepackage{setspace}
+
+% \documentclass{article}
+\input{chinese_config.tex}
+\input{notes_template.tex}
+
+%%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+\input{./glossaries.tex}
+%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+% \usepackage[record,abbreviations,symbols,stylemods={list,tree,mcols}]{glossaries-extra}
+%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+
+
+\input{./macros.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% begin of document %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{\bf \huge Study Notes of linear programming}
+\author{钟沛，汪智笑，费爱跃}
+\date{Update on \today}
+
+\maketitle
+
+
+
+\tableofcontents
+\begin{spacing}{1.5}
+% 这里是1.5倍行距
+%%%%%%%%%%%%%%%%%%%preface%%%%%%%%%%%%%%%%%%
+
+\chapter*{前言}
+
+
+该笔记主要参考书籍为：
+\begin{itemize}
+    \item Model Building in Mathematical Programming 5th Edition
+    \item introduction to linear programming
+\end{itemize}
+
+\par
+笔记中所有代码用python编写，代码可在以下网址访问：
+\begin{itemize}
+    \item -
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%preface end%%%%%%%%%%%%%%%%%
+
+
+\part{线性规划理论}
+%%%%%%%%%%%%%%%%%%linear programming theory%%%%%%%%%%%
+\chapter{线性规划}\label{chp:线性规划}
+
+\section{线性规划简述}
+
+\section{标准型}
+
+\section{图解法}
+考虑以下具有两个决策变量的线性规划问题：
+
+
+\begin{equation}
+  \begin{aligned}
+\min -x_1-x_2\\
+s.t.\     x_1+2x_2 &\leq 3 & (a)\\
+          2x_1+x_2 &\leq 3& (b)\\
+		x_1,x_2&\geq 0&(c)
+  \end{aligned}
+  \label{equ:example1}
+\end{equation}
+
+该问题的可行解区域如\figref{fig:feasible_region1}所示.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figure/ch1/feasible_region1.png}
+    \caption{}
+    \label{fig:feasible_region1}
+\end{figure}
+
+利用图解法直观地说明最优解的候选解由有限个角点给出. 
+
+下面对线性问题的几何特性进行更加深入的研究，首先给出超平面，半平面和多面体的定义.
+
+\begin{definition}{多面体}{}
+    多面体是由$\{\rm x\in \R^n|\rm Ax\geq b\}$中的点组成的点集，$\rm A$是一个$m\times n$矩阵，$\rm b$是一个$\R^m$向量.
+    
+\end{definition}
+
+\begin{definition}{超平面和半平面}{}
+    
+    $\rm a$是$\rm\R^n$中的非零向量，$b$是一个常数.
+    集合$\{x\in R^n|\rm a^Tx=b\}$称为超平面.
+    集合$\{x\in R^n|\rm a^Tx\geq b\}$称为半平面.
+    
+\end{definition}
+
+\begin{remark}
+    可以注意到，超平面是半平面的边界. 
+    另外，超平面定义中的向量$\rm a$与超平面垂直. 对于超平面上的两个$\R^n$向量$x, y$，
+    有$a^Tx=a^Ty$，则$a^T(x-y)=0$，则向量$a$与向量$x-y$的内积为0，即$a$垂直于$x-y$，
+    由于超平面的任意向量均可以由两个向量相减得到，
+    则$a$垂直于超平面上的任意向量，则向量$a$垂直于超平面.
+\end{remark}
+
+%%%%%%%%%%%%%%%%%%%linear programming end%%%%%%%%%%%%%%%
+
+\begin{theorem}{Bbbbb}{bbbbb}
+    blalalal
+\end{theorem}
+
+\begin{thmproof}
+    xxx
+\end{thmproof}
+
+\begin{example}{}{example1}
+    ppppp
+\end{example}
+
+\begin{exasolution}
+    xxx
+\end{exasolution}
+
+交叉引用\thmref{thm:bbbbb}
+
+交叉引用\equref{equ:example1}
+
+交叉引用\exaref{exa:example1}
+
+\part{线性规划应用选讲}
+%%%%%%%%%%%%%%%%%%%%linear programming application%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%linear programming application end%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%Content%%%%%%%%%%%%%%%
+% % \mainmatter % separat the number of toc and mainmatter
+% \input{./chapter/preface.tex}
+
+% \part{Mathematics}
+
+% \input{./chapter/discrete_math.tex}
+
+% \part{Computer Science}
+% % \input{./chapter/complexity.tex}
+% \input{./chapter/machine_learning.tex}
+% % \input{./chapter/algorithms.tex}
+
+% \part{Physics}
+% \input{./chapter/quantum_mechanics.tex}
+% % \input{./chapter/quantum_field_theory.tex}
+
+% % \begin{appendices}
+% % \input{./chapter/appendix_formula.tex}
+% % \end{appendices}
+
+% \backmatter
+
+% %%%%%%%%%%%%%%% Reference %%%%%%%%%%%%%%%
+
+% \printbibliography[heading=bibintoc]
+% \printindex
+
+\end{spacing}
+\end{document}
