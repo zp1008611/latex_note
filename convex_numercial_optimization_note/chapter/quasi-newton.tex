@@ -1,0 +1,62 @@
+\chapter{Quasi-Newton Methods}\label{chp:Quasi-Newton Methods}
+
+\section{Motivation}
+
+
+In last chapter, we have known that All of the search directions considered can be classified as Newton-like since they are all of
+the form 
+\begin{align*}
+    d_k = -H_k\nabla f(x_k),
+\end{align*}
+where $H_k$ is a symmetric $n\times n$ matrix. If $H_k=\mu_k I$ for all $k$, the resulting search direction as a scaled steepest descent direction
+with scale factors $mu_k$. More generally, we choose $H_k$ to approximate $\nabla^2 f(x_k)^{-1}$ in 
+order to approximate Newton's method for optimization. The Newton method is important since it possesses rapid local convergence properties, and can be shown
+to be scale independent. 
+
+\section{Newton's Method for Solving Equations}
+Newton's method is an iterative scheme
+designed to solve nonlinear equations of the form
+\begin{equation}
+    g(x)=0,
+    \label{eq:nonlinear equation}
+\end{equation}
+where $g:\R^n\rightarrow \R^n$ is assumed to be continuously differentiable. Many problems of importance can be posed in this way. In the context of the optimization problem $\mathcal{P}$, we wish 
+to locate  critical points, that is, points at which $\nabla f(x)=0$. We begin our discussion of
+Newton’s method in the usual context of equation solvng. 
+\par 
+Assume that the function $g$ in (\ref{eq:nonlinear equation}) is continuously differentiable and that we have an
+approximate solution $x_0\in\R^n$. We now wish to improve on this approximation. If $x^*$ is a solution to (\ref{eq:nonlinear equation}), then
+\begin{align*}
+    0= g(x^*)=g(x_0)+g'(x_0)(x^*-x_0)+o(||x^*-x_0||).
+\end{align*}
+Thus, it is reasonable to suppose that the solution to the linearized
+system
+\begin{equation}
+    0=g(x_0)+g'(x_0)(x-x_0)
+    \label{eq:linearized system equation}
+\end{equation}
+is even closer. This is Newton’s method for finding the roots of the equation $g(x)=0$.  It
+has one obvious pitfall. The solution $x=x_0- [g'(x_0)]^{-1}g(x_0)$ exists if and only if $g'(x_0)$ exists. 
+\par 
+For the sake of the present argument, we assume that $g'(x_0)^{-1}$ exists. Under this assumption, equation(\ref{eq:linearized system equation})  defines the iteration scheme,
+\begin{equation}
+    x_{k+1} = x_k - [g'(x_k)]^{-1}g(x_k), 
+\end{equation}
+called the Newton iteration. The associated direction
+\begin{equation}
+    d_k = - [g'(x_k)]^{-1}g(x_k).
+\end{equation}
+is called the Newton direction. We analyze the convergence behavior of this scheme under
+the additional assumption that an approximation to $[g'(x_k)]^{-1}$ is available. We denote
+this approximation by $H_k$. The resulting iteration scheme is 
+\begin{equation}
+    x_{k+1} = x_k -H_kg(x_k). 
+\end{equation}
+Methods of this type are called \textbf{Newton-Like methods}.
+\section{Reference}
+\begin{itemize}
+    \item \href{https://sites.math.washington.edu/~burke/crs/408/notes/nlp/direction.pdf}{lecture notes from washington university}
+    \item \href{https://math.ucsd.edu/sites/math.ucsd.edu/files/undergrad/honors-program/honors-theses/2019-2020/Jeb_Runnoe_Honors_Thesis.pdf}{lecture notes from ucsd}
+    \item \href{https://www.stat.cmu.edu/~ryantibs/convexopt-F18/lectures/quasi-newton.pdf}{lecture notes from cornell}
+    \item \href{https://www.cs.ccu.edu.tw/~wtchu/courses/2014s_OPT/Lectures/Chapter%2011%20Quasi-Newton%20Methods.pdf}{lecture notes from ccu}
+\end{itemize}

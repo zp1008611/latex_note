@@ -1,0 +1,55 @@
+\chapter{Finite Field}\label{chp:6_4}
+
+We have seen, in the previous chapters, some examples of finite fields. For example, the quotient
+ring $\Z/p\Z$ (when $p$ is a prime) forms a field with $p$ elements which may be identified with the
+Galois field $\F_p$ of order $p$.
+
+The fields $\F_p$ are important in field theory.
+Since every finite field must have characteristic $p$, 
+this helps us to classify finite fields.
+
+\begin{lemma}{}{finite field cardinality lemma}
+    Let $F$ be a finite field containing a subfield $K$ with $q$ elements. Then $F$ has $q^m$ elements,
+    where $m=[F:K]$.
+\end{lemma}
+\begin{proof}
+    $F$ is a vector space over $K$, finite-dimensional since $F$ is finite.
+    Denote this dimension by $m$, then $F$ has a basis over $K$ consisting of $m$ elements,
+    say $\alpha_1,...,\alpha_m$. Every element of $F$ can be uniquely represented in the form
+    $k_1\alpha_1+...+k_m\alpha_m$ (where $k_1,...,k_m\in K$).
+    Since each $k_i\in K$ can take $q$ values, $F$ must have exactly $q^m$ elements.
+\end{proof}
+
+We are now ready to answer the question: "What are the possible cardinalities for finite fields?"
+
+\begin{proposition}{}{}
+    Let $F$ be a finite field.
+    Then $F$ has $p^n$ elements, where the prime $p$ is the characteristic of $F$ and 
+    $n$ is the degree of $F$ over its prime subfield.
+\end{proposition}
+\begin{proof}
+    Since $F$ is finite, it must have characteristic $p$ for some prime $p$ for some prime $p$.(by corollary\ref{cor:finite field prime characteristic})
+    Thus, the prime subfield $K$ of $F$ is isomorphic to $\F_p$ (by proposition\ref{prop:prime subfield isomorphic to Q or Fp}), 
+    and so contains $p$ elements. By lemma\ref{lem:finite field cardinality lemma}, $F$ has $p^n$ elements.
+\end{proof}
+
+So, all finite fields must have prime power order - 
+there is no finite field with $6$ elements, for example.
+We next ask: does there exist a finite field of order $p^n$
+for every prime power $p^n$? How can such fields be constructed?
+We can take the prime fields $\F_p$ and construct other finite
+fields from them by adjoining roots of polynomials. If $f \in \F_p[x]$ is irreducible of degree $n$ 
+over $\F_p$, by Kronecker's Theorem\ref{thm:Kronecker's Theorem}, 
+then adjoining a root of $f$ to $\F_p$ yields a finite field of $p^n$
+elements. However, it is not clear whether
+we can find an irreducible polynomial in $\F_p[x]$ of degree $n$, 
+for every integer $n$.
+
+The following two lemmas will help us to characterize fields using root adjunction.
+
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://www.math.rwth-aachen.de/~Max.Neunhoeffer/Teaching/ff/ffchap3.pdf}{Finite fields}
+\end{itemize}

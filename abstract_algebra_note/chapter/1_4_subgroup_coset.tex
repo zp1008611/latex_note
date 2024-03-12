@@ -1,0 +1,124 @@
+\chapter{Subgroup and Coset}\label{chp:1_4}
+
+\section{Subgroups}
+
+\begin{definition}{}{}
+    Let $G$ be a semigroup and $H$ a nonempty subset of $G$.
+    If for every $a,b\in H$ we have $ab\in H$ then $H$ is closed under the binary operation of $G$.
+    Let $G$ be a group and $H$ a nonempty subset of $G$ that is closed under the binary operation of $G$.
+    If $H$ itself is a group under the binary operation then $H$ is a subgroup of $G$.
+    This is denote $H\leqs G$. For group $G$, 
+    the trivial subgroup is $\{e_G\}$.
+    Subgroup $H\leqs G$ is a proper subgroup if $H\neq G$ and $H\neq \{e_G\}$.
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $H$ be a nonempty subset of a group $G$. 
+    Then $H$ is a subgroup of $G$ 
+    if and only if $ab^{-1} \in H$
+    for all $a, b \in H$.
+\end{proposition}
+
+\begin{example}{}{}
+    $\Q^*\leqs \R^*\leqs \C^*$
+\end{example}
+
+\begin{example}{}{}
+    $\text{SL}_n(\R)\leqs \text{GL}_n(\R)$.
+\end{example}
+
+\begin{corollary}{}{}
+    If $G$ is a group and $\{H_i:i\in I\}$ is a nonempty set of subgroup of $G$,
+    then $\cap_{i\in I}H_i$ is a subgroup of $G$.
+\end{corollary}
+\begin{remark}
+    Notice that index set $I$ may not be finite and
+    it may not even be countable!
+\end{remark}
+
+
+\begin{definition}{}{}
+    Let $G$ be a group and $X,Y\subseteq G$.
+    $X^{-1}$ is defined as $X^{-1}=\{x^{-1}:x\in X\}$. 
+    And $XY$ is defined as $XY=\{xy:x\in X\text{ and } y\in Y\}$.
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $G$ be a group and $X,Y,Z\subseteq G$, then
+    $(X^{-1})^{-1}=X$ and $(XY)Z=X(YZ)$.
+\end{proposition}
+
+\begin{proposition}{}{}
+    Let $G$ be a group and $H\leqs G$, then
+    $H^{-1}=H$ and $HH=H$.
+\end{proposition}
+
+\begin{proposition}{}{}
+    Let $G$ is a group and $H,K\leqs G$, then
+    \begin{align*}
+        HK\leqs G\Leftrightarrow HK=KH.
+    \end{align*}
+\end{proposition}
+
+\section{Cosets}
+In this section, we generalize the idea of congruence modulo $m$ on $\Z$ (Chapter\ref{chp:pre1}) to 
+a more general setting.
+
+\begin{definition}{}{}
+    Let $H$ be a subgroup of group $G$ and $a,b\in G$.
+    $a$ is right congruent to $b$ modulo $H$, denoted $a\equiv_r b\pmod H$, if $ab^{-1}\in H$.
+    $a$ is left congruent to $b$ modulo $H$, denoted by $a\equiv_l b\pmod H$, if $a^{-1}b\in H$.
+\end{definition}
+
+We use left and right congruent to define left and right cosets. 
+
+\begin{theorem}{}{}
+    Let $H$ be a subgroup of a group $G$.\\
+    (1) Right and left congruence modulo $H$ are each equivalence relations on $G$.\\
+    (2) The equivalence class of $a\in G$ under right (and left) congruence modulo $H$ is 
+    the set $Ha=\{ha:h\in H\}$ (and $aH={ah:h\in H}$ for left congruence).\\
+    (3) $|Ha|=|H|=|aH|$ for all $a\in G$. \\
+    The set $Ha$ is a right coset of $H$ in $G$ and $aH$ is a left coset of $H$ in $G$.
+\end{theorem}
+
+\begin{corollary}{}{}
+    Let $H$ be a subgroup of group $G$.\\
+    (1) $G$ is the union of the right (and left) cosets of $H$ in $G$.\\
+    (2) Two right (or two left) cosets of $H$ in $G$ are either disjoint or equal.\\
+    (3) For $a,b\in G$, we have $Ha=Hb$ if and only if $ab^{-1}\in H$, and $aH=bH$ if and only if $a^{-1}b\in H$.\\
+    (4) If $\mathcal{R}$ is the set of distinct right cosets of $H$ in $G$ and $\mathcal{L}$ is the set of distinct left cosets of $H$ in $G$,
+    then $|\mathcal{R}|=|\mathcal{L}|$.
+\end{corollary}
+\begin{remark}
+    (1)(2) imply that the right (and left) cosets of $H$ in $G$ partition $G$.
+\end{remark}
+
+\begin{definition}{}{}
+    Let $H$ be a subgroup of a group $G$.
+    The index of $H$ in $G$,
+    denoted $[G : H]$, 
+    is the cardinal number of the set of distinct right (or left) cosets
+    of $H$ in $G$.
+\end{definition}
+
+\begin{theorem}{}{}
+    Let $G$ be a finite group and $H\leqs G$,
+    then $|H|$ divides $|G|$ and $|G|=[G:H]|H|$.
+\end{theorem}
+
+\begin{remark}{}{}
+    The converse of the Lagrange's Theorem does
+    not hold. For example, the alternating group $A_4$ of order 12 
+    does not have a subgroup of order $6$. So
+    it is natural to ask: "For a given divisor $d$ 
+    of the order of a finite group $G$, under
+    what conditions does $G$ have a subgroup of order $d$?" 
+    This is partially addressed by The Sylow Theorems (see chapter\ref{chp:2_3}).
+\end{remark}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://faculty.etsu.edu/gardnerr/5410/notes/I-2.pdf}{Subgroup}
+    \item \href{https://faculty.etsu.edu/gardnerr/5410/notes/I-4.pdf}{Cosets}
+\end{itemize}

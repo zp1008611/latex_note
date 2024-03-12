@@ -13,9 +13,14 @@ addition and scalar multiplication of functions.
 Let's recall the definition of bounded linear transformation and the norm of bounded linear transformation. The proof of the next proposition is similar to the proofs of the corresponding results for linear funtionals in proposition\ref{prop:bouded operator equivalent}. 
 
 \begin{proposition}{}{}
-    Let $\mathcal{H}$ and $\mathcal{K}$ be Hilbert spaces and $A:\mathcal{H}\rightarrow \mathcal{K}$ be a linear transformation. Then the following are equivalent\\
-    (1) $A$ is 
+    Let $\mathscr{H}$ and $\mathcal{K}$ be Hilbert spaces and $A:\mathscr{H}\rightarrow \mathcal{K}$ be a linear transformation. Then the following are equivalent\\
+    (1) $A$ is continuous.\\
+    (2) $A$ is continuous at $0$.\\
+    (3) $A$ is continuous at some point.\\
+    (4) There is a constant $c > 0$ such that $||Ah|| \leqs c||h||$ for all $h$ in $\mathscr{H}$.
 \end{proposition}
+
+
 
 As in definition\ref{def:norm bounded linear funcional}, if $A$ is a bounded linear transformation, the norm of $A$ defined as
 \begin{align*}
@@ -36,4 +41,63 @@ We denote the collection of all bounded linear operators from $\hH$ to $\hK$ by 
 of $\mathcal{L}(\hH, \hK)$. They coincide when $\hH$ and $\hK$ are of finite dimension, of course.
 For $\hK=\hH$, $\mathcal{B}(\hH):=\mathcal{B}(\hH,\hH)$. Note that $\mathcal{B}(\hH,\F)$= all the bounded linear functionals on $\hH$.
 
+
+\begin{proposition}
+    (1) For $A,B\in\mathscr{B}(\mathscr{H},\mathscr{K})$,
+    $A+B\in\mathscr{B}(\mathscr{H},\mathscr{K})$, and $||A+B||\leqs ||A||+||B||$.\\
+    (2) For $\alpha\in\F, A\in\mathscr{B}(\mathscr{H},\mathscr{K})$, then $\alpha A\in\mathscr{B}(\mathscr{H},\mathscr{K})$ and $||\alpha A||=|\alpha|\cdot||A||$.\\
+    (3) For $A\in\mathscr{B}(\mathscr{H},\mathscr{K}), B\in\mathscr{B}(\mathscr{K},\mathscr{L})$, $BA\in\mathscr{B}(\mathscr{H},\mathscr{L})$ and $||BA||\leqs ||B||\cdot ||A||$.
+\end{proposition}
+
+
 Now we introduce some example of bounded linear transformation.
+
+
+\begin{exercise}{II1 T9}{}
+    (Schur test) Let $\{\alpha_{ij}\}_{i,j=1}^{\infty}$ be an infinite matrix such that $\alpha_{ij}\geqs 0$ for all $i,j$ and 
+    such that there are scalars $p_i>0$ and $\beta,\gamma>0$ with 
+    \begin{align*}
+        \sum\limits_{i=1}^{\infty}\alpha_{ij}p_i &\leqs \beta p_j,\\
+        \sum\limits_{j=1}^{\infty}\alpha_{ij}p_j &\leqs \gamma p_i
+    \end{align*}
+    for all $i,j\geqs 1$.
+    Show that there is an operator $A$ on $l^2(\N)$ with $\inner{Ae_j}{e_i}=\alpha_{ij}$ and $||A||^2\leqs \beta\gamma$.
+\end{exercise}
+
+\begin{proof}
+    Let $\mathscr{H}=l^2(\N)$ and $\{e_j\}$ be orthnormal basis of $\mathscr{H}$.
+    Then $\forall x\in \mathscr{H}$, $x=\sum\limits_{j=1}^{\infty}\lambda_je_j$.
+    Define $A:\mathscr{H}\rightarrow \mathscr{H}$ given by $Ae_j=\sum\limits_{i=1}^{\infty}\alpha_{ij}e_i$,
+    then $\inner{Ae_j}{e_i}=\alpha_{ij}$ and $Ax=\sum\limits_{i=1}^{\infty}(\sum\limits_{j=1}^{\infty}\alpha_{ij}\lambda_j)e_i$. Hence,
+    \begin{align*}
+        ||Ax||^2=\inner{Ax}{Ax}&=\inner{\sum\limits_{i=1}^{\infty}(\sum\limits_{j=1}^{\infty}\alpha_{ij}\lambda_j)e_i}{\sum\limits_{i=1}^{\infty}(\sum\limits_{j=1}^{\infty}\alpha_{ij}\lambda_j)e_i}\\
+                                &=\sum\limits_{i=1}^{\infty}\inner{(\sum\limits_{j=1}^{\infty}a_{ij}\lambda_j)e_i}{(\sum\limits_{j=1}^{\infty}a_{ij}\lambda_j)e_i}= \sum\limits_{i=1}^{\infty}|\sum\limits_{j=1}^{\infty}\alpha_{ij}|^2\\
+                                &= \sum\limits_{i=1}^{\infty}|\sum\limits_{j=1}^{\infty}\alpha_{ij}^{1/2}p_j^{1/2}\alpha_{ij}^{1/2}\frac{\lambda_j}{p_j^{1/2}}|^2\\
+                                &\leqs \sum\limits_{i=1}^{\infty}[(\sum\limits_{j=1}^{\infty}\alpha_{ij}p_j)(\sum\limits_{j=1}^{\infty}\alpha_{ij}\frac{\lambda_j^2}{p_j})] & (\text{Cauchy-Schwarz inequality})\\
+                                &\leqs \sum\limits_{i=1}^{\infty}(\gamma p_i\sum\limits_{j=1}^{\infty} \alpha_{ij}\frac{\lambda_j^2}{p_j})&(\sum\limits_{j=1}^{\infty}\alpha_{ij}p_j \leqs \gamma p_i)\\
+                                &=\sum\limits_{j=1}^{\infty}(\gamma \frac{\lambda_j^2}{p_j}\sum\limits_{i=1}^{\infty}\alpha_{ij}p_i)\\
+                                &\leqs \sum\limits_{j=1}^{\infty} (\gamma \frac{\lambda_j^2}{p_j}\beta p_j)&(\sum\limits_{i=1}^{\infty}\alpha_{ij}p_i \leqs \beta p_j)\\
+                                &=\sum\limits_{j=1}^{\infty}\gamma\beta\lambda_j^2=\gamma\beta||x||^2
+    \end{align*}
+    Hence, $||A||^2\leqs \beta\gamma$.
+\end{proof}
+
+\begin{exercise}{II1 T11}{}
+    If $A=\begin{bmatrix}
+        a&b \\
+        c&d
+      \end{bmatrix}$, put $\alpha=[|a|^2+|b|^2+|c|^2+|d|^2]^{1/2}$ and
+      show that $||A||=\frac{1}{2}(\alpha^2+\sqrt{\alpha^4-4\delta^2})$,
+      where $\delta^2=\text{det }A^*A$.
+\end{exercise}
+
+\begin{proof}
+    $A^*$ is Hermitian conjugate of $A$.
+\end{proof}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://ocw.mit.edu/courses/6-241j-dynamic-systems-and-control-spring-2011/04fddfbcb1eb933ecca85dab8bfbb171_MIT6_241JS11_chap04.pdf}{matrix norm; P11}
+\end{itemize}
+

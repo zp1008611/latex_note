@@ -4,7 +4,7 @@
     If $\hH$ and $\hK$ are Hilbert spaces, a function $u:\hH\times\hK\rightarrow \F$ is a sesquilinear form if for 
     $h,g\in\hH$, $k,l\in \hK$,and $\alpha,\beta\in\F$,\\
     (1) $u(\alpha h+\beta g,k)=\alpha u(h,k)+\beta u(g,k)$;\\
-    (2) $u(h,\alpha k+\beta l)=\overline{\alpha}u(h,k)+\overline{\beta}u(h,l)$.\\
+    (2) $u(h,\alpha k+\beta l)=\overline{\alpha}u(h,k)+\overline{\beta}u(h,l)$.
 \end{definition}
 
 The prefix "sesqui" is used because the function is linear in one variable 
@@ -17,44 +17,51 @@ The constant $M$ is called a bound for $u$.
 
 
 \begin{proposition}
-    If $A \in \mathcal{B}(\mathcal{H},\mathcal{K})$, 
-then $u(h, k):=  <Ah, k>$ is a bounded sesquilinear form.
+    If $A \in \mathcal{B}(\mathscr{H},\mathscr{K})$, 
+then $u(h, k):=  \inner{Ah}{k}$ is a bounded sesquilinear form.
 \end{proposition}
 
 \begin{proof}{}{}
     \begin{align*}
-        u(\alpha h+\beta g,k) &=  <A(\alpha h+\beta g),k>\\
-                            &= <\alpha Ah+\beta Ag,k>\\
-                            &= \alpha <Ah,k> + \beta<Ag,k>\\
+        u(\alpha h+\beta g,k) &=  \inner{A(\alpha h+\beta g)}{k}\\
+                            &= \inner{\alpha Ah+\beta Ag}{k}\\
+                            &= \alpha \inner{Ah}{k} + \beta\inner{Ag}{k}\\
                             &= \alpha u(h,k) + \beta u(g,k),
     \end{align*}
     \begin{align*}
-        u(h,\alpha k+\beta l) &=  <Ah,\alpha k+\beta l>\\
-                            &= \overline{\alpha} <Ah,k> + \overline{\beta}<Ag,l>\\
+        u(h,\alpha k+\beta l) &=  \inner{Ah}{\alpha k+\beta l}\\
+                            &= \overline{\alpha} \inner{Ah}{k} + 
+                            \overline{\beta}\inner{Ag}{l}\\
                             &= \overline{\alpha} u(h,k) + \overline{\beta} u(g,l),
     \end{align*}
     \begin{align*}
-        |u(h,k)| = |<Ah,k>|\leqs ||Ah||\cdot ||k||\leqs ||h||\cdot||k||.
+        |u(h,k)| = |\inner{Ah}{k}|\leqs ||Ah||\cdot ||k||\leqs ||h||\cdot||k||.
     \end{align*}
 \end{proof}
 
-Also, if $B\in \mathcal{B}(\mathcal{H},\mathcal{H})$, 
-$u(h, k) = <h, Bk>$ is a bounded sesquilinear form. 
+Also, if $B\in \mathcal{B}(\mathscr{H},\mathscr{H})$, 
+$u(h, k) = \inner{h}{Bk}$ is a bounded sesquilinear form. 
 Are there any more? Are these two forms related?
 
 \begin{theorem}{}{}
-    If $u:\mathcal{H}\times\mathcal{H}\rightarrow \F$ is a bounded sesquilinear form with bound $M$, 
-    then there are unique operators $A$ in $\mathcal{B}(\mathcal{H},\mathcal{K})$ and $B$ in $\mathcal{B}(\mathcal{K},\mathcal{H})$
+    If $u:\mathscr{H}\times\mathscr{H}\rightarrow \F$ is a bounded sesquilinear form with bound $M$, 
+    then there are unique operators $A$ in $\mathscr{B}(\mathscr{H},\mathscr{K})$ and $B$ in $\mathscr{B}(\mathscr{K},\mathscr{H})$
     such that 
     \begin{align}
-        u(h,k) = <Ah,k>=<h,Bk>
+        u(h,k) = \inner{Ah}{k}=\inner{h}{Bk}
         \label{eq:adjont equation}
     \end{align}
-    for all $h$ in $\mathcal{H}$ and $k$ in $\mathcal{K}$ and $||A||,||B||\leqs M$. 
+    for all $h$ in $\mathscr{H}$ and $k$ in $\mathscr{K}$ and $||A||,||B||\leqs M$. 
 \end{theorem}
 
+\begin{proofsolution}
+    
+    
+\end{proofsolution}
+
+
 \begin{definition}{}{}
-    If $A\in \mathcal{B}(\hH,\hK)$, then the unique operator $B$ in $\mathcal{B}(\hK,\hH)$ satisfying (\ref{eq:adjont equation})
+    If $A\in \mathcal{B}(\hH,\hK)$, then the unique operator $B$ in $\mathscr{B}(\hK,\hH)$ satisfying (\ref{eq:adjont equation})
     is call the adjoint of $A$ and is denote by $B=A^*$.
 \end{definition}
 
@@ -80,7 +87,7 @@ in $\mathcal{B}(\hH)$. Often, as in the next proposition, there are analogous re
 the adjoint of operators in $\mathcal{B}(\hH,\hK)$.
 
 \begin{proposition}{}{}
-    If $A,B\in \mathcal{\hH}$ and $\alpha\in\F$, then:\\
+    If $A,B\in \mathscr{B}(\mathcal{\hH})$ and $\alpha\in\F$, then:\\
     (1) $(\alpha A+B)^*=\overline{\alpha}A^*+B^*$.\\
     (2) $(AB)^*=B^*A^*$.\\
     (3) $A^{**}=(A^*)^*=A$.\\
@@ -111,22 +118,35 @@ shall see, are the true analogues of complex numbers. Notice that hermitian
 and unitary operators are normal.
 
 \begin{proposition}{}{}
-    If $\mathcal{H}$ is a $\C$-Hilbert space and $A\in \mathcal{B}(\hH)$, then $A$ is self-adjoint iff
-    $<Ah,h>\in\R$ for all $h$ in $\hH$. 
+    If $\mathscr{H}$ is a $\C$-Hilbert space and $A\in \mathcal{B}(\hH)$, then $A$ is self-adjoint iff
+    $\inner{Ah}{h}\in\R$ for all $h$ in $\hH$. 
 \end{proposition}
 
 \begin{proposition}{}{}
     If $A=A^*$, then 
     \begin{align*}
-        ||A||=\sup_{||h||=1}|<Ah,h>|. 
+        ||A||=\sup_{||h||=1}|\inner{Ah}{h}|. 
     \end{align*}
 \end{proposition}
 
 \begin{corollary}{}{}
-    If $A=A^*$ and $<Ah,h>=0$ for all $h$, then $A=0$.
+    If $A=A^*$ and $\inner{Ah}{h}=0$ for all $h$, then $A=0$.
 \end{corollary}
 
 \begin{proposition}{}{}
-    If $\hH$ is $\C$-Hilbert space and $A\in \mathcal{B}(\hH)$ such that $<Ah,h>=0$ for all $h$ in $\hH$, then $A=0$.
+    If $\hH$ is $\C$-Hilbert space and $A\in \mathcal{B}(\hH)$ such that $\inner{Ah}{h}=0$ for all $h$ in $\hH$, then $A=0$.
 \end{proposition}
 
+\begin{exercise}{II2 T12}{}
+    Let $\sum\limits_{n=0}^{\infty}\alpha_nz^n$ be a power series with radius of convergence $R$, $0<R\leqs \infty$.
+    If $A\in \mathscr{B}(\mathscr{H})$ and $||A||<R$,
+    show that there is an operator $T$ in $\mathscr{B}(\mathscr{H})$ such that for any $h,g\in \mathscr{H}$,
+    $\inner{Th}{g}=\sum\limits_{n=0}^{\infty}\alpha_n\inner{A^nh}{g}$.
+    [If $f(z)=\sum\alpha_nz^n$, the operator $T$ is usually denoted by $f(A)$.]
+\end{exercise}
+
+\begin{exercise}{II2 T15}{}
+    If $A$ is a normal operator on $\mathscr{H}$, show that $A$ is injective if and only if $A$ has dense range.
+    Give an example of an operator $B$ such that ker$B=(0)$ but ran$B$ is not dense.
+    Give an example of an operator $C$ such that $C$ is surjective but ker$C\neq (0)$.
+\end{exercise}

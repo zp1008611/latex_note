@@ -91,45 +91,152 @@
 \usepackage[most]{tcolorbox}
 \usepackage{enumerate}
 
-\colorlet{LightBlue}{Blue!15}
-\colorlet{LightOrange}{Orange!15}
-\colorlet{LightGreen}{Green!15}
-\colorlet{LightRed}{Red!50}
+\colorlet{LightGreen}{Green!15} %def
+\colorlet{LightBlue}{Blue!15} %thm
+\colorlet{LightOrange}{Orange!15} %lem
+\colorlet{LightGray}{Gray!15}  %prop
+\colorlet{LightRed}{Red!40} %cor
+\colorlet{LightYellow}{Yellow!15} %exa
+
+
+% \newtcbtheorem[
+%   number within = chapter % 按每个 chapter 分别编号
+% ]{definition% 环境名
+% }{Definition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+% }{
+%   attach title to upper = \par\vspace{1ex}, % 不要单独的标题栏，定理名完了之后分段，加上适量空白
+%   separator sign = \quad, % 定理编号和定理名字之间用什么分隔；默认是冒号
+%   sharp corners, % 直角；默认是圆角
+%   enhanced jigsaw, frame hidden, % 隐藏 tcb 边框
+%   colback = LightGreen, % 背景色
+%   coltitle = blue!20!cyan!80!black, % 标题（定理编号和名字）的颜色
+%   fonttitle = \sffamily\small, % 标题（定理编号和名字）的字体
+%   description font = \normalsize, % 定理名字的字体
+%   fontupper = \normalfont, % box 内的字体
+% }{def% label 前缀
+% }
 
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{definition% 环境名
 }{Definition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
-  attach title to upper = \par\vspace{1ex}, % 不要单独的标题栏，定理名完了之后分段，加上适量空白
-  separator sign = \quad, % 定理编号和定理名字之间用什么分隔；默认是冒号
   sharp corners, % 直角；默认是圆角
-  enhanced jigsaw, frame hidden, % 隐藏 tcb 边框
-  colback = LightGreen, % 背景色
-  coltitle = blue!20!cyan!80!black, % 标题（定理编号和名字）的颜色
-  fonttitle = \sffamily\small, % 标题（定理编号和名字）的字体
-  description font = \normalsize, % 定理名字的字体
-  fontupper = \normalfont, % box 内的字体
+  colback=Green!5,
+  colframe=Green!50!black,
+  fonttitle=\sffamily\small
 }{def% label 前缀
 }
 
 
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@definition{\thechapter.\arabic{tcb@cnt@definition}}
+\makeatother
+
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{theorem% 环境名
 }{Theorem% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
-  attach title to upper = \par\vspace{1ex}, % 不要单独的标题栏，定理名完了之后分段，加上适量空白
-  separator sign = \quad, % 定理编号和定理名字之间用什么分隔；默认是冒号
   sharp corners, % 直角；默认是圆角
-  enhanced jigsaw, frame hidden, % 隐藏 tcb 边框
-  colback = LightBlue, % 背景色
-  coltitle = blue!20!cyan!80!black, % 标题（定理编号和名字）的颜色
-  fonttitle = \sffamily\small, % 标题（定理编号和名字）的字体
-  description font = \normalsize, % 定理名字的字体
-  fontupper = \normalfont, % box 内的字体
+  colback=yellow!10,
+  colframe=yellow!50!black,
+  fonttitle=\sffamily\small
 }{thm% label 前缀
 }
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@theorem{\thechapter.\arabic{tcb@cnt@theorem}}
+\makeatother
+
+\newtcbtheorem[
+  auto counter,number within = chapter % 按每个 chapter 分别编号
+]{proposition% 环境名
+}{Proposition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Red!5,
+  colframe=Red!50!black,
+  fonttitle=\sffamily\small
+}{prop% label 前缀
+}
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@proposition{\thechapter.\arabic{tcb@cnt@proposition}}
+\makeatother
+
+\newtcbtheorem[
+  auto counter,number within = chapter % 按每个 chapter 分别编号
+]{corollary% 环境名
+}{Corollary% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Blue!5,
+  colframe=Blue!50!black,
+  fonttitle=\sffamily\small
+}{cor% label 前缀
+}
+
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@corollary{\thechapter.\arabic{tcb@cnt@corollary}}
+\makeatother
+
+\newtcbtheorem[
+  auto counter,number within = chapter % 按每个 chapter 分别编号
+]{lemma% 环境名
+}{Lemma% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
+}{
+  sharp corners, % 直角；默认是圆角
+  colback=Gray!10,
+  colframe=Gray!50!black,
+  fonttitle=\sffamily\small
+}{lem% label 前缀
+}
+
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@lemma{\thechapter.\arabic{tcb@cnt@lemma}}
+\makeatother
+
+
+\newtcbtheorem[
+  auto counter,number within = chapter % 按每个 chapter 分别编号
+]{example}
+{Example}%
+  {
+    enhanced, breakable,
+    colback = white, colframe = purple, colbacktitle = purple,
+    attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
+    boxed title style = {sharp corners},
+    fonttitle=\sffamily\small
+  }
+{exa}
+
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@example{\thechapter.\arabic{tcb@cnt@example}}
+\makeatother
+
+
+\newtcbtheorem[
+  auto counter,number within = chapter % 按每个 chapter 分别编号
+]{exercise}
+{Exercise}%
+  {
+    enhanced, breakable,
+    colback = white, colframe = cyan, colbacktitle = cyan,
+    attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
+    boxed title style = {sharp corners},
+    fonttitle=\sffamily\small
+  }
+{exer}
+
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@exercise{\thechapter.\arabic{tcb@cnt@exercise}}
+\makeatother
 
 
 % \declaretheorem[numberwithin=chapter,shaded={rulecolor=LightGreen,
@@ -231,6 +338,7 @@ delim_0 "\\nobreak\\dotfill"
 
 
 %%%%%%%%%%%%%%%%%%%%%%%notations%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
 \newcommand{\C}{\ensuremath{\mathbb{C}}} 
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\J}{\ensuremath{\mathbb{J}}}
@@ -242,3 +350,9 @@ delim_0 "\\nobreak\\dotfill"
 \newcommand{\Zi}{\ensuremath{\mathbb{Z}_{\geqslant 1}}} % 正整数集
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\im}{\mathrm{im}\,}                         % 映射的像
+\newcommand{\leqs}{\leqslant}
+\newcommand{\geqs}{\geqslant}
+\newcommand{\ci}{\mathrm{i}}
+\newcommand{\hH}{\mathscr{H}}
+\newcommand{\hK}{\mathscr{K}}
+\newcommand{\inner}[2]{\langle#1,#2\rangle}

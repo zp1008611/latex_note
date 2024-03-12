@@ -1,0 +1,753 @@
+\begin{exercise}{I1 T2}{}
+    Let $I$ be any set and let $l^2(A)$ denote the set of all functions $x:I\rightarrow \F$ such that $x(i)=0$ for all but a countable number of $i$ and 
+    $\sum\limits_{i\in I}|x(i)|^2<\infty$. For $x,y\in l^2(I)$ define
+    \begin{align*}
+        \inner{x}{y} = \sum\limits_{i}^{}x(i)\overline{y(i)}.
+    \end{align*}
+    Then $l^2(I)$ is a Hilbert space.
+\end{exercise}
+\begin{proof}
+    Firstly, we show that $l^2(I)$ is a vector space.
+    For $x,y\in l^2(I)$ and $c\in \F$, $(x+y)(i)=x(i)+y(i)=0$ for all but a countable number of $i$ and 
+    by Minkowski's Inequality($||a+b||_p\leqs ||a||_p+||b||_p$), $\sum\limits_{i\in I}|(x+y)(i)|^2=\sum\limits_{i\in I}|x(i)+y(i)|^2\leqs \sum\limits_{i\in I}|x(i)|^2+\sum\limits_{i\in I}|y(i)|^2<\infty$.
+    Hence, $x+y\in l^2(I)$. Simlarly, $cx$ is in $l^2(I)$ and so $l^2(I)$ is a vector space over $\F$.
+    \par
+    Secondly, we show that $l^2(I)$ is a inner product space. \\
+    (1) $\inner{\alpha x+\beta y}{z}=\sum\limits_{i}(\alpha x+\beta y)(i)\overline{z(i)}=\alpha\sum\limits_{i}x(i)\overline{z(i)}+\beta\sum\limits_{i}y(i)\overline{z(i)}=\alpha\inner{x}{z}+\beta\inner{y}{z}$.\\
+    (2) $\inner{x}{y}=\sum\limits_{i}x(i)\overline{y(i)}=\overline{\sum\limits_{i}y(i)\overline{x(i)}}=\overline{\inner{y}{x}}$.\\
+    (3) $\inner{x}{x}=\sum\limits_{i}x(i)\overline{x(i)}=\sum\limits_{i}|x(i)|^2\geqs 0$. And $\inner{x}{x}=0\Leftrightarrow x=0$.\\
+    Hence, $l^2(I)$ is an inner product space.
+    \par
+    Thirdly, we show that $l^2(I)$ is complete.
+    Note that the induced norm in $l^2(I)$ is
+    \begin{align*}
+        ||x|| = (\sum\limits_{i}^{}{|x(i)|}^{2})^{\frac{1}{2}}.
+    \end{align*}
+    Let $\{x_n\}$ be Cauchy sequence in $l^2(I)$ and 
+    Then, 
+    \begin{align*}
+        |x_m(i)-x_n(i)|\leqs (\sum\limits_{i}^{}|x_m(i)-x_n(i)|^2)^{\frac{1}{2}}=||x_n-x_m||\rightarrow 0.
+    \end{align*}
+    Thus, $x_n(i)$ is a Cauchy sequence over the real(or complex) numbers. By the completness of $\R$(or $\C$), it must converge to a limit, denoted by $xl(i)$.
+    Now we show that $x_n\rightarrow x$($x:i\mapsto xl(i))$ when $n\rightarrow \infty$. 
+    \par
+    Since $\{x_n\}$ is Cauchy, $\forall \epsilon$, $\exists N$, $\mathrm{s.t.}$, when $m,n>N, \forall k: $
+    \begin{align*}
+        \sum\limits_{i}^{k}|x_m(i)-x_n(i)|^2\leqs ||x_m-x_n||^2<\sqrt{\frac{\epsilon}{2}}.
+    \end{align*} 
+    Let $m\rightarrow \infty$ and $n>N$, we have
+    \begin{align*}
+        \sum\limits_{i}^{k}|x(i)-x_n(i)|^2\leqs ||x-x_n||^2\leqs\sqrt{\frac{\epsilon}{2}}.
+    \end{align*}
+    Let $k\rightarrow \infty$ and $n>N$, we have
+    \begin{align*}
+        (\sum\limits_{i}^{\infty}|x(i)-x_n(i)|^2)^{\frac{1}{2}}\leqs ||x-x_n||\leqs\frac{\epsilon}{2}<\epsilon.
+    \end{align*}
+    Hence, $x_n\rightarrow x$ when $n\rightarrow \infty$.Then, we show that $x\in l^2(A)$. 
+    \par
+    We first show that $x(i)=0$ for all but a countable number of $i$. Suppose the contrary. 
+    Then for any $x_n$, $||x-x_n||^2$ being a sum of uncountably many nonzero elements, which cannot be bounded. This is a contradiction as $||x-x_n||\rightarrow 0$ ($n\rightarrow \infty$).
+    \par
+    Finally, we show that $\sum\limits_{i\in I}^{}|x(i)|^2<\infty$. Since $\{x_n\}$ is Cauchy, $\{x_n\}$ is bounded. Then $\exists M>0$, $\forall n$, we have $||x_n||<M$. Then $\forall n,k$, we have
+    \begin{align*}
+        \sum\limits_{i}^{k}|x_n(i)|^2\leqs ||x_n||^2\leqs M^2.
+    \end{align*}
+    Let $n\rightarrow \infty$, we have
+    \begin{align*}
+        \sum\limits_{i}^{k}|x_n(i)|^2\leqs ||x||^2\leqs M^2.
+    \end{align*}
+    Let $k\rightarrow \infty$, we have
+    \begin{align*}
+        \sum\limits_{i}^{}|x_n(i)|^2\leqs M^2.
+    \end{align*}
+    Hence, $x\in l^2(I)$.
+    Thus, every Cauchy sequence in $l^2(I)$ is convergent and so $l^2(I)$ is a Hilbert space.
+\end{proof}
+
+If $I=\N$, $l^2(I)$ is usually denoted by $l^2$. Let $(X,\Omega, \mu)$ be a measure space consisting of a set $X$, a 
+$\sigma$-algebra $\Omega$ of subsets of $X$, and a countably additive measure $\mu$ defined 
+on $\Omega$ with values in the non-negative extended real numbers.
+Note that if $\Omega$= the set of all subsets of $A$ and for $E$ in $\Omega$, $\mu(E):=\infty$ if $E$ is infinite and $\mu(E)$=the cardinality of $E$ if $E$ is finite, 
+then $l^2(A)$ and $L^2(A,\Omega,\mu)$ are equal.
+
+
+\begin{exercise}{I1 T6}{}
+    Let $u$ be a semi-inner product on $\mathscr{X}$ and put $\mathscr{N}=\{x\in \mathscr{X}:u(x,x)=0\}$.\\
+    (a) Show that $\mathscr{N}$ is a linear subspace of $\mathscr{X}$.\\
+    (b) Show that if 
+    \begin{align*}
+        \inner{x+\mathscr{N}}{y+\mathscr{N}} \equiv u(x,y)
+    \end{align*}
+    for all $x+\mathscr{N}$ and $y+\mathscr{N}$ in the quotient space $\mathscr{X}/\mathcal{N}$,
+    then $\inner{\cdot}{\cdot}$ is a well-definited inner product on $\mathscr{X}/\mathcal{N}$.
+\end{exercise}
+\begin{proof}
+    (a) For $x,y\in \mathscr{N}$, $u(x+y,x+y)=u(x,x)+u(x,y)+u(y,x)+u(y,y)=u(x,y)+u(y,x)$.
+    To see that $x+y\in\mathscr{N}$, it suffices to show that $u(x,y)=0$.
+    But, this follows from Cauchy-Schwarz (which is true for semi-inner products).
+    By Cauchy-Schwarz we have that 
+    \begin{align*}
+        |u(x,y)|\leqs \sqrt{u(x,x)}\sqrt{u(y,y)}=0
+    \end{align*}
+    Since $u(x,y)\geqs 0$, it follows that $u(x,y)=0$,
+    and similarly $u(y,x)=0$. Then $u(x+y,x+y)=0$ and so $x+y\in\mathscr{N}$.
+    For $c\in\F$, $u(cx,cx)=c\overline{c}u(x,x)=0$. Then $cx\in \mathscr{N}$.
+    Hence, $\mathscr{N}$ is a linear subspace of $\mathscr{X}$.
+    \par
+    (b) Suppose $x_1+\mathscr{N}=x_2+\mathscr{N}$ and $y_1+\mathscr{N}=y_2+\mathscr{N}$ in the space $\mathscr{X}/\mathscr{N}$, 
+    i.e. we have that $x_1-x_2\in \mathscr{N}$ and $y_1-y_2\in\mathscr{N}$.
+    To show that $\inner{\cdot}{\cdot}$ is well defined, we need to show that 
+    $\inner{x_1+\mathscr{N}}{y_1+\mathscr{N}}=\inner{x_2+\mathcal{N}}{y_2+\mathscr{N}}$, 
+    i.e. $u(x_1,y_1)=u(x_2,y_2)$. By (a), for $a\in\mathscr{N},b\in\mathscr{X}$, $|u(a,b)|\leqs \sqrt{u(a,a)}\sqrt{u(b,b)}=0$. 
+    Then $u(a,b)=0$ as $|u(a,b)|\geqs 0$. Now we have 
+    \begin{align*}
+        \inner{x_1+\mathscr{N}}{y_1+\mathscr{N}} = u(x_1,y_1) &= u(x_2+n_1,y_2+n_2) \text{ where } n_1,n_2\in \mathscr{N}\\
+                                                              &= u(x_2,y_2) + u(x_2,n_2) + u(n_1,y_2) + u(n_1,n_2)\\
+                                                              &= u(x_2,y_2) =  \inner{x_2+\mathscr{N}}{y_2+\mathscr{N}}
+    \end{align*}
+    Hence, $\inner{\cdot}{\cdot}$ is well defined.
+    To show it is an inner product, it suffices to show that 
+    $\inner{x+\mathscr{N}}{x+\mathscr{N}}=0$ implies $x+\mathscr{N}=\mathscr{N}$.
+    To see this note that if $\inner{x+\mathscr{N}}{x+\mathscr{N}}=u(x,x)=0$, then $x\in\mathscr{N}$ and so $x+\mathscr{N}=\mathscr{N}$. 
+    Hence, $\inner{\cdot}{\cdot}$ is a inner product.
+    
+\end{proof}
+
+\begin{exercise}{I2 T2}{}
+    If $\mathscr{M}\leqs \mathscr{H}$ and $P=P_{\mathscr{M}}$. 
+    show that $I-P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}^{\perp}$.
+\end{exercise}
+\begin{proof}
+    Since $\mathscr{M}\leqs \mathscr{H}$, it follows that $\mathscr{M}=(\mathscr{M}^{\perp})^{\perp}$.
+    As $P=P_{\mathscr{M}}$, for $h\in\mathscr{H}$, $Ph\in \mathscr{M}$ and $h-ph=(I-P)h\in \mathscr{M}^{\perp}$.
+    Also $h-(h-ph)=ph\perp \mathscr{M}^{\perp}$. 
+    Since $Ph$ is unique, it follows that $(I-P)h$ is the unique element in $\mathscr{M}^{\perp}$ such that $h-(I-p)h=ph\perp \mathscr{M}^{\perp}$.
+    Hence, $I-P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}^{\perp}$.
+\end{proof}
+
+\begin{exercise}{I2 T3}{}
+    (a) If $\mathscr{M}\leqs \mathscr{H}$, show that $\mathscr{M}\cap \mathscr{M}^{\perp}=(0)$ 
+    and every $h$ in $\mathscr{H}$ can be written as $h=f+g$ where $f\in \mathscr{M}$ and $g\in \mathscr{M}^{\perp}$. 
+    \\
+    (b) If $\mathscr{M}+\mathscr{M}^{\perp}\equiv \{(f,g):f\in\mathscr{M},g\in\mathscr{M}^{\perp}\}$ and $T:\mathscr{M}+\mathscr{M}^{\perp}\rightarrow \mathscr{H}$
+    is defined by $T(f,g)=f+g$, show that $T$ is a linear bijection and a homeomorphism
+    if $\mathscr{M}+\mathscr{M}^{\perp}$ is given the product topology.
+    (This is usually phrased by stating the $\mathscr{M}$ and $\mathscr{M}^{\perp}$ are toplogically complementary in $\mathscr{H}$.) 
+\end{exercise}
+
+\begin{proof}
+    (a) $\forall h\in \mathscr{M}\cap \mathscr{M}^{\perp}$, we have $h\perp h$, then $\inner{h}{h}=0$ and so $h=0$.
+    Hence, $\mathscr{M}\cap \mathscr{M}^{\perp}=(0)$.\\
+    Let $P=P_{\mathscr{M}}$, then $ph$ is the unique element in $\mathscr{M}$ such that $h-ph\perp \mathscr{M}$, then $h-ph\in \mathscr{M}^{\perp}$.
+    Let $f=ph,g=h-ph$, then $f\in \mathscr{M},g\in\mathscr{M}^{\perp}$ and $h=f+g$.
+    \\
+    (b) 
+    Firstly, we show that $T$ is linear. For $c\in\F$ and $(f_1,g_1),(f_2,g_2)\in \mathscr{M}+\mathscr{M}^{\perp}$,
+    $T(f_1+f_2,g_1+g_2)=f_1+f_2+g_1+g_2=f_1+g_1+f_2+g_2=T(f_1,g_1)+T(f_2,g_2)$ and $T(cf_1,cg_1)=cf_1+cg_1=cT(f_1,g_1)$.
+    Hence, $T$ is linear.
+    \par
+    Next, we show that $T$ is bijective.
+    We know that $T$ is well-defined as $(f_1,g_1)=(f_2,g_2)$, $T(f_1,g_1)=f_1+g_1=f_2+g_2=T(f_2,g_2)$.
+    By (a), we know that $T$ is surjective. Now, we show that $T$ is injective.  
+    If $T(f_1,g_1)=T(f_2,g_2)$, then $f_1+g_1=f_2+g_2$ and so $f_1-f_2=g_1-g_2$.
+    Hence, $f_1-f_2=g_1-g_2\in \mathscr{M}\cap \mathscr{M}^{\perp}=(0)$. 
+    Then $f_1=f_2,g_1=g_2$ and so $(f_1,g_1)=(f_2,g_2)$. 
+    Hence, $T$ is a bijection.
+    \par
+    Now we show that $T$ is homeomorphism. It suffices to show that $T$ and $T^{-1}$ is continuous.
+    For a sequence $\{(f_n,g_n)\}\in \mathscr{M}+\mathscr{M}^{\perp}$ such that $(f_n,g_n)\underset{n\rightarrow \infty}{\longrightarrow} (f,g)$, 
+    we have $f_n\underset{n\rightarrow \infty}{\longrightarrow} f$, $g_n\underset{n\rightarrow \infty}{\longrightarrow}g$ and so $T(f_n,g_n)=f_n+g_n\underset{n\rightarrow \infty}{\longrightarrow} f+g$. Hence, $T$ is continuous.
+    For a sequence $\{h_n\}\in \mathscr{H}$ such that $h_n\underset{n\rightarrow \infty}{\longrightarrow} h$, 
+    there are sequences $\{f_n\}\subseteq \mathscr{M}$, $\{g_n\}\subseteq \mathscr{M}^{\perp}$ and $f\in\mathscr{M},g\in\mathscr{M}^{\perp}$ 
+    such that $h_n=f_n+g_n\underset{n\rightarrow \infty}{\longrightarrow} h=f+g$. 
+    Since $f_n\perp g_n$, $f_n\underset{n\rightarrow \infty}{\longrightarrow} f$ and $g_n\underset{n\rightarrow \infty}{\longrightarrow} g$.
+    Then $T^{-1}(h_n)=T^{-1}(f_n+g_n)=(f_n,g_n)\underset{n\rightarrow \infty}{\longrightarrow} (f,g)=T^{-1}(f+g)=T^{-1}(h)$.
+    Hence, $T^{-1}$ is continuous.
+    Hence, $T$ is a homeomorphism.
+\end{proof}
+
+\begin{exercise}{I3 T3}{}
+    Let $\mathscr{H}=l^2(\N\cup \{0\})$. \\
+    (a) Show that if $\{\alpha_n\}\in \mathscr{H}$, then the power series $\sum\limits_{n=0}^{\infty} \alpha_n z^n$ 
+    has radius of convergence $\geqs 1$.\\
+    (b) If $|\lambda|<1$ and $L:\mathscr{H}\rightarrow \F$ is defined by $L(\{\alpha_n\})=\sum\limits_{n=0}^{\infty}\alpha_n\lambda^n$, 
+    find the vector $h_0$ in $\mathscr{H}$ such that $L(h)=\inner{h}{h_0}$ for every $h$ in $\mathscr{H}$.\\
+    (c) What is the norm of the linear functional $L$ defined in $(b)$?
+\end{exercise}
+
+\begin{proof}
+    (a) If $\{\alpha_n\}\in\mathscr{H}$, then $\sum\limits_{n}|\alpha_n|^2<\infty$, i.e. 
+    $\sum\limits_{n}|\alpha_n|^2$ is absolutely convergent. Then by root test, $\lim_{n\rightarrow \infty}\sqrt[n]{|\alpha_n|^2}\leqs 1$.
+    Then $\lim_{n\rightarrow \infty}\sqrt[n]{|\alpha_n|}\leqs 1$. 
+    Hence, the radius of convergence is $\frac{1}{\lim_{n\rightarrow \infty}\sqrt[n]{|\alpha_n|}}\geqs 1$.
+    \\
+    (b)(c) Since $|\lambda|<1$, then for $h=\{\alpha_n\}\in \mathscr{H}$, $|L(h)|=\sum\limits_{n}\lambda^n \alpha_n$ converges and so is bounded.
+    Then $L$ is a bounded linear functional on $\mathscr{H}$, so by the Riesz representation theorem,
+    there exists a vector $h_0$ such that $L(h)=\inner{h}{h_0}$ for every $h$ in $\mathscr{H}$.
+    Assume $h_0=\{\beta_n\}$, then $\inner{h}{h_0}=\sum\limits_{n}\alpha_n\overline{\beta_n}=L(h)=\sum\limits_{n}\lambda^n\alpha_n=\sum\limits_{n}\alpha_n\overline{(\overline{\lambda})^n}$.
+    Hence, we can let $h_0=(1,\bar{\lambda}, (\bar{\lambda})^2,...)$. 
+    Since $||h_0||_{l^2}^2=\sum\limits_{n}|(\bar{\lambda})^n|^2=\sum\limits_{n}|\lambda|^{2n}=\lim_{n\rightarrow \infty}\frac{1(1-(|\lambda|^2)^n)}{1-|\lambda|^2}=\frac{1}{1-|\lambda|^2}$,
+    it follows that $||h_0||=\frac{1}{\sqrt{1-|\lambda|^2}}$ and by Riesz representation theorem $||L||=||h_0||=\frac{1}{\sqrt{1-|\lambda|^2}}$.
+\end{proof}
+
+\begin{exercise}{I3 T5}{}
+    Let $\mathscr{H}=$ the collection of all absolutely continuous functions $f:[0,1]\rightarrow \F$ such that $f(0)=0$, $f'\in L^2(0,1)$ 
+    and for $f,g\in \mathscr{H}$, $\inner{f}{g}=\int_{0}^{1} f'(t)\overline{g'(t)}dt$. By Example 1.8, we know that $\mathscr{H}$ is a Hilbert space.
+    If $0<t\leqs 1$, define $L:\mathscr{H}\rightarrow \F$ by $L(h)=h(t)$.
+    Show that $L$ is a bounded linear funcional, find $||L||$, 
+    and find the vector $h_0$ in $\mathscr{H}$ such that $L(h)=\inner{h}{h_0}$ for all $h$ in $\mathscr{H}$. 
+\end{exercise}
+\begin{proof}
+    Firstly, we show that $L$ is linear.
+    For $\alpha,\beta\in\F$, $h_1,h_2\in\mathscr{H}$, then $L(\alpha h_1+ \beta h_2)=(\alpha h_1+\beta h_2)(t)=\alpha h_1(t) +\beta h_2(t)=\alpha L(h_1)+\beta L(h_2)$.
+    Hence, $L$ is linear. Then, we show that $L$ is continuous. For a sequence $\{h_n\}\in \mathscr{H}$ such that $h_n\underset{n\rightarrow \infty}{\longrightarrow} h$,
+    if $0<t\leqs 1$ we have
+    \begin{align*}
+        \lim_{n\rightarrow \infty}L(h_n)=\lim_{n\rightarrow \infty}h_n(t)\underset{h_n \text{ is absolutely continuous}}{=} h(t)=L(h).
+    \end{align*}
+    Hence, $L$ is a continuous linear functional and so a bounded linear funcional.
+    Then by Riesz representation theorem, there exists a vector $h_0\in \mathscr{H}$ such that $L(h)=\inner{h}{h_0}$ for all $h$ in $\mathscr{H}$.
+    and $||L||=||h_0||$. Then $\inner{h}{h_0}=\int_{0}^{1}h'(t)\overline{h_0'(t)}dt=L(h)=h(t)=\int_{0}^{t}h'(x)dx$.
+    Hence, we can let $\overline{h_0'(t)}=\left\{\begin{matrix}
+        1& 0< x\leqs t \\
+        0& t<x\leqs 1.
+      \end{matrix}\right.$ 
+      and so $h_0(t)=\left\{\begin{matrix}
+        x& 0< x\leqs t \\
+        0& t<x\leqs 1.
+    \end{matrix}\right.$
+    Then $||L||=||h_0||=\sqrt{\inner{h_0}{h_0}}=\sqrt{\int_{0}^{1}h_0'(x)\overline{h_0'(x)}dx}=\sqrt{\int_{0}^{t}1\cdot 1dx}=\sqrt{t}$.
+\end{proof}
+
+\begin{exercise}{I4 T13}{}
+    Let $\mathscr{E}$ be an orthonormal subset of $\mathscr{H}$ and let $\mathscr{M}=\vee \mathscr{E}$. 
+    If $P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}$,
+    show that $Ph=\sum\{\inner{h}{e}e:e\in\mathscr{E}\}$ for every $h$ in $\mathscr{H}$.
+\end{exercise}
+\begin{proof}
+    Let $Qh=\sum\{\inner{h}{e}e:e\in\mathscr{E}\}$.
+    it suffices to show that $Qh$ is the unique element in $\mathscr{M}$ such that $h-Qh\perp \mathscr{M}$.
+    By Lemma 4.12, there are vectors $e_1,e_2,...$ in $\mathscr{E}$ such that $\{e\in\mathscr{E}:\inner{h}{e}\neq 0\}={e_1,e_2,...}$
+    and $Qh=\sum\limits_{n=1}^{\infty}\inner{h}{e_n}e_n$.
+    By Bessel's Inequality, $\sum\limits_{n=1}^{\infty}\inner{h}{e_n}^2\leqs ||h||^2<\infty$.
+    and thus $\{\inner{h}{e_n}\}$ is $l^2$ and the sum for $Qh$ converges. Since $\inner{Qh}{e_n}=\inner{h}{e_n}$ for all $n$, 
+    it follows that $\inner{h-Qh}{e_n}=0$ for all $n$. Then by the continuity of inner product, 
+    $\inner{s}{h-Qh}= 0$ for any $s$ in $l^2$-span of $\{e_n\}$. Hence, $h-Qh\perp \mathscr{M}$.
+    Since $Qh\in \mathscr{M}$, it follows that $Qh$ is the unique element in $\mathscr{M}$
+    such that $h-Qh\perp \mathscr{M}$. Hence, by the property of $Ph$, $Ph=Qh$ for every $h$ in $\mathscr{H}$.
+\end{proof}
+
+
+\begin{exercise}{I4 T19}{}
+    If $\{h\in \mathscr{H}: ||h||\leqs 1\}$ is compact, show that dim$\mathscr{H}<\infty$.
+\end{exercise}
+
+\begin{proof}
+    Suppose that $\mathscr{H}$ is not finite dimensional.
+    We want to show that $\overline{B(0;1)}$ is not compact. 
+    It suffices to show that $\overline{B(0,1)}$ is not sequentially compact.
+    To do this, we construct a sequence in $\overline{B(0,1)}$ which have no convergent subsequence.
+    We will uset the following fact usually known as Riesz's Lemma:
+    Let $\mathscr{M}$ be a closed subspace of a Banach space $\mathscr{X}$. Given any $r\in (0,1)$, 
+    there exists an $x\in\mathscr{X}$ such that $||x||=1$ and $d(x,\mathscr{M})\geqs r$.
+    \\
+    Pick $x_1\in\mathscr{X}$ such that $||x_1||=1$. Let $\mathscr{M}_1=\vee \{x_1\}$. Then $\mathscr{M}_1$ is closed.
+    Then accroding to Riesz's Lemma, there exists $x_2\in \mathscr{H}$ such that $||x_2||=1$ and $d(x_2,\mathscr{M}_1)\geqs \frac{1}{2}$.
+    Now consider the subspace $\mathscr{M}_2=\vee\{x_1, x_2\}$. Since $\mathscr{H}$ is infinite dimensional,
+    $\mathscr{M}_2$ is a proper closed subspace of $\mathscr{H}$, and we can apply the Riesz's Lemma to find
+    an $x_3 \in \mathscr{H}$ such that $||x_3||=1$ and $d(x_3,\mathscr{M}_2)\geqs \frac{1}{2}$.
+    If we continue to proceed this way, we will have a sequence $(x_n)$ and a sequence of
+    closed subspaces $(\mathscr{M}_n)$ such that for all $n \in \N$: $||x_n||=1$ and $d(x_{n+1},\mathscr{M}_n)\geqs \frac{1}{2}$.
+    It is clear that the sequence $(x_n)$ is in $\overline{B(0,1)}$, 
+    and for $m>n$ we have $x_m\in \mathscr{M}_m\subset \mathscr{M}_{n-1}$ and $||x_n-x_m||\geqs d(x_n,\mathscr{M}_{n-1})\geqs \frac{1}{2}$.
+    Therefore, no subsequence of $(x_n)$ can form a Cauchy sequence. 
+    Thus, $\overline{B(0, 1)}$ is not compact.
+\end{proof}
+
+\begin{exercise}{I5 T6}{}
+    Let $\mathscr{C}=\{f\in C[0,2\pi]: f(0)=f(2\pi)\}$ and show that $\mathscr{C}$ is dense in $L^2[0,2\pi]$.
+\end{exercise}
+
+\begin{proof}
+    In a Hilbert space $\mathscr{H}$, $A\subset \mathscr{H}$ is dense if for $h\in\mathscr{H}$, there exists
+    a sequence $(a_n)\subseteq A$ such that $a_n\underset{n\rightarrow \infty}{\longrightarrow} h$.
+    Since $C[0,2\pi]$ is dense in $L^2[0,2\pi]$ and $\mathscr{C}\subset C[0,2\pi]$, it suffices to show that $\mathscr{C}$ is dense in $C[0,2\pi]$.
+    For $f\in C[0,2\pi]$, then there exists $M>0$ such that $|f(x)|\leqs M$, $\forall x\in [0,2\pi]$.
+    Let  $f_n(x)=\left\{\begin{matrix}
+       f(x) ,& 0\leqs x\leqs 2\pi-\frac{1}{n} \\
+       f(2\pi-\frac{1}{n}) + \frac{f(0)-f(2\pi-\frac{1}{n})}{\frac{1}{n}}(x-2\pi+\frac{1}{n}) ,& 2\pi-\frac{1}{n}<x\leqs 2\pi
+      \end{matrix}\right.$.
+    Then $f_n(0)=f(0),f_n(2\pi)=f(2\pi-\frac{1}{n}) + \frac{f(0)-f(2\pi-\frac{1}{n})}{\frac{1}{n}}(2\pi-2\pi+\frac{1}{n})=f(0)$.
+    Hence, $f_n\in\mathscr{C}$. 
+    Since $|f|,|f_n|\leqs M$, it follows that $||f-f_n||=(\int_{[0,2\pi]}|f-f_n|^2 dx)^{1/2}=(\int_{[2\pi-\frac{1}{n},2\pi]}|f-f_n|^2)^{1/2}\leqs (\frac{(2M)^2}{n})^{1/2}=\frac{2M}{\sqrt{n}}$$\underset{n\rightarrow \infty}{\longrightarrow}0$.
+    Then $\lim_{n\rightarrow \infty}f_n=f$. Hence, $\mathscr{C}$ is dense in $C[0,2\pi]$ and so is dense in $L^2[0,1]$.
+\end{proof}
+
+
+\begin{exercise}{I5 T9}{}
+    If $\mathscr{H}$ and $\mathscr{K}$ are Hilbert spaces and $U:\mathscr{H}\rightarrow \mathscr{K}$ 
+    is surjective function such that $\inner{Uf}{Ug}=\inner{f}{g}$ for all vectors $f$ and $g$
+    in $\mathscr{H}$, then $U$ is linear.
+\end{exercise}
+
+\begin{proof}
+    It suffices to show that $U(f+g)=U(f)+U(g)$ and $U(\alpha f)=\alpha U(f)$ for $\alpha\in\F$.
+    For $f,g\in \mathscr{H}$, let $a:=U(f+g),b:=U(f)+U(g)$. Then $\inner{a-b}{a-b}=\inner{a}{a}-\inner{a}{b}-\inner{b}{a}+\inner{b}{b}$. \\
+    (1) $\inner{a}{a}=\inner{f+g}{f+g}=\inner{f}{f}+\inner{f}{g}+\inner{g}{f}+\inner{g}{g}=\inner{U(f)}{U(f)}+\inner{U(f)}{U(g)}+\inner{U(g)}{U(f)}+\inner{U(g)}{U(g)}=\inner{U(f)+U(g)}{U(f)+U(g)}=\inner{b}{b}$.\\
+    (2) $\inner{a}{b}=\inner{U(f+g)}{U(f)+U(g)}=\inner{f+g}{f}+\inner{f+g}{g}=\inner{f}{f}+\inner{f}{g}+\inner{g}{f}+\inner{g}{g}=\inner{U(f)+U(g)}{U(f)+U(g)}=\inner{b}{b}$.\\
+    (3) $\inner{b}{a}=\inner{U(f)+U(g)}{U(f+g)}=\inner{f}{f+g}+\inner{g}{f+g}=\inner{f}{f}+\inner{f}{g}+\inner{g}{f}+\inner{g}{g}=\inner{U(f)+U(g)}{U(f)+U(g)}=\inner{b}{b}$.
+    Hence, $\inner{a-b}{a-b}=0$ and so $a-b=0$. Then $U(f+g)=U(f)=U(g)$.\\
+    And $\inner{U(\alpha f)-\alpha U(f)}{U(\alpha f)-\alpha U(f)}=\inner{U(\alpha f)}{U(\alpha f)}-\inner{U(\alpha f)}{\alpha U(f)}-\inner{\alpha U(f)}{U(\alpha f)}+\inner{\alpha U(f)}{\alpha U(f)}$
+    $=\inner{\alpha f}{\alpha f}-\overline{\alpha}\inner{\alpha f}{f}-\alpha\inner{f}{\alpha f}+\alpha\overline{\alpha}\inner{f}{f}=0$. Hence, $U(\alpha f)=\alpha U(f)$.
+    Hence, $U$ is linear.
+\end{proof}
+
+\begin{exercise}{II1 T9}{}
+    (Schur test) Let $\{\alpha_{ij}\}_{i,j=1}^{\infty}$ be an infinite matrix such that $\alpha_{ij}\geqs 0$ for all $i,j$ and 
+    such that there are scalars $p_i>0$ and $\beta,\gamma>0$ with 
+    \begin{align*}
+        \sum\limits_{i=1}^{\infty}\alpha_{ij}p_i &\leqs \beta p_j,\\
+        \sum\limits_{j=1}^{\infty}\alpha_{ij}p_j &\leqs \gamma p_i
+    \end{align*}
+    for all $i,j\geqs 1$.
+    Show that there is an operator $A$ on $l^2(\N)$ with $\inner{Ae_j}{e_i}=\alpha_{ij}$ and $||A||^2\leqs \beta\gamma$.
+\end{exercise}
+
+\begin{proof}
+    Let $\mathscr{H}=l^2(\N)$ and $\{e_j\}$ be orthnormal basis of $\mathscr{H}$.
+    Then $\forall x\in \mathscr{H}$, $x=\sum\limits_{j=1}^{\infty}\lambda_je_j$.
+    Define $A:\mathscr{H}\rightarrow \mathscr{H}$ given by $Ae_j=\sum\limits_{i=1}^{\infty}\alpha_{ij}e_i$,
+    then $\inner{Ae_j}{e_i}=\alpha_{ij}$ and $Ax=\sum\limits_{i=1}^{\infty}(\sum\limits_{j=1}^{\infty}\alpha_{ij}\lambda_j)e_i$. Hence,
+    \begin{align*}
+        ||Ax||^2=\inner{Ax}{Ax}&=\inner{\sum\limits_{i=1}^{\infty}(\sum\limits_{j=1}^{\infty}\alpha_{ij}\lambda_j)e_i}{\sum\limits_{i=1}^{\infty}(\sum\limits_{j=1}^{\infty}\alpha_{ij}\lambda_j)e_i}\\
+                                &=\sum\limits_{i=1}^{\infty}\inner{(\sum\limits_{j=1}^{\infty}a_{ij}\lambda_j)e_i}{(\sum\limits_{j=1}^{\infty}a_{ij}\lambda_j)e_i}= \sum\limits_{i=1}^{\infty}|\sum\limits_{j=1}^{\infty}\alpha_{ij}|^2\\
+                                &= \sum\limits_{i=1}^{\infty}|\sum\limits_{j=1}^{\infty}\alpha_{ij}^{1/2}p_j^{1/2}\alpha_{ij}^{1/2}\frac{\lambda_j}{p_j^{1/2}}|^2\\
+                                &\leqs \sum\limits_{i=1}^{\infty}[(\sum\limits_{j=1}^{\infty}\alpha_{ij}p_j)(\sum\limits_{j=1}^{\infty}\alpha_{ij}\frac{\lambda_j^2}{p_j})] & (\text{Cauchy-Schwarz inequality})\\
+                                &\leqs \sum\limits_{i=1}^{\infty}(\gamma p_i\sum\limits_{j=1}^{\infty} \alpha_{ij}\frac{\lambda_j^2}{p_j})&(\sum\limits_{j=1}^{\infty}\alpha_{ij}p_j \leqs \gamma p_i)\\
+                                &=\sum\limits_{j=1}^{\infty}(\gamma \frac{\lambda_j^2}{p_j}\sum\limits_{i=1}^{\infty}\alpha_{ij}p_i)\\
+                                &\leqs \sum\limits_{j=1}^{\infty} (\gamma \frac{\lambda_j^2}{p_j}\beta p_j)&(\sum\limits_{i=1}^{\infty}\alpha_{ij}p_i \leqs \beta p_j)\\
+                                &=\sum\limits_{j=1}^{\infty}\gamma\beta\lambda_j^2=\gamma\beta||x||^2
+    \end{align*}
+    Hence, $||A||^2\leqs \beta\gamma$.
+\end{proof}
+
+\begin{exercise}{II3 T4}{}
+    Let $P$ and $Q$ be projections. Show:\\
+    (1) $P+Q$ is a projection if and only if ran$P$ $\perp$ ran$Q$.
+    If $P+Q$ is a projection, then ran$(P+Q)$ $=$ ran$P$ $+$ ran$Q$ and 
+    ker$(P+Q)$ $=$ ker$P$ $\cap$ ker$Q$.\\
+    (2) $PQ$ is a projection if and only if $PQ=QP$.
+    If $PQ$ is a projection, then ran$PQ$ $=$ ran$P$ $\cap$ ran$Q$ 
+    and ker$PQ$ $=$ ker$P$ $+$ ker$Q$.
+\end{exercise}
+
+\begin{proof}
+    We claim if $\text{ran}P\perp \text{ran}Q\Leftrightarrow PQ=QP=0$.
+    In fact, if $\text{ran}P\perp \text{ran}Q$, then $\text{ran}P\subset (\text{ran}Q)^{\perp}$,
+    which implies $(\text{ran}Q)^{\perp\perp}\subset (\text{ran}P)^{\perp}$.
+    Since $Q$ is projection, $\text{ran}Q$ is closed. Then $\text{ran}Q=(\text{ran}Q)^{\perp\perp}$.
+    Since $P$ is projection, $(\text{ran}P)^{\perp}=\text{ker}P$.
+    Then $\text{ran}Q\subset \text{ker}P$. So $PQ=0$. SImilarly, $QP=0$.\\
+    If $PQ=0$, then $\text{ran}Q\subset \text{ker}P$, then $(\text{ran}Q)^{\perp}\supset (\text{ker}P)^{\perp}$.
+    Since $P$ is projection, $(\text{ker}P)^{\perp}=\text{ran}P$, then $\text{ran}P\subset (\text{ran}Q)^{\perp}$,
+    then $\text{ran}P\perp \text{ran}Q$\\
+    (1)
+    $(\Rightarrow)$: Show that $PQ=QP=0$. 
+   
+    Since $P+Q$ is a projection, it follows that $(P+Q)^2=P+Q$, then for $h\in\mathscr{H}$,
+    \begin{align}
+        \begin{aligned}
+            (P+Q)^2(h)&= (P+Q)(P(h)+Q(h))\\
+                  &= P(Ph+Qh) + Q(Ph+Qh)\\
+                  &= P^2h + PQh + QPh+ Q^2h\\
+                  &= Ph + PQh + QPh+Qh\\
+                  &= (P+Q)h+ PQh+QPh.
+        \end{aligned}
+        \label{eq: P+Q idempotent decomposition}
+    \end{align}
+    This means that $0=PQh+QPh$. Hence, $PQ=-QP$.
+    For $x\in \text{ran} PQ$, then $-x\in \text{ran}(QP)$, then $x\in \text{ran}P$ and $-x\in \text{ran}(Q)$ 
+    then $x=Px$ and $-x=Q(-x)=-Qx$.
+    So $x=Px=PQx=-QPx=-Qx=-x$, then $x=0$. So $PQ=QP=0$.\\
+    $(\Leftarrow)$: By (\ref{eq: P+Q idempotent decomposition}), if $PQ=QP=0$,
+    then $(P+Q)^2=P+Q$. Since $P,Q$ are projection, it follows that $P^*=P$ and $Q^*=Q$.
+    Then $(P+Q)^*=P^*+Q^*=P+Q$, which means that $P+Q$ is hermitian. SO $P+Q$ is projection.\\
+    If $P+Q$ is projection, then for $h\in \mathscr{H}$, $(P+Q)^2(h)=(P+Q)h$. Then
+    $Ph+Qh\in \text{ran}(P+Q)$ and $(P+Q)h=Ph+Qh\in \text{ran}P+\text{ran}Q$, then
+    $\text{ran}P+\text{ran}Q\subset \text{ran}(P+Q)$ and $\text{ran}P+\text{ran}Q\supset \text{ran}(P+Q)$.
+    Hence, $\text{ran}(P+Q)=\text{ran}P+\text{ran}Q$.
+    For $h\in \text{ker}P\cap \text{ker}Q$, $Ph=0=Qh$, then $(P+Q)h=0$. Then $\text{ker}P\cap \text{ker}Q\subset \text{ker}(P+Q)$.
+    For $h\in \text{ker}(P+Q)$, $(P+Q)h=0$, then $Ph=-Qh$. Since $\text{ran}P\perp \text{ran}Q$, $0=QPh=-Q^2h=-Q^h$ and $0=-PQh=-P^2h=-Ph$.
+    Then $Qh=Ph=0$ and so $h\in \text{ker}P\cap \text{ker}Q$. 
+    Then ker$(P+Q)$ $=$ ker$P$ $\cap$ ker$Q$.\\
+    (2) 
+    ($\Rightarrow$): $PQ$ is a projection, then $PQ$ is hermitian, then
+    $PQ=(PQ)^*=Q^*P^*=QP$.\\
+    ($\Leftarrow$): If $PQ=QP$, then
+    $(PQ)^*=Q^*P^*=QP=PQ$ and so $PQ$ is hermitian.
+    And for $h\in\mathscr{H}$, $(PQ)^2h=(PQ)(PQh)=(PQ)(QPh)=P(Q^2)Ph=PQPh=PPQh=PQh$.
+    Then $PQ$ is idempotent.
+    Hence, $PQ$ is a projection.\\
+    Since $\text{ran}PQ\subset \text{ran}P$ and $\text{ran}PQ=\text{ran}QP\subset \text{ran}Q$,
+    it follows that $\text{ran}PQ\subset \text{ran}P\cap\text{ran}Q$.
+    On the other hand, for $h\in \text{ran}P\cap\text{ran}Q$, $Px=Qx=x$, then $PQx=x$.
+    So $\text{ran}P\cap\text{ran}Q\subset \text{ran}PQ$.
+    Hence, ran$PQ$ $=$ ran$P$ $\cap$ ran$Q$.
+    For $h\in\text{ker}PQ$, then either $x\in \text{ker}Q$ or $x\in (\text{ker}Q)^{\perp}$.
+    If $x\in \text{ker}Q$, then $x=0+x\in \text{ker}P+\text{ker}Q$.
+    If $x\in (\text{ker}Q)^c$, then $Qx\neq 0$. Since $0=PQx$, $Qx\in\text{ker}P$.
+    Then $x=Qx+x-Qx$. Since $Q(x-Qx)=0$, $x=Qx+x-Qx\in \text{ran}P+\text{ran}Q$.
+    So $\text{ker}PQ\subset \text{ker}P+\text{ker}Q$.
+    For $h\in \text{ker}P+\text{ker}Q$, we can write $x$ as $x=u+v$ where $u\in\text{ker}P$ and $v\in\text{ker}Q$,
+    then $(PQ)h=PQ(u+v)=PQu+PQv=PQu=QPu=0$.
+    So $\text{ker}P+\text{ker}Q\subset \text{ker}PQ$.
+    Hence, ker$PQ$ $=$ ker$P$ $+$ ker$Q$.
+\end{proof}
+
+\begin{exercise}{II3 T6}{}
+    If $P$ and $Q$ are projection, then the following statements are equivalent.\\
+    (1) $P-Q$ is a projection.\\
+    (2) ran$Q$ $\subseteq$ ran$P$.\\
+    (3) $PQ=Q$.\\
+    (4) $QP=Q$. \\
+    If $P-Q$ is a projection, then
+    ran($P-Q$) $=$ (ran$P$) $\ominus$ (ran$Q$) and ker($P-Q$) $=$ ran$Q$ $+$ ker$P$.
+\end{exercise}
+
+\begin{proof}
+    $(2)\Rightarrow (3)$: 
+    For $h\in\mathscr{H}$, since $\text{ran}Q\subseteq \text{ran}P$, 
+    it follows that $Qh\in\text{ran}P$. Then $\exists x\in \mathscr{H}$, such that $Qh=Px$.
+    Then $PQh=PPx=Px=Qh$. Hence, $PQ=Q$.\\
+    $(3)\Leftrightarrow (4)$:
+    Suppose $PQ=Q$, then $QP=Q^*P^*=(PQ)^*=Q^*=Q$. 
+    Suppose $QP=Q$, then $PQ=P^*Q^*=(QP)^*=Q^*=Q$.\\
+    $(4)\Rightarrow (1)$:
+    Since $(P-Q)^*=P^*-Q^*=P-Q$, it follows that $P-Q$ is hermitian.
+    Since $(P-Q)^2=P^2-PQ-QP+Q^2=P-Q-Q+Q=P-Q$, it follows that $P-Q$ is idempotent.
+    Hence, $P-Q$ is projection.\\
+    Now, If $P-Q$ is projection, we will show that $\text{ran}(P-Q)=$(ran$P$) $\ominus$ (ran$Q$)=$\text{ran}P\cap (\text{ran}Q)^{\perp}=\text{ran}P\cap \text{ker}Q$
+    and ker($P-Q$) $=$ ran$Q$ $+$ ker$P$.\\
+    For $h\in \text{ran}(P-Q)$, since $P-Q$ is projection, $h=(P-Q)h=Ph-Qh$.
+    By (3), $h=Ph-PQh=P(h-Qh)\in\text{ran}P$. And by (4), $Qh=QPh-Q^2h=Qh-Qh=0$, then $h\in\text{ker}Q$.
+    Hence, $\text{ran}(P-Q)\subseteq \text{ran}P\cap \text{ker}Q$.
+    For $h\in \text{ran}P\cap \text{ker}Q$, $h=Ph$ as $P$ is projection 
+    and $Qh=0$, then $h=Ph-Qh=(P-Q)h\in\text{ran}(P-Q)$. Then $\text{ran}P\cap \text{ker}Q\subseteq \text{ran}(P-Q)$.
+    Hence, $\text{ran}(P-Q)=\text{ran}P\cap \text{ker}Q$.\\
+    For $h\in\text{ker}(P-Q)$, 
+    then $(P-Q)h=Ph-Qh=0$ and either $h\in\text{ker}P$ or $h\in (\text{ker}P)^{\perp}$.
+    If $h\in \text{ker}P$, then $h=0+h$. If $h\in (\text{ker}P)^{\perp}$, $h\in \text{ran}P$.
+    Then $h=Ph=Qh+Ph-Qh$. Since $P(Ph-Qh)=Ph-Qh=0$, $Ph-Qh\in\text{ker}P$.
+    Hence $h\in\text{ran}Q+\text{ker}P$ and $\text{ker}(P-Q)\subseteq \text{ran}Q+\text{ker}P$.
+    For $h\in \text{ran}Q + \text{ker}P$, we can write $h=u+v$ where $u\in\text{ran}Q$ and $v\in\text{ker}P$.
+    Then $u=Qu$ as $Q$ is projection and $Pv=0$.
+    Then $(P-Q)h=(P-Q)(u+v)\overset{P,Q \text{is linear}}{=}(P-Q)u+(P-Q)v=Pu-u+0-Qv=Pu-u-Qv$.
+    Since $Qv=QPv=0$ and $Pu=PQu=Qu=u$, it follows that $(P-Q)h=0$.
+    Then $h\in\text{ker}(P-Q)$ and so $\text{ran}Q+\text{ker}P\subseteq \text{ker}(P-Q)$.
+    Hence, $\text{ker}(P-Q)=\text{ran}Q+\text{ker}P$.
+
+\end{proof}
+
+\begin{exercise}{II4 T4}{}
+    Show that an idempotent is compact if and only if it has finite rank.
+\end{exercise}
+
+\begin{proof}
+    $(\Rightarrow)$:
+    We need to show that $\text{ran}(E)$ is finite dimensional.\\
+    If $\text{ran}(E)=\{0\}$, obviously $\text{ran}E$ is finite dimensional.
+    If $\text{ran}(E)\neq \{0\}$, for $0\neq h\in\text{ran}E$, $h=Eh$ since $E$ is idempotent.
+    Then $1\in\sigma_p(A)$, since $E$ is compact, by proposition\ref{prop:compact operator has non-zero eigenvalue then eigenspace is finite dimensional},
+    $\text{ker}(E-I)=\text{ran}E$ is finite dimensional. \\
+    ($\Leftarrow$):
+    Since $E$ is finite rank, it follows that $\text{ran}E$ is finite dimensional.
+    Since cl[$E$(ball $\mathscr{H}$)] is a closed subset of $\text{ran}E$ 
+    and $\text{ran}E$ is Hausdorff,
+    it follows that cl[$E$(ball $\mathscr{H}$)] is compact. Hence $E$ is compact.
+\end{proof}
+
+\begin{exercise}{II4 T8}{}
+    If $h,g\in\mathscr{H}$,
+    define $T:\mathscr{H}\rightarrow \mathscr{H}$ by $Tf=\inner{f}{h}g$.\\
+    (1) Show that $T$ has rank $1$ [that is, dim(ran$T$)$=1$].\\
+    (2) Moreover, every rank $1$ operator can be so represented.\\
+    (3) Show that if $T$ is a finite rank operator, then there are orthonormal vectors
+    $e_1,...,e_n$ and vectors $g_1,...,g_n$ such that $Th=\sum\limits_{j=1}^{n}\inner{h}{e_j}g_j$
+    for all $h$ in $\mathscr{H}$. \\
+    (4)  In this case show that
+    $T$ is normal if $g_j=\lambda_je_j$ for some scalars $\lambda_1,...,\lambda_n$.\\
+    (5) Find $\sigma_p(T)$.
+\end{exercise}
+
+\begin{proof}
+    (1) If $h,g\neq 0\in\mathscr{H}$, then $Th=\inner{h}{h}g\neq 0$. Hence, dim(ran$T$)$\geqs 1$.
+    For $Tf_1,Tf_2\neq 0\in$ ran$T$, $\inner{f_2}{h}Tf_1-\inner{f_1}{h}Tf_2=\inner{f_2}{h}\inner{f_1}{h}g-\inner{f_1}{h}\inner{f_2}{h}g=0$.
+    Then $Tf_1$ and $Tf_2$ is linear dependent and so dim(ran$T$)$\leqs 1$.
+    Hence, dim(ran$T$)$=1$.\\
+    (2) If dim(ran$T$)$=1$, let $g$ be a basis of ran($T$) and $||g||=1$, then for $f\in\mathscr{H}$,
+    assume $Tf=\alpha g$, then $\inner{Tf}{g}=\inner{\alpha g}{g}=\alpha$. Then $Tf=\inner{Tf}{g}g$. 
+    Since $Tf\in\mathscr{H}$, let $Tf=h$ and $Tf=\inner{h}{g}g$.\\
+    (3) 
+\end{proof}
+
+\begin{exercise}{III1 T4}{}
+    If $1\leqs p\leqs \infty$ and $(x_1,x_2)\in\R^2$, 
+    define $||x||_p\equiv (|x_1|^p+|x_2|^p)^{1/p}$ and $||x||_{\infty}\equiv \sup\{|x_1|,|x_2|\}$,
+    graph $\{x\in\R^2:||x||_p=1\}$. Note that if $1<p<\infty$, $||x||_p=||y||_p=1$ and $x\neq y$, 
+    then for $0<t<1$, $||tx+(1-t)y||_p<1$.
+    The same cannot be said for $p=1,\infty$.
+\end{exercise}
+
+\begin{proof}
+    By Minkowski inequality, $||tx+(1-t)y||_p\leqs ||tx||_p+||(1-t)y||_p=|t|||x||_p+|1-t|||y||_p=t+1-t=1$.
+    If $p=1$, for $x=(-1,0),y=(0,1),t=\frac{1}{2}$, 
+    then $||tx+(1-t)y||_1=||(-t,0)+(0,1-t)||_1=||(-\frac{1}{2},0)+(0,\frac{1}{2})||_1=||(-\frac{1}{2},\frac{1}{2})||_1=1$.
+    If $p=\infty$, for $x=(-1,1),y=(1,1),t=\frac{1}{2}$, 
+    then $||tx+(1-t)y||_{\infty}=||(-t,t)+(1-t,1-t)||_{\infty}=||(1-2t,1)||_{\infty}=||(0,1)||_{\infty}=1$.
+\end{proof}
+
+\begin{exercise}{III1 T5}{}
+    Let $c=$ the set of all sequences $\{\alpha_n\}_{1}^{\infty}$, 
+    $\alpha_n$ in $\F$, such that lim$\alpha_n$ exists. 
+    Show that $c$ is closed subspace of $l^{\infty}$ and hence is a Banach space.
+\end{exercise}
+
+\begin{proof}
+    We know that $c=\{(\alpha_n)_{n\in \N_+}|\alpha_n\in \C \text{ and the sequences converges}\}$ and 
+    $l^{\infty}=\{(\alpha_n)_{n\in\N_+}$ $|\alpha_n\in\C,\sup_{n} |\alpha_n|<\infty\}$.
+    Then, for $(\alpha_n)$ in $c$, $\exists M>0$ s.t. $a_n\leqs M$ for all $n$.
+    Then, $c$ is a subspace of $l^{\infty}$.
+    Now, we show that $c$ is closed.
+    Let $x=(\alpha_1,\alpha_2,...)\in l^{\infty}$ and $\{x^n\}$ is a sequences in $c$ convering to $x$ in the $|\cdot||_{\infty}$ norm.
+    For $n\in \N$, write $x^{n}=(x_1^n,x_2^n,...)$ so that $x_i^n$ is the  i
+    $i$-th term of the sequence $x^n$ in $c$. We claim that $x\in c$.
+    Let $\epsilon>0$. As $x^n\underset{n\rightarrow \infty}{\longrightarrow} x$, 
+    there exists $N\in \N$ such that $||x^{N}-x||_{\infty}<\frac{\epsilon}{3}$.
+    As $x^{N}$ is in $c$, it follows that $x^{N}$ is Cauchy, so there exists $K\in \N$
+    such that $|x_i^{N}-x_j^{N}|<\frac{\epsilon}{3}$ for all $i,j\geqs K$. Then for such $i,j$, we have
+    \begin{align*}
+        |x_i-x_j|&\leqs |x_i-x_i^{N}|+|x_i^N-x_j^N|+|x_j^N-x_j|\\
+                &\leqs ||x-x^N||_{\infty}+|x_i^N-x_j^N|+||x^{N}-x||_{\infty}\\
+                &<\frac{\epsilon}{3} + \frac{\epsilon}{3} + \frac{\epsilon}{3}.
+    \end{align*}
+    Then $x$ is Cauchy and so converges. Hence, $x$ is in $c$.
+    So $c$ is a closed subspace of $l^{\infty}$ and so a Banach space.
+\end{proof}
+
+\begin{exercise}{III2 T1}{}
+    Show that for $\mathscr{B}(\mathscr{\mathscr{X}},\F)\neq (0)$,
+    $\mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$ is a Banach space 
+    if and only if $\mathscr{\mathscr{Y}}$ is a Banach space.
+\end{exercise}
+\begin{proof}
+    ($\Rightarrow$):
+        Let $x_0\in \mathscr{X}$ with $||x_0||=1$,
+        then by Hahn-Banach Theorem, there exists $f\in\mathscr{X}^*$ such that $f(x_0)=||x_0||=1$.
+    ($\Leftarrow$):
+    We have to prove that $\mathscr{B}(\mathscr{X},\mathscr{Y})$ is complete.
+    Let $(T_n)$ be a Cauchy sequence in $\mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$.
+    For each $x\in\mathscr{\mathscr{X}}$, we have
+    \begin{align*}
+        ||T_nx-T_mx||=||(T_n-T_m)x||\leqs ||T_n-T_m||\cdot ||x||,
+    \end{align*}
+    which shows that $(T_nx)$ is a Cauchy sequence in $\mathscr{Y}$.
+    Since $\mathscr{Y}$ is complete, there is an unique $\mathscr{Y}\in \mathscr{Y}$ such that $T_nx\underset{n\rightarrow \infty}{\longrightarrow}y$.
+    Define $T:\mathscr{X}\rightarrow \mathscr{Y}$ given by $Tx=y$. Then $T$ is well-defined and linear.
+    We show that $||T_n-T||\underset{n\rightarrow \infty}{\longrightarrow} 0$ and $T$ is bounded,
+    i.e. $\sup_{||\mathscr{X}||=1}||T_nx-Tx||\underset{n\rightarrow \infty}{\longrightarrow} 0$
+    and $\sup_{||\mathscr{X}||=1}||Tx||<\infty$.
+    
+    For any $\epsilon>0$, since $(T_n)$ is Cauchy, 
+    it follows that there exists $N_1>0$ such that 
+    $||T_nx-T_mx||\leqs ||T_n-T_m||<\epsilon/2$, for all $n,m>N_1$.
+    Since $T_nx\underset{n\rightarrow \infty}{\longrightarrow} Tx$, 
+    there exists $N_2>0$ such that $||T_mx-Tx||<\epsilon/2$, for all $m>N_2$.
+    Let $N=\max\{N_1,N_2\}$ and $m_0>N$, then for $||\mathscr{X}||=1$,
+    \begin{align*}
+        ||T_nx-Tx||\leqs ||T_nx-T_{m_0}x||+||T_{m_0}x-Tx||<\epsilon.
+    \end{align*}
+    Hence, $||T_n-T||\rightarrow 0, n\rightarrow \infty$. And
+    \begin{align*}
+        ||Tx||\leqs ||T_{m_0}x||+||Tx-T_{m_0}x||\leqs ||T_{m_0}x||+\epsilon.
+    \end{align*}
+    Since $T_{m_0}$ is bounded, $T$ is bounded. Hence, $T\in \mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$ and so $\mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$ is complete.
+\end{proof}
+
+\begin{exercise}{III3 T2}{}
+    If $\mathscr{X}$ is a finite dimensional vector space over $\F$, define $||x||_{\infty}\equiv \max\{|x_j|:1\leqs j\leqs d\}$.
+    Show that $||\cdot||_{\infty}$ is a norm.
+\end{exercise}
+
+\begin{proof}
+    It is clearly that $||\cdot||_{\infty}$ is well defined.
+    Now, we show that $||\cdot||$ satisfys norm axioms.\\
+    (1) $||x||\geqs 0$ and $||x||_{\infty}=0\Leftrightarrow x=0$. In fact, $||x||_{\infty}\geqs 0$ is clear and 
+    \begin{align*}
+        ||x||_{\infty}=\max_{j}|x_j|=0&\Leftrightarrow 0\leqs |x_j|\leqs 0,\forall 1\leqs j\leqs d\\
+                        &\Leftrightarrow x=0
+    \end{align*}
+    (2) For $\alpha\in\F$, $||\alpha x||_{\infty}=|\alpha|||x||_{\infty}$. In fact, 
+    \begin{align*}
+        ||\alpha x||_{\infty}= \max_{j}|\alpha x_j|&= \max_{j}|\alpha||x_j|\\
+                            &= |\alpha|\max_{j}|x_j|\\
+                            &= |\alpha|||x||
+    \end{align*}
+    (3) $||x+y||_{\infty}\leqs ||x||_{\infty}+||y||_{\infty}$. In fact, 
+    \begin{align*}
+        ||x+y||_{\infty}&=\max\{|x_j+y_j|:1\leqs j\leqs d\}\\
+                        &\leqs \max \{|x_j|+|y_j|:1\leqs j\leqs d\}\\
+                        &\leqs \max_{j}|x_j| +\max_{j}|y_j|\\
+                        &=||x||_{\infty} + ||y||_{\infty}
+    \end{align*}
+\end{proof}
+
+\begin{exercise}{III4 T1}{}
+    Let $\mathscr{X}$ be a normed space, let $\mathscr{M}$ be a linear manifold in $\mathscr{X}$, 
+    and let $Q:\mathscr{X}\rightarrow \mathscr{X}/\mathscr{M}$ be the natural map $Qx=x+\mathscr{M}$.
+    show $||x+\mathscr{M}||=\inf\{||x+y||:y\in \mathscr{M}\}$ is a norm in $\mathscr{X}/\mathscr{M}$.
+    
+\end{exercise}
+
+\begin{proof}
+    Firstly, we show that the $||x+\mathscr{M}||$ is well defined i.e.
+    if $x,x'\in\mathscr{X}$ such that $Q(x)=Q(x')$ then $||x+\mathscr{M}||=||x'+\mathscr{M}||$.
+    If $Q(x)=Q(x')$, by $Q$ is linear transformation, $Q(x-x')=0$ and so $x-x'\in \text{ker}Q=\mathscr{M}$. 
+    So, $x-x'+\mathscr{M}=\mathscr{M}$.
+    Then
+    \begin{align*}
+        ||x+\mathscr{M}||&=\inf\{||x+y||:y\in\mathscr{M}\}\\
+                        &=\inf\{||x+(z-(x-x'))||:z\in x-x'+\mathscr{M}\}\\
+                        &=\inf\{||x'+z||:z\in \mathscr{M}\}\\
+                        &=||x'+\mathscr{M}||.
+    \end{align*}
+    Secondly, we show that the $||x+\mathscr{M}||$ satisfys norm axioms.\\
+    (1) $||x+\mathscr{M}||\geqs 0$ and $||x+\mathscr{M}||=0\Leftrightarrow x+\mathscr{M}=0_{x/\mathscr{M}}=\mathscr{M}$. 
+    In fact, $||x+\mathscr{M}||\geqs 0$ is clear and 
+    \begin{align*}
+        x+\mathscr{M}=0_{\mathscr{X}/\mathscr{M}}=\mathscr{M}&\Rightarrow ||x+\mathscr{M}||=||\mathscr{M}||\\
+        &= \inf_{y\in\mathscr{M}} ||y||\\
+        & =0 & (0\in\mathscr{M},||0||=0).
+    \end{align*}
+        If $||x+\mathscr{M}||=\inf_{y\in\mathscr{M}}||x+y||\overset{z=-y}{=}\inf_{z\in \mathscr{M}}||x-z||=0$, 
+        then For each  $n\in\N$, $\exists z_n\in\mathscr{M}$ s.t.
+        $0\leqs||x-z_n||\leqs \frac{1}{n}$. Then $\lim_{n\rightarrow \infty}||x-z_n||=0$ and so $z_n\underset{n\rightarrow \infty}{\longrightarrow} x$.
+        Since $\mathscr{M}$ is closed, it follows that $x\in\mathscr{M}$. Then $x+\mathscr{M}=Q(x)=0_{\mathscr{X}/\mathscr{M}}=\mathscr{M}$.\\
+    (2) For $\alpha\in\F$, $||\alpha (x+\mathscr{M})||=|\alpha|\cdot||x+\mathscr{M}||$. In fact, equality clearly holds when $\alpha=0$, if $\alpha\neq 0$
+    \begin{align*}
+        ||\alpha(x+\mathscr{M})||&=||\alpha x+\mathscr{M}||=\inf_{y\in\mathscr{M}}||\alpha x+y||\overset{z=\frac{y}{\alpha}}{=}\inf_{z\in\mathscr{M}}||\alpha x+\alpha z||\\
+                                &=|\alpha|\inf_{z\in\mathscr{M}} ||x+z|| =|\alpha|\cdot||x+\mathscr{M}||
+    \end{align*}
+    (3) For $x+\mathscr{M},y+\mathscr{M}$, $||x+y+\mathscr{M}||\leqs ||x+\mathscr{M}||+||y+\mathscr{M}||$. In fact,
+    \begin{align*}
+        ||x+y+\mathscr{M}||&=\inf_{z\in \mathscr{M}}||x+y+z||\overset{z=z_1+z_2}{=}\inf_{z_1,z_2\in \mathscr{M}}||x+z_1+y+z_2||\\
+                        &\leqs \inf_{z_1,z_2\in \mathscr{M}} (||x+z_1||+||y+z_1||)\\
+                        &=\inf_{z_1\in\mathscr{M}}||x+z_1|| + \inf_{z_2\in\mathscr{M}}||y+z_1||\\
+                        &= ||x+\mathscr{M}||+||y+\mathscr{M}||.
+    \end{align*}
+
+
+\end{proof}
+
+\begin{exercise}{III4 T3}{}
+    Show that if $(X,d)$ is a metric space and $\{x_n\}$ is a Cauchy sequence such that
+    there is a subsequence $\{x_{n_k}\}$ that converges to $x_0$, then $x_n\rightarrow x_0$.
+\end{exercise}
+\begin{proof}
+    Since the subsequence $\{x_{n_k}\}$ converges to $x\in X$, we know that for all $\epsilon>0$,
+    there exists $N_1\in\N$ such that if $n_k\geqs N_1$ then $d(x_{n_k},x)<\frac{\epsilon}{2}$.
+    Moreover, since $\{x_n\}$ is Cauchy, for all $\epsilon>0$,
+    there exists $N_2\in\N$ such that if $n,m\geqs N_2$, then $d(x_n,x_m)<\frac{\epsilon}{2}$.
+    Choose $s\in\N$ such that $n_s>\max \{N_1,N_2\}$.
+    Then, if $n\geqs \max \{N_1,N_2\}$, we have that 
+    $d(x_n,x)\leqs d(x_n,x_{n_s})+d(x_{n_s},x)<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$,
+    that is, $x_n$ converges to $x$.
+\end{proof}
+
+\begin{exercise}{III5 T2}{}
+    Show that $\mathscr{X}^*$ is a normed space.
+\end{exercise}
+
+\begin{proof}
+    For $f\in \mathscr{X}^*$, $||f||=\sup_{||x||= 1}|fx|$.
+    It suffices to show that operator norm is a norm. \\
+    (1) $||f||\geqs 0$ and $||f||=0\Leftrightarrow f=0$. In fact, since $|fx|\geqs 0$, it follows that $||f||\geqs 0$. 
+    And, the zero operator indeed has norm $0$ (because $||fx||=0$ for all $x$). On the other hand,
+    suppose that $Tx=0$ for all $||x||=1$. Then rescaling tells us that $0=fx'=||x'||f(\frac{x'}{||x'||})=0$ for all $x'\neq 0$,
+    so $f$ is indeed the zero operator.\\
+    (2) For $\alpha\in\F$, $||\alpha x||=|\alpha|\cdot||x||$. In fact, 
+    \begin{align*}
+        ||\alpha f||=\sup_{||x||=1}||\alpha fx||=\sup_{||x||=1}|\alpha|\cdot||fx||=|\alpha| \sup_{||x||=1} ||fx||=|\alpha|\cdot||f||.
+    \end{align*} 
+    (3) For $f,g\in \mathscr{X}^*$, $||f+g||\leqs ||f||+||g||$. In fact, for $x$ with $||x||=1$,
+    \begin{align*}
+        ||f+g||=\sup_{||x||=1}||(f+g)x||=\sup_{||x||=1}||fx+gx||&\leqs \sup_{||x||=1}||fx||+||gx||\\
+                                                                &\leqs \sup_{||x||=1}||fx|| + \sup_{||x||=1}||gx|| = ||f||+||g||.
+    \end{align*}
+    Hence, the operator norm is a norm and so $\mathscr{X}^*$ is a normed space.
+\end{proof}
+
+\begin{exercise}{III6 T1}{}
+    Let $\mathscr{X}$ be a vector space over $\C$.\\
+    (a) If $f:\mathscr{X}\rightarrow \R$ is an $\R$-linear Functional, then
+    $\tilde{f}(x)=f(x)-if(ix)$ is a $\C$-linear functional and $f=\text{Re }\tilde{f}$.\\
+    (b) If $g:\mathscr{X}\rightarrow \C$ is $\C$-linear, $f=\text{Re }g$, and $\tilde{f}$ is defined as in (1), then $\tilde{f}=g$.\\
+    (c) If $p$ is a seminorm on $\mathscr{X}$ and $f$ and $\tilde{f}$ are as in $(a)$,
+    then $|f(x)|\leqs p(x)$ for all $x$ if and only if $|\tilde{f}(x)|\leqs p(x)$ for all $x$.\\
+    (d) If $\mathscr{X}$ is a normed space and $f$ and $\tilde{f}$ are as in (a), then $||f||=||\tilde{f}||$.
+\end{exercise}
+
+\begin{proof}
+    (a) By the construction of $\tilde{f}$, it is clearly that $\text{Re }\tilde{f}=f$.
+    Define $h:\mathscr{X}\rightarrow \C$ given by $h(x)=ix$. Then $h$ is $\R$-linear.
+    Since composition of two linear functions is a linear function,
+    it follows that $\tilde{f}=f(x)-g\circ f \circ g(x)$ is $\R$-linear.
+    So we only need to check $\tilde{f}(ix)=i\tilde{f}(x)$.
+    \begin{align*}
+        \tilde{f}(ix)&= f(ix)-if(iix)\\
+                    &= f(ix)-if(-x)=f(ix)+if(x)\\
+                    &=i(f(x)-if(ix))=i\tilde{f}(x).
+    \end{align*}
+    Hence, $\tilde{f}$ is $\C$-linear.\\
+    (b) If $g$ is $\C$-linear, then $f=\text{Re }g$ is $\R$-linear.
+    Since $\text{Im }z=-\text{Re }(iz), \forall z\in\C$, we have
+    \begin{align*}
+        g(x)&=\text{Re }g(x) + i\text{Im }g(x)\\
+            &= \text{Re }g(x)-i\text{Re}(ig(x))\\
+            &= \text{Re }g(x)-i\text{Re}(g(ix))\\
+            &= f(x)-if(ix)=\tilde{f}(x).
+    \end{align*}
+    (c) ($\Rightarrow$):
+    Now assume that $|f(x)|\leqs p(x)$ and
+    fix $x\in\mathscr{X}$ and choose $\theta$ such that 
+    $\tilde{f}(x)=e^{i\theta}|\tilde{f}(x)|$.
+    Hence,
+    \begin{align*}
+        |\tilde{f}(x)|&= \text{Re }|\tilde{f}(x)|\\
+                      &= \text{Re}(e^{-i\theta}\tilde{f}(x)) =\text{Re }\tilde{f}(e^{-i\theta}x)= f(e^{-i\theta}x) \\
+                      &\leqs |f(e^{-i\theta}x)|=|f(x)|\leqs p(x).
+    \end{align*} 
+    ($\Leftarrow$):
+    Suppose $|\tilde{f}(x)|\leqs p(x)$. 
+    Then $f(x)=\text{Re }\tilde{f}(x)\leqs |\tilde{f}(x)|\leqs p(x)$.
+    Also, $-f(x)=\text{Re }\tilde{f}(-x)\leqs |\tilde{f}(-x)|\leqs p(x)$.
+    Hence $|f(x)|\leqs p(x)$.\\
+    (d) For all $x\in\mathscr{X}$, by (c), $|\tilde{f}(x)|\leqs |f(x)|$ 
+    and $|f(x)|=|\text{Re }\tilde{f}(x)|\leqs |\tilde{f}(x)|$. 
+    Hence, $||f||\leqs ||\tilde{f}||$ and $||\tilde{f}||\leqs ||f||$. So $||f||=||\tilde{f}||$.
+\end{proof}
+
+
+\begin{exercise}{III6 T2}{}
+    If $\mathscr{X}$ is a normed space, $\mathscr{M}$ is a linear manifold in $\mathscr{X}$, 
+    and $f:\mathscr{M}\rightarrow \F$ is a bounded linear functional, then there is an $F$ in $\mathscr{X}^*$
+    such that $F|\mathscr{M}=f$ and $||F||=||f||$.
+\end{exercise}
+\begin{proof}
+    Consider the seminorm $p(x)=||f||\cdot ||x||$. 
+    Then $|f(x)|\leqs ||f||\cdot ||x||=p(x)$ for $x\in\mathscr{M}$.
+    Hence, there exists a linear funcional $F$ on $\mathscr{X}$ such that 
+    $F|\mathscr{M}=f$ and $|F(x)|\leqs p(x)$ for all $x\in\mathscr{X}$.
+    Then $\frac{|F(x)|}{||x||}\leqs ||f||$ for $x\neq 0$ and so $||F||\leqs ||f||$.
+    On the other hand, $||F||\geqs ||f||$ since $F$ agree with $f$ on $\mathscr{M}$.
+    Hence, $||F||=||f||$.
+\end{proof}

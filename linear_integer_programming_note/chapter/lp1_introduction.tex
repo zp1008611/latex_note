@@ -1,0 +1,32 @@
+\chapter{Introduction for Linear Programming}
+
+\section{What is Linear Programming?}
+
+A mathematical optimization problem is one 
+in which some function is either maximized or minimized relative to a given set of alternatives.
+The function to be minimized or maximized is called the \textit{objective function} 
+and the set of alternatives is called the \textit{feasible region} (or constraint region).
+In this course, the feasible region is always taken to be a subset of $\R^n$
+(real $n$-dimensional space) and the objective function is a function from $\R^n$ to $\R$.
+\par
+We further restict the class of optimization problems that we consider to linear programming problems (or LPs).
+An LP is an optimization problem over $\R^n$ wherein the objective function is a linear function, that is, the objective has the form
+\begin{align*}
+    c_1x_1+c_2x_2+...+c_nx_n
+\end{align*}
+for some $c_i\in \R$ ($i=1,...,n$), and the feasible region is the set of solutions
+to a finite number of linear inequality and equality constraints, of the form 
+\begin{align*}
+    a_{i1}x_i+a_{i2}x_2 + ... + a_{in} x_n\leqs b_i \quad i=1,...,s
+\end{align*}
+and 
+\begin{align*}
+    a_{i1}x_i+a_{i2}x_2+...+a_{in}x_n=b_i \quad i=s+1,...,m.
+\end{align*}
+\par
+Linear programming is an extremely powerful tool for addressing a wide range of applied optimization problems.
+A short list of application areas is resource allocation, production scheduling, warehousing layout, transportation scheduling, facility location, flight crew scheduling, parameter estimation,...
+
+\section{How to build a LP model?}
+
+

@@ -21,7 +21,14 @@ The next definition shows how to avoid substraction.
     Then $f$ is continuous at $x_0\in X$ iff
     for each $U\in \tau'$ containing $f(x_0)$, there exists $K\in\tau$ containing $x_0$, such that $f(K)\subseteq U$.
 \end{definition}
-
+Use neighborhood to describe
+\begin{proposition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces and $f$ a function from $X$ into $Y$.
+    Then $f$ is continuous at $x_0\in X$ iff for any neighborhood $N$ of $f(x_0)$ in $Y$, $f^{-1}$ is the neighborhood of $x_0$.
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
 \begin{definition}{}{}
     Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces and $f$ a function from $X$ into $Y$.
     Then $f$ is continuous iff for each $x_0\in X$ and for each $U\in \tau'$ containing $f(x_0)$, 
@@ -72,7 +79,7 @@ As in analysis, continuity is a local concept.
 
 In $(\R,\tau_e)$, we can use sequence convergence to characterize continuity, 
 but in general topological space, we cannot do this.
-\begin{proposition}{}{}
+\begin{proposition}{}{continuity means sequentially continous}
     $f:X\rightarrow Y$ is continuous at $x_0\in X$, then $x_n\rightarrow x_0$ implies $f(x_n)\rightarrow f(x_0)$.
 \end{proposition}
 \begin{proof}
@@ -98,8 +105,65 @@ Firstly, we introduce some simple and common continuous mappings.
     Identity mapping $\text{id}:X\rightarrow X$ is continuous.
 \end{proposition}
 
+\begin{definition}{}{Inclusion mapping}
+        Let $X$ be a topological space and $A\subset X$. 
+        Then inclusion mapping $i_A:A\rightarrow X$ is the mapping defined as:
+        \begin{align*}
+            i_A:A\rightarrow X: \forall x\in A:i_{A}(x)=x
+        \end{align*}
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $X$ be a topological space and $A\subset X$. 
+    Then inclusion mapping $i_A:A\rightarrow X$ is continuous.
+\end{proposition}
+
+\begin{proof}
+    For any open set $U$ in $X$, $i^{-1}(U)=U\cap A$ is open in $A$.
+\end{proof}
+
+\section{Homemorphism}
+
+\begin{definition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces, 
+    and let $f:X\rightarrow Y$ be a bijection. 
+    $f$ is said to be a homeomorphism if $f$ is continous and its inverse $f^{-1}$ is continous.\\
+    In this case we say that $(X,\tau)$ and $(Y,\tau')$ are homeomorphism, and write $(X,\tau)\cong (Y,\tau')$, or
+    more often simply $X\cong Y$ if the topologies are understood from context.
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be a topological spaces, and let $f:X\rightarrow Y$ be a bijection, 
+    Then the following are equivalent.\\
+    (1) $f$ is a homeomorphism.\\
+    (2) $f$ is continous and open.\\
+    (3) $f$ is continuous and closed.\\
+    (4) $U\subset X$ is open iff $f(U)\subset Y$ is open.
+\end{proposition}
+
+\begin{definition}
+    Let $X$ and $Y$ be topological spaces. 
+    Suppose $f:X\rightarrow Y$ is an injective continous mapping. 
+    If the function $f':X\rightarrow f(X)$ obtained by restricting the range of $f$ is a homeomorphism, 
+    then the map $f:X\rightarrow Y$ is called a topological embedding.
+\end{definition}
 
 \section{Exercise}
+
+\begin{exercise}{}{}
+    Let $f$ be a mapping from $X$ to $Y$, the following statements are equivalent:\\
+    (1) $f$ is continous;\\
+    (2) $\forall A\subseteq X$, $f(\overline{A})\subset \overline{f(A)}$;\\
+    (3) $\forall B\subseteq Y$, $\overline{f^{-1}(B)}\subset f^{-1}(\overline{B})$.
+\end{exercise}
+
+\begin{proof}
+    (1)$\Rightarrow$(2): $f$ is continous. Since $\overline{f(A)}$ is closed in $Y$, 
+    then $f^{-1}(\overline{f(A)})$ is closed in $X$. Since $f(A)\subseteq \overline{f(A)}$, 
+    $A\subseteq f^{-1}(\overline{f(A)})$. Since $\overline{A}$ is the smallest closed set containing $A$, 
+    $\overline{A}\subseteq f^{-1}(\overline{f(A)})$. Then, $f(\overline{A})\subseteq f(f^{-1}(\overline{f(A)}))\subseteq \overline{f(A)}$.
+
+\end{proof}
 
 \begin{exercise}{}{}
     $f:X\rightarrow Y$ is called open(closed) mapping, if $f(X)$ is open(closed). 
@@ -129,3 +193,12 @@ Firstly, we introduce some simple and common continuous mappings.
 \begin{remark}
     From this exercise, we can know if $f$ is bijective, continuous and open, then $f$ is homeomorphism.
 \end{remark}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://raphaeltinarrage.github.io/files/EMAp/Lesson2.pdf}{Homeomorphisms}
+    \item 
+\end{itemize}
+
+

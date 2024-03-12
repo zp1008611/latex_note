@@ -2,7 +2,7 @@
 
 
 \begin{definition}{}{}
-    If $\mathcal{H}$ is a Hilbert space, we say $x,y\in \mathcal{H}$ are orthogonality if $<x,y>=0$, 
+    If $\mathscr{H}$ is a Hilbert space, we say $x,y\in \mathscr{H}$ are orthogonality if $<x,y>=0$, 
     in which case we write $x\perp y$.  We say subsets $A,B$ are orthogonal if $x\perp y$ 
     for all $x\in A$ and $y\in B$, and we write $A\perp B$. 
 \end{definition}
@@ -24,7 +24,7 @@
 
 
 \begin{definition}{}{}
-    For any subset $A\subset \hH$, define $A^{\perp}=\{x\in \hH|<y,x>=0,\forall y\in A\}$.  
+    For any subset $A\subset \hH$, define $A^{\perp}=\{x\in \hH|\inner{y}{x}=0,\forall y\in A\}$.  
 \end{definition}
 
 
@@ -41,53 +41,43 @@
 \end{proposition}
 
 For convenience, we use the notation $A\leqs \hH$ to signify  that $A$ is a closed linear subspace of $\hH$.
-
+and $\overline{span(A)}$ is denoted by $\vee A$.
 \begin{proposition}{}{}
-    (1) $\overline{span(A)}\leqs \hH$\\
-    (2) $\overline{span(A)}$ is the smallest closed linear subspace of $\hH$ that contains $A$.\\
-    (3) $\overline{span(A)}=$ the closure of $\{\sum\limits_{k=1}^{n}\alpha_kx_k|n\geqs 1,\alpha_k\in \F,x_k\in A\}$.
+    (1) $\vee A\leqs \hH$\\
+    (2) $\vee A$ is the smallest closed linear subspace of $\hH$ that contains $A$.\\
+    (3) $\vee A=$ the closure of $\{\sum\limits_{k=1}^{n}\alpha_kx_k|n\geqs 1,\alpha_k\in \F,x_k\in A\}$.
 \end{proposition}
 
-\begin{proposition}{}{}
-    For any $A\subset \hH$,\\
-    (1) $A^{\perp}\leqs\hH$\\
-    (2) $(span(A))^{\perp}=A^{\perp}$\\
-    (3) $\overline{A}^{\perp} = A^{\perp}$\\    
-    (4) $\overline{span(A)}^{\perp}=A^{\perp}$\\
-\end{proposition}
 
-\begin{proof}
-    (1) Suppose $\{y_n\}\in A^{\perp}$ with $y_n\rightarrow x_0\in \hH$. Since $<x_n$, 
-\end{proof}
 
 \begin{definition}{Direct Sum}{}
-    $\mathcal{M}_1,\mathcal{M}_2\leqs \hH$. We write 
+    $\mathscr{M}_1,\mathscr{M}_2\leqs \hH$. We write 
     \begin{align*}
-        \hH=\mathcal{M}_1 \bigoplus \mathcal{M}_2, 
+        \hH=\mathscr{M}_1 \bigoplus \mathscr{M}_2, 
     \end{align*} 
-    if $\mathcal{M}_1\cap \mathcal{M}_2=\{0\}$ and for every $x\in\hH$ there exist $v_i\in \mathcal{M}_i$ with $v_1+v_2=x$.
+    if $\mathscr{M}_1\cap \mathscr{M}_2=\{0\}$ and for every $x\in\hH$ there exist $v_i\in \mathscr{M}_i$ with $v_1+v_2=x$.
 \end{definition}
 
 \begin{proposition}{}{}
-If $\mathcal{M}\leqs \hH$, then
+If $\mathscr{M}\leqs \hH$, then
     \begin{align*}
-        \hH = \mathcal{M}\bigoplus \mathcal{M}^{\perp}
+        \hH = \mathscr{M}\bigoplus \mathscr{M}^{\perp}
     \end{align*}
 \end{proposition}
 
 \begin{definition}{Dense Subset}{}
-    Let $(\mathcal{X},||\cdot||)$ be a normed space and $A\subset \mathcal{X}$. Then $A$ is dense in $\mathcal{X}$ if $\overline{A}=\mathcal{X}$. 
+    Let $(\mathscr{X},||\cdot||)$ be a normed space and $A\subset \mathscr{X}$. Then $A$ is dense in $\mathscr{X}$ if $\overline{A}=\mathscr{X}$. 
 \end{definition}
 
-In Conway textbook, non-closed subspaces are called "linear manifolds", but we will not adopt this convention.
+In Conway textbook, non-closed subspaces are called "linear manifolds".
 
 \begin{proposition}{}{}
-    Let $\mathcal{K}$ be a(not necessarily closed) subspace of $\hH$. Then $\mathcal{K}$ is dense iff $\mathcal{K}^{\perp}=\{0\}$.
+    Let $\mathscr{Y}$ be a linear manifold in $\hH$. Then $\mathscr{Y}$ is dense iff $\mathscr{H}^{\perp}=\{0\}$.
 \end{proposition}
 
 
 \begin{definition}{Convex Sets}{convex set}
-    A subset $A$ of a vector space $\mathcal{X}$ is called convex if 
+    A subset $A$ of a vector space $\mathscr{X}$ is called convex if 
     \begin{align*}
         \forall x,y\in A, t\in [0,1], tx+(1-t)y\in A.
     \end{align*}
@@ -96,7 +86,7 @@ In Conway textbook, non-closed subspaces are called "linear manifolds", but we w
 \begin{proposition}{}{}
     (1) Every subspace is convex.\\
     (2) In a normed linear space, the open ball $B(x,\epsilon)$ is convex.\\
-    (3) If $A\subset\mathcal{X}$ is convex and $x\in \mathcal{X}$, then $A+x:=\{y+x|y\in A\}$ is convex.
+    (3) If $A\subset\mathscr{X}$ is convex and $x\in \mathscr{X}$, then $A+x:=\{y+x|y\in A\}$ is convex.
 \end{proposition}
 \begin{proof}
     (3) $A$ is convex, then $\forall a,b\in A, t\in[0,1]$, $ta+(1-t)b\in A$. Then $t(a+x)+(1-t)(b+x)=ta+(1-t)b+x\in A+x$.
@@ -147,28 +137,28 @@ If the convex set in cor\ref{cor:closed convex closet point} is in fact a closed
 of $\hH$, more can be said.
 
 \begin{theorem}{}{orthogonal distance}
-    If $\mathcal{M}$ is a closed linear subspace of $\hH$, $x\in \hH$, and $y_0$ is the unique element of $\mathcal{M}$ such that $||y_0-x|| =\text{dist}(x,\mathcal{M})$ , then $x-y_0\perp \mathcal{M}$. 
-    Conversely, if $y_0\in\mathcal{M}$ such that $x-y_0\perp\mathcal{M}$, then $||x-y_0||=\text{dist}(x,\mathcal{M})$.
+    If $\mathscr{M}$ is a closed linear subspace of $\hH$, $x\in \hH$, and $y_0$ is the unique element of $\mathscr{M}$ such that $||y_0-x|| =\text{dist}(x,\mathscr{M})$ , then $x-y_0\perp \mathscr{M}$. 
+    Conversely, if $y_0\in\mathscr{M}$ such that $x-y_0\perp\mathscr{M}$, then $||x-y_0||=\text{dist}(x,\mathscr{M})$.
 \end{theorem}
 
 \begin{proofsolution}
     You can refer to the lecture notes from brmh.
-    % Suppose that $\text{dist}(x,\mathcal{M})=||x-y_0||$. Let $y\in \mathcal{M}$ be an arbitrary vector with $||y||=1$; put $\alpha:=<x-y_0,y>$. Then 
+    % Suppose that $\text{dist}(x,\mathscr{M})=||x-y_0||$. Let $y\in \mathscr{M}$ be an arbitrary vector with $||y||=1$; put $\alpha:=<x-y_0,y>$. Then 
 \end{proofsolution}
 
 
 
 Note that Theorem\ref{thm:orthogonal distance}, together with the uniqueness statement in 
-corollary\ref{cor:closed convex closet point}, shows that if $\mathcal{M}$ is a closed linear subspace of $\hH$ and $x\in \hH$, 
-then there is a unique element $y_0\in A$ such that $x -y_0\perp \mathcal{M}$. Thus a function 
-$P: \hH\rightarrow \mathcal{M}$ can be defined by $Px = y_0$.
+corollary\ref{cor:closed convex closet point}, shows that if $\mathscr{M}$ is a closed linear subspace of $\hH$ and $x\in \hH$, 
+then there is a unique element $y_0\in A$ such that $x -y_0\perp \mathscr{M}$. Thus a function 
+$P: \hH\rightarrow \mathscr{M}$ can be defined by $Px = y_0$.
 
 
 \begin{definition}{}{projection}
-    If $\mathcal{M}\leqs \hH$ and $P: \hH\rightarrow \mathcal{M}$ given by $Px = y_0$, 
-    where $y_0$ is the unique element in $A$ such that $x -y_0\perp \mathcal{M}$.
-    Then $P$ is called the orthogonal projection of $\hH$ onto $\mathcal{M}$. If we wish to show this dependence of $P$ on $\mathcal{M}$, 
-we will denote the orthogonal projection of $\hH$ onto $\mathcal{M}$ by $P_{\mathcal{M}}$.
+    If $\mathscr{M}\leqs \hH$ and $P: \hH\rightarrow \mathscr{M}$ given by $Px = y_0$, 
+    where $y_0$ is the unique element in $\mathscr{M}$ such that $x -y_0\perp \mathscr{M}$.
+    Then $P$ is called the orthogonal projection of $\hH$ onto $\mathscr{M}$. If we wish to show this dependence of $P$ on $\mathscr{M}$, 
+we will denote the orthogonal projection of $\hH$ onto $\mathscr{M}$ by $P_{\mathscr{M}}$.
 \end{definition}
 \begin{remark}
     $P$ is onto.
@@ -176,17 +166,94 @@ we will denote the orthogonal projection of $\hH$ onto $\mathcal{M}$ by $P_{\mat
 
 
 \begin{theorem}{}{}
-    If $P$ is the orthogonal projection of $\hH$ onto $\mathcal{M}$, then\\
+    If $P$ is the orthogonal projection of $\hH$ onto $\mathscr{M}$, then\\
     (1) $P$ is a linear transformation on $\hH$,\\
     (2) $||Px||\leqs ||x||$ for every $x$ in $\hH$,\\
     (3) $P^2=P$,\\
-    (4) $N(P) = \mathcal{M}^{\perp}$ and $R(P)=\mathcal{M}$, \\
-    (5) $I-P$ is the orthogonal projection of $\hH$ onto $\mathcal{M}^{\perp}$.
+    (4) $N(P) = \mathscr{M}^{\perp}$ and $R(P)=\mathscr{M}$.
 \end{theorem}
 
 \begin{corollary}{}{}
-    If $\mathcal{M}\leqs \hH$, then $(\mathcal{M}^{\perp})^{\perp}=\mathcal{M}$. 
+    If $\mathscr{M}\leqs \hH$, then $(\mathscr{M}^{\perp})^{\perp}=\mathscr{M}$. 
 \end{corollary}
+
+\begin{proof}
+    Let $P=P_{\mathscr{M}}$, then $I-P$ is the orthogonal projection onto $\mathscr{M}^{\perp}$,
+    then $\text{ker}(I-P)=(\mathscr{M}^{\perp})^{\perp}$, then $(\mathscr{M}^{\perp})^{\perp}=\text{ker}(I-P)=\text{ran}P=\mathscr{M}$.
+\end{proof}
+
+\begin{proposition}{}{}
+    For any $A\subset \hH$,\\
+    (1) $A^{\perp}\leqs\hH$\\
+    (2) $(span(A))^{\perp}=A^{\perp}$\\
+    (3) $\overline{A}^{\perp} = A^{\perp}$\\    
+    (4) $A^{\perp\perp}=\vee A$.
+\end{proposition}
+
+\begin{proof}
+    (4) Since $A\subseteq ((A)^{\perp})^{\perp}$ and $\vee A$ is the smallest closed linear subspace containing $A$,
+    it follows that $\vee A\subseteq (A^{\perp})^{\perp}$. On the other hand, 
+    since $C\subseteq D\Rightarrow D^{\perp}\subseteq C^{\perp}$ and $A\subseteq \vee A$, 
+    it follows that $A\subseteq \vee A\Rightarrow (\vee A)^{\perp}\subseteq A^{\perp}\Rightarrow A^{\perp\perp}\subseteq (\vee A)^{\perp\perp}$.
+    Since $\vee A$ is closed, it follows that $(\vee A)^{\perp\perp}=\vee A$. Then $A^{\perp\perp}\subseteq \vee A$.
+    Hence, $\vee A=A ^{\perp\perp}$.
+\end{proof}
+
+\section{Homework}
+
+\begin{exercise}{I2 T2}{}
+    If $\mathscr{M}\leqs \mathscr{H}$ and $P=P_{\mathscr{M}}$. 
+    show that $I-P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}^{\perp}$.
+\end{exercise}
+\begin{proof}
+    Since $\mathscr{M}\leqs \mathscr{H}$, it follows that $\mathscr{M}=(\mathscr{M}^{\perp})^{\perp}$.
+    As $P=P_{\mathscr{M}}$, for $h\in\mathscr{H}$, $Ph\in \mathscr{M}$ and $h-ph=(I-P)h\in \mathscr{M}^{\perp}$.
+    Also $h-(h-ph)=ph\perp \mathscr{M}^{\perp}$. 
+    Since $Ph$ is unique, it follows that $(I-P)h$ is the unique element in $\mathscr{M}^{\perp}$ such that $h-(I-p)h=ph\perp \mathscr{M}^{\perp}$.
+    Hence, $I-P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}^{\perp}$.
+\end{proof}
+
+\begin{exercise}{I2 T3}{}
+    (a) If $\mathscr{M}\leqs \mathscr{H}$, show that $\mathscr{M}\cap \mathscr{M}^{\perp}=(0)$ 
+    and every $h$ in $\mathscr{H}$ can be written as $h=f+g$ where $f\in \mathscr{M}$ and $g\in \mathscr{M}^{\perp}$. 
+    \\
+    (b) If $\mathscr{M}+\mathscr{M}^{\perp}\equiv \{(f,g):f\in\mathscr{M},g\in\mathscr{M}^{\perp}\}$ and $T:\mathscr{M}+\mathscr{M}^{\perp}\rightarrow \mathscr{H}$
+    is defined by $T(f,g)=f+g$, show that $T$ is a linear bijection and a homeomorphism
+    if $\mathscr{M}+\mathscr{M}^{\perp}$ is given the product topology.
+    (This is usually phrased by stating the $\mathscr{M}$ and $\mathscr{M}^{\perp}$ are toplogically complementary in $\mathscr{H}$.) 
+\end{exercise}
+
+\begin{proof}
+    (a) $\forall h\in \mathscr{M}\cap \mathscr{M}^{\perp}$, we have $h\perp h$, then $\inner{h}{h}=0$ and so $h=0$.
+    Hence, $\mathscr{M}\cap \mathscr{M}^{\perp}=(0)$.\\
+    Let $P=P_{\mathscr{M}}$, then $ph$ is the unique element in $\mathscr{M}$ such that $h-ph\perp \mathscr{M}$, then $h-ph\in \mathscr{M}^{\perp}$.
+    Let $f=ph,g=h-ph$, then $f\in \mathscr{M},g\in\mathscr{M}^{\perp}$ and $h=f+g$.
+    \\
+    (b) 
+    Firstly, we show that $T$ is linear. For $c\in\F$ and $(f_1,g_1),(f_2,g_2)\in \mathscr{M}+\mathscr{M}^{\perp}$,
+    $T(f_1+f_2,g_1+g_2)=f_1+f_2+g_1+g_2=f_1+g_1+f_2+g_2=T(f_1,g_1)+T(f_2,g_2)$ and $T(cf_1,cg_1)=cf_1+cg_1=cT(f_1,g_1)$.
+    Hence, $T$ is linear.
+    \par
+    Next, we show that $T$ is bijective.
+    We know that $T$ is well-defined as $(f_1,g_1)=(f_2,g_2)$, $T(f_1,g_1)=f_1+g_1=f_2+g_2=T(f_2,g_2)$.
+    By (a), we know that $T$ is surjective. Now, we show that $T$ is injective.  
+    If $T(f_1,g_1)=T(f_2,g_2)$, then $f_1+g_1=f_2+g_2$ and so $f_1-f_2=g_1-g_2$.
+    Hence, $f_1-f_2=g_1-g_2\in \mathscr{M}\cap \mathscr{M}^{\perp}=(0)$. 
+    Then $f_1=f_2,g_1=g_2$ and so $(f_1,g_1)=(f_2,g_2)$. 
+    Hence, $T$ is a bijection.
+    \par
+    Now we show that $T$ is homeomorphism. It suffices to show that $T$ and $T^{-1}$ is continuous.
+    For a sequence $\{(f_n,g_n)\}\in \mathscr{M}+\mathscr{M}^{\perp}$ such that $(f_n,g_n)\underset{n\rightarrow \infty}{\longrightarrow} (f,g)$, 
+    we have $f_n\underset{n\rightarrow \infty}{\longrightarrow} f$, $g_n\underset{n\rightarrow \infty}{\longrightarrow}g$ and so $T(f_n,g_n)=f_n+g_n\underset{n\rightarrow \infty}{\longrightarrow} f+g$. Hence, $T$ is continuous.
+    For a sequence $\{h_n\}\in \mathscr{H}$ such that $h_n\underset{n\rightarrow \infty}{\longrightarrow} h$, 
+    there are sequences $\{f_n\}\subseteq \mathscr{M}$, $\{g_n\}\subseteq \mathscr{M}^{\perp}$ and $f\in\mathscr{M},g\in\mathscr{M}^{\perp}$ 
+    such that $h_n=f_n+g_n\underset{n\rightarrow \infty}{\longrightarrow} h=f+g$. 
+    Since $f_n\perp g_n$, $f_n\underset{n\rightarrow \infty}{\longrightarrow} f$ and $g_n\underset{n\rightarrow \infty}{\longrightarrow} g$.
+    Then $T^{-1}(h_n)=T^{-1}(f_n+g_n)=(f_n,g_n)\underset{n\rightarrow \infty}{\longrightarrow} (f,g)=T^{-1}(f+g)=T^{-1}(h)$.
+    Hence, $T^{-1}$ is continuous.
+    Hence, $T$ is a homeomorphism.
+\end{proof}
+
 
 \section{Reference}
 \begin{itemize}

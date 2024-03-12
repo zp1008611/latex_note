@@ -1,0 +1,29 @@
+\chapter{Finite Dimensional Normed Spaces}\label{chp:3_3}
+
+\begin{exercise}{III3 T2}{}
+    If $\mathscr{X}$ is a finite dimensional vector space over $\F$, define $||x||_{\infty}\equiv \max\{|x_j|:1\leqs j\leqs d\}$.
+    Show that $||\cdot||_{\infty}$ is a norm.
+\end{exercise}
+
+\begin{proof}
+    It is clearly that $||\cdot||_{\infty}$ is well defined.
+    Now, we show that $||\cdot||$ satisfys norm axioms.\\
+    (1) $||x||\geqs 0$ and $||x||_{\infty}=0\Leftrightarrow x=0$. In fact, $||x||_{\infty}\geqs 0$ is clear and 
+    \begin{align*}
+        ||x||_{\infty}=\max_{j}|x_j|=0&\Leftrightarrow 0\leqs |x_j|\leqs 0,\forall 1\leqs j\leqs d\\
+                        &\Leftrightarrow x=0
+    \end{align*}
+    (2) For $\alpha\in\F$, $||\alpha x||_{\infty}=|\alpha|||x||_{\infty}$. In fact, 
+    \begin{align*}
+        ||\alpha x||_{\infty}= \max_{j}|\alpha x_j|&= \max_{j}|\alpha||x_j|\\
+                            &= |\alpha|\max_{j}|x_j|\\
+                            &= |\alpha|||x||
+    \end{align*}
+    (3) $||x+y||_{\infty}\leqs ||x||_{\infty}+||y||_{\infty}$. In fact, 
+    \begin{align*}
+        ||x+y||_{\infty}&=\max\{|x_j+y_j|:1\leqs j\leqs d\}\\
+                        &\leqs \max \{|x_j|+|y_j|:1\leqs j\leqs d\}\\
+                        &\leqs \max_{j}|x_j| +\max_{j}|y_j|\\
+                        &=||x||_{\infty} + ||y||_{\infty}
+    \end{align*}
+\end{proof}

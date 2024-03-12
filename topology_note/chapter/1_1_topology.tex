@@ -55,7 +55,7 @@ Hence, $U\in\tau$;
 Hence, $U\in\tau$. 
 
 \begin{example}{Euclidean topology}{}
-    $\tau_e = \{U : U=\cup_{i} (a_i,b_i), a_i<b_i\in\R\}$. The number of $(a_i,b_i)$ can be infinite, finite or zero.
+    $\tau_e = \{U : U=\cup_{(a,b)\in I} (a,b), a<b\in \R, I \text{ is a collection of open interval}\}$. $I$ can be infinite, finite or zero.
         Then $\tau_e$ is called the euclidean topology on $\R$. We write $E^1=(\R,\tau_e)$.
 \end{example}
 (1) $\O$ = empty union. Then $\O\in \tau$. 
@@ -151,9 +151,9 @@ We call them "open sets". We shall also name the complements of open sets. They 
     Let $(X,\tau)$ be any topological space. Then the members of $\tau$ are said to be open sets.
 \end{definition}
 
-\begin{proposition}{}{}
+\begin{proposition}{}{open set judging}
     Let $U$ be a subset of a topological space $(X,\tau)$.
-    Then $U\tau$ iff for each $x\in U$ there exists $U_x\in\tau$ such that $x\in U_x\subseteq U$.
+    Then $U\in\tau$ iff for each $x\in U$ there exists $U_x\in\tau$ such that $x\in U_x\subseteq U$.
 \end{proposition}
 \begin{proof}
     ($\Rightarrow$): Since $U\in\tau$, for each $x\in U$, take $K=U$, then $x\in K\subseteq U$.\\
@@ -180,6 +180,20 @@ We call them "open sets". We shall also name the complements of open sets. They 
 \begin{proof}
     1
 \end{proof}
+
+According to our experience in Euclidian space topology, a set is closed if and
+only if any convergence sequence will converge to a point in that set.
+A natural question is:
+In topological spaces, do we still have: a set is closed if and only if it
+contains all its sequential limits? The answer is No! 
+You can see a counterexample from \href{http://staff.ustc.edu.cn/~wangzuoq/Courses/21S-Topology/Notes/Lec07.pdf}{lecture notes from ustc} page 2. 
+From this example, we can know that in a topological space, you can't claim a set A is
+closed by proving "if $x_n \in A$ and $x_n \rightarrow x_0$, then $x_0 \in A$". 
+But the necessity of the proposition is still true in topological sapce. And under the first countability, the sufficiency is true.
+All proof you can refer to \href{http://staff.ustc.edu.cn/~wangzuoq/Courses/21S-Topology/Notes/Lec07.pdf}{lecture notes from ustc} page 4-5.
+
+
+
 \subsection{Neighbourhood, interior point, interior}
 \begin{definition}{}{}
     Let $(X,\tau)$ be a topological space, $A$ a subset of $X$ and $x$ a point in $X$. Then
@@ -218,7 +232,7 @@ We call them "open sets". We shall also name the complements of open sets. They 
 The conception of limit point derived from Euclidean space. But we should note the current promotion conception has changing in meaning.
 In Euclidean space , finite sets have no limit points. However, in general topological space, finite set can do.
 
-\begin{example}{}{}
+\begin{example}{}{finit set can have limit point}
     Consider the topological space $(X,\tau)$ where the set $X=\{a,b,c,d,e\}$, the topology $\tau=\{X,\O, \{a\}, \{c,d\},\{a,c,d\},\{b,c,d,e\}\}$, 
     and $A=\{a,b,c\}$. Then $b,d$ and $e$ are limit points of $A$ but $a$ and $c$ are not limit points of $A$. 
 \end{example}
@@ -238,8 +252,25 @@ The open sets containing $b$ are $X$ and $\{b,c,d,e\}$. Then $X\cap A\setminus \
 \par
 \textcolor{red}{haven't done!}
 
+By the following proposition, we can know closure and interior are closely related.
+
+\begin{proposition}{}{closure and interior relation}
+   If $A=B^c$, then $\overline{A} = (\text{Int}(B))^c$.
+\end{proposition}
+
+\begin{proposition}{}{}
+    (1) $x\in \overline{A} \Leftrightarrow \forall U\in \tau \text{ with } x\in U, U\cap A\neq \O$\\
+    (2) If $A\subset B$, then $\overline{A}\subset \overline{B}$;\\
+    (3) $\overline{A}$ is the smallest closed subset of $X$ containing $A$;\\
+    (4) $\overline{A}$ is the intersection of all closed sets of $X$ containing $A$;\\
+    (5) $\overline{A}=A$ iff $A$ is closed;\\
+    (6) $\overline{A\cup B}=\overline{A}\cup\overline{B}$;\\
+    (7) $\overline{A\cap B}\subset \overline{A}\cap \overline{B}$.
+\end{proposition}
+
+
 \begin{example}{Limit point in discrete topology}{limit point in discrete topology}
-    Let $(X,\tau_d)$ be a discrete space and $A$ a subset of $X$. 
+    Let $(X,\tau_s)$ be a discrete space and $A$ a subset of $X$. 
     Then $A$ has no limit points, since for each $x\in X$, 
     $\{x\}$ is an open set containing no point of $A$ different from $x$.
 \end{example}
@@ -275,7 +306,7 @@ The open sets containing $b$ are $X$ and $\{b,c,d,e\}$. Then $X\cap A\setminus \
     Suppose $(U\cup \{x\})\cap A\setminus \{x\} = \O$. Then $A\setminus \{x\}\subseteq U^c$ and so $A$ is countable.
     So if $A$ is uncountable, it is bound to $(U\cup \{x\})\cap A\setminus\{x\}\neq \O$. Hence, $x\in X$ is a limit point of $A$.
     \par
-    (2) For any $U\in \tau$, $U^c$ is countable. Since $(A^c)^c=A$ is countable, $A^c\in\tau$. Then $A$ is closed.
+    (2) For any $U\in \tau$, $U^c$ is countable. Since $(A^c)^c=A$ is countable, $A^c\in\tau$. Then $A$ is closed. Then $A'\subseteq A$.
     Hence, $A$ contains all its limit points.  
 
 
@@ -328,20 +359,7 @@ The open sets containing $b$ are $X$ and $\{b,c,d,e\}$. Then $X\cap A\setminus \
     \caption{}
 \end{figure}
 
-By the following proposition, we can know closure and interior are closely related.
 
-\begin{proposition}{}{}
-   If $A=B^c$, then $\overline{A} = (\text{Int}(B))^c$.
-\end{proposition}
-
-\begin{proposition}{}{}
-    (1) If $A\subset B$, then $\overline{A}\subset \overline{B}$;\\
-    (2) $\overline{A}$ is the smallest closed subset of $X$ containing $A$;\\
-    (3) $\overline{A}$ is the intersection of all closed sets of $X$ containing $A$;\\
-    (4) $\overline{A}=A$ iff $A$ is closed;\\
-    (5) $\overline{A\cup B}=\overline{A}\cup\overline{B}$;\\
-    (6) $\overline{A\cap B}\subset \overline{A}\cap \overline{B}$.
-\end{proposition}
 
 \begin{example}{}{}
     Let $X=\{a,b,c,d,e\}$ and
@@ -365,7 +383,7 @@ By the following proposition, we can know closure and interior are closely relat
 
 
 \begin{example}{}{}
-    $(X,\tau_d)$ is separable iff $X$ is countable. 
+    $(X,\tau_s)$ is separable iff $X$ is countable. 
 \end{example}
 refer to \href{https://astarmathsandphysics.com/university-maths-notes/topology/2198-proof-that-a-discrete-space-is-separable-if-and-only-if-it-is-countable.html}{website proof}.
 
@@ -406,8 +424,11 @@ prove that $\overline{\Q}$=$\R$.
     \end{align*}
 \end{definition}
 
-In euclidean space,  the convergence point of a convergent sequence is unique and when $x$ is the limit point of the set $A$, there is a sequence $(x_n)$ in A, which converges to $x$. 
-However, In general topological space, some difference appear.
+In euclidean space,  the convergence point of a convergent sequence is unique but this is not true in cocountable space.
+And in euclidean space, when $x$ is the limit point of the set $A$, there is a sequence $(x_n)$ in A, which converges to $x$. 
+But this is not ture in topological space, you can recall the example\ref{exa:finit set can have limit point}, 
+in which there is no sequence converges to the limit point. 
+ 
 \begin{proposition}{}{sequence convergence in cofinite topology}
     Let $(x_n)$ be a sequence which elements are different in $(R,\tau_f)$, then $\forall x\in X$, $x_n\rightarrow x$. 
 \end{proposition}
@@ -445,8 +466,10 @@ Let's check that $\tau_A$ is indeed a topology on $A$.\\
 (3) If $U_1,U_2\in\tau_A$, then $U_1\cap U_2 = (O_1\cap A)\cap (O_2\cap A)=(O_1\cap O_2)\cap A\in \tau_A$.
 
 In the following content,  we follow the convention: a subset of topological Spaces is treated as a subspace. 
-\par
-Let $(X,\tau)$ be a topological space and $B\subseteq A\subseteq X$. Then
+\begin{proposition}{}{Subspace of Subspace is Subspace}
+    Let $(X,\tau)$ be a topological space and $B\subseteq A\subseteq X$. Then $(\tau_A)_B=\tau_B$.
+\end{proposition}
+
 \begin{align*}
     (\tau_A)_B = & \{K\cap B:K\in \tau_A\} \\
         =  &\{(O\cap A)\cap B: O\in\tau\} \\
@@ -482,7 +505,7 @@ Also $(1,2]$ is not open in $\R$ but is open in $[1,2]$. Even $[1,2]$ is not ope
 \par
 So whenever we speak of a set being open we must make perfectly clear in what space or what topology it is an open set. 
 
-\begin{proposition}{}{closed intersection}
+\begin{proposition}{}{closed in subspace}
     Let $(X,\tau)$ be a topological space and $C\subset A\subset X$, then
     \begin{align*}
         C \text{ is closed in } A\Leftrightarrow C = A\cap V, \text{ where $V$ is closed in $X$}.  
@@ -509,7 +532,7 @@ So whenever we speak of a set being open we must make perfectly clear in what sp
         \end{align*}
 \end{proof}
 
-\begin{proposition}{}{}
+\begin{proposition}{}{closed transitive1}
     Let $(X,\tau)$ be a topological space, $B\subset A\subset X$, then\\
     (1) If $B$ is open(closed) in $X$, then $B$ is open(closed) in $A$;\\
     (2) If $A$ is open(closed) in $X$ and $B$ is open(closed) in $A$, then $B$ is open(closed) in $X$.
@@ -523,9 +546,30 @@ So whenever we speak of a set being open we must make perfectly clear in what sp
     Then, $B = X\cap (V_1\cap V_2)$. As $V_1\cap V_2$ is closed in $X$, $B$ is closed in $X$. 
 \end{proof}
 
+\begin{corollary}{}{closed transitive2}
+    Let subspace $A$ be closed in $X$. Then 
+    $C\subset A$ is closed in $A$ iff $C$ is closed in $X$.
+\end{corollary}
+\begin{proof}
+    ($\Rightarrow$): By proposition\ref{prop:closed in subspace}, $\exists V$ which is closed in $X$ such that $C=A\cap V$.
+    Since $A$ and $V$ are closed in $X$, it follows that $C=A\cap V$ is closed in $X$.
+    \\
+    ($\Leftarrow$): By proposition\ref{prop:closed transitive1}.
+\end{proof}
+
+\begin{proposition}{}{}
+    Let $(X,\tau)$ be a topological space and $A\subset Y\subset X$. Then $\text{cl}_Y(A)=A\cap \text{cl}_X(A)$.
+\end{proposition}
+
+\begin{proof}
+    $\text{cl}_Y=\cap \{K\subseteq Y:A\subseteq K, k \text{ is closed in} Y\}$\\
+    
+\end{proof}
+
 \section{Reference}
 \begin{itemize}
     \item \href{https://www.ms.uky.edu/~guillou/F14/551Notes-Week4.pdf}{lecture notes from uky}
+    \item \href{http://staff.ustc.edu.cn/~wangzuoq/Courses/21S-Topology/Notes/Lec07.pdf}{lecture notes from ustc}
 \end{itemize}
 \section{Exercise}
 

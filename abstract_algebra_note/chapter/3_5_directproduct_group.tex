@@ -1,0 +1,111 @@
+\chapter{The Direct Product of Group}\label{chp:3_5}
+
+\begin{definition}{}{}
+  Let $(G,\circ)$ and $(H,\diamond)$ be groups. Put 
+  \begin{align*}
+    G\times H=\{(g,h):g\in G,h\in H\}
+  \end{align*}
+  with the operation  $(g_1,h_1)\times (g_2,h_2)=(g_1\circ g_2, h_1\diamond h_2)$. 
+  Then $G\times H$ is a group, with identity $(1_G,1_H)$ and $(g,h)^{-1}=(g^{-1},h^{-1})$.
+  It is called the outer direct product of $G$ and $H$.
+\end{definition}
+Similarly, there is a general case.
+\begin{definition}{}{}
+    Let $G_1,...,G_n$ be groups. Put 
+    \begin{align*}
+      G = G_1\times ...\times G_n=\{(x_1,...,x_n):x_i\in G_i\}
+    \end{align*}
+    with the operation  $(x_1,...,x_n)\times (y_1,...,y_n)=(x_1y_1,..., x_ny_n)$. 
+    Then $G$ is a group, with identity $e = (e_1,...,e_n)$ and $(x_1,...,x_n)^{-1}=(x_1^{-1},...,x_n^{-1})$.
+    It is called the outer direct product of $G_1,...,G_n$.
+\end{definition}
+
+Let's review the product of subgroups: 
+\begin{proposition}{}{}
+    Let $(G,\cdot)$ be a group and $X,Y\leqs G$, then
+\begin{align*}
+    XY = {x\cdot y:x\in X,y\in Y}.
+\end{align*}
+If $X<Y\unlhd G$, then $XY$ is a normal subgroup of $G$.
+\end{proposition}
+
+
+
+
+\begin{theorem}{}{}
+    Put
+    \begin{align*}
+        G^* &= \{(g,1_H):g\in G\}.
+        H^* &= \{(1_G,h):h\in H\}
+    \end{align*}
+    and define $\sigma_1 : G\times H\rightarrow H$ by $\sigma_1(g,h)=h$. Then\\
+    (1) $\sigma_1$ is a homomorphism, $\Im \sigma_1 = H$ and $\Ker\sigma_1 = G^*$\\
+    (2) $G^*\unlhd G\times H$ and $(G\times H)/G^*\cong H$.\\
+    Similarly, define $\sigma_2 : G\times H\rightarrow G$ by $\sigma_2(g,h)=g$. Then\\
+    (3) $\sigma_2$ is a homomorphism, $\Im \sigma_2 = G$ and $\Ker\sigma_2 = H^*$\\
+    (4) $H^*\unlhd G\times H$ and $(G\times H)/H^*\cong G$.\\
+    And more, \\
+    (5) $G\cong G^*$ and $H\cong H^*$\\
+    (6) $G^*H^*=G\times H$\\
+    (7) $G^*\cap H^*=\{(1_G,1_H)\}$.
+\end{theorem}
+
+Similarly, there is general case.
+
+\begin{theorem}{}{}
+    $G = G_1\times ... \times G_n$. Put
+    \begin{align*}
+        G_i^* &= \{(x_1,...,x_n)\in G:x_i\in G_i\text{ and }x_j=e_j, \forall j\neq i\}
+    \end{align*}
+    and define $\sigma_i : G\rightarrow G_i$ by $\sigma_i(x_1,...,x_n)=x_i$. Then\\
+    (1) $\sigma_i$ is a homomorphism, $\Im \sigma_i = G_i$ and $\Ker\sigma_i = G_i^*$\\
+    (2) $G_i^*\unlhd G$.\\
+    And more, \\
+    (3) $\forall i, G_i\cong G_i^*$\\
+    (4) $G_1^*\cdot\cdot\cdot G_n^*=G$\\
+    (5) $\forall i, G_i^*\cap \prod_{j\neq i}G_j^*=\{e\}$.
+\end{theorem}
+
+\begin{proposition}{}{inner direct product motivation}
+    Let $N_1,...,N_m$ be normal groups of $G$, then the following statements are equivalent:\\
+    (1) $\forall i=1,...,n$, $N_i\cap \prod_{j\neq i}N_j=\{e\}$.\\
+    (2) $x_i,y_i\in N_i, i=1,...,m$. Then $x_1\cdot\cdot\cdot x_m=y_1\cdot\cdot\cdot y_m$ iff $x_i=y_i, \forall i$.\\
+    (3) $e=x_1\cdot\cdot\cdot x_m(x_i\in N_i)$, then $x_1=x_2=...=x_m=\{e\}$.
+\end{proposition}
+
+ 
+If $N_1,...,N_m$ are subgroups of $G$ and $\forall x\in G, \exists ! x_i\in N_i, \text{ s.t. } x=x_1\cdot\cdot\cdot x_m$,
+then $G$ is called the inner direct product of $N_1,...,N_m$. If $N_1,...,N_m$ are normal, 
+by proposition\ref{prop:inner direct product motivation}, 
+we can get a concise proposition.
+
+\begin{proposition}{}{}
+    If $N_1,...,N_m$ are normal subgroups of $G$, $G$ is called the inner direct produt of $N_1,..,N_m$ if\\
+    (1) $N_1\cdot\cdot\cdot N_m=G$, and\\
+    (2) $\forall i, N_i\cap \prod_{j\neq i}N_j=\{e\}$
+\end{proposition}
+
+\begin{proposition}{}{}
+    Let $G_1,...,G_n$ be groups. Then $G=G_1\times ...\times G_n$ is 
+    the inner direct sum of $G_1^*,...,G_n^*$.
+\end{proposition}
+
+
+\begin{theorem}{}{}
+    Let $G$ be a group and let $N_1,...,N_m$ be normal subgroups of $G$. 
+    If $G$ is the inner direct sum of $N_1,...,N_m$, then $G\cong N_1\times ...\times N_m$.
+\end{theorem}
+
+
+\begin{example}{}{}
+    Let $p$ be a prime 
+\end{example}
+\textcolor{Red}{Haven't done!}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://webspace.maths.qmul.ac.uk/r.a.bailey/MAS305/algnotes14.pdf}{lecture notes from queen mary}
+    \item \href{https://www.uou.ac.in/lecturenotes/science/MSCMT-19/unit%201.pdf}{lecture notes from uou}
+\end{itemize}
+

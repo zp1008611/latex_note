@@ -117,7 +117,7 @@
 % }
 
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{definition% 环境名
 }{Definition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
@@ -129,8 +129,13 @@
 }
 
 
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@definition{\thechapter.\arabic{tcb@cnt@definition}}
+\makeatother
+
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{theorem% 环境名
 }{Theorem% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
@@ -140,10 +145,13 @@
   fonttitle=\sffamily\small
 }{thm% label 前缀
 }
-
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@theorem{\thechapter.\arabic{tcb@cnt@theorem}}
+\makeatother
 
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{proposition% 环境名
 }{Proposition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
@@ -153,9 +161,13 @@
   fonttitle=\sffamily\small
 }{prop% label 前缀
 }
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@proposition{\thechapter.\arabic{tcb@cnt@proposition}}
+\makeatother
 
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{corollary% 环境名
 }{Corollary% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
@@ -166,8 +178,13 @@
 }{cor% label 前缀
 }
 
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@corollary{\thechapter.\arabic{tcb@cnt@corollary}}
+\makeatother
+
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{lemma% 环境名
 }{Lemma% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
@@ -178,9 +195,14 @@
 }{lem% label 前缀
 }
 
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@lemma{\thechapter.\arabic{tcb@cnt@lemma}}
+\makeatother
+
 
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{example}
 {Example}%
   {
@@ -192,9 +214,14 @@
   }
 {exa}
 
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@example{\thechapter.\arabic{tcb@cnt@example}}
+\makeatother
+
 
 \newtcbtheorem[
-  number within = chapter % 按每个 chapter 分别编号
+  auto counter,number within = chapter % 按每个 chapter 分别编号
 ]{exercise}
 {Exercise}%
   {
@@ -205,6 +232,11 @@
     fonttitle=\sffamily\small
   }
 {exer}
+
+% 计数器设置
+\makeatletter
+\renewcommand\theHtcb@cnt@exercise{\thechapter.\arabic{tcb@cnt@exercise}}
+\makeatother
 
 
 % \declaretheorem[numberwithin=chapter,shaded={rulecolor=LightGreen,
@@ -317,9 +349,11 @@ delim_0 "\\nobreak\\dotfill"
 \newcommand{\Zo}{\ensuremath{\mathbb{Z}_{\geqslant 0}}} % 非负整数集
 \newcommand{\Zi}{\ensuremath{\mathbb{Z}_{\geqslant 1}}} % 正整数集
 \newcommand{\id}{\mathrm{id}}
-\newcommand{\im}{\mathrm{im}\,}                         % 映射的像
+% \newcommand{\im}{\mathrm{im}\,}                         % 映射的像
 \newcommand{\leqs}{\leqslant}
 \newcommand{\geqs}{\geqslant}
 \newcommand{\ci}{\mathrm{i}}
 \newcommand{\hH}{\mathcal{H}}
 \newcommand{\hK}{\mathcal{K}}
+\newcommand{\Ker}{\text{Ker }}
+\newcommand{\geg}[1]{\langle#1\rangle}

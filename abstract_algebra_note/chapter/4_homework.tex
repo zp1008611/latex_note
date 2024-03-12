@@ -1,0 +1,256 @@
+\chapter{Exercise About Ring}
+
+\begin{exercise}{}{}
+    Let $R$ be a ring with unity and $a$ be nilpotent in $R$(i.e. $\exists n\in\N$ s.t. $a^n=0$). Then 
+    $1-a$ is a unit in $R$.
+\end{exercise}
+
+\begin{proof}
+    It suffices to show there exists $b\in R$ such that $(1-a)b=b(1-a)=1$.
+    Since 
+    \begin{align*}
+        (1-a)(a^{n-1}+a^{n-2}+...+a+1)=1-a^n&=1,\\
+        (a^{n-1}+a^{n-2}+...+a+1)(1-a)=1-a^n&=1.
+    \end{align*}
+    Hence, $1-a$ has a multiplication inverse in $R$ and so is a unit in $R$. 
+\end{proof}
+
+\begin{exercise}{}{}
+    Prove
+    \begin{align*}
+        \mathcal{H}=\{a+bi+cj+dk:a,b,c,d\in\Z \text{ or } a,b,c,d\in \frac{1}{2}+\Z\}
+    \end{align*}
+    is a subring of Hamilton's quaternions $\mathbb{H}$.
+\end{exercise}
+
+\begin{proof}
+    It suffices to show $\mathcal{H}$ is a subgroup of $\mathbb{H}$ under addition and
+    is closed under multiplication.\\
+    For $x=a_1+b_1i+c_1j+d_1k_1,y=a_2+b_2i+c_2j+d_2k_2\in\mathcal{H}$,
+    \begin{align*}
+        x\pm y = (a_1\pm a_2)+(b_1\pm b_2)i+(c_1\pm c_2)j+(d_1\pm d_2)k
+    \end{align*} 
+    If $a_1,a_2\in \Z$, then $a_1\pm a_2\in\Z$ as $\Z$ is a ring.
+    If $a_1,a_2\in \frac{1}{2}+ \Z$, then $a_1\pm a_2\in \Z$.
+    If $a_1\in\Z$ and $a_2\in \frac{1}{2}+ \Z$, then $a_1\pm a_2\in \frac{1}{2}+\Z$.
+    Similarly, $b_1\pm b_2,c_1\pm c_2,d_1\pm d_2\in \Z$ or $\frac{1}{2}+\Z$.
+    Hence, $\mathcal{H}$ is a subgroup of $\mathbb{H}$ under addition.
+    \begin{align*}
+        xy&=(a_1+b_1i+c_1j+d_1k)(a_2+b_2i+c_2j+d_2k)=a_1a_2+a_1b_2i+a_1c_2j+a_1d_2k\\
+            &\hspace{8cm}                          b_1a_2i+b_1b_2i^2+b_1c_2ij+b_1d_2ik\\
+            &\hspace{8cm}                          c_1a_2j+c_1b_2ji+c_1c_2j^2+c_1d_2jk\\
+            &\hspace{8cm}                         d_1a_2k+d_1b_2ki+d_1c_2kj+d_1d_2k^2 \\
+            &= (a_1a_2-b_1b_2-c_1c_2-d_1d_2)+(a_1b_2+b_1a_2+c_1d_2-d_1c_2)i \\
+            &\ \ + (a_1c_2-b_1d_2+c_1a_2+d_1b_2)j + (a_1d_2+b_1c_2-c_1b_2+d_1a_2)k
+    \end{align*}
+    If $a_1,a_2\in\Z$, then $a_1a_2\in\Z$ as $\Z$ is a ring. Similarly, $b_1b_2,c_1c_2,d_1d_2\in \Z$, then, $a_1a_2-b_1b_2-c_1c_2-d_1d_2\in\Z$.
+    If $a_1,a_2\in\frac{1}{2}+\Z$, $a_1a_2=(\frac{1}{2}+t)(\frac{1}{2}+s)=\frac{1}{4}+\frac{1}{2}(s+t+2st)\in\frac{1}{4}+\frac{1}{2}\Z$, 
+    then $a_1a_2-b_1b_2-c_1c_2-d_1d_2\in \frac{1}{2}+\Z$.
+    If $a_1\in\Z,a_2\in\frac{1}{2}+\Z$, $a_1a_2=s(\frac{1}{2}+t)=\frac{1}{2}s+st\in\frac{1}{2}\Z+\Z$, 
+    then $a_1a_2-b_1b_2-c_1c_2-d_1d_2\in \Z$. Similar results are found for other coefficient terms. 
+    Hence, $\mathcal{H}$ is closed under multiplication.
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $R$ be a ring and $S$ be a collection of all ideals in $R$. 
+    Is $S$ a abelian group with respect to the addition of ideal? 
+\end{exercise}
+
+\begin{proof}
+    For $I, J, K\in S$, if \\
+    (0) $I+J\in S$\\
+    (1) $(I+J)+K=I+(J+K)$\\
+    (2) $(0)\in S$\\
+    (3) If $I+J=(0)$ , then any $a\in I,b\in J$, $a+b=0$, then $I=J=(0)$.
+    Hence, every non-zero ideal has no inverse in $S$ and so $S$ 
+    is not group with respect to the addition of ideal.
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $R$ be a commutative ring with unity and $I$ be a ideal in $R$, then
+    \begin{align*}
+        \sqrt{I} = \{a\in R:\exists n>0 \text{ s.t. } a^n\in I\}
+    \end{align*}
+    is a ideal in $R$.
+\end{exercise}
+\begin{proof}
+    It suffices to show $\sqrt{I}$ is a addition subgroup of $R$ and 
+    for any $a\in \sqrt{I}$ and $r\in R$, $ra,ar\in I$.\\
+    For any $a,b\in\sqrt{I}$ with some powers $a^n,b^m\in I$. To show that 
+    $(a+b)\in \sqrt{I}$, we use the binomial theorem (which holds for any commutative ring):
+    \begin{align*}
+        (a+b)^{n+m-1}=\sum\limits_{i=0}^{n+m-1}
+        \begin{pmatrix}
+            n+m-1\\
+           i
+           \end{pmatrix} a^ib^{n+m-1-i}.
+    \end{align*}
+    When $i<n$, $n+m-1-i\geqs m$, the corresponding item has the form $rb^m(r\in R)$ and is in $I$.
+    When $i\geqs n$, the corresponding item has the form $ra^n(r\in R)$ and is in $I$.
+    Then, $(a+b)^{n+m-1}\in I$. Similarly, $(a-b)^{n+m-1}\in I$.
+    Then, $a\pm b\in\sqrt{I}$.
+    Hence, $\sqrt{I}$ is a addition subgroup of $R$.
+    For any $r\in R$, 
+    \begin{align*}
+        (ra)^n = r^na^n
+    \end{align*}
+    Since $r^n\in R, a^n\in I$, $r^na^n\in I$.
+    Then $ra\in \sqrt{I}$.
+    Hence, $\sqrt{I}$ is an ideal in $R$. 
+\end{proof}
+
+\begin{remark}
+    $\sqrt{I}$ is called The radical of $I$.
+\end{remark}
+
+\begin{exercise}{}{}
+    Put $\Z[\omega]=\{a+b\omega:a,b\in\Z\}$, where $\omega=\frac{-1+\sqrt{-3}}{2}$. What is $|U(\Z[\omega])|$ equal to? 
+\end{exercise}
+
+\begin{proof}
+   Suppose $a,b,c,d\in\Z$ and $(a+b\omega)(c+d\omega)=1$. 
+   Take the conjugate of both sides: 
+   \begin{align*}
+        (a+b\overline{\omega})(c+d\overline{\omega})=1.
+   \end{align*}
+   Since $\omega=\frac{-1+\sqrt{-3}}{2}=-\frac{1}{2}+\frac{\sqrt{3}}{2}i$, 
+   $\overline{\omega}=-\frac{1}{2}-\frac{\sqrt{3}}{2}i$ and $\omega\overline{\omega}=1$.
+   Then
+   \begin{align*}
+    1=(a+b\omega)(a+b\overline{\omega})(c+d\omega)(c+d\overline{\omega})=(a^2-ab+b^2)(c^2-cd+d^2).
+   \end{align*}
+   Since $a,b,c,d\in\Z$, $a^2-ab+b^2=1$ and $c^2-cd+d^2=1$.
+   Then $(a-\frac{b}{2})^2+\frac{3}{4}b^2=1$. 
+   Clearly, if $|b| \geqs 2$, 
+   then the left hand side is at least $3$, 
+   so it must be the case that $|b|\leqs 1$.
+   Thus we need to check if integer solutions exist for 
+   $b = -1, b = 0$ or $b = 1$.
+   In fact, to each of those $b$'s correspond two values of $a$.
+   The complete list of solutions is:
+   $(a, b) = (-1, -1), (-1, 0), (0, -1), (0, 1), (1, 0), (1, 1)$
+   Hence, $U(\Z[\omega])=\{\pm 1, \pm \omega, 1+\omega, -1-\omega\}$.
+   Since $\omega^3=1$, $\omega^3-1=(\omega-1)(\omega^2+\omega+1)=0$ and so $\omega^2 = -1-\omega$.
+   Hence, $U(\Z[\omega])=\{\pm 1, \pm \omega, \pm \omega^2\}$ and $|U(\Z[\omega])|=6$.
+\end{proof}
+
+\begin{remark}
+    $\Z[\omega]$ is called Eisenstein Integers. 
+\end{remark}
+
+\begin{exercise}{}{}
+    Let $R$ be a ring with unity and $I,J,K$ be ideals in $R$, then 
+    \begin{align*}
+        I \text{ and } JK \text{ are coprime }  \Leftrightarrow I,J \text{ are coprime and } I,K \text{ are coprime}.  
+    \end{align*}
+\end{exercise}
+
+\begin{proof}
+    ($\Rightarrow$): It suffices to show that $1\in I+J$ and $1\in I+K$.
+    Since $I+JK=1$, there exists $i\in I,j\in J,k\in K$ such that $i+jk=1$.
+    Then in $R$,
+    \begin{align*}
+        1=1\cdot 1 = (i+jk)(i+jk)=i^2+ijk+jki+(jk)^2&=(i^2+ijk+jki)+(jk)^2\in I+J\\
+                                                    &= i^2 + (ijk+jki+(jk)^2)\in I+K.
+    \end{align*}
+    Hence, $I+J=R$ and $I+K=R$ and so be coprime respectively.\\
+    ($\Leftarrow$):
+    It suffices to show that $1\in I+JK$. Since $I+J=R$, there exists $i\in I$ and $j\in J$
+    such that $i+j=1$. Since $I+K=R$, there exists $i'\in I, k\in K$ such that $i'+k=1$.
+    Hence in $R$,
+    \begin{align*}
+        1=1\cdot 1=(i+j)(i'+k)=ii'+ik+ji'+jk=(ii'+ik+ji')+jk\in I+JK.
+    \end{align*}
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $R$ be a ring with unity and $R_1,...,R_n$ be ideals in $R$. 
+    If $R$ is inner direct sum of $R_1,...,R_n$, then for any ideal $I$ in $R$, 
+    $I$ is inner direct sum of $I\cap R_1,...,I\cap R_n$.
+\end{exercise}
+\begin{proof}
+    Any ideal in a ring is a ring, then $I$ is a ring.
+    Firstly, we should show that $I\cap R_i$ is a ideal in $I$.
+    (1) $\O\neq I \cap R_i\subseteq I$. \\
+    (2) $I\cap R_i$ is a abelian group with respect to addition as $I$ and $R_i$ are abelian group with respect to addition.\\
+    (3) for $x\in I$, $y\in I\cap R_i$, $xy,yx\in I\cap R_i$ as $I$ and $R_i$ are ideals.\\
+    Secondly, we should show that $I=(I\cap R_1)+...+(I\cap R_n)$ and $\forall i, (I\cap R_i)\cap \sum\limits_{j\neq i}(I\cap R_j)=\{0\}$.\\
+    We have known that $R=R_1+...+R_n$ and $\forall i, R_i\cap \sum\limits_{j\neq i}R_j=\{0\}$. 
+    Since $I=IR=IR_1+...+IR_n\subset (I\cap R_1)+...+(I\cap R_n)$ and $(I\cap R)+...+(I\cap R_n)\subset I\cap (R_1+...+R_n)=I\cap R=I$,
+    $I=(I\cap R_1)+...+(I\cap R_n)$.
+    And $\forall i, (I\cap R_i)\cap \sum\limits_{j\neq i}(I\cap R_j)\subset I\cap (R_i\cap \sum\limits_{j\neq i}{R_j})=\{0\}$ and ${0}\subset (I\cap R_i)\cap \sum\limits_{j\neq i}(I\cap R_j)$.
+    Then, $(I\cap R_i)\cap \sum\limits_{j\neq i}(I\cap R_j)={0}$.
+    Hence, $I$ is inner direct sum of $I\cap R_1,...,I\cap R_n$.
+\end{proof}
+
+
+\begin{exercise}{}{}
+    Let $R$ be a commutative ring with unity. If for any $a\in R$, 
+    there exists $n\in\Z$ and $n>1$ such that $a^n=a$, then any prime ideal in $R$ is maximal.
+\end{exercise}
+\begin{proof}
+    Suppose $I$ is a ideal in $R$. To prove $I$ is maximal, it suffices to 
+    show that the quotient $R/I$ is a field.
+    Let $\overline{a}=a+I$ be a nonzero element of $R/I$, where $a\in R$.
+    Since there exists an integer $n>1$ such that $a^n=a$.
+    Then we have 
+    \begin{align*}
+        (\overline{a})^n=a^n+I=a+I=\overline{a}.
+    \end{align*}
+    Thus we have
+    \begin{align*}
+        \overline{a}(\overline{a}^{n-1}-1)=0
+    \end{align*}
+    in $R/I$.
+    Note that $R/I$ is an integral domain since $I$ is prime.
+    Since $\overline{a}\neq \overline{0}$, the above equality yields that $\overline{a}^{n-1}-1=\overline{0}$, and hence
+    \begin{align*}
+        \overline{a}\cdot \overline{a}^{n-2}=1.
+    \end{align*}
+    Thus, $\overline{a}$ has multiplicative inverse $\overline{a}^{n-2}$.
+    This prove that each nonzero element of $R/I$ is invertible. 
+    Since $R$ is commutative, $R/I$ is commutative. Hence, $R/I$ is a field.
+\end{proof}
+
+
+\begin{exercise}{}{}
+    In $\Z[x]$, $(3)$ is prime but not maximal.
+\end{exercise}
+
+\begin{proof}
+    Assume $P$ and $Q$ are polynomials. Suppose $PQ\in (3)$ but neither $P$ or $Q$ is in $(3)$,
+    then each has at least one coefficient which is not a multiple of $3$. 
+    Suppose $p_i$ and $q_j$ are the lowest degree term of $P$ and $Q$ such that the coefficient is
+    not a multiple of $3$.
+    Consider the coefficient of $x^{i+j}$ in $PQ$, it is given by
+    \begin{align*}
+        (p_0q_{i+j}+...+p_{i-1}q_{j+1})+(p_iq_j)+(p_{i+1}q_{j-1}+...+p_{i+j}q_0)
+    \end{align*}
+    As each of $p_0,...,p_{i-1}$ is divisible by $3$ by assumption, the first piece is divisible by $3$, 
+    and likewise each of $q_0,...,q_{j-1}$ is divisible by $3$ so the third piece is also divisible by $3$. 
+    But the middle term is not divisible by $3$ since neither $p_i$ nor $q_j$
+    is divisible by $3$, so the coefficient of $x^{i+j}$
+    in $PQ$ is not divisible by $3$, so $PQ$
+    does not lie in $(3)$. Thus $(3)$ is prime. 
+    Since $(3)\subset <3,x>\subset R$, $(3)$ is not maximal.  
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $R$ be a commutative finite ring with unity, then any prime ideal in $R$ is maximal.
+\end{exercise}
+
+\begin{proof}
+    Suppose $I$ is prime ideal in $R$, then $R/I$ is a finite integral domain with unity $\overline{1}$.
+    Let $\overline{a}$ is non-zero element in $R/I$. Since $R/I$ is finite, there exists $i>j$ such that $\overline{a}^i=\overline{a}^j$.
+    Since $R$ is integral domain, by the cancellation, we have $\overline{a}(\overline{a}^{i-j-1})=1$ and so $\overline{a}$ is invertible.
+    Hence, $R/I$ is a field as $R/I$ is commutative and so $I$ is maximal.
+\end{proof}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://en.wikipedia.org/wiki/Radical_of_an_ideal#cite_note-1}{Radical of an ideal}
+    \item \href{https://www.cemc.uwaterloo.ca/events/mathcircles/2018-19/Fall/Senior_Nov14_Soln.pdf}{Eisenstein Integers}
+    \item \href{https://www2.math.upenn.edu/~chai/371s10/371hws10/Math371HwSolns.pdf}{Prove that $(3)$ and $(x)$ are prime ideals in $\Z[x]$.}
+    \item \href{https://www.math.umd.edu/~immortal/MATH403/lecturenotes/ch13.pdf}{Every finite integral domain is a field}
+\end{itemize}
