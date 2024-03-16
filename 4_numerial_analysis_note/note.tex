@@ -1,0 +1,92 @@
+% \documentclass[11pt,twoside]{book} %纸质版用twoside
+\documentclass[12pt,oneside]{book} %电子版用oneside
+\usepackage{setspace}
+
+% \documentclass{article}
+
+\input{notes_template.tex}
+
+%%%%%%%%%%%%%%%%%%% biblatex %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+\input{./glossaries.tex}
+%%%%%%%%%%%%%%%%%%%%% glossaries %%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+% \usepackage[record,abbreviations,symbols,stylemods={list,tree,mcols}]{glossaries-extra}
+%%%%%%%%%%%%%%%%%%%%% glossaries-extra %%%%%%%%%%%%%%%%%
+
+
+\input{./macros.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%% begin of document %%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{\bf \huge Study Notes of Matrix and Tensor}
+% \title{\bf \huge Homework of Functional Analysis}
+\author{Pei Zhong}
+% \date{Update on \today}
+
+\maketitle
+
+% \newpage
+% \let\cleardoublepag\clearpage
+
+\tableofcontents
+
+\begin{spacing}{1}
+
+%%%%%%%%%%%%%%update progress%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%update progress end%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%preface%%%%%%%%%%%%%
+\input{chapter/preface.tex}
+%%%%%%%%%%%%%preface end%%%%%%%%%%%%%
+
+
+
+\input{chapter/1_matrix_algebra.tex}
+\input{chapter/2_matrix_product.tex}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%Content%%%%%%%%%%%%%%%
+% % \mainmatter % separat the number of toc and mainmatter
+% \input{./chapter/preface.tex}
+% \part{Mathematics}
+
+% \input{./chapter/discrete_math.tex}
+
+% \part{Computer Science}
+% % \input{./chapter/complexity.tex}
+% \input{./chapter/machine_learning.tex}
+% % \input{./chapter/algorithms.tex}
+
+% \part{Physics}
+% \input{./chapter/quantum_mechanics.tex}
+% % \input{./chapter/quantum_field_theory.tex}
+
+% % \begin{appendices}
+% % \input{./chapter/appendix_formula.tex}
+% % \end{appendices}
+
+% \backmatter
+
+% %%%%%%%%%%%%%%% Reference %%%%%%%%%%%%%%%
+
+% \printbibliography[heading=bibintoc]
+% \printindex
+\end{spacing}
+\end{document}

@@ -1,0 +1,187 @@
+\chapter{Preliminary Knowledge}\label{chp:pre1}
+
+\section{Congruence and Congruence Classes}
+
+\begin{definition}{}{}
+    An equivalence relation "$\sim$" on a set $S$ is a rule such that \\
+    (1) $a\sim a, \forall a\in S$\\
+    (2) $a\sim b\Rightarrow b\sim a$\\
+    (3) $a\sim b$ and $b\sim c\Rightarrow a\sim c$.   
+\end{definition}
+
+You should think of an equivalence relation as a generalization of the notion of equality. Indeed, the usual
+notion of equality among the set of integers is an example of an equivalence relation. The next definition
+yields another example of an equivalence relation.
+
+
+\begin{definition}{}{}
+    Let $a,b,n\in\Z$ with $n>0$. Then $a$ is congruent to $b$ modulo $n$, denoted by, 
+    \begin{align*}
+        a \equiv b \pmod n
+    \end{align*}
+    if $n$ divides $a-b$.
+\end{definition}
+
+\begin{example}{}{}
+    $17\equiv 5\pmod 6$.
+\end{example}
+    $(17-5)= 2\cdot 6$.
+
+The following theorem tells us that the notion of congruence defined above is an equivalence relation on the
+set of integers.
+
+\begin{theorem}{}{}
+    Let $n$ be a positive integer. For all $a,b,c\in\Z$\\
+    (1) $a\equiv a\pmod n$\\
+    (2) $a\equiv b\pmod n\Rightarrow b\equiv a\pmod n$\\
+    (3) $a\equiv b\pmod n$ and $b\equiv c\pmod n\Rightarrow a\equiv c\pmod n$.  
+\end{theorem}
+
+
+\begin{theorem}{}{}
+    If $a\equiv b\pmod n$ and $c\equiv d\pmod n$, then\\
+    (1) $a+c\equiv b+d\pmod n$\\
+    (2) $ac\equiv bd\pmod n$.
+\end{theorem}
+\begin{proof}
+    By the definition of congruence, there are $s,t\in \Z$ such that 
+    \begin{align*}
+        a-b=sn,c-d=tn.
+    \end{align*}
+    (1) $a+c-(b+d)=sn-tn=(s-t)n$. Hence, $a+c\equiv b+d\pmod n$.\\
+    (2) Using the fact that $-bc+bc=0$, we have
+    \begin{align*}
+        ac-bd &= ac+0-bd\\
+              &= ac + (-bc+bc) - bd\\
+              &= c(a-b) + b(c-d)\\
+              &= c(sn) + b(tn)\\
+              &= n(cs+bt).
+    \end{align*}
+    Hence, $ac\equiv bd\pmod n$.
+\end{proof}
+
+\begin{definition}{}{congruence class definition}
+    Let $a$ and $n$ be integers with $n>0$. The congruence class of $a$ modulo $n$, denoted $\overline{a}_n$, 
+    is the set of all integers that are congruent to $a$ modulo $n$, i.e.
+    \begin{align*}
+        \overline{a}_n=\{z\in\Z: a-z=kn \text{ for some }k\in\Z\}.
+    \end{align*}  
+\end{definition}
+\begin{example}{}{}
+    In congruence modulo $2$ , we have
+    \begin{align*}
+        \overline{0}_2&=\{0,\pm 2,\pm 4,...\}\\
+        \overline{1}_2 &=\{\pm 1, \pm 3,\pm 5,...\}.
+    \end{align*}
+\end{example}
+
+\begin{theorem}{}{congruence classes equality}
+    $a\equiv c\pmod n$ iff $\overline{a}_n=\overline{c}_n$.
+\end{theorem}
+\begin{proof}
+    ($\Rightarrow$): Assume $a\equiv c\pmod n$. Let $b\in \overline{a}_n$, then by definition\ref{def:congruence class definition}, $b\equiv a\pmod n$. Then
+    \begin{align*}
+        & a\equiv b\pmod n \text{ and } a\equiv c\pmod n\\
+        &\Rightarrow b\equiv c\pmod n\\
+        &\Rightarrow c\equiv b\pmod n.
+    \end{align*}
+So, $b\in \overline{c}_n$. Thus, $\overline{a}_n\subseteq \overline{c}_n$. 
+Reversing the roles of $a$ and $c$ in the
+argument above we similarly conclude that $\overline{c}_n\subseteq \overline{a}_n$.
+Hence, $\overline{a}_n=\overline{c}_n$.
+
+($\Leftarrow$): Suppose $\overline{a}=\overline{c}$. Since $a\equiv a\pmod n$, we have $a\in\overline{a}$ and so, by hypothesis $\overline{a}=\overline{c}$, $a\in\overline{c}$. Hence, 
+$a\equiv c\pmod n$.
+\end{proof}
+
+\begin{corollary}{}{}
+    Two congruence classes modulo $n$ are either disjoint or identical.
+\end{corollary}
+\begin{proof}
+    If $\overline{a}_n$ and $\overline{b}_n$ are disjoint there is nothing to prove. Suppose that $\overline{a}\cap \overline{b}\neq \O$. 
+    Then there is an integer $c$ such that $c\in\overline{a}_n$ and $c \in \overline{b}_n$. So $c\equiv a\pmod n$ and $c\equiv b\pmod n$. Then we have
+    $a\equiv b\pmod n$.
+    Hence, $\overline{a}_n=\overline{b}_n$ by theorem\ref{thm:congruence classes equality}.
+\end{proof}
+
+\begin{corollary}{}{}
+    There are exactly $n$ distinct congruence classes modulo $n$; namely, 
+    $\overline{0}_n,\overline{1}_n,\overline{2}_n,...,\overline{n-1}_n$.
+\end{corollary}
+\begin{proof}
+    We first show that $\overline{0}_n,\overline{1}_n,\overline{2}_n,...,\overline{n-1}_n$
+    are all distinct. it is sufficient to show that  no two of $0, 1, 2, . . . , n-1$ are congruent modulo $n$. 
+    To see this, suppose that $0\leqs s<t<n$. 
+    Then $t-s$ is a positive integer and $t-s<n$. Thus, $n\nmid (t-s)$ and so $t$ is not congruent to $s$ modulo $n$. 
+    Then by theorem\ref{thm:congruence classes equality}, the classes
+    $\overline{0}_n,\overline{1}_n,\overline{2}_n,...,\overline{n-1}_n$ are all distinct. 
+
+    To complete the proof we need to show that every congruence class is one of these classes.
+    Let $a\in\Z$, by the division algorithm, 
+    \begin{align}
+        a=nq+r, q\in\Z,0\leqs r<n.
+        \label{eq:division algorithm}
+    \end{align}
+    The condition on $r$ implies $r\in\{0,1,2,...,n-1\}$. If we write (\ref{eq:division algorithm}) as
+    \begin{align*}
+        a -r=nq,
+    \end{align*}
+    it is clear that $a\equiv r\pmod n$. Thus, by theorem\ref{thm:congruence classes equality}, $\overline{a}=\overline{r}$ for some $r\in\{0,1,2,...,n-1\}$.
+\end{proof}
+
+\begin{definition}{}{}
+    The set of all congruence classes modulo $n$ is denoted $\Z_n$. Thus
+    \begin{align*}
+        \Z_n=\{\overline{0},\overline{1},...,\overline{n-1}\}.
+    \end{align*}
+\end{definition}
+
+
+\begin{proposition}{}{}
+    $\forall \overline{a},\overline{b}\in \Z_n, \overline{a}+\overline{b}=\overline{a+b}$, $\overline{a}\cdot \overline{b} = \overline{ab}$.
+\end{proposition}
+
+
+\section{Chinese Remainder Theorem}
+
+The Chinese remainder theorem arises from the following congruence equations: 
+\begin{align*}
+    \left\{\begin{matrix}
+       x &\equiv a_1\pmod {m_1}\\
+       ......\\
+       x &\equiv a_n\pmod {m_n},
+    \end{matrix}\right.
+\end{align*}
+where, 
+$m_1,...,m_n\in \N$ are pairwise coprime and $a_1,...,a_n\in\Z$. 
+
+How to get the solution of these eqautions? Let's think about it from the view of algebra.
+Let us concentrate on the case of $n=3$. The case of $n\neq 3$ is similar.
+If we can find a map from $\Z_{abc}\rightarrow \Z_a\times \Z_b\times Z_c$ is bijective, 
+and then if we can find the inverse of this map, we can get the solution of these equations by the inverse mapping.
+
+\begin{theorem}{}{}
+    Let $a,b,c$ be pairwise relatively prime positive integers. Then the map $f$
+    \begin{align*}
+        \Z_{abc}\rightarrow \Z_a\times \Z_b\times \Z_c.
+    \end{align*}
+    defined by the rule $\overline{x}_{abc}\mapsto (\overline{x}_a,\overline{x}_b,\overline{x}_c)$ 
+    is a bijection.
+    The inverse of $f$ is given by the formula
+    \begin{align*}
+        f^{-1}(\overline{x}_a,\overline{y}_b,\overline{z}_c) = \overline{xe_1+ye_2+ze_3}_{abc}
+    \end{align*}
+    where $e_1,e_2$
+\end{theorem}
+
+
+
+
+\section{Phi Function}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://math.okstate.edu/people/binegar/3613/3613-l11.pdf}{leture notes from okstate}
+    \item \href{https://www.mathi.uni-heidelberg.de/~flemmermeyer/pell/bfc03.pdf}{Residue Class Rings}
+    \item \href{https://public.csusm.edu/aitken_html/m422/Handout6.pdf}{THE CHINESE REMAINDER THEOREM AND THE PHI FUNCTION}
+\end{itemize}

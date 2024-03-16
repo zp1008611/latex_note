@@ -1,0 +1,175 @@
+\chapter{Line Search}\label{chp:Line Search}
+
+
+\section{Motivation}
+    In last chapter, we have introduce the iterative form for an unconstrained optimization problem
+    \begin{align*}
+        \min_{x} f(x),
+    \end{align*}
+    where $f:\R^n\rightarrow \R$. Suppose that $x_k$ is our current best estimate of a solution to the problem. 
+    A standard method for improving the estimate $x_k$ is to choose a direction of search $d \in \R^n$ and then compute a step length $\alpha \in \R^n$ so that $x_k+\alpha d$ approximately optimizes f. 
+    The new estimate for the solution to the problem is then $x_{k+1}=x_k + \alpha d$. The procedure for choosing $\alpha$ is called a line search method. If $\alpha$ is taken to be the
+    global solution to the following problem
+    \begin{align*}
+        min_{\alpha \in \R} f(x_k+\alpha d), 
+    \end{align*}
+    then $\alpha$ is called the Curry step length.  However, except in certain very special cases, the
+    Curry step length is far too costly to compute. For this reason we focus on a few easily
+    computed step lengths. We begin the simplest and the most commonly used line search
+    method called backtracking.     
+    
+\section{The Basic Backtracking Algorithm}
+In the backtracking line search we assume
+that $f:\R^n\rightarrow \R$ is is differentiable and that we are given a direction $d$ of strict desent at the current point $x_k$, that is $f'(x_k;d)=<\nabla f(x_k),d><0$.
+
+\begin{algorithm}[H]
+    \SetKwInOut{Input}{input}
+    \SetKwInOut{Output}{output}
+    \Input{$\gamma \in (0,1)$ , $c_1\in (0,1)$, desent direction $d$, inital step size $\hat{\alpha}$ and current solution $x_k$}
+    \Output{the next solution $x_{k+1}$}
+    \BlankLine
+    $\alpha=\hat{\alpha}$\\
+    \While{ $f(x_k+\alpha d)>f(x_k) + c_1\alpha f'(x_k;d)$} {
+        $a\leftarrow \gamma\alpha$\;
+    }
+    $\alpha^*=\alpha$\\
+    \Return $x_{k+1}=x_k+\alpha^* d$
+    \caption{Descent Algorithm with Backtracking Line Search at iteration $k$}
+    \label{alg:bls}
+\end{algorithm}
+The backtracking line search method forms the basic structure upon which most line search
+methods are built. Due to the importance of this method, we take a moment to emphasize
+its key features.
+\par
+(i) The search direction $d$ must satisfy
+\begin{equation*}
+    f'(x_k;d)<0. 
+\end{equation*}
+Any direction satisfying this strict inequality is called a direction of strict descent for
+$f$ at $x_k$.
+\par 
+(ii) In algorithm, we require that the step length $\alpha^*$ be chosen so that
+\begin{equation*}
+    f(x_k+\alpha^* d)\leq f(x_k) + c_1\alpha^* f'(x_k;d)
+\end{equation*}
+This inequality is called the Armijo-Goldstein inequality. It is named after the two
+researchers to first use it in the design of line search routines (Allen Goldstein is a Professor Emeritus here at the University of Washington). 
+Since $f'(x_k;d)<0$, this inequality
+guarantees that
+    \begin{equation*}
+        f(x_k+\alpha^* d)< f(x_k). 
+    \end{equation*}
+And by definition \ref{def:descent direction}, if $d$ is a direction of strict descent, 
+it is always possible to choose $\alpha^*$ so that $f(x_k+\alpha^* d)< f(x_k)$.  
+But the Armijo-Goldstein inequality is a somewhat stronger statement. We claim that there exists $\alpha$ satisfying the inequality as $f'(x_k;d)<0$, 
+\begin{equation*}
+    \lim_{\alpha\rightarrow 0^+} \frac{f(x_k+\alpha d)-f(x_k)}{\alpha} = f'(x_k;d)<c_1f'(x_k;d)<0. 
+\end{equation*}
+Hence, there is a $\bar{\alpha}>0$ such that 
+\begin{equation*}
+    \frac{f(x_k+\alpha d)-f(x_k)}{\alpha} \leq c_1f'(x_k;d), \forall t\in (0,\bar{t}),
+\end{equation*}
+that is 
+\begin{equation*}
+    f(x_k+\alpha d)\leq f(x_k) + c_1\alpha f'(x_k;d),\forall \alpha \in (0,\bar{\alpha}).
+\end{equation*}
+\par
+(iii) The Armijo-Goldstein inequality is known as a condition of sufficient decrease. It is
+essential that we do not choose $\alpha^*$ too small. Because $\alpha^*=\gamma^j \hat{\alpha}$, where $j=\min\{j=0,1,2,...|f(x_k+\gamma^j \hat{\alpha} d)\leq f(x_k) + c_1\gamma^j \hat{\alpha} f'(x_k;d)\}$. 
+In general, we always wish to choose $\alpha^*$ as large as possible since it is often the factor that some effort was put into the selection of the
+search direction $d$. Indeed, as we will see, for Newton's method we must take $\alpha^*=1$ in order to achieve rapid local convergence.
+\par
+(iv) There is a balance that must be struck between taking $\alpha^*$ as large as possible and not
+having to evaluating the function at many points. Such a balance is obtained with
+an appropriate selection of the parameters $\gamma$ and $c_1$. Typically one takes $\gamma \in [0.5, 0.8]$
+while $c_1 \in [0.001, 0.1]$ with adjustments depending on the cost of function evaluation
+and degree of nonlinearity.
+
+\section{Convergence for Backtracking Line Search}
+
+\section{The Wolfe Conditions}
+In exact line search method, we want to gain the stepsize $\aleph_k$ satisfying 
+\begin{equation*}
+    f(x_k+\alpha_k d_k) = \min_{\alpha\in \R}f(x_k+\alpha d_k).
+\end{equation*} 
+Let $g(\alpha)=f(x_k+\alpha d_k)$, the first-order optimality conditions tell us that we should find $\alpha$ satisfying $0=g'(\alpha)=\nabla f(x_k+\alpha d_k)^Td_k$. The
+Wolfe conditions try to combine the Armijo-Goldstein sufficient decrease condition with a
+condition that tries to push $0=\nabla f(x_k+\alpha d_k)^Td_k$ either toward zero, or at least to a point
+where the search direction $c_k$ is less of a direction of descent. To describe these line search
+conditions, we take parameters $0<c_1<c_2<1$. 
+\par
+\noindent \textbf{Weak Wolfe Conditions}
+\begin{subequations}
+    \begin{align}
+        f(x_k+\alpha_k d_k) &\leq f(x_k)+c_1\alpha_kf'(x_k;d_k)\label{eq:Weak Wolfe Conditions a}\\
+        c_2f'(x_k;d_k)&\leq f'(x_k+\alpha_kd_k;d_k).\label{eq:Weak Wolfe Conditions b}
+    \end{align}
+    \end{subequations}
+
+
+\par
+\noindent\textbf{Strong Wolfe Conditions}
+\begin{subequations}
+    \begin{align}
+        f(x_k+\alpha_k d_k) &\leq f(x_k)+c_1\alpha_kf'(x_k;d_k)\label{eq:Strong Wolfe Conditions a}\\
+        |f'(x_k+\alpha_kd_k;d_k)| &\leq c_2|f'(x_k;d_k)| .\label{eq:Strong Wolfe Conditions b}
+    \end{align}
+\end{subequations}
+The weak Wolfe condition (\ref{eq:Weak Wolfe Conditions b}) tries to make $d_k$
+less of a direction of descent (and possibly a direction of ascent) at the new point, 
+while the strong Wolfe condition (\ref{eq:Strong Wolfe Conditions b}) tries to push the
+directional derivative in the direction $d_k$
+closer to zero at the new point. Imposing one or
+the other of the Wolfe conditions on a line search procedure has become standard practice
+for optimization software based on line search methods.
+\par
+We now give a result showing that there exists stepsizes satisfying the weak Wolfe conditions. 
+A similar result (with a similar proof) holds for the strong Wolfe conditions.       
+
+\begin{lemma}{}{}
+    Let $f:\R^n\rightarrow \R$ be continuously differentiable and suppose that $x,d\in \R^n$ are such
+    that the set $\{f(x+\alpha d)|\alpha \geq 0\}$ is bounded below and $f'(x;d)<0$, then for each $0<c_1<c_2<1$ the set
+    \begin{align*}
+       S= \{\alpha |\alpha >0, f'(x+\alpha d;d)\geq c_2f'(x;d) \ and\  f(x+\alpha d)\leq f(x)+c_1\alpha f'(x;d)\}
+    \end{align*}
+    has non-empty interior.
+\end{lemma}
+\begin{proofsolution}
+    Let $\phi(\alpha) = f(x+\alpha d)-(f(x)+c_1\alpha f'(x;d))$. Then 
+    \begin{align*}
+        \phi(0)&=0 \\
+        \phi'(0)&=(1-c_1)f'(x;d)<0.
+    \end{align*}
+    So there exists $\bar{\alpha}>0$
+    such that $\phi(\alpha)<0$ for $\alpha \in (0,\bar{\alpha})$. Moreover, since $f'(x;d)<0$ and $\{f(x+\alpha d)|\alpha>0\}$ is bounded below, 
+    we have $\phi(\alpha)\rightarrow +\infty$ as $\alpha\rightarrow +\infty$. Hence, by the continuity of $f$, there exies $\hat{\alpha}>0$ such that $\phi(\hat{\alpha})=0$. Let $\alpha_0= \inf{\alpha|\alpha\geq 0,\phi(\alpha)=0}$.
+    \par
+    Since $\phi(0)=\phi(\alpha_0)$ and $\phi(\alpha)$ is continuously differentiable, by Rolle's theorem, there must exists $\widetilde{\alpha}\in (0,\alpha_0)$ with $\phi'(\widetilde{\alpha})=0$. That is, 
+    \begin{align*}
+        & \nabla f(x+\widetilde{\alpha}d)^Td-c_1\nabla f(x)^Td=0\\
+      \Rightarrow  &\nabla f(x+\widetilde{\alpha}d)^Td = c_1\nabla f(x)^Td > c_2\nabla f(x)^Td.
+    \end{align*}
+    From the definition of $\alpha_0$ and the fact that $\widetilde{\alpha}\in (0,\alpha_0)$, we also have
+    \begin{align*}
+        f(x+\widetilde{\alpha} d)-(f(x)+c_1\widetilde{\alpha} f'(x;d))<0.
+    \end{align*}
+    Hence, $\widetilde{\alpha}\in \inf(S)$ and $\inf(S)\neq \emptyset$.
+\end{proofsolution}
+
+\section{A Bisection Method for the Weak Wolfe Conditions}
+
+\section{Convergence for Line Search Based on the Weak Wolfe Conditions}
+
+
+\section{Interpolation Line Search}
+
+\section{Reference}
+
+\begin{itemize}
+    \item Armijo \& Wolfe conditions: \href{https://sites.math.washington.edu/~burke/crs/408/notes/nlp/line.pdf}{lecture note from washington university}
+    \item interpolation line search: 
+    \begin{itemize} 
+        \item[*] \href{http://www.ece.northwestern.edu/local-apps/matlabhelp/toolbox/optim/tutori5b.html}{matlab optimizaiton toolbox tutorial}
+        \item[*] \href{https://www-personal.umich.edu/~murty/611/611slides9.pdf}{lecture notes from michigan university}
+    \end{itemize}
+\end{itemize}

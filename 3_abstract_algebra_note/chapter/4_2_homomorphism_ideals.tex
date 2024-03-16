@@ -1,0 +1,243 @@
+\newcommand{\gi}[1]{\langle #1 \rangle}
+\chapter{Homomorphism and Ideals}\label{chp:4_2}
+
+Just as with groups, when we study rings, we are only concerned with functions that “preserve the
+structure” of a ring, and these are called ring homomorphisms. Maybe you can guess what the definition
+should be, by analogy with the case of groups.
+
+\begin{definition}{}{}
+    Let $R$ and $S$ be rings, and $\sigma:R\rightarrow S$ be a function. We say $\sigma$ is a ring homomorphism if, for all $a,b\in R$, \\
+    (1) $\sigma (a+b)=\sigma(a)+\sigma(b),$\\
+    (2) $\sigma(a\cdot b)=\sigma(a)\cdot \sigma(b)$.
+\end{definition}
+
+\begin{remark}
+    $\sigma(0) =\sigma(0+0)=\sigma(0)+\sigma(0)\Rightarrow \sigma(0)=0$.
+\end{remark}
+
+Just as for groups, bijective homomorphisms are called isomorphisms, and they tell us when two rings
+"have the same structure".
+
+\begin{definition}{}{}
+    An isomorphism from a ring $R$ to another ring $S$ is a bijective homomorphism. If an isomorphism between $R$ and $S$ exists, 
+    then we say $R$ and $S$ are isomorphic and we write $R\cong S$.
+\end{definition}
+
+There is an alternative way to characterize isomorphisms, using inverse functions.
+
+\begin{proposition}{}{}
+    Let $f:R\rightarrow S$ be a homomorphism. Then $f$ is an isomorphism iff there exists a homomorphism $g:S\rightarrow R$ such that $g\circ f$ is the identity map on $R$ 
+    and $f\circ g$ is the identity map on $S$.
+\end{proposition}
+
+\begin{definition}{}{}
+    Let $\sigma:R\rightarrow S$ be a homomorphism of rings. The kernel of $\sigma$, denoted $\text{Ker}(\sigma)$, 
+    is the subset $\{r\in R:\sigma(r)=0\}$ of $R$. In other words, it's the pre-image of $0$ under $\sigma$.
+    The image of $\sigma$ is the set $\text{Im}(\sigma)=\{s\in S:s=\sigma(r) \text{ for some } r\in R\}$.
+\end{definition}
+
+\begin{example}{}{kernel example}
+    The kernel of $\sigma:\Z\rightarrow \Z/m\Z$ sengding $a$ to $\overline{a}$ is $\{km:k\in\Z\}$.
+\end{example}
+
+Just as for groups, the kernel and image detect injectivity and surjectivity: to be injective means to
+have a trivial kernel, so maps with a large kernel can be thought of as “very un-injective”.
+
+\begin{proposition}{}{}    Let $\sigma:R\rightarrow S$ be a homomorphism of rings. Then $\sigma$ is injective iff $\text{Ker}\sigma = \{0_R\}$;
+    $\sigma$ is surjective iff $\text{Im}\sigma = S$.
+\end{proposition}
+
+Let's look back at example\ref{exa:kernel example}. 
+What properties does $\text{Ker}\sigma$ have? For $am,bm\in \text{Ker}\sigma$, $am + bm= (a+b)m\in \text{Ker}\sigma$, $-am\in \text{Ker}\sigma$, $am\cdot bm=(abm)m\in\text{Ker}\sigma$.
+Hence, $\text{Ker}\sigma$ is a subring of $\Z$.
+But we find more:  if we take one integer which is in $\text{Ker}\sigma$, and another one which might
+not even be in $\text{Ker}\sigma$, and multiply, we still stay in $\text{Ker}\sigma$ as $a\cdot bm = ab \cdot m$. 
+So the kernel is closed even under multiplication when one of the factors need
+not lie in the kernel. This is stronger than the usual closure under multiplication, and this movtivate the definition of ideals.
+
+\begin{definition}{}{}
+    Let $R$ be a ring. A non-empty subset $I$ of $R$ is called an ideal if it satisfies the following conditions:\\
+    (1) $I$ is an additive subgroup of $R$ under $+$. (closed under addition and subtraction)\\
+    (2) For any $a\in I$ and $r\in R$, $ra,ar\in I$. (closed under scaling)\\
+    If $I$ is an ideal of a ring $R$, we write $I\unlhd R$.
+\end{definition}
+\begin{remark}
+    $\forall a,b\in I\subset R$, $ab,ba\in I$, then $I$ is a subring of $R$.
+\end{remark}
+
+
+
+
+\begin{example}{}{zero ideal}
+    Every ring has at least one ideal: the subset consisting of only $0$. It's an additive
+subgroup, and closed under scaling because anything times zero is zero. 
+\end{example}
+
+\begin{example}{}{unit ideal}
+    In any ring $R$, the entire ring $R$ is itself ideal, called the "unit ideal" . The reason for this name
+is: if an ideal $I$ contains $1$, then it is equal to the entire ring, because if $1$ is in $I$, then for any $r\in R$,
+$r = r \cdot 1$ is also in $I$ by closure under scaling. This is the largest ideal in $R$.
+\end{example}
+
+\begin{example}{}{}
+    Let $I_1,I_2,...,I_n$ be ideals of $R$, then the sum of $I_1,...,I_n$
+    \begin{align*}
+        I_1+...+I_2:=\{a_1+...+a_n:a_1\in I_1,...,a_n\in I_n\}
+    \end{align*}
+    is a ideal of $R$.
+\end{example}
+
+\noindent$(a_1+...+a_n)+(b_1+...+b_n)=(a_1+b_1)+...+(a_n+b_n)\in I_1+...+I_n$.\\
+$(a_1-...-a_n)+(b_1-...-b_n)=(a_1-b_1)+...+(a_n-b_n)\in I_1+...+I_n$.\\
+$(a_1+...+a_n)\cdot r=a_1\cdot r +... +a_n\cdot r\in I_1+...+I_n$
+
+\begin{example}{}{intersection ideal}
+    Let $I_1,I_2,...,I_n$ be ideals of $R$, then $\cap_{i}^{n}I_i$
+    is an ideal of $R$.
+\end{example}
+
+\noindent$a+b\in I_i, \forall I_i$\\
+$a-b\in I_i, \forall I_i$\\
+$a\cdot r\in I_i,\forall I_i$.
+
+\begin{proposition}{}{}
+    Let $R$ be an unital ring and $I$ be an ideal in $R$. $I$ contains a unit if and only if $I = R$.
+\end{proposition}
+\begin{proof}
+    ($\Rightarrow$): If $I$ has a unit, then $1_R\in I$, then $\forall r\in R,r\cdot 1=r\in I$ and so $R\subseteq I$. Hence, $R=I$ as $\O\neq I\subseteq R$.\\
+    ($\Leftarrow$): If $I=R$, then $1_R\in I$ and so $I$ have a unit $1_R$.
+\end{proof}
+
+\begin{proposition}{}{}
+    Let $R$ be a ring and $I$ is an ideal in $R$. Then $(I,+)$ is a normal subgroup of $(R,+)$.
+\end{proposition}
+\begin{proof}
+    By the definitino of ideals, $\O\neq I\leqs R$. Since $R$ is abelian group with addition, $(I,+)$ is abelian group and so normal.
+\end{proof}
+
+\begin{definition}{}{}
+    Let $X$ be any subset of a ring $R$. The ideal generated by $X$ is the intersection of all ideals containing $X$. 
+    Hence, this ideal is the smallest ideal containing $X$, and is denoted $\gi X$. 
+    If $X$ is a finite set, say $X=\{a_1,a_2,...,a_n\}$, we will write $\gi{X}$ as $(a_1,...,a_n)$. 
+    An ideal generated by a single element $a$ is called a principal
+ideal, denoted by $(a)$. 
+\end{definition}
+\begin{remark}
+    Generalizing the example\ref{exa:intersection ideal} to infinite, we can know $\cap_{i}^{\infty} I_i$ is a ideal. 
+    Then the definition is well-defined.
+\end{remark}
+
+\begin{proposition}{}{}
+    If $R$ is an unital ring and $\O\neq X\subseteq R$. Then
+    \begin{align*}
+        \gi X =\{\sum\limits_{i=1}^{n}r_ix_is_i: x_i\in X \text{ and } r_i,s_i\in R\}.
+    \end{align*}
+\end{proposition}
+
+\begin{proof}
+    hard!
+\end{proof}
+
+\begin{proposition}{}{element form of generated ring in commutative ring with unity}
+    If $R$ is a commutative ring with unity and $\O\neq X\subseteq R$. Then
+    \begin{align*}
+        \gi X =\{\sum\limits_{i=1}^{n}r_ix_i: x_i\in X \text{ and } r_i\in R\}.
+    \end{align*}
+    Particularly, 
+    \begin{align*}
+        (a) = \{ra:r\in R\}.
+    \end{align*}
+    If $X=\{a_1,...,a_n\}$, then
+    \begin{align*}
+        (a_1,...,a_n)=(a_1)+...+(a_n).
+    \end{align*}
+\end{proposition}
+\begin{remark}
+    zero ideal can be denoted $(0)$ and unit ideal can be denote $(1)$.
+\end{remark}
+
+
+% \begin{example}{}{}
+%     What are all possible ideals in $R=\Z/6\Z$? This is a classic example-style question. Let's work it out
+%     - let $I$ be a "mystery" ideal. 
+%     By example\ref{exa:zero ideal} and \ref{exa:unit ideal}, $(\overline{0})$ and $R$ are ideals of $R$.
+%     Now let's assume there is at least one element $a$ in $I$, which is nonzero, and not equal to $overline{1}$. 
+%     If $a=\overline{5}$, since $\overline{5}\cdot \overline{5}=\overline{25}=\overline{1}$, then $I$ is unit ideal.
+%     If $a=\overline{4}$, since $4r$ mod $6$ are $2$ and $0$, then $I=(\overline{2})$.
+%     If $a=\overline{3}$, since $3r$ mod $6$ are $3$ and $0$, then $I={0,3}$
+% \end{example}
+
+
+Let $I$ be a ideal of $R$. Since $I$ is an additive subgroup of $R$ by definition, it makes sense to speak of cosets $r+I$ of $I$, $r\in R$. 
+Furthermore, a ring has a structure of abelian group of addition, 
+so $I$ satisfies the definition of a normal subgroup. From group theory, we thus know that it makes sense to speak of the quotient group
+\begin{align*}
+    R/I = \{\overline{r} = r+I:r\in R\}.
+\end{align*}
+Since $R$ is abelian group , $r\in R$ and $I\subset R$, $R/I$ is an abelian group for addition.
+\par
+We now endow $R/I$ with a multiplication operation as follows. Define
+\begin{align*}
+    (r+I)(s+I) = rs + I.
+\end{align*}
+Let us make sure that this is well-defined, namely that it does not depend on the choice of the repersentative in each coset. Suppose that
+\begin{align*}
+    r+I=r'+I, s+I=s'+I.
+\end{align*}
+Then, $a=r'-r\in I$ and $b=s'-s\in I$. Now
+\begin{align*}
+    r's' = (a+r)(b+s) =ab+as+rb+rs\in rs+I
+\end{align*}
+This tells us $r's'$ is also in the coset $rs+I$ and thus multiplication does not depend on the choice of repersentatives.
+The multiplication association and distributivity are easily to prove. 
+Hence, $R/I$ is a ring and is called quotient ring.
+
+
+
+\begin{theorem}{}{}
+    Let $\sigma$ be a homomorphism from ring $R$ to ring $S$, then
+    \begin{align*}
+        \text{Ker}\sigma \unlhd R, \text{Im}\sigma \leqs R\text{ and } R/\text{Ker}\sigma \cong \text{Im}\sigma
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    Firstly, we prove $\text{Ker}\sigma\unlhd R$. 
+    Since $\sigma(0_R)=\sigma(0_R+0_R)$, $\sigma(0_R)=0_S$. Then, $0_R\in \text{Ker}\sigma$.
+    Then $\O\neq \text{Ker}\sigma$. 
+    For $a,b\in\text{Ker}\sigma$, 
+    \begin{align*}
+        \sigma(a\pm b) =\sigma(a)\pm\sigma(b)=0_S+0_S=0_S.
+    \end{align*}
+    Hence, $\text{Ker}\sigma$ is a addition subgroup of $R$.
+    If $a\in \text{Ker}\sigma$ and $r\in R$, then
+    \begin{align*}
+        \sigma(ra) = \sigma(r)\cdot \sigma(a) = \sigma(r)\cdot 0_S = 0_S, \\
+        \sigma(ar) = \sigma(a)\cdot \sigma(r) = 0_S\cdot\sigma(r) = 0_S.
+    \end{align*}
+    Hence, $ra,ar\in \text{Ker}\sigma$ and so $\text{Ker}\sigma$ is a ideal of $R$.
+
+    \par
+    Next, we prove $\text{Im}\sigma\leqs R$.
+    Since $0_S=\sigma(0_R)\in \text{Im}\sigma$, $\text{Im}\sigma$ is non-empty.
+    For $a,b\in R$,
+    \begin{align*}
+        \sigma(a) \pm \sigma(b) = \sigma(a\pm b)\in \Im\sigma,\\
+        \sigma(a)\sigma(b) = \sigma(ab)\in \Im\sigma.
+    \end{align*}
+    Hence, $\Im\sigma$ is a subring of $R$.
+    \par
+    Finally, we prove that $R/\Ker\sigma\cong \Im\sigma$. Let $I=\Ker\sigma$.
+    Define $\overline{\sigma}:R/I\cong \Im\sigma$ given by $\overline{r}=\sigma(r)$. 
+    Since we're dealing with cosets, there may be many different representatives for the same
+coset, which means we have to check it's well-defined.
+
+\textcolor{Red}{Havn't done!}
+\end{proof}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://math.berkeley.edu/~mcivor/math113su16/113ringnotes2016.pdf}{lecture notes from berkeley}
+    \item \href{https://feog.github.io/ring.pdf}{lecture notes by feog}
+\end{itemize}
+

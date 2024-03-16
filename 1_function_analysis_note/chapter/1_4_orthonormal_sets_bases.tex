@@ -1,0 +1,415 @@
+\chapter{Orthonormal Sets of Vectors and Bases}\label{chp:1_4}
+
+
+
+It will be shown in this chapter that, as in Euclidean space, each Hilbert 
+space can be coordinatized. The vehicle for introducing the coordinates is 
+an orthonormal basis. The corresponding vectors in $\F^d$ are the vectors 
+$\{e_1, e_2, ... , e_d\}$, where $e_k$ is the $d$-tuple having a $1$ in the $k$th place and zeros elsewhere.
+
+Subsets $\mathscr{E}$ mentioned below can be finite, countably infinite and uncoutably infinite. 
+
+\begin{definition}{}{}
+    A subset $\mathscr{E}\subset \hH$ is said to orthogonal if $\inner{e_1}{e_2}=0$, for all $e_1\neq e_2\in \mathscr{E}$. 
+    We say it is orthonormal if we further regive $||e||=1$ for all $e\in \mathscr{E}$. 
+\end{definition}
+
+\begin{remark}
+    Orthogonal set can contain zero vector, but orthonormal set can not. 
+\end{remark}
+
+
+\begin{definition}{}{}
+    $\{h_1,..., h_k\}$ is said to be linearly dependent, if there exist scalars $a_1,a_2,...,a_k$, not all zero, such that
+    \begin{align*}
+        a_1h_1+...+a_kh_k=0
+    \end{align*}
+    where $0$ denotes the zero vector.
+    An infinite set of vectors is linearly independent if every nonempty finite subset is linearly independent.
+\end{definition}
+
+
+\begin{corollary}{}{}
+    Every orthonormal set is linearly independent.
+\end{corollary}
+\begin{proof}
+    If the set is finite. Suppose $\{h_1,...,h_k\}$ is an orthonormal set. Assume $b_1h_1+...b_kh_k=0$, then $b_1u_1=-\sum\limits_{i=2}^{k}b_iu_i$. 
+    When $2\leqs i\leqs n$, $0=\inner{h_i}{-b_1h_1}=\sum\limits_{j=2}^{k}b_i\inner{h_i}{h_j}
+    =b_i\inner{h_i}{h_i}=b_i$. Then $b_1h_1=0$.
+    Since $h_1\neq 0$, it follows that $b_1=0$. Hence, $b_i=0$ for all $1\leqs i\leqs k$ and so $\{h_1,...,h_k\}$ is linearly independent.
+    If the set is infinite, the above proof can show that every nonempty finite subset is linearly independent and so the set is linearly independent.
+\end{proof}
+
+
+Now we consider the question: Does the orthonormal set always exist? The following theorem tell us we can always construct an orthonormal set.
+
+\begin{theorem}{The Gram-Schmidt Orthogonalization Process}{}
+    If $\{h_1,...,h_k\}$ is a linearly independent subset of $\hH$, 
+    then there is an orthonormal set $\{e_1,...,e_k\}$ such that $span(\{e_1,...,e_k\})= span(\{h_1,...,h_k\})$.
+\end{theorem}
+\begin{proofsolution}
+    Define $\{e_k\}$ inductivey. Start with $e_1=\frac{h_1}{||h_1||}$. 
+    Suppose for $k-1$, $e_1,...,e_{k-1}$ exist. Let $v_k = h_k-\sum\limits_{j=1}^{k-1}<e_j,h_k>e_j$ and $e_k = \frac{v_k}{||v_k||}$.
+    Then $\inner{e_k}{e_j}=\frac{1}{||v_k||}(\inner{h_k}{e_j}-\inner{e_j}{h_k}\inner{e_j}{e_j})=0$ and $||e_k||=1$.
+    Hence, $\{e_1,...,e_k\}$ is an orthonormal set. 
+    from the construct process of $e_j(1\leqs j \leqs k)$, we can know $e_j\in span(\{h_1,...,h_k\})$ and so $span(\{e_1,...,e_k\})\subset span(\{h_1,...,h_k\})$. 
+    Since $\{e_1,...,e_k\}$ is linearly independent, $dim(span(\{e_1,...,e_k\}))=n$. Hence, $span(\{e_1,...,e_k\})= span(\{h_1,...,h_k\})$.
+\end{proofsolution}
+
+\begin{proposition}{}{}
+    If $\mathscr{H}$ is a Hilbert space and $\{h_n:n\in \N\}$ is a linearly independent subset of $\mathscr{H}$,
+    then there is an orthonormal set $\{e_n:n\in\N\}$ such that for every $n$, the linear span of $\{e_1,...,e_n\}$ equals the linear span of $\{h_1,...,h_n\}$.
+\end{proposition}
+
+
+Remember that $\vee A$ is the closed linear span of $A$.
+Now we consider the following question: How can we determine $Ph$ when $h$ and the subspace
+$\mathscr{M}$ are given? When $\mathscr{M}$ is finite, we have
+
+\begin{proposition}{}{}
+    Let $\{e_1,...,e_n\}$ be an orthonormal set in $\mathscr{H}$ and let $\mathscr{M}=\vee \{e_1,...,e_n\}$.
+    If $P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}$, then 
+    \begin{align*}
+        Ph=\sum\limits_{k=1}^{n}\inner{h}{e_k}e_k
+    \end{align*}
+    for all $h$ in $\mathscr{H}$.
+\end{proposition}
+\begin{proof}
+    Let $Qh=\sum\limits_{k=1}^{n}\inner{h}{e_k}e_k$.
+    it suffices to show that $Qh$ is the unique element in $\mathscr{M}$ such that $h-Qh\perp \mathscr{M}$.
+    For $1\leqs j\leqs n$, $\inner{Qh}{e_j}=\sum\limits_{k=1}^{n}\inner{h}{e_k}\inner{e_k}{e_j}=\inner{h}{e_j}$ as $e_k\perp e_j$ when $k\neq j$.
+    Then $\inner{h-Qh}{e_j}=0$ and so $h-Qh\perp \mathscr{M}$. Since $Qh\in \mathscr{M}$, it follows that $Qh$ is the unique element in $\mathscr{M}$
+    such that $h-Qh\perp \mathscr{M}$. Hence, by the property of $Ph$, $Ph=Qh$ for every $h$ in $\mathscr{H}$.
+\end{proof}
+
+\begin{proposition}{Bessel's inequality}{Bessel's inequality countable}
+    If $\{e_n:n\in\N\}$ is an orthonormal set 
+    and $h\in\mathscr{H}$, then 
+    \begin{align*}
+        \sum\limits_{n=1}^{\infty}|\inner{h}{e_n}|^2\leqs ||h||^2.
+    \end{align*}
+\end{proposition}
+
+\begin{proof}
+    Let $h_n=h-\sum\limits_{k=1}^{n}\inner{h}{e_k}e_k$.
+    Then $\inner{h_n}{e_k}=\inner{h}{e_k}-\inner{h}{e_k}=0$.
+    By the Pythagorean Theorem,
+    \begin{align*}
+        ||h||^2 &= ||h_n||^2 +||\sum\limits_{k=1}^{n}\inner{h}{e_k}e_k||^2\\
+                &=||h_n||^2+\sum\limits_{k=1}^{n}|\inner{h}{e_k}|^2\\
+                &\geqs \sum\limits_{k=1}^{n} |\inner{h}{e_k}|^2.
+    \end{align*}
+    Since $n$ was arbitrary, the result is proved.
+\end{proof}
+
+
+\begin{corollary}{}{}
+    If $\mathscr{E}$ is an orthonormal set in $\mathscr{H}$ and $h\in\mathscr{H}$,
+    then $\inner{h}{e}\neq 0$ for at most countable number of vectors $e$ in $\mathscr{E}$.
+\end{corollary}
+
+\begin{proof}
+    Let $n\in\N_+$. We claim that the subset $\mathscr{E}_n$
+    \begin{align*}
+        \mathscr{E}_n = \{e\in \mathscr{E}: \frac{1}{n}\leqs|\inner{h}{e}|\}
+    \end{align*} 
+    of $\mathscr{E}$ is a finite set. Pick $e_1,...,e_N$ from $\mathscr{E}_n$, then by Bessel's inequality,
+    \begin{align*}
+        ||h||^2\geqs \sum\limits_{k=1}^{N}|\inner{h}{e_k}|^2\geqs \frac{N}{n^2},
+    \end{align*}
+    It follows that the cardinality of $\mathscr{E}_n$ cannot exceed $n^2||h||^2$.
+    Let $\mathscr{E}_x$ be the subset of $\mathscr{E}$ consisting of all $e$ such that 
+    $\inner{h}{e}$ is non-zero.
+    Since $\mathscr{E}_x=\cup_{n\in\N_+} \mathscr{E}_n$, 
+    it follows that $\mathscr{E}_x$ is a countable union of finite sets and so $\mathscr{E}_x$ is countable. 
+\end{proof}
+
+\begin{corollary}{}{Bessel's inequality infinite}
+    If $\mathscr{E}$ is an orthonormal set and $h\in\mathscr{H}$, then
+    \begin{align*}
+        \sum\limits_{e\in\mathscr{E}}|\inner{h}{e}|^2\leqs ||h||^2.
+    \end{align*}
+\end{corollary}
+
+\begin{proof}
+    Restrict our attention to the $\{e \in\mathscr{E} : \inner{h}{e}\neq 0\}$ which is countable
+    by the last corollary, and now it is just a straight up use of Bessel's ineq in proposition\ref{prop:Bessel's inequality countable}
+\end{proof}
+
+Let $\mathscr{F}$ be the collection of all finite subsets of $I$ and order 
+by inclusion, so $\mathscr{F}$ becomes a directed set. 
+For each $F$ in $\mathscr{F}$, define 
+$h_F=\sum \{h_i:i\in F\}$. 
+Since this is a finite sum, $h_F$ is a well-defined element of $\mathscr{H}$. 
+Now $\{h_F: F\in\mathscr{F}\}$ is a net in $\mathscr{H}$.
+
+\begin{definition}{}{}
+    With the notation above, the sum $\sum\{h_i:i\in I\}$ converges if 
+the net $\{ h_F: F \in\mathscr{F}\}$ converges; the value of the sum is the limit of the net.
+\end{definition}
+
+Now Corollary\ref{cor:Bessel's inequality infinite} 
+can be given its precise meaning; namely, 
+$\sum\limits_{e\in\mathscr{E}}|\inner{h}{e}|^2$ converges 
+and the value $\leqs ||h||^2$.
+
+\begin{lemma}{}{}
+    If $\mathscr{E}$ is an orthonormal set and $h\in\mathscr{H}$,
+    then $\sum\{\inner{h}{e}e:e\in\mathscr{E}\}$ converges in $\mathscr{H}$.
+\end{lemma}
+
+Now we can determine $Ph$ even if $\mathscr{M}$ is infinite or possibly uncountable.
+\begin{corollary}{}{}
+    Let $\mathscr{E}$ be an orthonormal subset of $\mathscr{H}$ and let $\mathscr{M}=\vee \mathscr{E}$. 
+    If $P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}$,
+    show that $Ph=\sum\{\inner{h}{e}e:e\in\mathscr{E}\}$ for every $h$ in $\mathscr{H}$.
+\end{corollary}
+
+
+In particular, if $\vee \mathscr{E}=\hH$, then every $h\in \hH$ 
+may be expanded in terms of elements of $\mathscr{E}$. 
+The following theorem gives equivalent conditions for 
+this property of $\vee \mathscr{E}$.
+
+\begin{theorem}{}{orthonormal basis equivalent}
+    If $\mathscr{E}$ is an orthonormal subset of $\hH$, then the following conditions are equivalent:\\
+    (1) If $h\in\mathscr{H}$ and $h\perp \mathscr{E}$, then $h=0$.($\mathscr{E}$ is a maximal orthonormal set).\\
+    (2) $\vee \mathscr{E}=\hH$. \\
+    (3) If $h\in\mathscr{H}$, then $h=\sum \{\inner{h}{e}e:e\in\mathscr{E}\}$.\\
+    (4) If $g,h\in\mathscr{H}$, then
+        $\inner{g}{h}=\sum \{\inner{g}{e}\inner{e}{h}:e\in\mathscr{E}\}$.\\
+    (5) If $h\in\mathscr{H}$, then $||h||^2=\sum \{|\inner{h}{e}|^2:e\in\mathscr{E}\}$ (Parseval's Identity)
+\end{theorem}
+\begin{proofsolution}
+    (1)$\Rightarrow$ (2): Since $\{u_n\}$ is maximal, $span(\{u_n\})^{\perp} = \{0\}$. 
+    Let $\mathscr{M} = \overline{span(\{u_n\})}$, then $\mathscr{M}^{\perp}=\{0\}$. Since $\mathscr{M}^{\perp}\bigoplus \mathscr{M} = \hH$ , $\mathscr{M} = \overline{span(\{u_n\})}=\hH$.
+    \\
+    (2)$\Rightarrow$ (3): 
+\end{proofsolution}
+
+% \begin{proposition}{}{}
+%     Let $V$ be an orthogonal subset of $\hH$. Then
+%     \begin{align*}
+%         \sum\limits_{v} \{v:v\in V\}
+%     \end{align*}
+%     converges iff 
+%     \begin{align*}
+%         \sum\limits_{v} ||v||^2<\infty.
+%     \end{align*}
+% \end{proposition}
+% \begin{proof}
+%     Let $s_k$ be the sequence of partial sums of the given series. By the Pythagorean theorem, 
+%     \begin{align*}
+%         ||s_i-s_j||^2 = ||\sum\limits_{n=i+1}^{j}v_n||^2 = \sum\limits_{n=i+1}^{j}||v_n||^2.
+%     \end{align*}
+%     for all $i\leqs j$. Then
+%     \begin{align*}
+%         & \sum\limits_{n=1}^{\infty} v_n\ converges\\
+%         & \Leftrightarrow \{s_k\} \ is\  a\  \ Cauchy\  sequence\\
+%         & \Leftrightarrow \sum\limits_{n=i+1}^{j}||v_n||^2\rightarrow 0,\ i,j\rightarrow \infty\\
+%         & \Leftrightarrow \sum\limits_{n=1}^{\infty} ||v_n||^2<\infty.
+%     \end{align*}
+% \end{proof}
+
+% \begin{corollary}{}{$ell^2$-linear combinations converges}
+%     Let $\{u_n\}$ be an orthonormal sequence of vectors in a Hilbert space, and let {an}
+%     be a sequence of real(complex) numbers. Then the series 
+%     \begin{align*}
+%         \sum\limits_{n=1}^{\infty} a_nu_n.
+%     \end{align*}
+%     converges iff $\{a_n\}$ lies in $\ell^2$.
+% \end{corollary}
+
+% \begin{proof}
+%     Let $s_k$ be the sequence of partial sums of the given series. By the Pythagorean theorem, 
+%     \begin{align*}
+%         ||s_i-s_j||^2 = ||\sum\limits_{n=i+1}^{j}||a_nu_n||^2 = \sum\limits_{n=i+1}^{j}|a_n|^2||u_n||^2= \sum\limits_{n=i+1}^{j}|a_n|^2.
+%     \end{align*}
+%     for all $i\leqs j$. Then
+%     \begin{align*}
+%         & \sum\limits_{n=1}^{\infty} a_nu_n\ converges\\
+%         & \Leftrightarrow \sum\limits_{n=1}^{\infty} |a_n|^2<\infty.
+%     \end{align*}
+% \end{proof}
+
+% In general, if $\{a_n\}$ is an $\ell^2$ sequence set, then the sum
+% \begin{align*}
+%     \sum\limits_{n=1}^{\infty} a_nu_n
+% \end{align*}
+% is called a $ell^2$-linear combintion of the vectors $\{u_n\}$. By corollary\ref{cor:$ell^2$-linear combinations converges}, 
+% every $\ell^2$-linear combination orthonormal vectors in a Hilbert space converges.
+
+% \begin{definition}{Fourier Coefficients}{}
+%     If $\{v_n\}$ is an orthogonal set of $\hH$ and $x\in \hH$. 
+%     Then $<u_n,x>$ is called the Fourier coefficients of $x$ 
+%     with respect to the orthonormal set $\{v_n\}$.
+% \end{definition}
+
+% When an orthonormal set is finite in $\hH$, we have
+
+% \begin{theorem}{}{fourier coefficients theorem}
+%     Let $\{u_1,u_2,...,u_k\}$ is an orthonormal set in $\hH$ and $x=\sum\limits_{i=1}^{k}a_iu_i$, then $a_i=<u_i,x>$ ($1\leqs j\leqs k$) and
+%     $||x||^2=\sum\limits_{i=1}^{k}|a_i|^2$. 
+% \end{theorem}
+
+% \begin{proofsolution}
+%     $<u_i,x>=\sum\limits_{j=1}^{k}<u_i,u_j>=a_i<u_i,u_i>=a_i$. Then use Pythagorean Theorem, we get
+%     \begin{align*}
+%         ||x||^2=||\sum\limits_{j=1}^{k} a_iu_i||^2=\sum\limits_{j=1}^{k}||a_iu_i||^2=\sum\limits_{j=1}^{k}|a_i|^2.
+%     \end{align*}
+% \end{proofsolution}
+
+
+
+
+% Now we consider the following question: How can we determine $Px_0$ when $x_0$ and the subspace
+% $\mathscr{M}$ are given? When $\mathscr{M}$ is finite, we have
+
+% \begin{proposition}{}{finite projection representaion}
+%     Let $\mathscr{M}=\overline{span(\{u_1,...,u_k\})}$. Then $\forall x\in \hH$, the vector
+%     \begin{align*}
+%         y = \sum\limits_{i=1}^{k} <u_i,x> u_i
+%     \end{align*}
+%     is the projection of $x$ onto $\mathscr{M}$. 
+% \end{proposition}
+
+% \begin{proof}
+%     Observe that $<u_i,y>=<u_i,x>$ for each $i$, and hence $<u_i,x-y> = 0$ for each $i$. Hence, $x-y\perp \mathscr{M}$. 
+%     By theorem\ref{thm:orthogonal distance} and definition\ref{def:projection}, $y$ is the projection of $x$ onto $\mathscr{M}$. 
+% \end{proof}
+
+% Now we generalize this proposition when $\mathscr{M}$ is infinite.
+
+% \begin{lemma}{}{}
+%     Let $\{u_n\}$ be an orthonormal set in $\hH$ and $x\in \hH$. Then 
+%     \begin{align*}
+%         \sum\limits_{n=1}^{\infty} <u_n,x>^2\leqs ||x||^2, 
+%     \end{align*} 
+%     which implies $\{<u_n,x>\}$ is a $\ell^2$ sequence.\\
+% \end{lemma}
+
+% \begin{proof}
+%     Let $N\in\N$, then by proposition\ref{prop:finite projection representaion}, 
+%     \begin{align*}
+%         y_N = \sum\limits_{n=1}^{N}<u_n,x>u_n
+%     \end{align*}
+%     be the projection fo $x$ onto $span(\{u_1,...,u_N\})$. Then $x-y_N\perp y_N$, so by the Pythagorean theorem
+%     \begin{align*}
+%         ||x||^2 = ||y_N+x-y_N||^2 = ||y_N||^2 + ||x-y_N||^2 \geqs ||y_N||^2= \sum\limits_{n=1}^{N} <u_n,x>^2.
+%     \end{align*}
+%     This holds for all $N \in \N$, so the desired inequality follows. 
+% \end{proof}
+
+% \begin{theorem}{}{}
+%     Let $\{u_n\}$ be an orthonormal set in $\hH$ and $x\in\hH$. $\mathscr{M}$ is $\overline{span(\{u_n\})}$. Then
+%     \begin{align*}
+%         y=\sum\limits_{n=1}^{\infty} <u_n,x>u_n
+%     \end{align*}
+%     is the projection of $x$ onto the $\mathscr{M}$.
+% \end{theorem}
+
+% \begin{proofsolution}
+%     Since $\{u_n,x\}$ is a $ell^2$ sequence, and thus the sum for $y$ converges. Then,
+%     \begin{align*}
+%         <u_i,
+%     \end{align*}
+% \end{proofsolution}
+
+
+
+
+\begin{definition}{}{}
+    An orthonormal set $\mathscr{E}$ in $\hH$ satisfying any of the equivalent conditions (1)-(5) in theorem\ref{thm:orthonormal basis equivalent} 
+    is called a complete orthonormal set(or a complete orthonormal system) or an orthonormal basis in $\hH$. 
+\end{definition}
+
+\begin{remark}
+    If $\hH$ is infinite dimensional, an orthonormal basis is not a basis in the usual
+    definition of a basis for a vector space (i.e., each $h\in\hH$ has a unique representation as a
+    finite linear combination of basis elements). Such a basis in this context is called a Hamel
+    basis.
+\end{remark}
+
+The following theorem shows that orthonormal basis always exists in Hilbert space.
+\begin{theorem}{}{}
+    Every Hilbert space $\hH$ has an orthonormal basis. If $\mathscr{E}$ is an orthonormal set, then $\mathscr{E}$ has an orthonormal basis containing $\mathscr{E}$. 
+\end{theorem}
+
+\begin{proofsolution}
+    referring to \href{https://www.math.ucdavis.edu/~hunter/book/ch6.pdf}{lecture notes from ucdavis}
+\end{proofsolution}
+
+Just as in finite dimensional spaces, a basis in Hilbert space can be used 
+to define a concept of dimension. For this purpose the next result is pivotal.
+
+\begin{proposition}{}{}
+    If $\mathscr{H}$ is a Hilbert space, any two bases have the same cardinality.
+\end{proposition}
+
+\begin{definition}{}{}
+    The dimension of a Hilbert space is the cardinality of a basis 
+and is denoted by dim$\mathscr{H}$.
+\end{definition}
+
+\begin{proposition}{}{}
+    If $\mathscr{H}$ is an infinite dimensional Hilbert space, 
+    then $\mathscr{H}$ is separable if and only if $\mathscr{H}$ has a countable basis.
+\end{proposition}
+
+\begin{exercise}{I4 T13}{}
+    Let $\mathscr{E}$ be an orthonormal subset of $\mathscr{H}$ and let $\mathscr{M}=\vee \mathscr{E}$. 
+    If $P$ is the orthogonal projection of $\mathscr{H}$ onto $\mathscr{M}$,
+    show that $Ph=\sum\{\inner{h}{e}e:e\in\mathscr{E}\}$ for every $h$ in $\mathscr{H}$.
+\end{exercise}
+\begin{proof}
+    Let $Qh=\sum\{\inner{h}{e}e:e\in\mathscr{E}\}$.
+    it suffices to show that $Qh$ is the unique element in $\mathscr{M}$ such that $h-Qh\perp \mathscr{M}$.
+    By Lemma 4.12, there are vectors $e_1,e_2,...$ in $\mathscr{E}$ such that $\{e\in\mathscr{E}:\inner{h}{e}\neq 0\}={e_1,e_2,...}$
+    and $Qh=\sum\limits_{n=1}^{\infty}\inner{h}{e_n}e_n$.
+    By Bessel's Inequality, $\sum\limits_{n=1}^{\infty}\inner{h}{e_n}^2\leqs ||h||^2<\infty$.
+    and thus $\{\inner{h}{e_n}\}$ is $l^2$ and the sum for $Qh$ converges. Since $\inner{Qh}{e_n}=\inner{h}{e_n}$ for all $n$, 
+    it follows that $\inner{h-Qh}{e_n}=0$ for all $n$. Then by the continuity of inner product, 
+    $\inner{s}{h-Qh}= 0$ for any $s$ in $l^2$-span of $\{e_n\}$. Hence, $h-Qh\perp \mathscr{M}$.
+    Since $Qh\in \mathscr{M}$, it follows that $Qh$ is the unique element in $\mathscr{M}$
+    such that $h-Qh\perp \mathscr{M}$. Hence, by the property of $Ph$, $Ph=Qh$ for every $h$ in $\mathscr{H}$.
+\end{proof}
+
+
+\begin{exercise}{I4 T19}{}
+    If $\{h\in \mathscr{H}: ||h||\leqs 1\}$ is compact, show that dim$\mathscr{H}<\infty$.
+\end{exercise}
+
+\begin{proof}
+    Suppose that $\mathscr{H}$ is not finite dimensional.
+    We want to show that $\overline{B(0;1)}$ is not compact. 
+    It suffices to show that $\overline{B(0,1)}$ is not sequentially compact.
+    To do this, we construct a sequence in $\overline{B(0,1)}$ which have no convergent subsequence.
+    We will uset the following fact usually known as Riesz's Lemma:
+    Let $\mathscr{M}$ be a closed subspace of a Banach space $\mathscr{X}$. Given any $r\in (0,1)$, 
+    there exists an $x\in\mathscr{X}$ such that $||x||=1$ and $d(x,\mathscr{M})\geqs r$.
+    \\
+    Pick $x_1\in\mathscr{X}$ such that $||x_1||=1$. Let $\mathscr{M}_1=\vee \{x_1\}$. Then $\mathscr{M}_1$ is closed.
+    Then accroding to Riesz's Lemma, there exists $x_2\in \mathscr{H}$ such that $||x_2||=1$ and $d(x_2,\mathscr{M}_1)\geqs \frac{1}{2}$.
+    Now consider the subspace $\mathscr{M}_2=\vee\{x_1, x_2\}$. Since $\mathscr{H}$ is infinite dimensional,
+    $\mathscr{M}_2$ is a proper closed subspace of $\mathscr{H}$, and we can apply the Riesz's Lemma to find
+    an $x_3 \in \mathscr{H}$ such that $||x_3||=1$ and $d(x_3,\mathscr{M}_2)\geqs \frac{1}{2}$.
+    If we continue to proceed this way, we will have a sequence $(x_n)$ and a sequence of
+    closed subspaces $(\mathscr{M}_n)$ such that for all $n \in \N$: $||x_n||=1$ and $d(x_{n+1},\mathscr{M}_n)\geqs \frac{1}{2}$.
+    It is clear that the sequence $(x_n)$ is in $\overline{B(0,1)}$, 
+    and for $m>n$ we have $x_m\in \mathscr{M}_m\subset \mathscr{M}_{n-1}$ and $||x_n-x_m||\geqs d(x_n,\mathscr{M}_{n-1})\geqs \frac{1}{2}$.
+    Therefore, no subsequence of $(x_n)$ can form a Cauchy sequence. 
+    Thus, $\overline{B(0, 1)}$ is not compact.
+\end{proof}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://web.mat.bham.ac.uk/~malevao/MSM3P21/l14.pdf}{lecture notes from brmh}
+    \item \href{https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/resources/mit18_102s21_lec14/}{lecture notes from mit}
+    \item \href{https://www.math.ucdavis.edu/%7Ehunter/book/ch6.pdf}{lecture notes from ucdavis}
+    \item \href{https://sites.math.washington.edu/~burke/crs/555/555_notes/hilbert.pdf}{lecture notes from washington}
+    \item \href{https://e.math.cornell.edu/people/belk/measuretheory/HilbertSpaces.pdf}{lecture notes from cornell}
+    \item \href{https://www.math.cuhk.edu.hk/course_builder/1415/math5011/functional%20Analysis%202014.pdf}{lecture notes from cuhk}
+    \item \href{https://personal.math.ubc.ca/~malabika/teaching/ubc/spring18/math421-510/HW3-Solution.pdf}{I4 T13 P5}
+    \item \href{https://thichchaytron.files.wordpress.com/2013/10/functional-problems-anhle-full-www-mathvn-com.pdf}{I4 T19: P17}
+\end{itemize}

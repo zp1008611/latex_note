@@ -1,0 +1,121 @@
+\chapter{Exercise about Field}
+
+\begin{exercise}{}{}
+    Every finite integral domain with at least two elements is a field.
+\end{exercise}
+
+\begin{proof}
+    Let $R$ be an finite integral domain with at least two elements. Then $R$ is commutative and satisfys cancellation law.
+    Since $R\setminus\{0\}$ is finite and a multiplication semigroup, $R\{0\}$ is a group. Hence, $R$ is a field. 
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $L/M$ and $M/K$ be field extension. If $[L:K]$ is prime, then either $M=K$ or $M=L$.
+\end{exercise}
+
+\begin{proof}
+    Since $[L:K]=[L:M][M:K]$ and $[L:K]$ is prime, either $[L:M]=1$ or $[M:K]=1$.
+    If $[L:M]=1$, there exists a basis of $L$ over $M$ consisting of a single element. 
+    In other words, there exists a $v\in L$ with the property that every element of $L$
+    can be written as $mv$ for some $m\in M$. In particular, $1_M\in L$, so $1_M=m_0v$ 
+    for some $m_0\in M$.
+    Hence $v$ is the inverse of $m_0\in M$. Hence, $v\in M$. 
+    Now every element of $L$ is a product of two elements of $M$, 
+    hence every element of $L$ 
+    is in $M$. Also, $M\subseteq L$ and so $M=L$. Similarly, if $[M:K]=1$, then $M=K$.
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $\alpha,\beta\in \Q(i)$, then $\alpha=\beta=0$ iff $\alpha^2+2\beta^2=0$.
+\end{exercise}
+
+\begin{proof}
+    $\Q(i)=\{a+bi:a,b\in \Q\}$, so $\text{dim}_{\Q}(\Q(i))= 2$ and $\{1,i\}$ is a basis of $\Q(i)$. 
+    Suppose $\alpha=a_1+b_1i$, $\beta=a_2+b_2i$\\
+    ($\Rightarrow$): $\alpha=\beta=0$, then $\alpha^2+2\beta^2=0^2+2\cdot 0^2=0$.\\
+    % ($\Leftarrow$): The coordinates of $\alpha^2+2\beta^2$ under $\{1,i\}$ is ($a_1^2+2a_2^2$, $b_1^2+2b_2^2$). 
+    % If $\alpha^2+2\beta^2=0$, then $a_1^2+2a_2^2=0$ and $b_1^2+2b_2^2=0$. So $a_1=a_2=b_1=b_2=0$ and then $\alpha=\beta=0$.
+    ($\Leftarrow$): Suppose neither $\alpha$ or $\beta$ equal $0$, then $\sqrt{2}i=\sqrt{-2}=\frac{\alpha}{\beta}\in \Q(i)$. 
+    This is a contradiction as the coefficients of element in $\Q(i)$ under $\{1,i\}$ must be rational. 
+    Hence, $\alpha=\beta=0$. 
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $L/K$ be field extension.
+    For $\alpha,\beta\in L$ algebraic over $K$ with the same minimal polynomial then $K(\alpha)\cong K(\beta)$.
+\end{exercise}
+
+\begin{proof}
+    Suppose $f$ is the minimal polynomial of $\alpha,\beta\in L$ over $K$, then $K(\alpha)\cong K[x]/f(x)$ and $K(\beta)\cong K[x]/f(x)$.
+    Then there exist isomorphisms $\varphi: K(\alpha)\rightarrow K[x]/f(x)$ and $\mu: K(\beta)\rightarrow K[x]/f(x)$. 
+    Then $\psi=\mu^{-1}\varphi:K(\alpha)\rightarrow K(\beta)$ is a isomorphism and so $K(\alpha)\cong K(\beta)$.
+\end{proof}
+
+
+
+\begin{exercise}{}{}
+    Let $L/K$ be field extension. For $\alpha\in L$ with a minimal polynomial of odd degree in $K$ then $K(\alpha)=K(\alpha^2)$
+\end{exercise}
+
+
+\begin{proof}
+    For $s\in K(\alpha^2)$, there exist $f,g\in K[x]$ such that $g(\alpha^2)\neq 0$ and 
+    $s=\frac{f(\alpha^2)}{g(\alpha^2)}=\frac{a_0+a_1\alpha^2+...+a_n(\alpha^2)^n}{b_0+b_1\alpha^2+...+b_m(\alpha^2)^m}$
+    $=\frac{a_0+a_1\alpha^2+...+a_n(\alpha)^{2n}}{b_0+b_1\alpha^2+...+b_m(\alpha)^{2m}}=\frac{f_1(\alpha)}{g_1(\alpha)}\in K(\alpha)$. 
+    Hence, $K(\alpha^2)\subseteq K(\alpha)$. 
+    Now for $f(x)=x^2-\alpha^2\in K(\alpha^2)[x]$, $f(\alpha)=0$. 
+    Thus, $[K(\alpha):K(\alpha^2)]=1$ or $2$.
+    If $[K(\alpha):K(\alpha^2)]=2$, $[K(\alpha):K]=[K(\alpha):K(\alpha^2)][K(\alpha^2):K]=2[K(\alpha^2):K]$.
+    This is a contradiction as $[K(\alpha):K]$ is odd.
+    Hence, $[K(\alpha):K(\alpha^2)]=1$ and so $K(\alpha)=K(\alpha^2)$.
+\end{proof}
+
+
+\begin{exercise}{}{}
+    Let $K$ be a subfield of $\C$. If $a,b\in K$ and $\sqrt{a},\sqrt{b},\sqrt{ab}$ is not in $K$,
+    then $[K(\sqrt{a},\sqrt{b}):K]=4$.
+\end{exercise}
+
+\begin{proof}
+    Firstly, we claim that $K(\sqrt{a},\sqrt{b})=K(\sqrt{a})(\sqrt{b})$. In fact, 
+    for $s\in K(\sqrt{a},\sqrt{b})$, 
+    there exists $f,g\in K[x_1,x_2]$ and $f_1,g_1\in K(\sqrt{a})[x]$ such that $g(\sqrt{a},\sqrt{b})\neq 0$, $g_1(\sqrt{b})\neq 0$ 
+    and $s=\frac{f(\sqrt{a},\sqrt{b})}{g(\sqrt{a},\sqrt{b})}=\frac{f_1(\sqrt{b})}{g_2(\sqrt{b})}$.
+    Hence, $K(\sqrt{a},\sqrt{b})\subseteq K(\sqrt{a})(\sqrt{b})$.
+    Similarly, $K(\sqrt{a},\sqrt{b})\supseteq K(\sqrt{a})(\sqrt{b})$ and so equality holds.
+    Then, $[K(\sqrt{a},\sqrt{b}):K]=[K(\sqrt{a})(\sqrt{b}):K]=[K(\sqrt{a})(\sqrt{b}):K(\sqrt{a})][K(\sqrt{a}):K]=[L(\sqrt{b}):L][L:K]$, where $L=K(\sqrt{a})$.
+    By $\sqrt{a}\notin K$, $[L:K]=2$. So it suffices to show that $[L(\sqrt{b}):L]=2$. It holds only if $\sqrt{b}\notin L$.
+    Suppose $\sqrt{b}\in L$, then $\sqrt{b}=r+s\sqrt{a},r,s\in K$. But that is impossible since squaring yields 
+    $a=r^2+bs^2+2rs\sqrt{b}$, which contradicts hypotheses as follows:\\
+    if $rs\neq 0$, then $\sqrt{b}=\frac{a-r^2-bs^2}{2rs}\in K$ as $a,b,r,s\in K$;\\
+    if $s=0$, then $a=r^2$ and $\sqrt{a}=r\in K$;\\
+    if $r=0$, then $a= bs^2\Rightarrow \sqrt{ab}=bs\in K$.\\
+    Hence, $\sqrt{b}\notin L$ and so $[L(\sqrt{b}):L]=2$.
+    Then, $[K(\sqrt{a},\sqrt{b}):K]=4$.
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $\Q$ be rational field and $p\in\Z$ is prime. Then $\Q(\sqrt{p},\sqrt[3]{p},\sqrt[4]{p,\sqrt[5]{p}},...)$ is a infinte algebraic extension of $\Q$.
+\end{exercise}
+
+\begin{exercise}{}{}
+    Let $\F_2=\{0,1\}$ is a finite field of two elements. Find out all the irreducible polynomial with two degree and three degree in $\F_2$.
+\end{exercise}
+
+\begin{exercise}{}{}
+    Let $p\in\Z$ is prime and $\F_p$ is a finite field with $p$ elements. Then $\forall n\in \N$ and $n\geqs 1$, 
+    $\F_{p^n}$ is the normal extension of $\F_p$
+\end{exercise}
+
+
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://math.stackexchange.com/questions/4314565/same-minimal-polynomial-gives-isomorphism}{Same minimal polynomial gives isomorphism}
+    \item \href{https://math.stackexchange.com/questions/762460/minimal-polynomial-of-odd-degree}{Minimal polynomial of odd degree}
+    \item \href{https://math.stackexchange.com/questions/113689/proving-that-left-mathbb-q-sqrt-p-1-dots-sqrt-p-n-mathbb-q-right-2n-f}{answer from mathexchage}
+    \item \href{https://math.stackexchange.com/questions/925793/infinite-algebraic-extension-of-mathbbq}{Infinite algebraic extension of Q}
+    \item \href{https://www.youtube.com/watch?v=sc9grztQClc}{Irreducible Polynomials in GF(2) of degree 1, 2 and 3.}
+    \item \href{https://sites.math.washington.edu//~julia/teaching/505_Winter2010/notes.pdf}{$\F_{p^n}$ is the splitting field of $x^{p^n}-x$}.
+\end{itemize}

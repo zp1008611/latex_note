@@ -1,0 +1,149 @@
+\chapter{The Direct Sum of Ring and Chinese Remainder Theorem}\label{chp:4_3}
+
+
+\begin{definition}
+    Given rings $R_1,...,R_n$, the outer direct sum of $R_1,...,R_n$ (denoted by $R_1\oplus\cdot\cdot\cdot\oplus R_n$) is
+    \begin{align*}
+        \{(r_1,...,r_n):r_i\in R_i\},
+    \end{align*}
+    with addtion and multiplication defined by 
+    \begin{align*}
+        (r_1,...,r_n) + (s_1,...,s_n) = (r_1+s_1,...,r_n+s_n)
+    \end{align*}
+    and 
+    \begin{align*}
+        (r_1,...,r_n)\times (s_1,...,s_n)=(r_1s_1,...,r_ns_n),
+    \end{align*}
+    where the operation in the $i$-th coordinate position is the relevant operation in $R_i$.
+\end{definition}
+It can be check that $R_1\oplus\cdot\cdot\cdot\oplus R_n$ is a ring.
+
+\begin{theorem}{}{}
+    $R = R_1\oplus ... \oplus R_n$. Put
+    \begin{align*}
+        R_i^* &= \{(x_1,...,x_n)\in R:x_i\in R_i\text{ and }x_j=e_j, \forall j\neq i\}
+    \end{align*}
+    and define $\sigma_i : R\rightarrow R_i$ by $\sigma_i(x_1,...,x_n)=x_i$. Then\\
+    (1) $\sigma_i$ is a homomorphism, $\Im \sigma_i = R_i$ and $\Ker\sigma_i = R_i^*$\\
+    (2) $R_i^*\unlhd R$.\\
+    And more, \\
+    (3) $\forall i, R_i\cong R_i^*$\\
+    (4) $R_1^*\cdot\cdot\cdot R_n^*=G$\\
+    (5) $\forall i, R_i^*\cap \prod_{j\neq i}R_j^*=\{0\}$.
+\end{theorem}
+
+\begin{proposition}{}{}
+    If $I_1,...,I_m$ are ideals of $R$, $R$ is called the inner direct sum of $I_1,..,I_m$ if\\
+    (1) $I_1+..+I_m=R$, and\\
+    (2) $\forall i, I_i\cap \sum\limits_{j\neq i}^{}I_j=\{0\}$
+\end{proposition}
+\begin{remark}
+    Since $(I,+)$ is a normal subgroup of $(R,+)$, the definition makes sense.
+\end{remark}
+
+\begin{theorem}{}{}
+    Let $R$ be a ring and let $I_1,...,I_m$ be ideals of $R$. 
+    If $R$ is the inner direct sum of $I_1,...,I_m$, then $R \cong I_1\oplus ... \oplus I_m$.
+\end{theorem}
+
+
+\begin{definition}{}{}
+    Let $R$ be a ring and $I,J\subseteq R$ be ideals. The sum and product of $I$ and $J$ are the ideals
+    \begin{align*}
+        I+J&=\gi{I\cap J},\\
+        IJ&=\gi{I\cdot J},
+    \end{align*}
+    where $I\cdot J=\{ab:a\in I,b\in J\}$.
+\end{definition}
+
+\begin{lemma}{}{}
+    Let $R$ be a ring with ideals $I$ and $J$. Then
+    \begin{align*}
+        I+J &= \{a+b:a\in I,b\in J\},\\
+        IJ &= \{\sum\limits_{i=1}^{n}a_ib_i:a_i\in I,b_i\in J,n\in\N\}. 
+    \end{align*}
+\end{lemma}
+
+The distributive law holds for ideals $I,J,K$,
+\begin{itemize}
+    \item $I(J+K)=IJ+IK$
+    \item $(I+J)K=IK+JK$.
+\end{itemize}
+If a product is replaced by an intersection, a partial distributive law holds: $I\cap(J+K)\supset I\cap J+I\cap K$.
+
+
+
+\begin{proposition}{}{}
+    Let $I,J$ be ideals in a ring $R$. 
+    Then $IJ\subseteq R$ and $IJ\subseteq I$.
+\end{proposition}
+\begin{proof}
+    Because $I$ and $J$ are ideals, 
+    the elements of $I \cdot J$ all belong to both $I$ and $J$.
+    Thus, $I\cdot J \subseteq I\cap J$, which implies $IJ \subseteq I \cap J$.
+\end{proof}
+In number theory, two integers $a$ and $b$ are coprime 
+iff there exists $m, n \in Z$, such that 
+$ma + nb = 1$. 
+This identity is called B\'ezout's identity. 
+By this identity, we can define coprime about ideals.
+
+
+
+\begin{definition}{}{}
+    Two ideals $I$ and $J$ in a ring $R$ are called coprime if $A+B=R$.
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $R$ be an unital ring. Then two ideals $I$ and $J$ in $R$
+    are coprime iff $1\in I+J$.
+\end{proposition}
+
+\begin{proposition}{}{}
+    Let $R$ be a ring with unity and $I,J$ are ideals in $R$. Then
+    \begin{align*}
+        (I\cap J)(I+J)\subseteq IJ+JI.
+    \end{align*}
+\end{proposition}
+\begin{proof}
+    \begin{align*}
+        (I\cap J)(I+J)&= (I\cap J)I + (I\cap J)J &(I\cap J\subseteq J, I\cap J\subseteq I)\\
+                      &\subseteq JI+IJ 
+    \end{align*}
+\end{proof}
+
+\begin{lemma}{}{}
+    Let $R$ be an unital ring. Two ideals $I$ and $J$ in $R$ are coprime, then
+    \begin{align*}
+        IJ+JI=I\cap J.
+    \end{align*}  
+    In particular, if $R$ is commutative, $IJ=I\cap J$.
+\end{lemma}
+
+\begin{proof}
+    Since $IJ,JI\subseteq I\cap J$ and $I\cap J$ is a ring, $IJ+JI\subseteq I\cap J$.
+    Also, $I+J=R$ and $(I\cap J)R=I\cap J$, then $(I\cap J)\subset IJ+JI$.
+\end{proof}
+
+\begin{lemma}{}{}
+    Let $R$ be an unital ring and $I,J,K$ are ideals in $R$. If $I+J=R$ and $I+K=R$, 
+    then $I$ and $JK$ are coprime.
+\end{lemma}
+
+\begin{proof}
+    It suffices to show that $1\in I+JK$. Since $I+J=R$, there exists $i\in I$ and $j\in J$
+    such that $i+j=1$. Since $I+K=R$, there exists $i'\in I, k\in K$ such that $i'+k=1$.
+    Hence in $R$,
+    \begin{align*}
+        1=1\cdot 1=(i+j)(i'+k)=ii'+ik+ji'+jk=(ii'+ik+ji')+jk\in I+JK.
+    \end{align*}
+\end{proof}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://webspace.maths.qmul.ac.uk/r.a.bailey/MAS305/algnotes14.pdf}{lecture notes from queen mary}
+    \item \href{https://www.youtube.com/watch?v=_1Ts5TcHyQ4}{Product of two ideals}
+    \item \href{http://ramanujan.math.trinity.edu/rdaileda/teach/f19/m4363/arith2.pdf}{The Multiplicative Arithmetic of Ideals}
+    \item \href{https://public.csusm.edu/aitken_html/m422/Handout6.pdf}{THE CHINESE REMAINDER THEOREM AND THE PHI FUNCTION}
+\end{itemize}

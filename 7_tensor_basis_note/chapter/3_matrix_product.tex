@@ -1,0 +1,156 @@
+\chapter{Hadamard, Kronecker and Khatri–Rao Products}
+
+\section{Partitioned matrices}
+
+Let $\{\alpha_{m_1},...,\alpha_{m_R}\}$
+and $\{\beta_{n_1},...,\beta_{n_S}\}$
+be partitions of the sets $\{1,...,m\}$
+and $\{1,...,n\}$, respectively, with 
+$m_r\in \langle m \rangle$ and $n_s\in\langle n\rangle$,
+such that $\sum\limits_{r=1}^{R}m_r=m$ and $\sum\limits_{s=1}^{S}n_s=n$.
+It is said that matrices $\bold{A}_{rs}$ of dimensions $(m_r,n_s)$
+form a partition of the matrix $\bold{A}\in \K^{m\times n}$ into $(R,S)$ blocks,
+or that $\bold{A}$ is partitioned into $(R,S)$ blocks, if $\bold{A}$ can be written as:
+\begin{align*}
+    \bold{A}=\begin{pmatrix}
+        \bold{A}_{11}&\bold{A}_{12}&...&\bold{A}_{1S}\\
+        \bold{A}_{21}&\bold{A}_{22}&...&\bold{A}_{2S}\\
+        ...&...&...&...\\
+        \bold{A}_{R1}&\bold{A}_{R2}&...&\bold{A}_{RS}\\
+    \end{pmatrix}=(\bold{A}_{rs}), r\in\langle R\rangle, s\in\langle S\rangle.
+\end{align*}
+All submatrices of the same row-block $(r)$ contain the same number $(m_r)$ of rows.
+Similarly, all submatrices of the same column-block $(s)$ contain the same number $(n_s)$ of columns,
+that is:
+\begin{align*}
+    \begin{pmatrix}
+        \bold{A}_{r1}&\bold{A}_{r2}&...&\bold{A}_{rS}
+    \end{pmatrix}\in \K^{m_r\times n},
+    \begin{pmatrix}
+        \bold{A}_{1s}&\bold{A}_{2s}&...&\bold{A}_{Rs}
+    \end{pmatrix}\in \K^{m\times n_s}.
+\end{align*}
+It is then said that the submatrices $\bold{A}_{rs}$ are of compatible dimensions.
+\par
+In the particular case where $n=1$,
+the partitioned matrix becomes a block-column vector:
+\begin{align*}
+    \bold{a}=\begin{pmatrix}
+        \bold{a}_1&\bold{a}_2&...&\bold{a}_{R}
+    \end{pmatrix}\in \K^{m\times 1},
+    \bold{a}_r\in \K^{m_r\times 1},r\in \langle R\rangle.
+\end{align*}
+Similarly, when $m=1$, the partitioned matrix becomes a block-row vector:
+\begin{align*}
+    \bold{a}^{T}=\begin{pmatrix}
+        \bold{a}_1^T&\bold{a}_2^T&...&\bold{a}_S^T
+    \end{pmatrix}\in \K^{1\times n}, \bold{a}_s\in\K^{n_s\times 1},s\in\langle S\rangle.
+\end{align*}
+
+\section{Notation}
+We will write $\bold{A}^*,\bold{A}^T,\bold{A}^H,\bold{A}^{\dagger},\bold{A}_{i\cdot},\bold{A}_{\cdot j},r(\bold{A})$ 
+and $\text{det}(\bold{A})$, for the conjugate, the transpose,
+the transconjugate (also known as conjugate transpose or Hermitian transpose),
+the Moore-Penrose pseudo-inverse, the $i$th row, the $j$th column,
+the rank and the determinant of $\bold{A}\in\K^{I\times J}$, respectively.
+In the following literature, the Hadamard product is denoted by $*$.
+The symbols $\otimes$ and $\odot$ are used for the Kronecker and Khatri-Rao product, respectively.
+\par
+The symbol $\bold{1}_I$ denotes a column vector of size $I$
+whose elements are all equal to $1$. 
+The elements of the matrices $\bold{0}_{I\times J}$ and
+$\bold{1}_{I\times J}$ of size $(I\times J)$ are all equal to $0$
+and $1$, respectively. The symbols $\bold{I}_N$ and $\bold{e}_n^{(N)}$
+denote the identity matrix of order $N$ and the $n$th vector of 
+the canonical basis of the vector space $\R^N$, respectively.
+
+
+\section{Hadamard product}
+
+\subsection{Definition and identities}
+\begin{definition}{}{}
+    Let $\bold{A}$ and $\bold{B}\in \K^{I\times J}$ be two matrices of the same size.
+    The Hadamard product of $\bold{A}$ and $\bold{B}$ is the
+    matrix $\bold{C}\in\K^{I\times J}$ defined as follows:
+    \begin{align*}
+        \bold{C}=\bold{A}*\bold{B}=\begin{pmatrix}
+            a_{11}b_{11}& a_{12}b_{12}& ... & a_{1J}b_{1J}\\
+            a_{21}b_{21}& a_{22}b_{22}& ... & a_{2J}b_{2J}\\
+            ...& ... & ... & ...\\
+            a_{I1}b_{I1}& a_{I2}b_{I2} & ...& a_{IJ}b_{IJ}
+        \end{pmatrix},
+    \end{align*}
+    i.e. $c_{ij}=a_{ij}b_{ij}$, and therefore $\bold{C}=(a_{ij}b_{ij})$, with $i\in\langle I\rangle$, $j\in\langle J\rangle$.
+\end{definition}
+
+\section{Kronecker product}
+
+\subsection{Kronecker product of vectors}
+\subsubsection{Definition}
+\begin{definition}{}{}
+    (a) For $\bold{u}\in \K^I$ and $\bold{v}\in \K^J$, we have:
+    \begin{align*}
+        \bold{x}=\bold{u}\otimes \bold{v}\in \K^{IJ}\Leftrightarrow x_{j+(i-1)J}=u_iv_j
+    \end{align*}
+    or equivalently:
+    \begin{align*}
+        \bold{u}\otimes \bold{v}=\begin{pmatrix}
+            u_1v_1& ... & u_1v_J& u_2v_1&...& u_2v_J&...& u_Iv_1&...& u_Iv_J
+        \end{pmatrix}^T=\begin{pmatrix}
+            u_1\bold{v}&...&u_I\bold{v}
+        \end{pmatrix}.
+    \end{align*}
+    (b) Similarly, for $\bold{u}\in \K^{I}, \bold{v}\in \K^J$, and $\bold{w}\in\K^K$, we have:
+    \begin{align*}
+        \bold{x}=\bold{u}\otimes \bold{v}\otimes \bold{w}\in \K^{IJK}\Leftrightarrow x_{k+(j-1)K+(i-1)JK}=u_iv_jw_k.
+    \end{align*}
+\end{definition}
+\begin{remark}
+    By convention, the order of the dimensions in a product $IJK$ follows
+    the order of variation of the corresponding indices $(i,j,k)$. For example,
+    $\K^{IJK}$ means that the index $i$ varies more slowly than $j$, which itself varies more slowly than $k$.
+\end{remark}
+
+\subsection{Kronecker product of matrices}
+
+\subsubsection{Definitions and identities}
+\begin{definition}{}{}
+    Given two matrices $\bold{A}\in\K^{I\times J}$ and $\bold{B}\in \K^{M\times N}$
+    of arbitrary size, the right Kronecker product of $\bold{A}$ by $\bold{B}$ is the matrix $\bold{C}\in \K^{IM\times JN}$
+    defined as follows:
+    \begin{align*}
+        \bold{C}=\bold{A}\otimes \bold{B}=\begin{pmatrix}
+            a_{11}\bold{B} & a_{12}\bold{B} & ...& a_{1J}\bold{B}\\
+            a_{21} \bold{B} & a_{22}\bold{B} & ... & a_{2J}\bold{B}\\
+            ...&...&...&...\\
+            a_{I1}\bold{B}&a_{I2}\bold{B}&...&a_{IJ}\bold{B}
+        \end{pmatrix}=(a_{ij}\bold{B}).
+    \end{align*}
+\end{definition}
+\begin{remark}
+    The Kronecker product is a matrix partitioned into $(I,J)$ blocks, where the block $(i,j)$ is given by the matrix $a_{ij}\bold{B}\in \K^{M\times N}$.
+    The element $a_{ij}b_{mn}$ is located at the position $((i-1)M+m,(j-1)N+n)$ in $\bold{A}\otimes \bold{B}$.
+\end{remark}
+
+\begin{example}{}{}
+    For $\bold{A}=\begin{pmatrix}
+        a_{11}&a_{12}\\
+        a_{21}&a_{22}
+    \end{pmatrix}$,
+    $\bold{B}=\begin{pmatrix}
+        b_{11}&b_{12}\\
+        b_{21}&b_{22}
+    \end{pmatrix}$, we have:
+    \begin{align*}
+        \bold{A}\otimes \bold{B}=\begin{pmatrix}
+            
+        \end{pmatrix}
+    \end{align*}
+\end{example}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{}{From Algebraic Structures to Tensors ch5}
+    \item \href{}{Matrix and Tensor Decompositions in Signal Processing ch2}
+\end{itemize}

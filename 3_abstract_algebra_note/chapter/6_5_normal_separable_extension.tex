@@ -1,0 +1,65 @@
+\chapter{Normal Extension and Separable Extension}\label{chp:6_5}
+
+\section{Normality}
+
+\begin{definition}{}{}
+    An algebraic field extension $L/K$ is normal 
+    if for all $\alpha\in L$,
+    the minimal polynomial of $\alpha$ splits in $L$.
+\end{definition}
+
+\begin{lemma}{}{}
+    Let $L/K$ be an algebraic extension. 
+    Then $L/K$ is normal if and
+    only if every irreducible polynomial over $K$ either has no roots in $L$ or splits in $L$.
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+
+\begin{example}{}{}
+    $\Q(\sqrt[3]{2})$
+\end{example}
+
+\begin{proposition}{}{}
+    Let $L/K$ be a field extension. Then
+    \begin{align*}
+        L= \text{SF}_K ( f ) \text{ for some nonzero $f\in K[x]$}
+        \Leftrightarrow L/k \text{ is finite and normal}.
+    \end{align*}
+\end{proposition}
+
+\section{Normality}
+
+\begin{definition}{}{}
+    An irreducible polynomial over a field is separable if it has no
+    repeated roots in its splitting field.
+\end{definition}
+\begin{remark}
+    Formally, for a polynomial $f (x) \in K[x]$ 
+    and a root $\alpha$ of $f$ in some extension $L$ of $K$, 
+    we say that $\alpha$ is a repeated root if $(x - \alpha)^2| f (x)$ in $L[x]$.
+\end{remark}
+\begin{remark}
+    Equivalently, an irreducible polynomial $f \in K[x]$ is separable 
+    if it splits into distinct linear factors in $\text{SF}_K (f)$:
+    \begin{align*}
+        f(x)=a(x-\alpha_1)\cdots (x-\alpha_n)
+    \end{align*}
+    for some $a\in K$ and distinct $\alpha_1,...,\alpha_2\in \text{SF}_K(f)$.
+    Put another way, an irreducible $f$ is separable if and if only it has deg$(f)$ distinct roots in its splitting field. 
+\end{remark}
+
+\begin{example}{}{}
+    $x^3-2\in\Q[x]$ is separable, since it has $3$ distinct roots in $\C$,
+    hence in its splitting field.
+\end{example}
+
+
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://www.maths.ed.ac.uk/~tl/gt/gt.pdf}{Normality; P98}
+    \item \href{https://www.maths.ed.ac.uk/~tl/gt/gt.pdf}{Separability; P105}
+\end{itemize}

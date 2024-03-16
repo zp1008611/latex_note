@@ -1,0 +1,241 @@
+\chapter{Matrix Algebra}
+
+\section{Notations and definitions}
+
+Scalars, column vectors, matrices, and hypermatrices/tensors of order higher than two will be 
+denoted by lowercase letters $(a,b,...)$, 
+bold lowercase letters $(\bold{a,b},...)$,
+bold uppercase letters $(\bold{A},\bold{B},...)$,
+and calligraphic letters $(\mathcal{A},\mathcal{B},...)$ respectively.
+
+\par
+A matrix $\bold{A}$ of dimensions $I\times J$, with $I$ and $J\in \N^*$,
+denoted by $\bold{A}(I,J)$, is an array of $IJ$ elements stored in $I$ rows and 
+$J$ columns; the elements belong to a field $\K$. Its $i$th row and
+$j$th column, denoted by $A_{i\cdot}$ and $A_{\cdot j}$, respectively, are called $i$th row vector and
+$j$th column vector. The element located at the intersection of $A_{i\cdot}$ and $A_{\cdot j}$ is 
+designated by $a_{ij}$. We will use the notation $\bold{A}=(a_{ij})$, 
+with $a_{ij}\in\K$, $i\in \langle {I} \rangle=\{1,2,...,I\}$ and 
+$j\in \langle{J} \rangle=\{1,2,...,J\}$.
+\par
+A matrix $A\in\K^{I\times J}$ is written in the form:
+\begin{align*}
+    \begin{pmatrix}
+        a_{11}& a_{12} & ... & a_{1J} \\
+        a_{12}& a_{22} & ... & a_{2J} \\
+        ...& ...  & ... & ...\\
+        a_{I1}& a_{I2}  & ... & a_{IJ}
+      \end{pmatrix}
+\end{align*} 
+The special cases $I=1$ and $J=1$ correspond respectively to row vectors of dimension $J$ 
+and to column vectors of dimension $I$:
+\begin{align*}
+    \bold{v}=\begin{pmatrix}
+        v_1& v_{2} & ... & v_{J} 
+      \end{pmatrix}\in \K^{1\times J},
+    \bold{u}=\begin{pmatrix}
+        u_1\\ u_{2} \\ ... \\ u_{I} 
+      \end{pmatrix}\in \K^{I\times 1}.
+\end{align*}
+In the following, for column vectors, $\K^{I}$ will be used instead of $\K^{I\times 1}$.
+\par
+$\bold{e}_{i}^{(I)}$ is the column vector of dimension $I$,
+in which element is equal to $1$ at position $i$ and $0s$ elsewhere.
+$\bold{E}_{ij}^{I\times J}$ is the matrix of dimension $I\times J$
+in which element is equal to $1$ at position $(i,j)$ and $0s$ elsewhere.
+
+\section{Transposition and conjugate transposition}
+\begin{definition}{transpose and the conjugate transpose of a column vector}{transpose and the conjugate transpose of a column vector}
+    The transpose and the conjugate transpose (also called transconjugate) of a column
+    vector $\bold{u}=\begin{pmatrix}u_1\\ u_{2} \\ ... \\ u_{I} \end{pmatrix}\in \C^{I}$, 
+    denoted by $\bold{u}^{T}$ and $\bold{u}^{H}$, respectively, are the row vectors defined as:
+    \begin{align*}
+        \bold{u}^T=\begin{pmatrix}u_1\\ u_{2} \\ ... \\ u_{I} \end{pmatrix}\text{ and } 
+        \bold{u}^H=\begin{pmatrix}u_1^*& u_{2}^* & ... & u_{I}^* \end{pmatrix},
+    \end{align*}
+    where $u_i^*$ is the conjugate of $u_i$ also denoted by $\overline{u}_i$.
+\end{definition}
+
+\begin{definition}{transpose and the conjugate transpose of a matrix}{transpose and the conjugate transpose of a matrix}
+    The transpose of $\bold{A}\in\K^{I\times J}$ is the matrix denoted by $\bold{A}^T$, of dimensions $J\times I$, such that $A^T=(a_{ji})$, 
+    with $i\in\langle {I}\rangle$ and $j\in\langle {J}\rangle$.
+    In the case of a complex matrix, the conjugate transpose, also known as Hermitian transpose and denoted by $\bold{A}^H$,
+    is defined as: $\bold{A}^{H}=(\bold{A}^*)^T=(\bold{A}^T)^*=(a_{ji}^*)$,
+    where $\bold{A}^*=(a_{ij}^*)$ is the conjugate of $\bold{A}$.
+\end{definition}
+
+\begin{remark}
+    In mathematics, the complex conjugate of a complex number 
+    is the number with an equal real part and 
+    an imaginary part equal in magnitude but opposite in sign. 
+    That is, if $a$ and $b$ are real numbers 
+    then the complex conjugate of $a+\text{i}b$ is $a-\text{i}b$.
+    The complex conjugate of $z$ is often denoted as $\bar{z}$ or $z^*$.
+\end{remark}
+
+
+\begin{proposition}{}{}
+    The operations of transposition and conjugate transposition satisfy:
+    \begin{align*}
+        (\bold{A}^T)^T=\bold{A}&, (\bold{A}^H)^H=\bold{A}\\
+        (\bold{A}+\bold{B})=\bold{A}^T+\bold{B}^T&, (\bold{A}+\bold{B})^{H}=\bold{A}^H+\bold{B}^H,\\
+        (\alpha \bold{A})^T=\alpha \bold{A}^T&, (\alpha \bold{A})^H=\alpha^*\bold{A}^H, 
+    \end{align*}
+    for any matrix $\bold{A},\bold{B}\in\C^{I\times J}$ and any scalar $\alpha\in\C$.
+\end{proposition}
+
+\begin{remark}
+    By decomposing $\bold{A}$ using its real and imaginary parts, we have:
+    \begin{align*}
+        \bold{A}=\text{Re}(\bold{A}) +\text{i} \text{Im} (\bold{A}) \Rightarrow 
+        \left\{\begin{matrix}
+           \bold{A}^T = (\text{Re}(\bold{A}))^T+\text{i} (\text{Im}(A))^T \\
+           \bold{A}^H = (\text{Re}(\bold{A}))^H-\text{i} (\text{Im}(A))^H
+          \end{matrix}\right.
+    \end{align*}.
+\end{remark}
+
+\section{Vector outer product and vectorization}
+\subsection{Vector outer product}
+The outer product of two vectors $\bold{u}\in\K^{I}$ and $\bold{v}\in \K^{J}$,
+denoted $\bold{u}\circ \bold{v}$,
+gives a matrix $\bold{A}\in \K^{I\times J}$
+such that $a_{ij}=(\bold{u}\circ\bold{v})_{ij}=u_iv_j$,
+and therefore, $\bold{u}\circ\bold{v}=\bold{u}\bold{v}^T=(u_iv_j)$, 
+with $i\in \langle I\rangle,j\in\langle J\rangle$.
+
+\begin{example}{}{}
+    For $I=2,J=3$, we have:
+    \begin{align*}
+        \begin{pmatrix}
+            u_1\\ u_{2}
+        \end{pmatrix}\circ
+        \begin{pmatrix}
+            v_1\\ v_{2} \\v_{3}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            u_1\\ u_{2}
+        \end{pmatrix} 
+        \begin{pmatrix}
+            v_1& v_{2} &v_{3}
+        \end{pmatrix}
+        = \begin{pmatrix}
+            u_1v_1& u_1v_{2} & u_1v_{3}\\
+            u_2v_1& u_2v_2 & u_2v_3
+        \end{pmatrix}.
+    \end{align*}
+\end{example}
+
+\subsection{Vectorization}
+A very widely used operation in matrix computation is vectorization
+which consists of stacking the columns of a matrix $\bold{A}\in \K^{I\times J}$
+on top of each other to form a column vector of dimension $JI$:
+\begin{align*}
+    \bold{A}=\begin{pmatrix}
+        \bold{A}_{\cdot 1}& \bold{A}_{\cdot 2} & ... & \bold{A}_{\cdot J}
+    \end{pmatrix}\in \K^{I\times J}
+    \Rightarrow \text{vec}(\bold{A}) = \begin{pmatrix}
+        \bold{A}_{\cdot 1} \\ \bold{A}_{\cdot 2}\\ ...\\ \bold{A_{\cdot J}}
+    \end{pmatrix}\in \K^{JI}.
+\end{align*}
+This operation defines an isomorphism between the space $\K^{JI}$ of vectors
+of dimension $JI$ and the space $\K^{I\times J}$ of matrices $I\times J$.
+Indeed, the canonical basis of $\K^{JI}$, denoted by $\{\bold{e}_{(j-1)I+i}^{(JI)}\}$, 
+allows us to write $\text{vec}(\bold{A})$ as:
+\begin{align*}
+    \bold{A}=\sum\limits_{i=1}^{I}\sum\limits_{j=1}^{J}a_{ij}\bold{e}_i^{(I)}\circ \bold{e}_j^{(J)}
+    \Rightarrow
+    \text{vec}(\bold{A})=\sum\limits_{i=1}^{I}\sum\limits_{j=1}^{J}a_{ij}\bold{e}_{(j-1)I+i}^{(JI)},
+\end{align*}
+with $\bold{e}_{(j-1)I+i}^{(JI)}=\text{vec}(\bold{e}_i^{(I)}\circ \bold{e}_j^{(J)})=\text{vec}(\bold{e}_i^{(I)}(\bold{e}_j^{(J)})^T)$.
+
+\begin{remark}
+    Since the operator $\text{vec}$ satisfies $\text{vec}(\alpha \bold{A}+\beta \bold{B})=\alpha \text{vec}(\bold{A})+\beta \text{vec}(\bold{B})$
+    for all $\alpha,\beta\in\K$, it is linear.
+\end{remark}
+
+
+\section{Vector inner product, norm and orthogonality}
+\subsection{Inner product}
+
+In this section, we recall the definition of the inner product(also called dot product)
+of two vectors $\bold{a},\bold{b}\in\K^{I}$.
+\begin{definition}{}{}
+    If $\K=\R$, the inner product is defined as:
+    \begin{align*}
+        \inner{\cdot}{\cdot}:\R^I\times \R^I&\rightarrow \R\\
+        (a,b)&\mapsto \inner{a}{b} = a^Tb=\sum\limits_{i=1}^{I}a_ib_i.
+    \end{align*}
+    In $\C^I$, the definition of the inner product is given by:
+    \begin{align*}
+        \inner{\cdot}{\cdot}:\C^I\times \C^I&\rightarrow \C\\
+        (a,b)&\mapsto \inner{a}{b} = a^Hb=\sum\limits_{i=1}^{I}a_i^*b_i.
+    \end{align*}
+\end{definition}
+
+
+\subsection{Euclidean/Hermitian norm}
+\begin{definition}{}{}
+    The Euclidean (Hermitian) norm of a vector $\bold{a}$, denoted $||\bold{a}||$, 
+    associates to $a\in\R^I$ ($a\in\C^I$) a non-negative real number according to the following definition:
+    \begin{align*}
+        ||\cdot||_2 : \K^I &\rightarrow \R^+\\
+        \bold{a} &\mapsto ||\bold{a}||_2=\sqrt{\inner{\bold{a}}{\bold{a}}}
+    \end{align*}.
+\end{definition}
+
+
+\subsection{Orthogonality}
+\begin{definition}{}{}
+    Two vectors $\bold{a}$ and $\bold{b}$ of $\K^{I}$ are said to be 
+    orthogonal if and only if $\inner{a}{b}=0$. 
+\end{definition}
+
+
+\section{Matrix multiplication}
+\subsection{Definition and properties}
+
+given matrices $\bold{A}\in \K^{I\times J}$ and
+$\bold{B}\in \K^{J\times K}$,
+the product of $\bold{A}$ by $\bold{B}$
+gives a matrix $\bold{C}=\bold{AB}\in\K^{I\times K}$
+such that $c_{ik}=\sum\limits_{i=1}^{I}a_{ij}b_{jk}$,
+for $j\in \langle J\rangle$; $k\in \langle K\rangle$.
+\par
+This product can be written in terms of the outer products of column vectors of 
+
+
+
+
+\section{Matrix trace, inner product and Frobenius norm}
+
+\subsection{Definition and properties of the trace}
+\begin{definition}{}{}
+    The trace of a square matrix $\bold{A}$ of order $I$ is defined as the sum of its diagonal elements:
+    \begin{align*}
+        \text{tr}(\bold{A})=\sum\limits_{i=1}^{I}a_{ii}.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}{}{}
+    The trace satisfies the following properties:
+    \begin{align*}
+        \text{tr}(\alpha \bold{A}+\beta \bold{B}) &= \alpha \text{tr}(\bold{A}) + \beta \text{tr}(\bold{B}),\\
+        \text{tr}(\bold{A}^T)&=\text{tr}(\bold{A}),\\
+        \text{tr}(\bold{A}^*)&=\text{tr}(\bold{A}^H)=(\text{tr}(\bold{A}))^*,\\
+    \end{align*}
+\end{proposition}
+
+\section{Subspaces associated with a matrix}
+
+\section{Matrix rank}
+
+\section{Determinant, inverses and generalized inverses}
+
+\section{Eigenvalues and eigenvectors}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{}{From Algebraic Structures to Tensors ch4 matrix algebra}
+\end{itemize}

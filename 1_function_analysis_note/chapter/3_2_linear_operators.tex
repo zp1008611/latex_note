@@ -1,0 +1,58 @@
+\chapter{Linear Operators on Normed Space}\label{chp:3_2}
+
+\begin{exercise}{III2 T1}{}
+    Show that for $\mathscr{B}(\mathscr{\mathscr{X}},\F)\neq (0)$,
+    $\mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$ is a Banach space 
+    if and only if $\mathscr{\mathscr{Y}}$ is a Banach space.
+\end{exercise}
+\begin{proof}
+    ($\Rightarrow$):
+        Let $x_0\in \mathscr{X}$ with $||x_0||=1$,
+        then by Hahn-Banach Theorem, there exists $f\in\mathscr{X}^*$ such that $f(x_0)=||x_0||=1$.
+    ($\Leftarrow$):
+    We have to prove that $\mathscr{B}(\mathscr{X},\mathscr{Y})$ is complete.
+    Let $(T_n)$ be a Cauchy sequence in $\mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$.
+    For each $x\in\mathscr{\mathscr{X}}$, we have
+    \begin{align*}
+        ||T_nx-T_mx||=||(T_n-T_m)x||\leqs ||T_n-T_m||\cdot ||x||,
+    \end{align*}
+    which shows that $(T_nx)$ is a Cauchy sequence in $\mathscr{Y}$.
+    Since $\mathscr{Y}$ is complete, there is an unique $\mathscr{Y}\in \mathscr{Y}$ such that $T_nx\underset{n\rightarrow \infty}{\longrightarrow}y$.
+    Define $T:\mathscr{X}\rightarrow \mathscr{Y}$ given by $Tx=y$. Then $T$ is well-defined and linear.
+    We show that $||T_n-T||\underset{n\rightarrow \infty}{\longrightarrow} 0$ and $T$ is bounded,
+    i.e. $\sup_{||\mathscr{X}||=1}||T_nx-Tx||\underset{n\rightarrow \infty}{\longrightarrow} 0$
+    and $\sup_{||\mathscr{X}||=1}||Tx||<\infty$.
+    
+    For any $\epsilon>0$, since $(T_n)$ is Cauchy, 
+    it follows that there exists $N_1>0$ such that 
+    $||T_nx-T_mx||\leqs ||T_n-T_m||<\epsilon/2$, for all $n,m>N_1$.
+    Since $T_nx\underset{n\rightarrow \infty}{\longrightarrow} Tx$, 
+    there exists $N_2>0$ such that $||T_mx-Tx||<\epsilon/2$, for all $m>N_2$.
+    Let $N=\max\{N_1,N_2\}$ and $m_0>N$, then for $||\mathscr{X}||=1$,
+    \begin{align*}
+        ||T_nx-Tx||\leqs ||T_nx-T_{m_0}x||+||T_{m_0}x-Tx||<\epsilon.
+    \end{align*}
+    Hence, $||T_n-T||\rightarrow 0, n\rightarrow \infty$. And
+    \begin{align*}
+        ||Tx||\leqs ||T_{m_0}x||+||Tx-T_{m_0}x||\leqs ||T_{m_0}x||+\epsilon.
+    \end{align*}
+    Since $T_{m_0}$ is bounded, $T$ is bounded. Hence, $T\in \mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$ and so $\mathscr{B}(\mathscr{\mathscr{X}},\mathscr{\mathscr{Y}})$ is complete.
+\end{proof}
+
+
+\begin{exercise}{III2 T4}{}
+    If $(\mathscr{X},\Omega,\mu)$ is a $\sigma$-finite measure space and $\phi\in L^{\infty}(\mathscr{X},\Omega,\mu)$,
+    define $M_{\phi}:L^p(\mathscr{X},\Omega,\mu)\rightarrow L^p(\mathscr{X},\Omega,\mu)$, $1\leqs p\leqs \infty$, 
+    by $M_{\phi}f=\phi f$ for all $f$ in $L^p(\mathscr{X},\Omega,\mu)$.
+    Then $M_{\phi}\in\mathscr{B}(L^p(\mathscr{X},\Omega,\mu))$ and $||M_{\phi}||=||\phi||_{\infty}$.
+
+\end{exercise}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://www.math.ucdavis.edu/~hunter/book/ch5.pdf}{$\mathscr{Y}$ is a Banach space, then
+    $B(\mathscr{X}, \mathscr{Y})$ is a Banach space. P110}
+    \item \href{https://math.stackexchange.com/questions/4759249/let-mathcalb-0x-Y-is-a-banach-space-does-this-imply-that-Y-is-a-banac?noredirect=1&lq=1}{$B(\mathscr{X}, \mathscr{Y})$ is a Banach space, then $\mathscr{Y}$ is Banach space}
+    \item \href{https://www.ucl.ac.uk/~ucahad0/3103_handout_6.pdf}{}
+\end{itemize}

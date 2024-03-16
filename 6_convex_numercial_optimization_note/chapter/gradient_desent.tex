@@ -1,0 +1,50 @@
+\chapter{Gradient Descent}\label{chp:gradient descent}
+
+
+\section{Convergence}
+\begin{proposition}
+    Suppose $f$ is convex and in $C^1$. The following statements are equivalent.\\
+    (1) Lipschitz continuity of $\nabla f(x)$: there exists an $L>0$ such that
+    \begin{align*}
+        ||\nabla f(x)-\nabla f(y)||\leqs L||x-y||
+    \end{align*}
+\end{proposition}
+
+
+\begin{theorem}{}{}
+    Assume that $f : \R^n \rightarrow \R$ is convex and differentiable, and additionally
+    \begin{align*}
+        ||\nabla f(x)-\nabla f(y)||\leq L||x-y||,\forall x,y
+    \end{align*}
+    i.e. $\nabla f$ is Lipschitz continuous with constant $L>0$. Then Gradient Descent with $0\leq \alpha_k\leq \frac{1}{L}$ satisfies
+    \begin{align*}
+        f(x_k)-f(x^*)\leq \frac{||x_0-x^*||^2}{2\alpha_k k}.
+    \end{align*}
+    i.e. 
+\end{theorem}
+
+\begin{proofsolution}
+    1
+\end{proofsolution}
+
+
+
+\begin{remark}
+    proof reference: \href{https://www.cs.cmu.edu/~ggordon/10725-F12/scribes/10725_Lecture5.pdf}{notes from cmu}
+\end{remark}
+
+todo: add theorem when f is strongly convex
+
+\section{Exact Line Search}
+
+\section{Barzilai-Borwein (BB) method}
+
+
+In the next chapter, we will introduce more about line search to choose appropriate step size. 
+
+\section{Reference}
+\begin{itemize}
+    \item Convergence analysis: \href{https://www.math.cuhk.edu.hk/course_builder/1617/math6211a/cvxop.pdf}{lecture notes from cuhk}
+    \item Exact Line Search: \href{https://www.princeton.edu/~aaa/Public/Teaching/ORF363_COS323/F23/ORF363_COS323_F23_Lec8.pdf}{lecture notes from princeton university}
+    \item BB Method: \href{https://www.cmor-faculty.rice.edu/~yzhang/caam565/L1_reg/BB-step.pdf}{lecture notes from UCLA}
+\end{itemize}

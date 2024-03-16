@@ -1,0 +1,178 @@
+\chapter{Exam Exercise1}
+
+\begin{exercise}{}{}
+    $X=\{a,b,c,d\}$, $\tau=\{X,\O,\{a\}\}$, then $\overline{\{b\}}=$?
+\end{exercise}
+
+\begin{proof}
+    To  find the closure of a particular set, we shall find all the closed set containing that set and then select the smallest.
+    The closed sets in $X$ are $\O,X,\{b,c,d\}$.
+    Then, $\overline{\{b\}}=\{b,c,d\}$.
+\end{proof}
+
+\begin{exercise}{}{}
+    $X=\{a,b,c,d\}$, $\tau={X,\O,\{a\},\{b,c,d\}}$, 
+    the number of proper subsets of $X$ which are both open and closed is ?
+\end{exercise}
+
+\begin{proof}
+    The closed sets of $X$ are $X,\O,\{b,c,d\},\{a\}$.
+    Then the proper subsets of $X$ which are both open and closed are $\{b,c,d\},\{a\}$.
+\end{proof}
+
+\begin{exercise}{}{}
+    In $\R$, $\Q^{\circ}(\text{Int}(\Q))=$?
+\end{exercise}
+
+\begin{proof}
+    $\Q^{\circ}=\O$.
+    The interior of set in topological space 
+    is the largest open set contained in the set. 
+    In the euclidean topology, 
+    there is no non-empty open interval contained entirely in $\Q$.
+    since between any two rational numbers, there is an irrational number.
+\end{proof}
+
+\begin{exercise}{}{}
+    In $\R$, $\partial(\Q)=$?
+\end{exercise}
+
+\begin{proof}
+    $\partial(\Q)=\R$. 
+    Since $\partial(A)=\overline{A}\setminus \text{Int}(A)$ and $\overline{Q}=\R$,
+    it follows that $\partial(\Q)=\R\setminus \O=\R$.
+\end{proof}
+
+\begin{exercise}{}{}
+    In $\R$, $\Z^{\circ}(\text{Int}(\Z))=$?
+\end{exercise}
+
+\begin{proof}
+    $\Z^{\circ}=\O$.
+    The interior of set in topological space 
+    is the largest open set contained in the set. 
+    In the euclidean topology, 
+    there is no non-empty open interval contained entirely in $\Z$.
+    since between any two rational numbers, there is an irrational number.
+\end{proof}
+
+\begin{exercise}{}{}
+    In $\R$, $\partial(\Z)=$?
+\end{exercise}
+
+\begin{proof}
+    $\overline{\Z}=\Z$. $\Z$ is closed since $\Z=\R\setminus(\cup_{n\in \R}(n,n+1))$.
+\end{proof}
+
+\begin{exercise}{}{}
+    (1) $(A\cup B)'=A'\cup B'$\\
+    (2) $\overline{A\cup B}=\overline{A}\cup \overline{B}$
+\end{exercise}
+
+\begin{exercise}{}{}
+    Let $X$ be a discret space and $A\subset X$, then $A'=$?
+\end{exercise}
+\begin{proof}
+    $A'=\O$. For every $x\in X$, $x\in \{x\}$ which is open,$\{x\}\cap A\setminus\{x\}=\O$.
+\end{proof}
+
+\begin{exercise}{}{}
+    Let $X$ be a trival space and $A\subset X$. Then\\
+    (1) $A=\O$,then $A'=\O$\\
+    (2) If $A=\{x_0\}$, then $A'=X\setminus A$\\
+    (3) If $A=\{x_1,x_2\}$, then $A'=X$.
+\end{exercise}
+
+\begin{proof}
+    (1) If $A=\O$, $\O\subset X$ but $X\cap A\setminus \O=\O$.\\
+    (2) For $x\in X\setminus A$, $x\in X$ which is open, $X\cap A\setminus\{x\}=\{x_0\}$.
+    If $x\in A$, then $X\cap A\setminus \{x\}=\O$.\\
+    (3) For $x\in X\setminus A$, $x\in X$ which is open, $X\cap A\setminus\{x\}=\{x_1,x_2\}$.
+    If $x\in A$, then $X\cap A\setminus \{x\}=\{x_1\}$ or $\{x_2\}$.
+\end{proof}
+
+\begin{exercise}{}{}
+    $X=\{a,b,c,d\}$, $B=\{\{a,b,c\},\{c\},\{d\}\}$,
+    then the topology induced by $\mathcal{B}$ is $\{X,\O,\{c\},\{d\},\{c,d\},\{a,b,c\}\}$.
+\end{exercise}
+
+\begin{proof}
+    Let $(X,\tau)$ be a topological space. 
+    A collection $\mathcal{B}$ of subsets of $X$ is said to be a basis for the topology $\tau$
+    if $\ob=\tau$.
+\end{proof}
+
+\begin{exercise}{}{}
+    Any subset of discret space is both open and closed.
+\end{exercise}
+\begin{proof}
+    
+\end{proof}
+
+\begin{exercise}{}{}
+    Any subset of trival space is neither open nor closed.
+\end{exercise}
+
+\begin{exercise}{}{}
+    Any singleton of $\R$ is closed.
+\end{exercise}
+
+\begin{proof}
+    $\R\setminus \{x\}=\cup_{a,b\in \R\setminus \{x\}}(a,b)\cup (x,x+1)\cup (x-1,x)$ is open.
+\end{proof}
+
+\begin{exercise}{}{}
+    In $\R$, $A=\{1,\frac{1}{2},\frac{1}{3},...\}$, then $\overline{A}=$?
+\end{exercise}
+
+\begin{proof}
+    $\overline{A}=A\cup \{0\}$. $A$ is not closed, since $0$ is a limit point of $A$ but $0\notin A$.
+    $(A\cup \{0\})^c=\cup_{n=1}^{\infty} (\frac{1}{n+1},\frac{1}{n})\cup (-\infty,0)\cup (1,+\infty)$ which is open.
+    Then $A\cup \{0\}$ is closed and $A\subset A\cup\{0\}$.
+\end{proof}
+
+\begin{exercise}{}{}
+    $X=X_1\times X_2$ and $P_1:X\rightarrow X_1$, then $P_1$ is surjective, continuous and open.
+\end{exercise}
+
+\begin{proof}
+    $P_1$ is a homeomorphism.
+\end{proof}
+
+
+\begin{exercise}{}{}
+    (1) $\overline{A\times B}=\overline{A}\times \overline{B}$.\\
+    (2) Int($A\times B$) = Int($A$) $\times$ Int($B$).
+\end{exercise}
+
+\begin{exercise}{}{}
+    $\Q$ is disconnected in $\R$.
+\end{exercise}
+
+\begin{proof}
+    $\Q=((-\infty, -\sqrt{2})\cap \Q)\cup ((-\sqrt{2},+\infty)\cap \Q)$.
+\end{proof}
+
+
+\begin{exercise}{}{}
+    $X=\{1,2,3\}$, $\tau=\{X,\O,\{1\}\}$, then $(X,\tau)$ is $T_1$ or $T_2$?
+\end{exercise}
+
+\begin{proof}
+    neither $T_1$ nor $T_2$. Since $T_2\Rightarrow T_1$,
+    we just need to show whether it is $T_2$.
+    For $x=1,y=2$, $x\in \{1\},y\in X$, but $\{1\}\cap X\neq \O$.
+\end{proof}
+
+\begin{exercise}{}{}
+    $X=\{1,2,3\}$,$\tau=\{X,\O,\{1\},{2,3}\}$, $(X,\tau)$ is $T_1,T_2$ or $T_3$.
+\end{exercise}
+
+\begin{proof}
+    $X$ is $T_3$.
+    $T_1+T_3\Rightarrow T_2$, then we just need to show $T_1$ and $T_3$.
+    $\{1\},\{2,3\},X,\O$ is closed. And $1\in \{1\}$
+\end{proof}
+
+
+

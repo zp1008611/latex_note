@@ -1,0 +1,389 @@
+\chapter{Elementary Properties and Examples}\label{chp:1_1}
+\section{Elementary Properties and Examples}
+\begin{remark}
+    $\F$ will mean either $\R$ or $\C$.
+\end{remark}
+
+\begin{definition}{}{}
+    If $\mathscr{X}$ is a vector space over $\F$, a semi-inner product on $\mathscr{X}$ is 
+    a function $u:\mathscr{X}\times \mathscr{X}\rightarrow \F$ such that for all $\alpha,\beta$ in $\F$,
+    and $x,y,z$ in $\mathscr{X}$, then following are satisfied:\\
+    (a) $u(\alpha x+\beta y,z)=\alpha u(x,z)+\beta u(y,z)$,\\
+    (b) $u(x,\alpha y+\beta z)=\overline{\alpha}u(x,y)+\overline{\beta}u(x,z)$,\\
+    (c) $u(x,x)\geqs 0$,\\
+    (d) $u(x,y)=\overline{u(y,x)}$.
+\end{definition}
+
+
+\begin{definition}{}{the inner product space def}
+    If $\mathscr{X}$ is a vector space over $\F$. An inner product on $\mathscr{X}$ is a mapping $u:\mathscr{X}\times \mathscr{X}\rightarrow \F$ 
+    such that $\forall x,y,z\in X,\alpha,\beta \in F$,\\
+    (1) $u(\alpha x+\beta y,z)=\alpha u(x,z)+\beta u(y,z)$\\
+    (2) $u(x,y)=\overline{u(y,x)}$\\
+    (3) $u(x,x)\geqs 0$,  $<x,x>=0$ iff $x=0$\\
+    $\mathscr{X}$ together with such a funtion $u$ is called an inner product space.
+\end{definition}
+
+\begin{remark}
+    We always denote our innner product by $\inner{x}{y}:=u(x,y)$. 
+\end{remark}
+\begin{remark}
+    By def\ref{def:the inner product space def}(1)(2), we can get $u(x,\alpha y + \beta z)=\overline{\alpha} u(x,y) +\overline{\beta} u(x,z)$.
+\end{remark}
+
+\begin{definition}{}{}
+    $\mathscr{X}$ is an inner product space.
+    The mapping
+    \begin{align*}
+        ||\cdot||: \mathscr{X}&\rightarrow [0,+\infty]\\
+        x &\mapsto \inner{x}{x}
+    \end{align*} 
+    defines a norm on $\mathscr{X}$. This norm is called norm induced by the inner space or simply induced norm.
+\end{definition}
+
+Before checking the induced norm well definited, we introduce the Cauchy-Schwarz inequality.
+
+\begin{theorem}{}{}
+    If $\mathscr{X}$ is an inner product space. Then
+    \begin{align*}
+        |\inner{x}{y}|\leqs ||x||\cdot ||y||.
+    \end{align*}
+    equality occurs iff $x=ky(k\neq 0)$.
+\end{theorem}
+\begin{proofsolution}
+    write when available.
+\end{proofsolution}
+
+Now let's check the three properties of induced norm.\\
+(a) $||x|| = \sqrt{\inner{x}{x}}\geqs 0$; $||x||=0\Leftrightarrow \inner{x}{x}=0\Leftrightarrow x=0$.\\
+(b) $||\alpha x|| = \sqrt{<\alpha x,\alpha x>} = \sqrt{\alpha^2<x,x>}= |\alpha| ||x||$.\\
+(c) \begin{align*}
+    ||x+y||^2 &= <x+y,x+y> \\
+    &= <x,x>+<x,y>+<y,x>+<y,y> \\
+    &= ||x||^2 + \Re<x,y> + ||y||^2.
+\end{align*}
+    Since $\Re<x,y>\leqs |<x,y>|\leqs ||x||||y||$, $||x+y||^2\leqs ||x||^2 + 2||x||||y||+||y||^2$. Then $||x+y||^2\leqs (||x||+||y||)^2$. Hence, $||x+y||\leqs ||x||+||y||$.
+
+    
+
+\begin{proposition}{Continuity of the Inner Product}{}
+    Let $\mathscr{X}$ be an inner product space with induced norm $||\cdot||$. 
+    Then $<\cdot,\cdot>:\mathscr{X}\times\mathscr{X}\rightarrow \F$ is continuous.  
+\end{proposition}
+
+
+\begin{proposition}{Parallelogram Law}{parallelogram law}
+    Let $\mathscr{X}$ be an inner product space. Then $\forall x,y\in \mathscr{X}$
+    \begin{align*}
+        ||x+y||^2+||x-y||^2 = 2(||x||^2+||y||^2).
+    \end{align*}
+\end{proposition}
+
+\begin{proposition}{Polarization Identity}{}
+    Let $\mathscr{X}$ be an inner product space. Then $\forall x,y\in\mathscr{X}$
+    \begin{align*}
+        <x,y> = \frac{1}{4}(||x+y||^2-||x-y||^2- \ci ||y+\ci x||^2+\ci ||y-\ci x||^2).
+    \end{align*}
+\end{proposition}
+
+\begin{remark}
+    In an inner product space, the inner product determines the norm. The polarization identity shows
+    that the norm determines the inner product. But not every norm on a vector space $X$ is induced by an inner product, 
+    for example $(\ell^{\infty},||\cdot||_{\infty})$ is not an inner space. The following theorem shows that when a norm is induced by inner product.
+\end{remark}
+
+\begin{theorem}{}{}
+    Suppose $(\mathscr{X},||\cdot||)$ is a normed linear space. The norm $||\cdot||$ is induced by an inner product 
+    iff the parallelogram law holds in $(\mathscr{X},||\cdot||)$.
+\end{theorem}
+\begin{proofsolution}
+    ($\Rightarrow$):See the proof of prop\ref{prop:parallelogram law}.\\
+    ($\Leftarrow$): We need to show that the inner product determined by the norm is well definited. \
+    Use the polarization identity to define $<\cdot,\cdot>$. Then immediately 
+    \begin{align*}
+        <x,x> &= \frac{1}{4}(||x+x||^2)=||x||^2 \Rightarrow <x,x>\geqs 0, <x,x>=0 \iff x=0,\\
+        <x,y> &= \overline{<y,x>}
+    \end{align*}
+    Use parallelogram law, we can get
+    \begin{align*}
+        <x,y+z> &= <x,y>+<x,z>,\\
+        <\alpha x,y>&=\alpha<x,y>
+    \end{align*}
+    The inner product satisfys three properties in def\ref{def:the inner product space def} and so well definited.
+\end{proofsolution}
+
+\begin{definition}{Cauchy Sequence, Convergent Sequence}{}
+    Let $\mathscr{X}$ be a normed space, and let $\{x_n\}$ be a sequence of points in $X$. \\
+    (1) We say that $\{x_n\}$ is a Cauchy sequence if for every $\epsilon>0$, there exists an $N\in \N$ so that
+    \begin{align*}
+        i,j\geqs N\Rightarrow ||x_i-x_j||<\epsilon.
+    \end{align*}
+    (2) We say that $\{x_n\}$ converges to a point $x\in \mathscr{X}$ if
+    \begin{align*}
+        \lim_{n\rightarrow \infty} ||x_n-x||=0.
+    \end{align*}
+\end{definition}
+
+\begin{remark}
+    In a non empty space $\mathscr{X}$, any constant sequence is a cauchy sequence, so you can always find a cauchy sequence.
+\end{remark}
+
+\begin{proposition}{}{}
+    Cauchy sequence is always bounded.
+\end{proposition}
+\begin{proof}
+    Suppose $\{x_n\}$ is a Cauchy sequence. Then for $\epsilon=1$, $\exists N$, $\mathrm{s.t.}$, when $n>N$: $||x_n-x_N||<1$. 
+    Then by  triangle inequality, we have
+    \begin{align*}
+        ||x_n|| = ||x_n-x_N+x_N||\leqs ||x_n-x_N||+||x_N|| <1+||x_N||.
+    \end{align*}
+    Let $M=\max\{||x_1||,||x_2||,...,||x_N||,1+||x_N||\}$, then $\forall n$, $||x_n||\leqs M$. Hence, $\{x_n\}$ is bounded.
+\end{proof}
+
+\begin{proposition}{Convergent Sequence are Cauchy}{}
+    If $\mathscr{X}$ is a normed space, then every convergent sequene in $\mathscr{X}$ is a Cauchy sequence.
+\end{proposition}
+\begin{proof}
+    Let $\{x_n\}$ be a sequence that converges to a point $x\in X$, and let $\epsilon>0$. Since $\lim_{n\rightarrow \infty}||x_n-x||=0$, there exists an $N\in \N$ so that
+    \begin{align*}
+        n\geqs N\Rightarrow ||x_n-x||<\frac{\epsilon}{2}.
+    \end{align*}
+    If $i,j\geqs N$, it follows that
+    \begin{align*}
+        ||x_i-x_j||\leqs ||x_i-x||+||x_j-x||<\frac{\epsilon}{2} + \frac{\epsilon}{2}=\epsilon,
+    \end{align*}
+    which proves that $\{x_n\}$ is a Cauchy sequence.
+\end{proof}
+Though every convergent sequence is Cauchy, it is not necessarily the case that
+every Cauchy sequence in a normed space converges. For example, let $\Q$ be the normed
+space of all rational numbers under the usual norm: $||q_1-q_2||=|q_1-q_2|$. 
+Then there are many Cauchy sequences in $\Q$ that do not converge to any point in $\Q$.
+For example, the sequence
+\begin{align*}
+    3, 3.1, 3.14, 3.141, 3.1415, 3.14159, ...
+\end{align*}
+is a Cauchy sequence in $\Q$, but it does not converge to any point in $\Q$.
+
+\begin{definition}{Complete Normed Space}{}
+    A normed space $\mathscr{X}$ is said to be complete if every Cauchy sequence in $\mathscr{X}$ converges to a point in $\mathscr{X}$.    
+\end{definition}
+
+
+\begin{definition}{Hilbert Space}{}
+    An inner product space which is complete with respect to the norm induced by 
+    the inner product is called a Hilbert space.
+\end{definition}
+
+
+\begin{proposition}{}{}
+    If $\mathscr{X}$ is a vector space and $<\cdot,\cdot>_{\mathscr{X}}$ is an inner product on $\mathscr{X}$.
+    The completion of $\mathscr{X}$ is a Hilbert space. 
+\end{proposition}
+\begin{proof}
+    You can construct the completion of $\mathscr{X}$, denoted by $\overline{X}$, by referring to \href{https://sites.math.northwestern.edu/~scanez/courses/320/notes/completion.pdf}{lecture notes from nw}. 
+    Then You can construct the inner product in $\overline{X}$ by referring to \href{https://math.stackexchange.com/questions/1234209/if-x-is-an-inner-product-space-then-is-its-completion-a-hilbert-space}{answer in mathexchage}.
+\end{proof}
+
+% \begin{definition}{$L^p$ function}{}
+%     Let $(X,\mu)$ be a measure space, and let $p\in [1,\infty)$. An $L^p$ function on $X$ is a measurable function $f$ on $X$ for which
+%     \begin{align*}
+%         \int_{X}^{}|f|^p d\mu < \infty.
+%     \end{align*}
+% \end{definition}
+% An important special case of $L^p$ function is for the measure space $(\N,\mu)$, where
+% $\mu$ is counting measure on $\N$. In this case, a measure function $f$ on $\N$ is just a sequence
+% \begin{align*}
+%     f(1),f(2),f(3),...
+% \end{align*}
+% and the Lebesgue integral is the same as the sum of the series
+% \begin{align*}
+%     \int_{\N}^{} f d\mu = \sum\limits_{n\in \N} f(n).
+% \end{align*}
+% The definition of an $L^p$ function on $\N$ takes the following form.
+% \begin{definition}{$\ell^p$ sequence}{}
+%     An $\ell^p$ sequence is a sequence $\{x_n\}$ of real numbers for which
+%     \begin{align*}
+%         \sum\limits_{n\in \N}|x_n|^p<\infty.
+%     \end{align*}
+% \end{definition}
+
+% \begin{proposition}{}{}
+%     For any measure space $(X, \mu)$, the set 
+%     \begin{align*}
+%         L^p = \{f|f \ is\  L^p\  function\}
+%     \end{align*}
+%     forms a Hilbert space under the inner product
+%     \begin{align*}
+%         <f,g> = \int_{X}^{}f\overline{g}d\mu.
+%     \end{align*}
+% \end{proposition}
+
+
+% \begin{proposition}{}{}
+%     The set 
+%     \begin{align*}
+%         \ell^p = \{x=(x_1,x_2,x_3,...)| x \ is\  \ell^p\  sequence\}
+%     \end{align*}
+%     forms a Hilbert space under the inner product
+%     \begin{align*}
+%         <x,y> = \sum\limits_{i}^{}x_i\overline{y_i}.
+%     \end{align*}
+% \end{proposition}
+
+
+% \begin{definition}{}{}
+%     Let $I$ be a nonempty index set. For each $\alpha\in I$, let $y_{\alpha}$ be a nonnegative real number. 
+%     Define $\sum\limits_{\alpha\in I}^{}y_{\alpha} = \sup\{\sum\limits_{\alpha\in J}y_{\alpha}| J\subset I$ and $J$ is finite$\}$.  
+% \end{definition}
+
+% \begin{proposition}{}{}
+%     If $\sum\limits_{\alpha\in I}y_{\alpha} < \infty$, then $y_{\alpha}= 0$ for at at most countably many $\alpha$.
+% \end{proposition}
+
+% \begin{proof}
+%     refer to \href{https://math.stackexchange.com/questions/20661/the-sum-of-an-uncountable-number-of-positive-numbers}{answer in mathexchage}.
+%     Let $l\in\N$. We claim that the subset $S_l$ of $S$
+%     \begin{align*}
+%         S_l = \{\alpha|\ \frac{1}{l}\leqs|y_{\alpha}|\}
+%     \end{align*}
+%     is a finite set. Sine $\sum\limits_{\alpha\in I}y_{\alpha} < \infty$ ,there exist $M\in \N$
+%     \begin{align*}
+%         M\geqs \sum\limits_{\alpha\in S_l}|y_{\alpha}|\geqs \sum\limits_{i\in S_l}\frac{1}{l} = \frac{N}{l}
+%     \end{align*}
+%     where $N$ is the number of elements in $S_l$. 
+%     Thus $S_l$ has at most $||x||^2l$  elements.\\
+%     Hence $\{\alpha|\  0< |y_{\alpha}|\}= \cup_{l\in\N}S_l$ is countable as the countable union of finite sets.
+% \end{proof}
+
+\section{Homework}
+\begin{exercise}{I1 T2}{}
+    Let $I$ be any set and let $l^2(A)$ denote the set of all functions $x:I\rightarrow \F$ such that $x(i)=0$ for all but a countable number of $i$ and 
+    $\sum\limits_{i\in I}|x(i)|^2<\infty$. For $x,y\in l^2(I)$ define
+    \begin{align*}
+        \inner{x}{y} = \sum\limits_{i}^{}x(i)\overline{y(i)}.
+    \end{align*}
+    Then $l^2(I)$ is a Hilbert space.
+\end{exercise}
+\begin{proof}
+    Firstly, we show that $l^2(I)$ is a vector space.
+    For $x,y\in l^2(I)$ and $c\in \F$, $(x+y)(i)=x(i)+y(i)=0$ for all but a countable number of $i$ and 
+    by Minkowski's Inequality($||a+b||_p\leqs ||a||_p+||b||_p$), $\sum\limits_{i\in I}|(x+y)(i)|^2=\sum\limits_{i\in I}|x(i)+y(i)|^2\leqs \sum\limits_{i\in I}|x(i)|^2+\sum\limits_{i\in I}|y(i)|^2<\infty$.
+    Hence, $x+y\in l^2(I)$. Simlarly, $cx$ is in $l^2(I)$ and so $l^2(I)$ is a vector space over $\F$.
+    \par
+    Secondly, we show that $l^2(I)$ is a inner product space. \\
+    (1) $\inner{\alpha x+\beta y}{z}=\sum\limits_{i}(\alpha x+\beta y)(i)\overline{z(i)}=\alpha\sum\limits_{i}x(i)\overline{z(i)}+\beta\sum\limits_{i}y(i)\overline{z(i)}=\alpha\inner{x}{z}+\beta\inner{y}{z}$.\\
+    (2) $\inner{x}{y}=\sum\limits_{i}x(i)\overline{y(i)}=\overline{\sum\limits_{i}y(i)\overline{x(i)}}=\overline{\inner{y}{x}}$.\\
+    (3) $\inner{x}{x}=\sum\limits_{i}x(i)\overline{x(i)}=\sum\limits_{i}|x(i)|^2\geqs 0$. And $\inner{x}{x}=0\Leftrightarrow x=0$.\\
+    Hence, $l^2(I)$ is an inner product space.
+    \par
+    Thirdly, we show that $l^2(I)$ is complete.
+    Note that the induced norm in $l^2(I)$ is
+    \begin{align*}
+        ||x|| = (\sum\limits_{i}^{}{|x(i)|}^{2})^{\frac{1}{2}}.
+    \end{align*}
+    Let $\{x_n\}$ be Cauchy sequence in $l^2(I)$ and 
+    Then, 
+    \begin{align*}
+        |x_m(i)-x_n(i)|\leqs (\sum\limits_{i}^{}|x_m(i)-x_n(i)|^2)^{\frac{1}{2}}=||x_n-x_m||\rightarrow 0.
+    \end{align*}
+    Thus, $x_n(i)$ is a Cauchy sequence over the real(or complex) numbers. By the completness of $\R$(or $\C$), it must converge to a limit, denoted by $xl(i)$.
+    Now we show that $x_n\rightarrow x$($x:i\mapsto xl(i))$ when $n\rightarrow \infty$. 
+    \par
+    Since $\{x_n\}$ is Cauchy, $\forall \epsilon$, $\exists N$, $\mathrm{s.t.}$, when $m,n>N, \forall k: $
+    \begin{align*}
+        \sum\limits_{i}^{k}|x_m(i)-x_n(i)|^2\leqs ||x_m-x_n||^2<\sqrt{\frac{\epsilon}{2}}.
+    \end{align*} 
+    Let $m\rightarrow \infty$ and $n>N$, we have
+    \begin{align*}
+        \sum\limits_{i}^{k}|x(i)-x_n(i)|^2\leqs ||x-x_n||^2\leqs\sqrt{\frac{\epsilon}{2}}.
+    \end{align*}
+    Let $k\rightarrow \infty$ and $n>N$, we have
+    \begin{align*}
+        (\sum\limits_{i}^{\infty}|x(i)-x_n(i)|^2)^{\frac{1}{2}}\leqs ||x-x_n||\leqs\frac{\epsilon}{2}<\epsilon.
+    \end{align*}
+    Hence, $x_n\rightarrow x$ when $n\rightarrow \infty$.Then, we show that $x\in l^2(A)$. 
+    \par
+    We first show that $x(i)=0$ for all but a countable number of $i$. Suppose the contrary. 
+    Then for any $x_n$, $||x-x_n||^2$ being a sum of uncountably many nonzero elements, which cannot be bounded. This is a contradiction as $||x-x_n||\rightarrow 0$ ($n\rightarrow \infty$).
+    \par
+    Finally, we show that $\sum\limits_{i\in I}^{}|x(i)|^2<\infty$. Since $\{x_n\}$ is Cauchy, $\{x_n\}$ is bounded. Then $\exists M>0$, $\forall n$, we have $||x_n||<M$. Then $\forall n,k$, we have
+    \begin{align*}
+        \sum\limits_{i}^{k}|x_n(i)|^2\leqs ||x_n||^2\leqs M^2.
+    \end{align*}
+    Let $n\rightarrow \infty$, we have
+    \begin{align*}
+        \sum\limits_{i}^{k}|x_n(i)|^2\leqs ||x||^2\leqs M^2.
+    \end{align*}
+    Let $k\rightarrow \infty$, we have
+    \begin{align*}
+        \sum\limits_{i}^{}|x_n(i)|^2\leqs M^2.
+    \end{align*}
+    Hence, $x\in l^2(I)$.
+    Thus, every Cauchy sequence in $l^2(I)$ is convergent and so $l^2(I)$ is a Hilbert space.
+\end{proof}
+
+If $I=\N$, $l^2(I)$ is usually denoted by $l^2$. Let $(X,\Omega, \mu)$ be a measure space consisting of a set $X$, a 
+$\sigma$-algebra $\Omega$ of subsets of $X$, and a countably additive measure $\mu$ defined 
+on $\Omega$ with values in the non-negative extended real numbers.
+Note that if $\Omega$= the set of all subsets of $A$ and for $E$ in $\Omega$, $\mu(E):=\infty$ if $E$ is infinite and $\mu(E)$=the cardinality of $E$ if $E$ is finite, 
+then $l^2(A)$ and $L^2(A,\Omega,\mu)$ are equal.
+
+
+\begin{exercise}{I1 T6}{}
+    Let $u$ be a semi-inner product on $\mathscr{X}$ and put $\mathscr{N}=\{x\in \mathscr{X}:u(x,x)=0\}$.\\
+    (a) Show that $\mathscr{N}$ is a linear subspace of $\mathscr{X}$.\\
+    (b) Show that if 
+    \begin{align*}
+        \inner{x+\mathscr{N}}{y+\mathscr{N}} \equiv u(x,y)
+    \end{align*}
+    for all $x+\mathscr{N}$ and $y+\mathscr{N}$ in the quotient space $\mathscr{X}/\mathcal{N}$,
+    then $\inner{\cdot}{\cdot}$ is a well-definited inner product on $\mathscr{X}/\mathcal{N}$.
+\end{exercise}
+\begin{proof}
+    (a) For $x,y\in \mathscr{N}$, $u(x+y,x+y)=u(x,x)+u(x,y)+u(y,x)+u(y,y)=u(x,y)+u(y,x)$.
+    To see that $x+y\in\mathscr{N}$, it suffices to show that $u(x,y)=0$.
+    But, this follows from Cauchy-Schwarz (which is true for semi-inner products).
+    By Cauchy-Schwarz we have that 
+    \begin{align*}
+        |u(x,y)|\leqs \sqrt{u(x,x)}\sqrt{u(y,y)}=0
+    \end{align*}
+    Since $u(x,y)\geqs 0$, it follows that $u(x,y)=0$,
+    and similarly $u(y,x)=0$. Then $u(x+y,x+y)=0$ and so $x+y\in\mathscr{N}$.
+    For $c\in\F$, $u(cx,cx)=c\overline{c}u(x,x)=0$. Then $cx\in \mathscr{N}$.
+    Hence, $\mathscr{N}$ is a linear subspace of $\mathscr{X}$.
+    \par
+    (b) Suppose $x_1+\mathscr{N}=x_2+\mathscr{N}$ and $y_1+\mathscr{N}=y_2+\mathscr{N}$ in the space $\mathscr{X}/\mathscr{N}$, 
+    i.e. we have that $x_1-x_2\in \mathscr{N}$ and $y_1-y_2\in\mathscr{N}$.
+    To show that $\inner{\cdot}{\cdot}$ is well defined, we need to show that 
+    $\inner{x_1+\mathscr{N}}{y_1+\mathscr{N}}=\inner{x_2+\mathcal{N}}{y_2+\mathscr{N}}$, 
+    i.e. $u(x_1,y_1)=u(x_2,y_2)$. By (a), for $a\in\mathscr{N},b\in\mathscr{X}$, $|u(a,b)|\leqs \sqrt{u(a,a)}\sqrt{u(b,b)}=0$. 
+    Then $u(a,b)=0$ as $|u(a,b)|\geqs 0$. Now we have 
+    \begin{align*}
+        \inner{x_1+\mathscr{N}}{y_1+\mathscr{N}} = u(x_1,y_1) &= u(x_2+n_1,y_2+n_2) \text{ where } n_1,n_2\in \mathscr{N}\\
+                                                              &= u(x_2,y_2) + u(x_2,n_2) + u(n_1,y_2) + u(n_1,n_2)\\
+                                                              &= u(x_2,y_2) =  \inner{x_2+\mathscr{N}}{y_2+\mathscr{N}}
+    \end{align*}
+    Hence, $\inner{\cdot}{\cdot}$ is well defined.
+    To show it is an inner product, it suffices to show that 
+    $\inner{x+\mathscr{N}}{x+\mathscr{N}}=0$ implies $x+\mathscr{N}=\mathscr{N}$.
+    To see this note that if $\inner{x+\mathscr{N}}{x+\mathscr{N}}=u(x,x)=0$, then $x\in\mathscr{N}$ and so $x+\mathscr{N}=\mathscr{N}$. 
+    Hence, $\inner{\cdot}{\cdot}$ is a inner product.
+    
+\end{proof}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://web.mat.bham.ac.uk/~malevao/MSM3P21/l10.pdf}{lecture notes from brmh}
+    \item \href{https://sites.math.washington.edu/~burke/crs/555/555_notes/hilbert.pdf}{lecture notes from washington university}
+    \item \href{https://e.math.cornell.edu/people/belk/measuretheory/BanachSpaces.pdf}{lecture notes from cornell}
+    \item the completness of $L^p$ space
+    \begin{itemize}
+        \item[*] \href{https://assets.press.princeton.edu/chapters/s9627.pdf}{lectrue notes from princeton}
+        \item[*] \href{https://e.math.cornell.edu/people/belk/measuretheory/LpFunctions.pdf}{lecture notes from cornell}
+        \item[*] \href{https://www.ndsu.edu/pubweb/~littmann/Topics15/class8-28.pdf}{lecture notes from ndsu} 
+    \end{itemize}
+    \item \href{https://math.stackexchange.com/questions/3886899/prove-that-l2i-is-a-hilbert-space}{I1 T2}
+    \item \href{https://www.math.wustl.edu/~wick/teaching/math6338/math6338_hw1.pdf}{I1 T6}
+    \item \href{https://www.math.byu.edu/~jwest/teaching/winter2009/math391R/latex/645-Homework01.pdf}{I1 T6}
+\end{itemize}

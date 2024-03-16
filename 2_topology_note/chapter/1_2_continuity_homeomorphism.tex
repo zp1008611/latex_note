@@ -1,0 +1,204 @@
+\chapter{Continuous Mappings and Homeomorphisms}\label{1_2}
+
+\section{Continuous Mappings}
+We are already familiar with the notion of a continuous function from $\R$ to $\R$.
+\par
+A function $f:\R\rightarrow \R$ is said to be continuous at $x_0\in \R$ iff each positive real number $\epsilon$, 
+there exists a positive real number $\delta$ such that $|f(x)-f(x_0)|<\epsilon$ when $|x-x_0|<\delta$. 
+\par
+It is not all obvious how to generalize this definition to general topological spaces where we do not have 
+"absolute value" or "subtraction". So we shall seek another(equivalent) definition of continuity which lends itself more to 
+generalization. 
+
+It is easily seen that: $f:\R\rightarrow \R$ is continuous at $x_0\in\R$ iff for each interval $(f(x_0)-\epsilon, f(x_0)+\epsilon)$, 
+for $\epsilon>0$, there exists a $\delta>0$ such that $f(x)\in(f(x_0)-\epsilon, f(x_0)+\epsilon)$ for all $x\in(x_0-\delta,x_0+\delta)$.
+\par
+This definition is an improvement since it does not involve the concept "absolute value" but it still involves "substraction". 
+The next definition shows how to avoid substraction.
+
+\begin{definition}{}{continuity definition}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces and $f$ a function from $X$ into $Y$.
+    Then $f$ is continuous at $x_0\in X$ iff
+    for each $U\in \tau'$ containing $f(x_0)$, there exists $K\in\tau$ containing $x_0$, such that $f(K)\subseteq U$.
+\end{definition}
+Use neighborhood to describe
+\begin{proposition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces and $f$ a function from $X$ into $Y$.
+    Then $f$ is continuous at $x_0\in X$ iff for any neighborhood $N$ of $f(x_0)$ in $Y$, $f^{-1}$ is the neighborhood of $x_0$.
+\end{proposition}
+\begin{proof}
+    
+\end{proof}
+\begin{definition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces and $f$ a function from $X$ into $Y$.
+    Then $f$ is continuous iff for each $x_0\in X$ and for each $U\in \tau'$ containing $f(x_0)$, 
+    there exists $K\in\tau$ containing $x_0$, such that $f(K)\subseteq U$.
+\end{definition}
+
+As in analysis, continuity is a local concept. 
+\begin{proposition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces and $f$ a function from $X$ into $Y$ , $A$ a subset of $X$ and $x_0\in A$.
+    We define the restriction of $f$ on $A$ as $f_A = f|A:A\rightarrow Y$, then\\
+    (1) If $f$ is continuous at $x_0$, then $f_A$ is continuous at $x_0$.\\
+    (2) When $A$ is open in $X$, if $f_A$ is continuous at $x_0$, then $f$ is continuous at $x_0$.
+\end{proposition}
+
+\begin{proof}
+    (1) We need to prove for each $U\in \tau'$ with $f_A(x_0)\in U$, there exists $O\in \tau_A$ with $x_0\in O$, $f_A(O)\subseteq U$.
+    $f$ is continuous at $x_0$ and $x_0\in A$, then for each $U\in \tau'$ with $f(x_0)=f_A(x_0)\in U$, there exists $K\in \tau$ with $x_0\in K$, $f(K)\subseteq U$.
+    Since $A\cap K\in \tau_A$ with $x_0\in A\cap K$ and $f_A(A\cap K) = f(A\cap K)\subseteq f(A)\cap f(K)\subseteq Y\cap U= U$. Hence, $f_A$ is continuous at $x_0$.
+    \par
+    (2) $f_A$ is continuous at $x_0$, then for each $U\in\tau'$ containing $f_A(x_0)=f(x_0)$, there exists $(K\cap A)\in \tau_A$($K\in\tau$) containing $x_0$, 
+    such that $f_A(K\cap A)\subseteq U$. Since $A\in \tau$, $K\cap A\in \tau$ and $f(A\cap K)=f_A(A\cap K)\subset U$. Hence, $f$ is continuous at $x_0$. 
+\end{proof}
+
+
+\begin{definition}{}{}
+    Let $f$ be a function from a set $x$ into a set $Y$. If $S$ is any subset of $Y$, 
+    then the set $f^{-1}(S)$ is defined by
+    \begin{align*}
+        f^{-1}(S) = \{x:x\in X \text{ and } f(x)\in S\}.
+    \end{align*}
+    Then subset $f^{-1}(S)$ of $X$ is said to be the inverse image of $S$.
+\end{definition}
+\begin{remark}
+    Note that an inverse function of $f$ exists iff $f$ is bijective. 
+    But the inverse image of any subset of $Y$ exists even if $f$ is neither one-to-one nor onto.
+\end{remark}
+
+\begin{proposition}{}{}
+    Let $f$ be a mapping of a topological space $(X,\tau)$ into a topological space $(Y,\tau')$. Then the following conditions are equivalent:\\
+    (1) $f$ is continuous;\\
+    (2) for each $U\in\tau'$, $f^{-1}(U)\in \tau$;\\
+    (3) for each closed set $V$ in $Y$, $f^{-1}(Y)$ is closed in $X$.
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+In $(\R,\tau_e)$, we can use sequence convergence to characterize continuity, 
+but in general topological space, we cannot do this.
+\begin{proposition}{}{continuity means sequentially continous}
+    $f:X\rightarrow Y$ is continuous at $x_0\in X$, then $x_n\rightarrow x_0$ implies $f(x_n)\rightarrow f(x_0)$.
+\end{proposition}
+\begin{proof}
+    $f$ is continous at $x_0\in X$ and $x_n\rightarrow x_0$, 
+    then $\forall U\in\tau_Y$ containing $f(x_0)$, 
+    there exists $K\in\tau_X$ containing $x_0$ such that $f(K)\subseteq U$.
+    Since $x_n\rightarrow x_0$, $\exists N\in\N$, $\forall n>N$, $x_n\in K$, then $f(x_n)\in f(K)\subseteq U$.
+    So $f(x_n)\rightarrow f(x_0)$.
+\end{proof}
+However, the inverse proposition is not true. 
+Let $f:X\rightarrow Y$ be injective, $X$ be a uncountable space with $\tau_c$ and $Y$ be a discrete space.
+Then, by proposition\ref{prop:sequence convergence in cocountable topology}, 
+When $x_n\rightarrow x_0$ in $X$, $\exists N\in N$, $\forall n>N$, $x_n=x$, 
+then $f(x_n)=f(x)$ and so $f(x_n)\rightarrow f(x)$.
+But $f$ is not continuous at $x_0$, because for $U=\{f(x_0)\}\in \tau_Y$ containing $f(x_0)$, 
+$\forall K\in \tau_X$ containing $x_0$, $f(K)\supset \{f(x_0)\}$ as $f$ is injective and $K\supset \{x_0\}$.
+
+
+\section{The properties of continuous mapping}
+
+Firstly, we introduce some simple and common continuous mappings.
+\begin{proposition}{}{}
+    Identity mapping $\text{id}:X\rightarrow X$ is continuous.
+\end{proposition}
+
+\begin{definition}{}{Inclusion mapping}
+        Let $X$ be a topological space and $A\subset X$. 
+        Then inclusion mapping $i_A:A\rightarrow X$ is the mapping defined as:
+        \begin{align*}
+            i_A:A\rightarrow X: \forall x\in A:i_{A}(x)=x
+        \end{align*}
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $X$ be a topological space and $A\subset X$. 
+    Then inclusion mapping $i_A:A\rightarrow X$ is continuous.
+\end{proposition}
+
+\begin{proof}
+    For any open set $U$ in $X$, $i^{-1}(U)=U\cap A$ is open in $A$.
+\end{proof}
+
+\section{Homemorphism}
+
+\begin{definition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be topological spaces, 
+    and let $f:X\rightarrow Y$ be a bijection. 
+    $f$ is said to be a homeomorphism if $f$ is continous and its inverse $f^{-1}$ is continous.\\
+    In this case we say that $(X,\tau)$ and $(Y,\tau')$ are homeomorphism, and write $(X,\tau)\cong (Y,\tau')$, or
+    more often simply $X\cong Y$ if the topologies are understood from context.
+\end{definition}
+
+\begin{proposition}{}{}
+    Let $(X,\tau)$ and $(Y,\tau')$ be a topological spaces, and let $f:X\rightarrow Y$ be a bijection, 
+    Then the following are equivalent.\\
+    (1) $f$ is a homeomorphism.\\
+    (2) $f$ is continous and open.\\
+    (3) $f$ is continuous and closed.\\
+    (4) $U\subset X$ is open iff $f(U)\subset Y$ is open.
+\end{proposition}
+
+\begin{definition}
+    Let $X$ and $Y$ be topological spaces. 
+    Suppose $f:X\rightarrow Y$ is an injective continous mapping. 
+    If the function $f':X\rightarrow f(X)$ obtained by restricting the range of $f$ is a homeomorphism, 
+    then the map $f:X\rightarrow Y$ is called a topological embedding.
+\end{definition}
+
+\section{Exercise}
+
+\begin{exercise}{}{}
+    Let $f$ be a mapping from $X$ to $Y$, the following statements are equivalent:\\
+    (1) $f$ is continous;\\
+    (2) $\forall A\subseteq X$, $f(\overline{A})\subset \overline{f(A)}$;\\
+    (3) $\forall B\subseteq Y$, $\overline{f^{-1}(B)}\subset f^{-1}(\overline{B})$.
+\end{exercise}
+
+\begin{proof}
+    (1)$\Rightarrow$(2): $f$ is continous. Since $\overline{f(A)}$ is closed in $Y$, 
+    then $f^{-1}(\overline{f(A)})$ is closed in $X$. Since $f(A)\subseteq \overline{f(A)}$, 
+    $A\subseteq f^{-1}(\overline{f(A)})$. Since $\overline{A}$ is the smallest closed set containing $A$, 
+    $\overline{A}\subseteq f^{-1}(\overline{f(A)})$. Then, $f(\overline{A})\subseteq f(f^{-1}(\overline{f(A)}))\subseteq \overline{f(A)}$.
+
+\end{proof}
+
+\begin{exercise}{}{}
+    $f:X\rightarrow Y$ is called open(closed) mapping, if $f(X)$ is open(closed). 
+    Illustrate that open mapping may not be closed mapping and vice versa.
+\end{exercise}
+\begin{proof}
+    
+\end{proof}
+
+\begin{exercise}
+    If $f:X\rightarrow Y$ is bijective, then
+    \begin{align*}
+        f \text{ is open mapping }\Leftrightarrow f\text{ is closed mapping }\Leftrightarrow f^{-1} \text{ is continuous}.
+    \end{align*}
+\end{exercise}
+
+\begin{proof}
+    $\forall U\in\tau_X$,
+    \begin{align*}
+        f(U)\in \tau_Y \Leftrightarrow & Y\setminus f(U) \text{ is closed }\\
+                                \overset{f \text{ is bijective }}{\Leftrightarrow} & f(X\setminus U) \text{ is closed } \\
+                                \Leftrightarrow & f \text{ is closed mapping}.
+    \end{align*}
+    Since $f$ is bijective, $f^{-1}$ exists. As $f$ is open mapping, $f^{-1}$ is continuous.
+\end{proof}
+
+\begin{remark}
+    From this exercise, we can know if $f$ is bijective, continuous and open, then $f$ is homeomorphism.
+\end{remark}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://raphaeltinarrage.github.io/files/EMAp/Lesson2.pdf}{Homeomorphisms}
+    \item 
+\end{itemize}
+
+

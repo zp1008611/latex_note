@@ -1,0 +1,166 @@
+\chapter{THE AXIOMS OF COUNTABILITY
+}\label{chp:2_1_1}
+
+Now we turn to countability features in topology. In topology, an axiom of countability is a topological property that asserts the existence of a countable set with certain
+properties. There are several different topological properties describing countability.
+
+\section{First countable spaces}
+
+\begin{definition}{}{}
+    Let $(X,\tau)$ be a topological space and $x$ be an element of $X$.
+    A neighborhood base at $x$ is a set $\mathcal{U}$ of neighborhood $N$ of $x$ such that:
+    \begin{align*}
+        N\text{ is a neighborhood of }x\Rightarrow \exists U\in\mathcal{U}:U\subseteq N.
+    \end{align*}
+\end{definition}
+
+\begin{definition}{}{}
+    A topological space $(X,\tau)$ is called first countable, or an $C_1$ space, if 
+    for every point in $X$ has a countable neighborhood base, i.e.
+    for each $x\in X$, there exists a countable family $\mathcal{U}=\{U_i^x:i\in\N\}$, where $U_i^x$ is neighborhood of $x$,
+    such that every neighborhood $N$ of $x$, there exists $n$ \text{s.t.} $U_n^x\subseteq N$.
+\end{definition}
+
+
+Here are some examples of $C_1$-spaces and non-$C_1$-spaces.
+
+\begin{example}{}{}
+    Any metric space is first countable since we can take $U_n^x=B(x,\frac{1}{n})$.
+\end{example}
+
+\begin{example}{}{}
+    $(\R,\tau_c)$ is not first countable: for any countable family $\mathcal{U}=\{U_i^x:i\in\N\}$ of open sets containing $x$,
+    $\cup_{U\in\mathcal{U}}U^c$ is countable. Take $y\notin \cup_{U\in\mathcal{U}}U^c$ and $y\neq x$, then $\forall U\in\mathcal{U}, y\in U$. 
+    Then $\R\setminus\{y\}$ is a open set containing x, but it doen't contain any $U\in\mathcal{U}$. 
+\end{example}
+
+
+\begin{example}{}{}
+    $(\R,\tau_f)$ is not first countable.
+\end{example}
+
+\begin{proposition}{}{Decrement countable neighborhood base}
+    Let $(X,\tau)$ be a topological space. If $x\in X$ has a countable neighborhood base $\mathcal{U}=\{U_i^x\}$,
+    then $x$ has a countable neighborhood base $\{V_i^x\}$ , which satisfys $V_m^x\subset V_n^x$ when $m>n$.
+\end{proposition}
+\begin{proof}
+    If one has a countable neighborhood base $\{U_i^x:i\in\N\}$ at $x$, then one can take
+    Then $\{V_i^x:i\in\N\}$ is countable. 
+    $V_n^x=\cap_{n}U_n^x$. Since $V_n^x\subset U_n^x$, $\{V_i^x:i\in\N\}$ is a neighborhood base at $x$ and $V_m^x\subset V_n^x$ when $m>n$.
+\end{proof}
+
+\begin{proposition}{}{fc closure sequential convergence}
+    Let $(X,\tau)$ be first countable and $A$ a subset of $X$, then
+    \begin{align*}
+        x\in\overline{A}\Leftrightarrow \exists \{x_n\}\subset A, \text{ s.t. } x_n\rightarrow x.
+    \end{align*}
+\end{proposition}
+
+\begin{proof}
+    ($\Rightarrow$): By propsition\ref{prop:Decrement countable neighborhood base}, we can take a countable neighborhood base $\{V_i^x\}$ which 
+    satisfys $V_m\subseteq V_n$ when $m>n$. Since $x\in A$, by the property of closure, $V_n\cap A\neq \O$.
+    We take $x_n\in V_n\cap A$, then we get a sequence $\{x_n\}\subset A$. 
+    Since $\{V_n^x\}$ is a neighborhood base, for any neighborhood $U^x$ of $x$, there exsits $n$ such that $x\in V_n^x\subseteq U^x$. 
+    Then $\forall m\geqs n$, $V_m^x\subseteq U^x$. 
+    Then $\forall m\geqs n$, $x_m\in U^x$. By definition\ref{def:sequence convergence in topological space}, $x_n\rightarrow x$.
+\end{proof}
+
+\begin{corollary}{}{}
+    Let $(X,\tau)$ be first countable and $A$ a subset of $X$, then
+    \begin{align*}
+        A \text{ is closed }&\Leftrightarrow \text{for any sequence }\{x_n\}\subset A \text{ with } x_n\rightarrow x, \text{one has } x\in A.\\
+        & i.e. A \text{ contains all its sequential limits.}
+    \end{align*}
+\end{corollary}
+
+\begin{proof}
+    ($\Rightarrow$): If $A$ is closed, then $A$ contains all its limits including sequential limits.\\
+    ($\Leftarrow$): $\forall x\in \overline{A}$, by proposition\ref{prop:fc closure sequential convergence},
+    $\exists \{x_n\}\subset A$, s.t. $x_n\rightarrow x$. Then by the condition, $x\in A$. Then, $\overline{A}\subseteq A$.
+    Since $A\subseteq \overline{A}$, $A=\overline{A}$ and so $A$ is closed. 
+\end{proof}
+
+\begin{corollary}{}{}
+    Suppose $(X,\tau)$ is first countable and $f$ is a map from $X$ to $Y$.
+    \begin{align*}
+        f:X\rightarrow Y \text{ is continuous at } x_0\in X \text{ iff } x_n\rightarrow x_0 \text{ implies } f(x_n)\rightarrow f(x_0).
+    \end{align*}
+\end{corollary}
+\begin{proof}
+    ($\Rightarrow$): proof of proposition\ref{prop:continuity means sequentially continous}.\\
+    ($\Leftarrow$): Suppose $f$ is not continous at $x_0$. Then there exists a open set $U$ containing $f(x_0)$, 
+    for all open set $K$ containing $x_0$, $f(K)\not\subseteq U$, which means $K\cap (f^{-1}(U))^c\neq \O$. 
+    Then by the property of closure, $x_0\in \overline{(f^{-1}(U))^c}$. Then by proposition \ref{prop:fc closure sequential convergence}, 
+    $\exists \{x_n\}\in \overline{(f^{-1}(U))^c}$, $x_n\rightarrow x$. Then by the condition, $f(x_n)\rightarrow f(x_0)$.
+    Then by the definition of convergent sequence, all most $f(x_n)\in U$. But $f(x_n)\in f(\overline{(f^{-1}(U))^c})\subseteq \overline{f((f^{-1}(U))^c)}= \overline{f(f^{-1}(U^c))}\subseteq \overline{U^c}$, a contradiction.
+    Hence, $f$ is continuous at $x_0$.
+\end{proof}
+
+\section{Second countable spaces}
+
+\begin{definition}{}{}
+    A topological space $(X,\tau)$ is called second countable, or an $C_2$ space, if 
+    it has a countable topological base, i.e.
+    there exists a countable family $\{U_i\}$ of open sets such that, for each $x\in X$, 
+    every open set $U$ containing $x$, there exists $n$ \text{s.t.} $x\in U_n\subseteq U$.
+\end{definition}
+
+\begin{remark}
+    In $C_1$, the open set family is related to $x$. 
+    But, In $C_2$, the open set family doesn't need.
+    Obviously any second countable space is a first countable space. But the converse
+is not true, for example, $(\R, \tau_s)$ is first countable as it is a metric space, but it is
+not second countable. Since every base for a discrete topology must include all singleton sets 
+(since for each $x\in X$, the set $\{x\}$ is an open neighborhood of $x$, and so if $\mathcal{B}$
+is any base for $X$, then there is a $B\in \mathcal{B}$ with $x\in B\subseteq \{x\}$, 
+which implies $B={x}\in\mathcal{B}$). Since $\R$ is not countable, there is no a conntable family of open sets.
+\end{remark}
+
+\section{Separable spaces}
+
+\begin{proposition}{}{second countable is separable}
+    Any second countable topological space is separable.
+\end{proposition}
+\begin{proof}
+    It is equivalent to prove the space has a coutable dense subset.
+    Let $\{U_n:n\in\N\}$ be a countable basis of $(X,\tau)$. For each $n$, we choose a point $x_n\in U_n$ and let $A=\{x_n:n\in\N\}$. 
+    Then $A$ is a countable subset in $X$. We claim that $\overline{A}=X$. In fact, 
+    for any $x\in X$ and any open neighborhood $U$ of $x$, there exists $n$ s.t. $x\in U_n\subseteq U$. 
+    In particular, $U\cap A\neq \O$. So we get $\overline{A}=X$.
+\end{proof}
+
+\begin{proposition}{}{}
+    A metric sapce is second countable iff it is separable.
+\end{proposition}
+
+\begin{proof}
+    ($\Rightarrow$): proof of proposition\ref{prop:second countable is separable}.\\
+    ($\Leftarrow$): Suppose that $(X,d)$ is a separable metric space. Then $X$ has a countable dense subset $A$.
+    So
+    \begin{align*}
+        \mathcal{B} = \{B(a,\frac{1}{n}):a\in A, n\in \N\}
+    \end{align*} 
+    is a countable family of open balls in $X$.
+    Show that $\mathcal{B}$ is a base for the metric topology on $X$.
+    In other words, show that if $U$ is a non-empty open set in $X$, and $x\in U$, then $\exists B\in \mathcal{B}$
+    such that $x\in B\subseteq U$. 
+    Since there is some $\epsilon>0$ such that $B(x,\epsilon)\subseteq U$;
+    thus, you need only show that there is some $B(a,\frac{1}{n})\in \mathcal{B}$
+    such that $x\in B(a,\frac{1}{n})\subseteq B(x,\epsilon)$.
+    We take $n>\frac{2}{\epsilon}$ and $a\in A$ such that $d(x,a)<\frac{1}{n}$, which means $x\in B(a,\frac{1}{n})$.
+    For $y\in B(a,\frac{1}{n})$, $d(a,y)<\frac{1}{n}$. Then $d(x,y)<d(x,a)+d(a,y)<\frac{2}{n}<\epsilon$. So $y\in B(x,\epsilon)$ and $B(a,\frac{1}{n})\subseteq B(x,\epsilon)$.
+    Hence, $(X,d)$ has a countable topological base and so second countable.
+\end{proof}
+
+
+
+\section{Multiplicability and heritability}
+
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{http://staff.ustc.edu.cn/~wangzuoq/Courses/21S-Topology/Notes/Lec13.pdf}{THE AXIOMS OF COUNTABILITY}
+\end{itemize}
+
+

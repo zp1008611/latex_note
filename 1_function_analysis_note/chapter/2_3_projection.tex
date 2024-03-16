@@ -1,0 +1,164 @@
+\chapter{Projections and Idempotents; Invariant and 
+Reducing Subspaces}\label{chp:2_3}
+
+\begin{definition}{}{}
+    An idempotent is a bounded linear operator $E$ so that $E^2=E$.
+    A orthogonal projection is an idempotent $P$ such that $\text{Ker} P=(\text{ran} P)^{\perp}$.
+    We actually use the word projection to refer only to orthogonal projections.
+\end{definition}
+
+\begin{remark}
+    An non-orthogonal projection is an idempotent, but it is not a
+proejction. For example, take an basis (not )
+\end{remark}
+
+\begin{proposition}{}{}
+    $E$ is a idempotent.\\
+    (1) $E$ is an idempotent $\Leftrightarrow$ $I-E$ is an idempotent.\\
+    (2) If $E$ is an idempotent, $\text{ran}(E)=\text{ker}(I-E)$ and $\text{ker}(E)=\text{ran}(I-E)$
+    and $\text{ran}(E)$ is a closed linear subspace of $\mathscr{H}$.\\
+    (3) If $\mathscr{M}=\text{ran}E$ and $\mathscr{N}=\text{ker} E$, then $\mathscr{M}\cap \mathscr{N}=(0)$
+    and $\mathscr{M}+\mathscr{N}=\mathscr{H}$. 
+\end{proposition}
+\begin{proof}
+    (1) ($\Rightarrow$):
+        $(I-E)^2=I^2-2E+E^2=I^2-E=I-E$.\\
+        ($\Leftarrow$):
+        $E^2=(I-E-I)^2=(I-E)^2-2I(I-E)+I^2=I^2-2E+E^2-2I^2+2E+I^2=E$.\\
+    (2) For $h\in \text{ker}(I-E)$, $(I-E)h=0\Rightarrow h=Eh\Rightarrow h\in\text{ran}(E)$.
+    For $h\in \text{ran}(E)$, $h=Ea=E(Ea)=Eh$, then $(I-E)h=0$.\\
+    For $h\in \text{ran}(I-E)$, $h=(I-E)b=(I-E)^2b=(I-E)h$, then $Eh=0$.
+    For $h\in \text{ker}(E)$, $Eh=0\Rightarrow (I-E)h=h$.\\
+    For any linear bounded operator $A$, $\text{ker}(A)$ is closed.
+    Then $\text{ran}(E)=\text{ker}(I-E)$ is closed.\\
+    (3) For $h\in \text{ran}(E)\cap \text{ker}(E)$, $h=Ea=E(Ea)=Eh=0$, $x=Ex+(I-E)x$.
+\end{proof}
+
+\begin{lemma}{}{}
+    If E is idempotent then:
+    $h \in \text{ran}(E) \Leftrightarrow h = Eh$.
+\end{lemma}
+
+
+\begin{exercise}{II3 T4}{}
+    Let $P$ and $Q$ be projections. Show:\\
+    (1) $P+Q$ is a projection if and only if ran$P$ $\perp$ ran$Q$.
+    If $P+Q$ is a projection, then ran$(P+Q)$ $=$ ran$P$ $+$ ran$Q$ and 
+    ker$(P+Q)$ $=$ ker$P$ $\cap$ ker$Q$.\\
+    (2) $PQ$ is a projection if and only if $PQ=QP$.
+    If $PQ$ is a projection, then ran$PQ$ $=$ ran$P$ $\cap$ ran$Q$ 
+    and ker$PQ$ $=$ ker$P$ $+$ ker$Q$.
+\end{exercise}
+
+\begin{proof}
+    We claim if $\text{ran}P\perp \text{ran}Q\Leftrightarrow PQ=QP=0$.
+    In fact, if $\text{ran}P\perp \text{ran}Q$, then $\text{ran}P\subset (\text{ran}Q)^{\perp}$,
+    which implies $(\text{ran}Q)^{\perp\perp}\subset (\text{ran}P)^{\perp}$.
+    Since $Q$ is projection, $\text{ran}Q$ is closed. Then $\text{ran}Q=(\text{ran}Q)^{\perp\perp}$.
+    Since $P$ is projection, $(\text{ran}P)^{\perp}=\text{ker}P$.
+    Then $\text{ran}Q\subset \text{ker}P$. So $PQ=0$. SImilarly, $QP=0$.\\
+    If $PQ=0$, then $\text{ran}Q\subset \text{ker}P$, then $(\text{ran}Q)^{\perp}\supset (\text{ker}P)^{\perp}$.
+    Since $P$ is projection, $(\text{ker}P)^{\perp}=\text{ran}P$, then $\text{ran}P\subset (\text{ran}Q)^{\perp}$,
+    then $\text{ran}P\perp \text{ran}Q$\\
+    (1)
+    $(\Rightarrow)$: Show that $PQ=QP=0$. 
+   
+    Since $P+Q$ is a projection, it follows that $(P+Q)^2=P+Q$, then for $h\in\mathscr{H}$,
+    \begin{align}
+        \begin{aligned}
+            (P+Q)^2(h)&= (P+Q)(P(h)+Q(h))\\
+                  &= P(Ph+Qh) + Q(Ph+Qh)\\
+                  &= P^2h + PQh + QPh+ Q^2h\\
+                  &= Ph + PQh + QPh+Qh\\
+                  &= (P+Q)h+ PQh+QPh.
+        \end{aligned}
+        \label{eq: P+Q idempotent decomposition}
+    \end{align}
+    This means that $0=PQh+QPh$. Hence, $PQ=-QP$.
+    For $x\in \text{ran} PQ$, then $-x\in \text{ran}(QP)$, then $x\in \text{ran}P$ and $-x\in \text{ran}(Q)$ 
+    then $x=Px$ and $-x=Q(-x)=-Qx$.
+    So $x=Px=PQx=-QPx=-Qx=-x$, then $x=0$. So $PQ=QP=0$.\\
+    $(\Leftarrow)$: By (\ref{eq: P+Q idempotent decomposition}), if $PQ=QP=0$,
+    then $(P+Q)^2=P+Q$. Since $P,Q$ are projection, it follows that $P^*=P$ and $Q^*=Q$.
+    Then $(P+Q)^*=P^*+Q^*=P+Q$, which means that $P+Q$ is hermitian. SO $P+Q$ is projection.\\
+    If $P+Q$ is projection, then for $h\in \mathscr{H}$, $(P+Q)^2(h)=(P+Q)h$. Then
+    $Ph+Qh\in \text{ran}(P+Q)$ and $(P+Q)h=Ph+Qh\in \text{ran}P+\text{ran}Q$, then
+    $\text{ran}P+\text{ran}Q\subset \text{ran}(P+Q)$ and $\text{ran}P+\text{ran}Q\supset \text{ran}(P+Q)$.
+    Hence, $\text{ran}(P+Q)=\text{ran}P+\text{ran}Q$.
+    For $h\in \text{ker}P\cap \text{ker}Q$, $Ph=0=Qh$, then $(P+Q)h=0$. Then $\text{ker}P\cap \text{ker}Q\subset \text{ker}(P+Q)$.
+    For $h\in \text{ker}(P+Q)$, $(P+Q)h=0$, then $Ph=-Qh$. Since $\text{ran}P\perp \text{ran}Q$, $0=QPh=-Q^2h=-Q^h$ and $0=-PQh=-P^2h=-Ph$.
+    Then $Qh=Ph=0$ and so $h\in \text{ker}P\cap \text{ker}Q$. 
+    Then ker$(P+Q)$ $=$ ker$P$ $\cap$ ker$Q$.\\
+    (2) 
+    ($\Rightarrow$): $PQ$ is a projection, then $PQ$ is hermitian, then
+    $PQ=(PQ)^*=Q^*P^*=QP$.\\
+    ($\Leftarrow$): If $PQ=QP$, then
+    $(PQ)^*=Q^*P^*=QP=PQ$ and so $PQ$ is hermitian.
+    And for $h\in\mathscr{H}$, $(PQ)^2h=(PQ)(PQh)=(PQ)(QPh)=P(Q^2)Ph=PQPh=PPQh=PQh$.
+    Then $PQ$ is idempotent.
+    Hence, $PQ$ is a projection.\\
+    Since $\text{ran}PQ\subset \text{ran}P$ and $\text{ran}PQ=\text{ran}QP\subset \text{ran}Q$,
+    it follows that $\text{ran}PQ\subset \text{ran}P\cap\text{ran}Q$.
+    On the other hand, for $h\in \text{ran}P\cap\text{ran}Q$, $Px=Qx=x$, then $PQx=x$.
+    So $\text{ran}P\cap\text{ran}Q\subset \text{ran}PQ$.
+    Hence, ran$PQ$ $=$ ran$P$ $\cap$ ran$Q$.
+    For $h\in\text{ker}PQ$, then either $x\in \text{ker}Q$ or $x\in (\text{ker}Q)^{\perp}$.
+    If $x\in \text{ker}Q$, then $x=0+x\in \text{ker}P+\text{ker}Q$.
+    If $x\in (\text{ker}Q)^c$, then $Qx\neq 0$. Since $0=PQx$, $Qx\in\text{ker}P$.
+    Then $x=Qx+x-Qx$. Since $Q(x-Qx)=0$, $x=Qx+x-Qx\in \text{ran}P+\text{ran}Q$.
+    So $\text{ker}PQ\subset \text{ker}P+\text{ker}Q$.
+    For $h\in \text{ker}P+\text{ker}Q$, we can write $x$ as $x=u+v$ where $u\in\text{ker}P$ and $v\in\text{ker}Q$,
+    then $(PQ)h=PQ(u+v)=PQu+PQv=PQu=QPu=0$.
+    So $\text{ker}P+\text{ker}Q\subset \text{ker}PQ$.
+    Hence, ker$PQ$ $=$ ker$P$ $+$ ker$Q$.
+\end{proof}
+
+\begin{exercise}{II3 T6}{}
+    If $P$ and $Q$ are projection, then the following statements are equivalent.\\
+    (1) $P-Q$ is a projection.\\
+    (2) ran$Q$ $\subseteq$ ran$P$.\\
+    (3) $PQ=Q$.\\
+    (4) $QP=Q$. \\
+    If $P-Q$ is a projection, then
+    ran($P-Q$) $=$ (ran$P$) $\ominus$ (ran$Q$) and ker($P-Q$) $=$ ran$Q$ $+$ ker$P$.
+\end{exercise}
+
+\begin{proof}
+    $(2)\Rightarrow (3)$: 
+    For $h\in\mathscr{H}$, since $\text{ran}Q\subseteq \text{ran}P$, 
+    it follows that $Qh\in\text{ran}P$. Then $\exists x\in \mathscr{H}$, such that $Qh=Px$.
+    Then $PQh=PPx=Px=Qh$. Hence, $PQ=Q$.\\
+    $(3)\Leftrightarrow (4)$:
+    Suppose $PQ=Q$, then $QP=Q^*P^*=(PQ)^*=Q^*=Q$. 
+    Suppose $QP=Q$, then $PQ=P^*Q^*=(QP)^*=Q^*=Q$.\\
+    $(4)\Rightarrow (1)$:
+    Since $(P-Q)^*=P^*-Q^*=P-Q$, it follows that $P-Q$ is hermitian.
+    Since $(P-Q)^2=P^2-PQ-QP+Q^2=P-Q-Q+Q=P-Q$, it follows that $P-Q$ is idempotent.
+    Hence, $P-Q$ is projection.\\
+    Now, If $P-Q$ is projection, we will show that $\text{ran}(P-Q)=$(ran$P$) $\ominus$ (ran$Q$)=$\text{ran}P\cap (\text{ran}Q)^{\perp}=\text{ran}P\cap \text{ker}Q$
+    and ker($P-Q$) $=$ ran$Q$ $+$ ker$P$.\\
+    For $h\in \text{ran}(P-Q)$, since $P-Q$ is projection, $h=(P-Q)h=Ph-Qh$.
+    By (3), $h=Ph-PQh=P(h-Qh)\in\text{ran}P$. And by (4), $Qh=QPh-Q^2h=Qh-Qh=0$, then $h\in\text{ker}Q$.
+    Hence, $\text{ran}(P-Q)\subseteq \text{ran}P\cap \text{ker}Q$.
+    For $h\in \text{ran}P\cap \text{ker}Q$, $h=Ph$ as $P$ is projection 
+    and $Qh=0$, then $h=Ph-Qh=(P-Q)h\in\text{ran}(P-Q)$. Then $\text{ran}P\cap \text{ker}Q\subseteq \text{ran}(P-Q)$.
+    Hence, $\text{ran}(P-Q)=\text{ran}P\cap \text{ker}Q$.\\
+    For $h\in\text{ker}(P-Q)$, 
+    then $(P-Q)h=Ph-Qh=0$ and either $h\in\text{ker}P$ or $h\in (\text{ker}P)^{\perp}$.
+    If $h\in \text{ker}P$, then $h=0+h$. If $h\in (\text{ker}P)^{\perp}$, $h\in \text{ran}P$.
+    Then $h=Ph=Qh+Ph-Qh$. Since $P(Ph-Qh)=Ph-Qh=0$, $Ph-Qh\in\text{ker}P$.
+    Hence $h\in\text{ran}Q+\text{ker}P$ and $\text{ker}(P-Q)\subseteq \text{ran}Q+\text{ker}P$.
+    For $h\in \text{ran}Q + \text{ker}P$, we can write $h=u+v$ where $u\in\text{ran}Q$ and $v\in\text{ker}P$.
+    Then $u=Qu$ as $Q$ is projection and $Pv=0$.
+    Then $(P-Q)h=(P-Q)(u+v)\overset{P,Q \text{is linear}}{=}(P-Q)u+(P-Q)v=Pu-u+0-Qv=Pu-u-Qv$.
+    Since $Qv=QPv=0$ and $Pu=PQu=Qu=u$, it follows that $(P-Q)h=0$.
+    Then $h\in\text{ker}(P-Q)$ and so $\text{ran}Q+\text{ker}P\subseteq \text{ker}(P-Q)$.
+    Hence, $\text{ker}(P-Q)=\text{ran}Q+\text{ker}P$.
+
+\end{proof}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://math.ou.edu/~cremling/teaching/lecturenotes/fa-new/ln6.pdf}{Operators in Hilbert spaces}
+\end{itemize}
