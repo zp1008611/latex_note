@@ -1,0 +1,127 @@
+\chapter{Probability and Distributions}
+
+\section{Introduction}
+\begin{definition}{}{}
+    If an experiment can be repeated under the same conditions 
+    it is a random experiment. The set of every possible outcome 
+    of an experiment is the sample space, denoted $\mathcal{C}$.
+\end{definition}
+\begin{remark}
+    For an experiment, the sample space is not unique.
+    For example, When talking about the temperature in an area, 
+    we can define the sample space as $\mathcal{C}=(-\infty,\infty)$ or $\mathcal{C}=[a,b]$.
+    For a specific random experiment, we can use different sample spaces to describe it. 
+    However, it is worth studying how to describe it with an appropriate sample space.
+\end{remark}
+\par
+\textbf{Note/Definition}.
+Notationally, we denote the elements of the sample space with
+lower case letters such as $a,b,c$. Subsets of the sample space are \textit{events}
+and we denote them with upper case letters such as $A,B,C$.
+
+\begin{definition}{}{}
+    If an experiment is performed $N$ times and a specific event occurs $f$ times,
+    then $f$ is the frequency of the event and $f/N$ is the relative frequency of the event.
+\end{definition}
+
+
+\section{Sets}
+
+\section{The Probability Set Function}
+
+We need to define a set function that assigns a probability to the events (subsets of sample space $\mathcal{C}$).
+We denote the colletion of events as $\mathcal{B}$.
+If $\mathcal{C}$ is finite set, then we hope to assign a 
+probability to all events (that is, to define a probability set function on the power set of $\mathcal{C}$).
+More generally, we require that $\mathcal{B}$ (the colletion of events) to satisfy:
+(1) the sample space $\mathcal{C}$ itself is an event,
+(2) the complement of every event is again an event, and
+(3) every countable union of events is again an event.
+Symbolically, this means 
+(1) $\mathcal{C}\in\mathcal{B}$,
+(2) if $A\in\mathcal{B}$ then $A^c\in \mathcal{B}$, and
+(3) if $A_1,A_2,...\in \mathcal{B}$ then $\cup_{n=1}^{\infty} A_n\in \mathcal{B}$.
+Combining $(2)$ and $(3)$, we see by DeMorgan's Law (for countable unions)
+that if $A_1,A_2,...\in\mathcal{B}$ then $\cap_{n=1}^{\infty}A_n\in \mathcal{B}$.
+So the collection of events $\mathcal{B}$ is closed under complements, countable unions, 
+and countable intersections.
+Such a collection of sets form a \textit{$\sigma$-algebra}.
+
+
+\begin{definition}{}{}
+    A collection of events $\{A_n|n\in I\}$ (where $I$ is some indexing set)
+    such that $A_i\cap A_j=\O$ is a mutually exclusive collection of events.
+\end{definition}
+
+
+\begin{definition}{}{}
+    Let $\mathcal{C}$ be a sample space and let $\mathcal{B}$ be the set of all events (thus, $\mathcal{B}$ is a $\sigma$-field).
+    Let $P$ be a real-valued function defined on $\mathcal{B}$.
+    Then $P$ is a probability set function if $P$ satisfies the following three conditions:\\
+    (1) $P(A)\geqs 0$ for $A\in \mathcal{B}$.\\
+    (2) $P(\mathcal{C})=1$.\\
+    (3) If $\{A_n\}$ is a mutually exclusive collection of events, then $P(\cup_{n=1}^{+\infty}A_n)=\sum\limits_{n=1}^{+\infty}P(C_n)$.
+\end{definition}
+
+\begin{theorem}{}{}
+    For each event $A\in\mathcal{B}$, $P(A)=1-P(A^c)$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    The probability of the null set is zero; that is, $P(\O)=0$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    If $A$ and $B$ are events such that $A\subset B$,
+    then $P(A)\leqs P(B)$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    For each event $A\in\mathcal{B}$ we have $0\leqs P(A)\leqs 1$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    If $A$ and $B$ are events in $\mathcal{C}$,
+    then $P(A\cup B)=P(A)+P(B)-P(A\cap B)$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    Let $\{A_n\}$ be a nondecreasing sequence of events (ie. $A_n\subseteq A_{n+1}$). Then
+    \begin{align*}
+        \lim_{n\rightarrow \infty} P(A_n)=P(\lim_{n\rightarrow \infty}A_n)=P(\cup_{n=1}^{\infty}A_n).
+    \end{align*}
+    Let $\{A_n\}$ be a nonincreasing sequence of events (ie. $A_n\supseteq A_{n+1}$). Then
+    \begin{align*}
+        \lim_{n\rightarrow \infty} P(A_n)=P(\lim_{n\rightarrow \infty}A_n)=P(\cap_{n=1}^{\infty}A_n).
+    \end{align*}
+\end{theorem}
+
+\begin{theorem}{}{}
+    Let $\{A_n\}$ be an arbitrary sequence of events. Then
+    \begin{align*}
+        P(\cup_{n=1}^{\infty}A_n)\leqs \sum\limits_{n=1}^{\infty}P(A_n).
+    \end{align*}
+\end{theorem}
+
+
+
+\section{Homework}
+
+\begin{exercise}{}{}
+    Show that the moment generating function of the random variable $X$
+    having the pdf $f(x)=\frac{1}{3}$, $-1<x<2$, zero elsewhere, is
+    \begin{align*}
+        M(t) = \left\{\begin{matrix}
+            \frac{e^{2t}-e^{-t}}{3t} & t\neq 0\\
+            1 & t=0.
+           \end{matrix}\right.
+    \end{align*}
+\end{exercise}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://faculty.etsu.edu/gardnerr/4047/notes-Hogg-McKean-Craig.htm}{lecture note}
+    \item \href{https://ccrgpages.rit.edu/~whelan/courses/2013_3fa_STAT_405/notes01.pdf}{Probability and Distributions}
+    \item \href{https://www.zhihu.com/question/28624845}{Sample space is unique?}
+    \item \href{https://faculty.etsu.edu/gardnerr/4047/Beamer-Hogg-McKean-Craig/Proofs-HMC-1-3.pdf}{proof of 1.3}
+\end{itemize}

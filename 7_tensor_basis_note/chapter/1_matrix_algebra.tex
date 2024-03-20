@@ -39,6 +39,8 @@ and to column vectors of dimension $I$:
 \end{align*}
 In the following, for column vectors, $\K^{I}$ will be used instead of $\K^{I\times 1}$.
 \par
+Identity matrix (i.e., a matrix with all 1's on the diagonal
+and 0's everywhere else) is denoted by $\bold{E}$.
 $\bold{e}_{i}^{(I)}$ is the column vector of dimension $I$,
 in which element is equal to $1$ at position $i$ and $0s$ elsewhere.
 $\bold{E}_{ij}^{I\times J}$ is the matrix of dimension $I\times J$
@@ -95,6 +97,7 @@ in which element is equal to $1$ at position $(i,j)$ and $0s$ elsewhere.
     \end{align*}.
 \end{remark}
 
+
 \section{Vector outer product and vectorization}
 \subsection{Vector outer product}
 The outer product of two vectors $\bold{u}\in\K^{I}$ and $\bold{v}\in \K^{J}$,
@@ -135,7 +138,8 @@ on top of each other to form a column vector of dimension $JI$:
         \bold{A}_{\cdot 1}& \bold{A}_{\cdot 2} & ... & \bold{A}_{\cdot J}
     \end{pmatrix}\in \K^{I\times J}
     \Rightarrow \text{vec}(\bold{A}) = \begin{pmatrix}
-        \bold{A}_{\cdot 1} \\ \bold{A}_{\cdot 2}\\ ...\\ \bold{A_{\cdot J}}
+        \bold{A}_{\cdot 1} \\ \bold{A}_{\cdot 2}\\ ...\\ \bold{A}
+        _{\cdot J}
     \end{pmatrix}\in \K^{JI}.
 \end{align*}
 This operation defines an isomorphism between the space $\K^{JI}$ of vectors
@@ -155,59 +159,195 @@ with $\bold{e}_{(j-1)I+i}^{(JI)}=\text{vec}(\bold{e}_i^{(I)}\circ \bold{e}_j^{(J
 \end{remark}
 
 
-\section{Vector inner product, norm and orthogonality}
+\section{Vector inner product and orthogonality}
 \subsection{Inner product}
 
 In this section, we recall the definition of the inner product(also called dot product)
 of two vectors $\bold{a},\bold{b}\in\K^{I}$.
 \begin{definition}{}{}
-    If $\K=\R$, the inner product is defined as:
+    If $\K=\R$, the vector inner product is defined as:
     \begin{align*}
         \inner{\cdot}{\cdot}:\R^I\times \R^I&\rightarrow \R\\
-        (a,b)&\mapsto \inner{a}{b} = a^Tb=\sum\limits_{i=1}^{I}a_ib_i.
+        (\bold{a},\bold{b})&\mapsto \inner{\bold{a}}{\bold{b}} = \bold{a}^T\bold{b}=\sum\limits_{i=1}^{I}a_ib_i.
     \end{align*}
-    In $\C^I$, the definition of the inner product is given by:
+    In $\C^I$, the definition of the vector inner product is given by:
     \begin{align*}
         \inner{\cdot}{\cdot}:\C^I\times \C^I&\rightarrow \C\\
-        (a,b)&\mapsto \inner{a}{b} = a^Hb=\sum\limits_{i=1}^{I}a_i^*b_i.
+        (\bold{a},\bold{b})&\mapsto \inner{\bold{a}}{\bold{b}} = \bold{a}^H\bold{b}=\sum\limits_{i=1}^{I}a_i^*b_i.
     \end{align*}
 \end{definition}
-
-
-\subsection{Euclidean/Hermitian norm}
-\begin{definition}{}{}
-    The Euclidean (Hermitian) norm of a vector $\bold{a}$, denoted $||\bold{a}||$, 
-    associates to $a\in\R^I$ ($a\in\C^I$) a non-negative real number according to the following definition:
-    \begin{align*}
-        ||\cdot||_2 : \K^I &\rightarrow \R^+\\
-        \bold{a} &\mapsto ||\bold{a}||_2=\sqrt{\inner{\bold{a}}{\bold{a}}}
-    \end{align*}.
-\end{definition}
+\begin{remark}
+    Whether $\K=\C$ or $\R$, $\inner{\bold{a}}{\bold{a}}\in \R$. 
+\end{remark}
 
 
 \subsection{Orthogonality}
 \begin{definition}{}{}
     Two vectors $\bold{a}$ and $\bold{b}$ of $\K^{I}$ are said to be 
-    orthogonal if and only if $\inner{a}{b}=0$. 
+    orthogonal if and only if $\inner{\bold{a}}{\bold{b}}=0$. 
 \end{definition}
 
 
+\section{Vector Norms}
+\begin{definition}{}{}
+    Let $v:\C^n\rightarrow \R$. 
+    Then $v$ is a norm if for all $\bold{x},\bold{y}\in\C^n$
+    \begin{itemize}
+        \item $\bold{x}\neq 0\Rightarrow v(\bold{x})>0$,
+        \item $v(\alpha \bold{x})=|\alpha|v(\bold{x})$, and
+        \item $v(\bold{x}+\bold{y})\leqs v(\bold{x})+v(\bold{y})$ 
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    often we will use $||\cdot||$ to denote a vector norm.
+\end{remark}
+
+
+\subsection{Vector 2-norm}
+\begin{definition}{}{}
+    The vector 2-norm $||\cdot||_2:\C^n\rightarrow \R$ is defined by
+    \begin{align*}
+        ||\bold{x}||_2=\sqrt{\inner{\bold{x}}{\bold{x}}}=\sqrt{\bold{x}^H\bold{x}}=\sqrt{x_1^*x_1+x_2^*x_2+...+x_n^*x_n}=\sqrt{|x_1|^2+...+|x_n|^2}.
+    \end{align*}
+\end{definition}
+
+\begin{theorem}{}{}
+    Let $\bold{x},\bold{y}\in\C^n$. Then $|\inner{\bold{x}}{\bold{y}}|=|\bold{x}^H\bold{y}|\leqs ||\bold{x}||_2\cdot ||\bold{y}||_2$.
+\end{theorem}
+
+\begin{proposition}{}{}
+    The vector 2-norm is a norm.
+\end{proposition}
+
+\subsection{Vector 1-norm}
+\begin{definition}{}{}
+    The vector 1-norm $||\cdot||_1:\C^n\rightarrow \R$ is defined by
+    \begin{align*}
+        ||\bold{x}||_1=|x_1|+|x_2|+...+|x_{n}|.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}{}{}
+    The vector 1-norm is a norm.
+\end{proposition}
+
+\subsection{Vector $\infty$-norm}
+\begin{definition}{}{}
+    The vector $\infty$-norm $||\cdot||_{\infty}:\C^n\rightarrow \R$ is defined by $||\bold{x}||_{\infty}=\max_{i}|x_i|$.
+\end{definition}
+
+\begin{proposition}{}{}
+    The vector $\infty$-norm is a norm.
+\end{proposition}
+
+\subsection{Vector $p$-norm}
+\begin{definition}{}{}
+    The vector $p$-norm $||\cdot||_p:\C^n\rightarrow \R$ is defined by
+    \begin{align*}
+        ||\bold{x}||_p=\sqrt[p]{|x_1|^p+|x_2|^p+...+|x_n|^p}.
+    \end{align*}
+\end{definition}
+
+\begin{proposition}{}{}
+    The vector $p$-norm is a norm.
+\end{proposition}
+
+\section{Matrix Norms}
+It is not hard to see that vector norms are
+all measures of how "big" the vectors are. Similarly,
+we want to have measures for how "big" matrices are.
+We will start with one that are somewhat artificial and then move on to the important class of induced matrix norms.
+
+\subsection{Frobenius norm}
+\begin{definition}{}{}
+    The Frobenius norm $||\cdot||_F:\C^{m\times n}\rightarrow \R$ is defined by
+    \begin{align*}
+        ||\bold{A}||_F=\sqrt{\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{n}|a_{ij}|^2}.
+    \end{align*}
+\end{definition}
+
+\begin{remark}
+    $||\bold{A}||_F=||\text{vec}(\bold{A})||_2$.
+\end{remark}
+
+\begin{proposition}{}{}
+    The Frobenius norm is a norm.
+\end{proposition}
+
+\subsection{Induced matrix norms}
+\begin{definition}{}{}
+    Let $||\cdot||_{\mu}:\C^m\rightarrow \R$ and $||\cdot||_{v}:\C^n\rightarrow \R$ be vector norms.
+    Define $||\cdot||_{\mu,v}:\C^{m\times n}\rightarrow \R$ by 
+    \begin{align*}
+        ||\bold{A}||_{\mu,v}=\sup_{\bold{x}\in\C^n,\bold{x}\neq 0}\frac{||\bold{A\bold{x}}||_{\mu}}{||\bold{x}||_v}.
+    \end{align*}
+\end{definition}
+
+\begin{remark}
+    How "big" $\bold{A}$ is, as measured by $||\bold{A}||_{\mu,v}$, 
+    is defined as the most that $\bold{A}$ magnifies the length of nonzero vectors,
+    where the length of the vector $\bold{x}$ is measured with norm $||\cdot||_v$ and
+    the length of the transformed vector $\bold{A}\bold{x}$ is measured with norm $||\cdot||_{\mu}$.
+\end{remark}
+
+\begin{proposition}{}{}
+    Let $||\cdot||_{\mu}:\C^m\rightarrow \R$ and $||\cdot||_{v}:\C^n\rightarrow \R$ be vector norms.
+    \begin{align*}
+        ||\bold{A}||_{\mu,v}&=\sup_{\bold{x}\in\C^n,\bold{x}\neq 0}\frac{||\bold{A\bold{x}}||_{\mu}}{||\bold{x}||_v}\\
+                            &=\max_{\bold{x}\in\C^n,\bold{x}\neq 0}\frac{||\bold{A\bold{x}}||_{\mu}}{||\bold{x}||_v}\\
+                            &=\max_{||\bold{x}||_v=1}||\bold{A}\bold{x}||_{\mu}.
+    \end{align*}
+\end{proposition}
+
+\begin{proposition}{}{}
+    $||\cdot||_{\mu,v}:\C^{m\times n}\rightarrow \R$ is a norm. 
+\end{proposition}
+
+\begin{definition}{}{}
+    Define $||\cdot||_p:\C^{m\times n}\rightarrow \R$ by
+    \begin{align*}
+        ||\bold{A}||_{p}&=\max_{\bold{x}\in\C^n,\bold{x}\neq 0}\frac{||\bold{A\bold{x}}||_{p}}{||\bold{x}||_p}\\
+                            &=\max_{||\bold{x}||_p=1}||\bold{A}\bold{x}||_{p}.
+    \end{align*}
+\end{definition}
+
+
+\begin{proposition}{}{}
+    For any $\bold{A}\in \C^{m\times k}$ and $\bold{B}\in\C^{k\times n}$, 
+    \begin{align*}
+        ||\bold{A}\bold{B}||_p&\leqs ||\bold{A}||_p||\bold{B}||_p\\
+        ||\bold{A}\bold{B}||_F&\leqs ||\bold{A}||_F||\bold{B}||_F.
+    \end{align*}
+\end{proposition}
+
 \section{Matrix multiplication}
-\subsection{Definition and properties}
-
-given matrices $\bold{A}\in \K^{I\times J}$ and
-$\bold{B}\in \K^{J\times K}$,
-the product of $\bold{A}$ by $\bold{B}$
-gives a matrix $\bold{C}=\bold{AB}\in\K^{I\times K}$
-such that $c_{ik}=\sum\limits_{i=1}^{I}a_{ij}b_{jk}$,
-for $j\in \langle J\rangle$; $k\in \langle K\rangle$.
+Suppose $\bold{A}\in\R^{m\times r}$ and $\bold{B}\in \R^{r\times n}$,
+the matrix multiplication $\bold{C}=\bold{A}\bold{B}$ can be viewed from
+three different perspectives as follows:
 \par
-This product can be written in terms of the outer products of column vectors of 
+\underline{Dot Product Matrix Multiply}. 
+Every element $c_{ij}$ of $\bold{C}$ is the 
+dot product of row vector $\bold{A}_{i\cdot}$ and column vector $\bold{B}_{\cdot j}$.
+\begin{align*}
+    \bold{A}&=\begin{pmatrix}
+        \bold{A}_{1\cdot}^T\\ ...\\\bold{A}_{m\cdot}^T
+    \end{pmatrix},\bold{A}_{k\cdot}\in\R^r\\
+    \bold{B}&=\begin{pmatrix}
+        \bold{B}_{\cdot 1}&...\bold{B}_{\cdot n}
+    \end{pmatrix},\bold{B}_{\cdot k}\in\R^r\\
+    \bold{C}&=(c_{ij}),c_{ij}=\bold{A}_{i\cdot}^T\bold{B}_{\cdot j}=\sum\limits_{k=1}^{r}a_{ik}b_{kj}.
+\end{align*}
+\par
+\underline{Column Combination Matrix Multiply}.
+Every column $\bold{C}_{\cdot j}$ of $\bold{C}$ is a linear combination of column vector
+$\bold{A}_{\cdot k}$ of $\bold{A}$ with columns $b_{kj}$ as the weight coefficients.
 
 
 
 
-\section{Matrix trace, inner product and Frobenius norm}
+
+
+\section{Matrix trace, Matrix inner product}
 
 \subsection{Definition and properties of the trace}
 \begin{definition}{}{}
@@ -232,10 +372,100 @@ This product can be written in terms of the outer products of column vectors of
 
 \section{Determinant, inverses and generalized inverses}
 
-\section{Eigenvalues and eigenvectors}
+\section{Quadric form, symmetric, positive definte, eigenvalues, eigenvectors and conics}
+\begin{definition}{}{}
+    A symmetric matrix is a square matrix $\bold{Q}\in\R^{n\times n}$ with the property that $\bold{Q}^T=\bold{Q}$.
+\end{definition}
+
+\begin{definition}{}{}
+    $\bold{Q}$ is symmetric and positive semidefinite (abbreviated SPSD and denoted by $\bold{Q}\succeq 0$) if 
+    \begin{align*}
+        \bold{x}^T\bold{Q}\bold{x}\geqs 0 \text{ for all } \bold{x}\in \R^n.
+    \end{align*}
+\end{definition}
+
+\begin{definition}{}{}
+    $\bold{Q}$ is symmetric and positive semidefinite (abbreviated SPD and denoted by $\bold{Q}\succ 0$) if 
+    \begin{align*}
+        \bold{x}^T\bold{Q}\bold{x}> 0 \text{ for all } \bold{x}\in \R^n, \bold{x}\neq 0.
+    \end{align*}
+\end{definition}
+
+A matrix $\bold{M}$ is an orthonormal matrix if $\bold{M}^T=\bold{M}^{-1}$.
+Note that if $\bold{M}$ is orthonormal and $\bold{y}=\bold{M}\bold{x}$, then 
+\begin{align*}
+    ||\bold{y}||^2_2=\bold{y}^T\bold{y}=\bold{x}^T\bold{M}^T\bold{M}\bold{x}=\bold{x}^T\bold{M}^{-1}\bold{M}\bold{x}=\bold{x}^T\bold{x}=||\bold{x}||^2_2,
+\end{align*}
+and so $||\bold{y}||_2^2=||\bold{x}||_2^2$.
+
+A number $\lambda\in\R$ is an eigenvalue of $\bold{M}$ if there exists 
+a vector $\bold{\bar{x}}\neq 0$ such that $\bold{M}\bold{\bar{x}}=\lambda \bold{\bar{x}}$.
+$\bold{\bar{x}}$ is called an eigenvector of $\bold{M}$ (and is called an eigenvector corresponding to $\lambda$).
+Note that $\lambda$ is an eigenvalue of $\bold{M}$ if and only if there exists $\bold{\bar{x}}\neq 0$ such that 
+$(\bold{M}-\lambda \bold{E})\bold{\bar{x}}=0$ or, equivalently, if and only if $\text{det}(\bold{M}-\lambda \bold{E})=0$.
+
+Let $g(\lambda)=\text{det}(\bold{M}-\lambda \bold{E})$. Then $g(\lambda)$ is 
+a polynomial of degree $n$, and so will have $n$ roots 
+that will solve the equation $g(\lambda)=\text{det}(\bold{M}-\lambda \bold{E})=0$, 
+including multiplicities. These roots are the eigenvalues of $\bold{M}$.
+
+
+\begin{proposition}{}{}
+    If $\bold{Q}$ is a real symmetric matrix, all of its eigenvalues are real numbers.
+\end{proposition}
+
+\begin{proposition}{}{}
+    If $\bold{Q}$ is a real symmetric matrix, 
+    its eigenvectors corresponding to different eigenvalues are orthogonal.
+\end{proposition}
+
+\begin{proposition}{}{}
+    If $\bold{Q}$ is SPSD, the eigenvalues of $\bold{Q}$ are nonnegative.
+\end{proposition}
+
+\begin{theorem}{The Principal Axis Theorem}{}
+    If $\bold{Q}$ is symmetric, then $\bold{Q}=\bold{R}\bold{D}\bold{R}^T$,
+    where $\bold{R}$ is an orthonormal matrix, the columns of $\bold{R}$ are an orthonormal basis of eigenvectors of $\bold{Q}$,
+    and $\bold{D}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{Q}$.
+\end{theorem}
+
+\begin{proposition}{}{}
+    If $\bold{D}$ is SPSD, the $\bold{Q}=\bold{M}^T\bold{M}$ for some matrix $\bold{M}$.
+\end{proposition}
+
+
+\begin{proposition}{}{}
+    If $\bold{M}$ is $n\times n$ and symmetric, then
+    \begin{align*}
+        ||\bold{M}||_2=\max_{\lambda} \{|\lambda|:\lambda \text{ is an eigenvalue of } \bold{M}\}.
+    \end{align*}
+\end{proposition}
+
+\begin{proposition}{}{}
+    If $\bold{M}$ is $m\times n$ with $m<n$ and $\bold{M}$ has rank $m$, then 
+    \begin{align*}
+        ||\bold{M}||_2=\sqrt{\lambda_{\max}(\bold{M}\bold{M}^T)},
+    \end{align*}
+    where $\lambda_{\max}(\bold{A})$ denotes the largest eigenvalue of a matrix $\bold{A}$.
+\end{proposition}
+
+\begin{proposition}{}{}
+    Suppose that $\bold{M}$ is a symmetric matrix. Then the following are equivalent:
+    \begin{align*}
+        &\text{(a) } h>0 \text{ satisfies } ||\bold{M}^{-1}||_2\leqs \frac{1}{h}.\\
+        &\text{(b) } h>0 \text{ satisfies } ||\bold{M}\bold{x}||_2 \geqs h\cdot ||\bold{x}||_2 \text{ for any vector } \bold{x}\\
+        &\text{(c) } h>0 \text{ satisfies } |\lambda_i(\bold{M})|\geqs h \text{ for every eigenvalue } \lambda_i(\bold{M}) \text{ of } \bold{M}, i=1,...,m.
+    \end{align*}
+\end{proposition}
+
 
 
 \section{Reference}
 \begin{itemize}
     \item \href{}{From Algebraic Structures to Tensors ch4 matrix algebra}
+    \item \href{https://www.cs.utexas.edu/users/flame/Notes/NotesOnNorms.pdf}{Notes on Vector and Matrix Norms}
+    \item \href{https://ocw.mit.edu/courses/15-084j-nonlinear-programming-spring-2004/resources/lec4_quad_form/}{symmetric, positive definted, eigenvalues and eigenvectors}
+    \item \href{https://www.math.uwaterloo.ca/~jmckinno/Math225/Week7/Lecture2m.pdf}{The Principal Axis Theorem}
+    \item \href{https://staff.polito.it/ada.boralevi/didattica/Dispense_ENG.pdf}{linear algebra and geometry note}
+    \item \href{http://jde27.uk/la/36_eigenapplications2.html}{eigenvalues application: ellipses}
 \end{itemize}
