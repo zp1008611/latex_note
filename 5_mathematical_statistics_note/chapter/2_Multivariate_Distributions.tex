@@ -174,10 +174,22 @@
                            &= \frac{2}{3},
     \end{align*}
     $P(X_1<X_2|X_1<2X_2)=\frac{P(X_1<X_2,X_1<2X_2)}{P(X_1<2X_2)}=\frac{\frac{1}{2}}{\frac{2}{3}}=\frac{3}{4}$.
+    \par
     (b) Since
     \begin{align*}
-        P(X_1<X_2<X_3)=\int_{-\infty}^{\infty}
+        P(X_1<X_2<X_3,X_3<1)&=\int_{0}^{1}\{\int_{0}^{x_3}\{\int_{0}^{x_2}e^{-(x_1+x_2+x_3)} dx_1\}dx_2\}dx_3\\
+                            &=\int_{0}^{1}\{\int_{0}^{x_3}-e^{-(x_1+x_2+x_3)}|_{x_1=x_2}^{x_1=0}dx_2\}dx_3\\
+                            &=\int_{0}^{1}\{\int_{0}^{x_3}-e^{-(x_2+x_3)}+e^{-(2x_2+x_3)}dx_2\}dx_3\\
+                            &= \int_{0}^{1} e^{-(x_2+x_3)}-\frac{1}{2}e^{-(2x_2+x_3)}|_{x_2=x_3}^{x_2=0}dx_3\\
+                            &= \int_{0}^{1} \frac{1}{2} e^{-x_3} -e^{-2x_3}+\frac{1}{2}e^{-3x_3}dx_3\\
+                            &= -\frac{1}{2}e^{-x_3}+\frac{1}{2}e^{-2x_3}-\frac{1}{6}e^{-3x_3}|_{x_3=0}^{x_3=1}\\
+                            &= -\frac{1}{2}e^{-1} + \frac{1}{2}e^{-2}-\frac{1}{6}e^{-3}+\frac{1}{6}
     \end{align*}
+    and 
+    \begin{align*}
+        P(X_3<1) = \int_{0}^{1} e^{-x} dx = -e^{-x}|_{x=0}^{x=1}=-e^{-1}+1,
+    \end{align*}
+    $P(X_1<X_2<X_3|X_3<1)=\frac{P(X_1<X_2<X_3,X_3<1)}{P(X_3<1)}=\frac{1-3e^{-1}+3e^{-2}-e^{-3}}{6(1-e^{-1})}$.
 \end{solve}
 
 
@@ -187,4 +199,5 @@
     \item \href{https://ccrgpages.rit.edu/~whelan/courses/2013_3fa_STAT_405/notes02.pdf}{chapter 2}
     \item \href{https://faculty.etsu.edu/gardnerr/4047/notes-Hogg-McKean-Craig/Hogg-McKean-Craig-2-1.pdf}{2.1}
     \item \href{https://faculty.etsu.edu/gardnerr/4047/notes-Hogg-McKean-Craig/Hogg-McKean-Craig-2-3.pdf}{2.3}
+    \item \href{https://tomoki-okuno.com/files/math/Ch2_sol.pdf}{ch2 solution}
 \end{itemize}
