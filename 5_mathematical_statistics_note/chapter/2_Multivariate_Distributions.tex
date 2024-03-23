@@ -17,14 +17,69 @@
     \begin{align}
         F_{X_1,X_2}(x_1,x_2)=P(\{X_1\leqs x_1\}\cap \{X_2\leqs x_2\})
     \end{align}
-    for $(x_1,x_2)\in \R^2$. This is the joint cumulative distribution function of $(X_1,X_2)$.
-    If 
+    for $(x_1,x_2)\in \R^2$. This is the \textit{joint cumulative distribution function} of $(X_1,X_2)$.
+    If $F_{X_1,X_2}$ is continuous then random variable $(X_1,X_2)$ is said to be continuous.
 \end{definition}
+
+\begin{definition}{}{}
+    A random vector $(X_1,X_2)$ is a discrete random vector if its space 
+    $\mathcal{D}$ is finite or countable. (Hence $X_1$ and $X_2$ both must be discrete.)
+    The joint probability mass function of $(X_1,X_2)$ is $p_{X_1,X_2}(x_1,x_2)=P(X_1=x_1,X_2=x_2)$
+    for all $(x_1,x_2)\in\mathcal{D}$.
+\end{definition}
+
+\begin{definition}{}{}
+    If for random vector $(X_1,X_2)$ with cumulative distribution function $F_{X_1,X_2}$,
+    there is a function $f_{X_1,X_2}:\R^2\rightarrow \R$ such that 
+    \begin{align*}
+        F_{X_1,X_2}(x_1,x_2)=\int_{-\infty}^{x_1}\int_{\infty}^{x_2} f_{X_1,X_2}(w_1,w_2)dw_1dw_2.
+    \end{align*}
+    Then $f_{X_1,X_2}$ is the joint probability density function (pdf) of $(X_1,X_2)$.
+    The support of $(X_1,X_2)$ is the set of all points $(x_1,x_2)$ for which $f_{X_1,X_2}(x_1,x_2)>0$,
+    denoted $\mathcal{S}$.
+\end{definition}
+
+\begin{remark}
+    In this course, continuous random vectors will have joint probability
+    density functions that determine the cumulative distribution function. By the
+    Fundamental Theorem of Calculus (applied twice)
+    \begin{align*}
+        \frac{\partial^2 F_{X_1,X_2}(x_1,x_2)}{\partial x_1\partial x_2}=f_{X_1,X_2}(x_1,x_2).
+    \end{align*}
+    For event $A\in\mathcal{D}$, we have 
+    \begin{align*}
+        P((X_1,X_2)\in A)=\int\int_{A} f_{X_1,X_2}(x_1,x_2)dx_1dx_2.
+    \end{align*}
+\end{remark}
+
+
+
+\begin{remark}
+    We can find the distribution of random variable $X_1$ and $X_2$ 
+    (called marginal distribution) based on the joint distribution of $(X_1,X_2)$.
+    We have
+    \begin{align*}
+        \{X\leqs x_1\} = \{X_1\leqs x_1\}\cap \{-\infty<X_2<\infty\},
+    \end{align*}
+    so with $F_{x_1}$, the cumulative distribution function of $X_1$ we get for $x_1\in\R$
+    \begin{align*}
+        F_{X_1}(x_1) &= P(X\leqs x_1)=P(X_1\leqs x_1,-\infty<X_2<\infty)\\
+                    &= \lim_{x_2\rightarrow \infty} F_{X_1,X_2}(x_1,x_2).
+    \end{align*}
+    We can similarly find the marginal distribution $F_{X_2}$ in terms of $F_{X_1,X_2}$.
+    In the continuous case,
+    \begin{align*}
+        f_{X_1}(x_1)&=\int_{-\infty}^{\infty} f_{X_1,X_2}(x_1,x_2)dx_2,\\
+        f_{X_2}(x_2)&=\int_{-\infty}^{\infty} f_{X_1,X_2}(x_1,x_2)dx_1.
+    \end{align*}
+\end{remark}
 
 
 \section{Transformations: Bivariate Random Variables}
 
 \section{Conditional Distributions and Expectations}
+
+
 
 \section{Independent Random Variables}
 
@@ -44,10 +99,92 @@
     (b) For a fixed $X=x$, compute $E(1+x+Y|x)$ and use the result to compute $E(Y|x)$.
 \end{exercise}
 
+\begin{solve}
+    (a) By the definition of marginal probability density function:
+    \begin{align*}
+        f_X(x)&= \int_{-\infty}^{\infty}f(x,y)dy=\int_{0}^{\infty} \frac{2}{(1+x+y)^3} dy\stackrel{t=1+x+y}{=}\int_{1+x}^{\infty}\frac{2}{t^3}dt\\
+              &= -t^{-2}|_{t=1+x}^{t=\infty} = 0-(-(1+x)^{-2})=\frac{1}{(1+x)^2}, \text{ for } 0<x<\infty.\\
+        f_Y(y)&= \int_{-\infty}^{\infty}f(x,y)dx=\int_{0}^{\infty} \frac{2}{(1+x+y)^3} dx\\
+              &= \frac{1}{(1+y)^2}, \text{ for } 0<y<\infty.
+    \end{align*}
+    Hence, $f_X(x)=\left\{\begin{matrix}
+       \frac{1}{(1+x)^2} & 0<x<\infty \\
+       0 & \text{elsewhere}
+       \end{matrix}\right.$
+    and $f_Y(y)=\left\{\begin{matrix}
+        \frac{1}{(1+y)^2} & 0<y<\infty \\
+        0 & \text{elsewhere}
+        \end{matrix}\right.$.
+    \par
+    The conditional probability density function of $Y$ given $X=x$ is 
+    \begin{align*}
+        f_{Y|X}(y|x)=\frac{f_{X,Y}(x,y)}{f_X(x)}=\frac{\frac{2}{(1+x+y)^3}}{\frac{1}{(1+x)^2}}=\frac{2(1+x)^2}{(1+x+y)^3}, \text{ for } 0<x<\infty.
+    \end{align*}
+    Hence, $f_{Y|X}(y|x)=\left\{\begin{matrix}
+        \frac{2(1+x)^2}{(1+x+y)^3} & 0<y<\infty \\
+        0 & \text{elsewhere}.
+        \end{matrix}\right.$
+    \par
+    (b) The conditional expectation of $g(Y)=1+X+Y$ given $X=x$ is
+    \begin{align*}
+        E(1+x+Y|x) &= \int_{-\infty}^{\infty} g(y) f_{Y|X}(y|x) dy\\
+                   &= \int_{0}^{\infty} (1+x+y)\frac{2(1+x)^2}{(1+x+y)^2} dy\\
+                   \stackrel{t=1+x+y}{=} &\int_{1+x}^{\infty} \frac{2(1+x)^2}{t^2}dt=-\frac{2(1+x)^2}{t}|_{t=1+x}^{t=\infty}=2(1+x).
+    \end{align*}
+    Since $E(1+x+Y|x)=1+x+E(Y|x)$, $E(Y|x)=2(1+x)-(1+x)=(1+x)$.
+\end{solve}
+
+
+
+
+
 \begin{exercise}{}{}
     Let $X_1,X_2,X_3$ be iid with common pdf $f(x)=\exp(-x)$, $0<x<\infty$,
     zero elsewhere. Evaluste:\\
     (a) $P(X_1<X_2|X_1<2X_2)$.\\
     (b) $P(X_1<X_2<X_3|X_3<1)$.
 \end{exercise}
+\begin{solve}
+    The joint common pdf of $X_1,X_2$ is
+    \begin{align*}
+        f_{X_1,X_2}(x_1,x_2)= \left\{\begin{matrix}
+            e^{-(x_1+x_2)} & 0<x_1<\infty,0<x_2<\infty\\
+            0 & \text{elsewhere}
+            \end{matrix}\right.
+    \end{align*}
+    The joint common pdf of $X_1,X_2,X_3$ is 
+    \begin{align*}
+        f_{X_1,X_2,X_3}(x_1,x_2,x_3)= \left\{\begin{matrix}
+            e^{-(x_1+x_2+x_3)} & 0<x_1<\infty,0<x_2<\infty,0<x_3<\infty \\
+            0 & \text{elsewhere}
+            \end{matrix}\right.
+    \end{align*}
+    (a) Since
+    \begin{align*}
+        P(X_1<X_2,X_1<2X_2)&=\int_{0}^{\infty}dx_1\int_{x_1}^{\infty}e^{-(x_1+x_2)} dx_2 = \int_{0}^{\infty}-e^{-x_1}e^{-x_2}|_{x_2=x_1}^{x_2=\infty}dx_1\\
+                           &= \int_{0}^{\infty}0-(-e^{-2x_1})dx_1\\
+                           &= -\frac{1}{2}e^{-2x_1}|_{x_1=0}^{x_1=\infty}\\
+                           &= \frac{1}{2}
+    \end{align*}
+    and 
+    \begin{align*}
+        P(X_1<2X_2)&=\int_{0}^{\infty}dx_1\int_{\frac{x_1}{2}}^{\infty}e^{-(x_1+x_2)} dx_2 = \int_{0}^{\infty}-e^{-x_1}e^{-x_2}|_{x_2=\frac{x_1}{2}}^{x_2=\infty}dx_1\\
+                           &= \int_{0}^{\infty}0-(-e^{-x_1}e^{-\frac{x_1}{2}})dx_1\\
+                           &= -\frac{2}{3}e^{-\frac{3}{2}x_1}|_{x_1=0}^{x_1=\infty}\\
+                           &= \frac{2}{3},
+    \end{align*}
+    $P(X_1<X_2|X_1<2X_2)=\frac{P(X_1<X_2,X_1<2X_2)}{P(X_1<2X_2)}=\frac{\frac{1}{2}}{\frac{2}{3}}=\frac{3}{4}$.
+    (b) Since
+    \begin{align*}
+        P(X_1<X_2<X_3)=\int_{-\infty}^{\infty}
+    \end{align*}
+\end{solve}
 
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://ccrgpages.rit.edu/~whelan/courses/2013_3fa_STAT_405/notes02.pdf}{chapter 2}
+    \item \href{https://faculty.etsu.edu/gardnerr/4047/notes-Hogg-McKean-Craig/Hogg-McKean-Craig-2-1.pdf}{2.1}
+    \item \href{https://faculty.etsu.edu/gardnerr/4047/notes-Hogg-McKean-Craig/Hogg-McKean-Craig-2-3.pdf}{2.3}
+\end{itemize}
