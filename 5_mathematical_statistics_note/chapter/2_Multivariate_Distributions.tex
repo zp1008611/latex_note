@@ -1,5 +1,35 @@
 \chapter{Multivariate Distributions}
 
+\section{Distributions of Two Random Variables}
+
+\begin{definition}{}{}
+    Given a random experiment with a sample space $\mathcal{C}$,
+    consider two random variables $X_1$ and $X_2$ which assign to each element $c$
+    of $\mathcal{C}$ one and only one ordered pair of numbers $(X_1,X_2)$ is a random vector.
+    The space of $(X_1,X_2)$ is the set of ordered pairs $\mathcal{D}=\{(x_1,x_2)|x_1=X_1(c),x_2=X_2(c),x\in\mathcal{C}\}$.
+\end{definition}
+
+\begin{definition}{}{}
+    Let $\mathcal{D}$ be the space 
+    associated with the random vectors ($X_1$,$X_2$).
+    For $A\subset \mathcal{D}$ we call $A$ an event.
+    The cumulative distribution function (cdf) for ($X_1$,$X_2$) is 
+    \begin{align}
+        F_{X_1,X_2}(x_1,x_2)=P(\{X_1\leqs x_1\}\cap \{X_2\leqs x_2\})
+    \end{align}
+    for $(x_1,x_2)\in \R^2$. This is the joint cumulative distribution function of $(X_1,X_2)$.
+    If 
+\end{definition}
+
+
+\section{Transformations: Bivariate Random Variables}
+
+\section{Conditional Distributions and Expectations}
+
+\section{Independent Random Variables}
+
+\section{The Correlation Coefficient}
+
 \section{Homework}
 
 \begin{exercise}{}{}
@@ -10,7 +40,7 @@
             0 & \text{elsewhere}.
            \end{matrix}\right.
     \end{align*}
-    (a) Compute the marginal pdf of $X$ and the conditional pdf of $Y$, given $X=x$.
+    (a) Compute the marginal pdf of $X$ and the conditional pdf of $Y$, given $X=x$.\\
     (b) For a fixed $X=x$, compute $E(1+x+Y|x)$ and use the result to compute $E(Y|x)$.
 \end{exercise}
 

@@ -246,6 +246,11 @@
 \usepackage{changepage}
 \newenvironment{remark}{\underline{\textbf{Remark.}}}{\par}
 
+\newenvironment{solve}[1][\color{blue}\bf Solve]{\begin{trivlist}
+  \item[\hskip \labelsep {\color{blue}\bfseries
+  #1}]}{\hfill$\Box$\end{trivlist}}
+   \makeatother
+
 \newenvironment{proofsolution}
     {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}\begin{proof}[\textit Proof.~]}
     {\end{proof}\end{adjustwidth}}
