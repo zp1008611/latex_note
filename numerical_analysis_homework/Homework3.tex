@@ -1,26 +1,12 @@
-%\documentclass[13pt]{cctart}
- 
-%%%%%%%%%%%  以下文件头用于 Mac OS   中文 %%%%%%%%%%%
-%\RequirePackage{amssymb} 
-%\documentclass[nofonts,hyperref]{ctexart}
-%\setCJKmainfont[BoldFont={STHeiti},ItalicFont={STKaiti}]{STSong}
-%\setCJKsansfont{STHeiti}
-%\setCJKmonofont{STFangsong}
-%%%%%%%%%%%  以上文件头用于 Mac OS  %%%%%%%%%%%
+% !Mode:: "TeX:UTF-8"
 
-%%%%%%%%%%  以下文件头用于 Mac OS   中文 %%%%%%%%%%%
-\documentclass[12pt,twoside]{article}
+\documentclass[UTF8,12pt,hyperref]{ctexart}
+
 \usepackage{amsfonts,amsmath,amssymb,mathrsfs}
-\usepackage{epsf,graphicx,indentfirst,latexsym}
-%%%%%%%%%%  以上文件头用于 Mac OS  %%%%%%%%%%%
-
- 
 \usepackage{flafter,graphicx,xcolor}
-%\usepackage{trackchanges} 
-%\usepackage{zhongmacroCtex} 
-%\renewcommand{\initialsOne}{zhong}  
-%\renewcommand{\initialsTwo}{liu}   %%
-% Symbol
+
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{theorem}{Theorem}
 
 % Matlab
 \usepackage{listings}
@@ -33,12 +19,13 @@ frame=shadowbox, rulesepcolor= \color{ red!20!green!20!blue!20},
 escapeinside=``} 
 %%%%%%%
 \usepackage{multicol}
-   
- \newtheorem{theorem}{Theorem}
- \newtheorem{program}{Program}[section]
+\usepackage{caption}
+\captionsetup[table]{name=Table} 
  
 \newcommand{\ep}{\hfill\rule{0.15cm}{0.35cm}\vskip 0.3cm}
- 
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\ep\end{trivlist}} 
+
 
 %%%%%
  \makeatletter
@@ -76,12 +63,14 @@ escapeinside=``}
  
 %%%%%%%%%
  
-\renewcommand{\baselinestretch}{1.18}
+\renewcommand{\baselinestretch}{1.38}
  
  \pagestyle{plain} 
  
  \textwidth  168 true mm \textheight 230 true mm \topmargin=-1.3cm
 \oddsidemargin   0pt \evensidemargin  20pt \marginparwidth  10pt
+
+\CTEXoptions[today=old]
 
  
 \begin{document}
@@ -97,15 +86,15 @@ Numerical Analysis ( 2022--2023 The Second Term) \vspace{0.18cm}
 {\Large Homework 3}\vspace{0.18cm}
 
 Due Date: \underline{March 26, 2024 (Tuesday)} }
-\end{center}\vspace{0.06cm}
+\end{center}\vspace{-0.16cm}
 
 \begin{center}
-Name:\ \underline{\hspace{4cm}}\hspace{0.298cm}  
-% 
-Student No.:\ \underline{\hspace{4cm}} 
-%
-Date:\ \ \underline{March 21, 2024} 
- \end{center}
+  Name:\ \underline{\qquad 钟沛 \hspace{1cm}}\hspace{0.298cm}  
+  % 
+  Student No.:\ \underline{\qquad 2023021950\hspace{1cm}} 
+  %
+  Date:\ \ \underline{March 23, 2024} 
+   \end{center}
 
  
 %%%================　　正　　文　　　================
@@ -123,7 +112,33 @@ Date:\ \ \underline{March 21, 2024}
 \end{description}
  \end{exercise}
   
- 
+\begin{solve}
+ (a) In this case, the Newton-Raphson iterative function is
+  \begin{align*}
+    g(x)= x - \frac{f(x)}{f'(x)} = x - \frac{x^2-x-3}{2x-1} = \frac{(2x^2-x)-x^2+x+3}{2x-1}=\frac{x^2+3}{2x-1}.
+  \end{align*}
+  Hence, the Newton-Raphson formula is
+  \begin{align}
+    \label{eq:Newton-Raphson formula 1}
+    p_k=\frac{P_{k-1}^2+3}{2p_{k-1}-1}.
+  \end{align}
+  \par
+  (b) Start with $p_0=1.6$, one can find
+  \begin{align*}
+    p_1 &= \frac{1.6^2+3}{2\times 1.6-1}=2.52727,\\
+    p_2 &= \frac{2.52727^2+3}{2\times 2.52727 -1}= 2.31521,\\
+    p_3 &= \frac{2.31521^2+3}{2\times 2.31521 -1}= 2.30282.
+  \end{align*}
+  \par
+  (c) Start with $p_0=0.0$, one can find
+  \begin{align*}
+    p_1 &= \frac{0.0^2+3}{2\times 1.6-1}=-3.0,\\
+    p_2 &= \frac{(-3.0)^2+3}{2\times (-3.0) -1}= -1.71429,\\
+    p_3 &= \frac{(-1.71429)^2+3}{2\times (-1.71429) -1}= -1.34101,\\
+    p_4 &= \frac{(-1.34101)^2+3}{2\times (-1.34101) -1}= -1.30317.
+  \end{align*}
+  we can conjecture that the convergence of the sequence is affected by the selection of the initial point $p_0$.  
+\end{solve}
  
  
 \begin{exercise}2. \quad
@@ -135,7 +150,30 @@ Date:\ \ \underline{March 21, 2024}
 \end{description}
 \end{exercise}
  
- \end{document}
+\begin{solve}
+  (a) In this case, the Newton-Raphson iterative function is
+   \begin{align*}
+     g(x)= x - \frac{f(x)}{f'(x)} = x - \frac{x^3-3x-2}{3x^2-3} = \frac{(3x^3-3x)-x^3+3x+2}{3x^2-3}=\frac{2x^3+2}{3x^2-3}.
+   \end{align*}
+   Hence, the Newton-Raphson formula is
+   \begin{align}
+     \label{eq:Newton-Raphson formula 2}
+     p_k=\frac{2P_{k-1}^3+2}{3p_{k-1}^2-3}.
+   \end{align}
+   \par
+   (b) Start with $p_0=2.1$, one can find
+   \begin{align*}
+     p_1 &= \frac{2\times 2.1^3+2}{3\times 2.1^2-3}=2.00606,\\
+     p_2 &= \frac{2\times 2.00606^3+2}{3\times 2.00606^2-3}= 2.00002,\\
+     p_3 &= \frac{2\times 2.00002^3+2}{3\times 2.00002^2-3}= 2.00000,\\
+     p_4 &= \frac{2\times 2.00000^3+2}{3\times 2.00000^2-3}= 2.0.
+   \end{align*}
+   \par
+   (c) Since $f(2) = 0,f'(2)=(3\times 2^2-3)=9$, $2$ is the simple root of $f$.
+   Hence, the sequence converges quadratically.
+\end{solve}
+
+\end{document}
 
  
  

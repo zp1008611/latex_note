@@ -130,7 +130,8 @@ Futher, there exists a constant $0<K<1$ such that
 \begin{theorem}{Convergence and Error of Fixed-Point iteration method}{convergence and Error of fixed-point iteration method}
     Assume that \\
     (1) $g,g'\in C[a,b]$;\\
-    (2) $\lambda = \max_{a\leqs x\leqs b}|g'(x)|< 1$.\\
+    (2) $a \leqs g(x) \leqs b$;\\
+    (3) $\lambda = \max_{a\leqs x\leqs b}|g'(x)|< 1$.\\
     Then \\
     (1) $x=g(x)$ has a unique solution $x^*$ in $[a,b]$.\\
     (2) For any choice of $x_0\in [a,b]$, with $x_{n+1}=g(x_n)$, $n=0,1,\dots$,
@@ -194,6 +195,28 @@ The following theorem gives the convergence and error for the bisection method.
 
 
 \section{Newton-Raphson Method}
+The Newton-Raphson method, or Newton Method, is a powerful technique
+for solving equations numerically. Like so much of the differential calculus,
+it is based on the simple idea of linear approximation. The Newton Method,
+properly used, usually homes in on a root with devastating efficiency.
+
+\par
+Let $x_0$ be a good estimate of $r$ and let $r = x_0 + h$. 
+Since the true root is $r$, and $h = r - x_0$, 
+the number $h$ measures how far the estimate $x_0$ 
+is from the truth.
+\par
+Since h is 'small', we can use the linear (tangent line) approximation to
+conclude that
+
+\begin{align*}
+    0=f(r)=f(x_0+h)\approx f(x_0)+hf'(x_0),
+\end{align*}
+
+and therefore, unless $f'(x_0)$ is close to $0$,
+\begin{align*}
+    h\approx -\frac{}{}
+\end{align*}
 
 
 \section{Secant Method}
@@ -226,6 +249,7 @@ otherwise go to step 2.
 \section{Reference}
 \begin{itemize}
     \item \href{https://www.math.iitb.ac.in/~baskar/book.pdf}{Introduction to Numerical Analysis ch4}
+    \item \href{https://personal.math.ubc.ca/~anstee/math104/newtonmethod.pdf}{The Newton-Raphson Method}
     \item \href{}{J. H. Mathews and K. D. Fink: Numerical Methods using
     MATLAB ch2, Prentice Hall of India (PHI), 4th Edition, 2005} 
 \end{itemize}
