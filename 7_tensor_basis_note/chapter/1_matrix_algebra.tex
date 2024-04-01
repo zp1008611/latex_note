@@ -311,6 +311,19 @@ We will start with one that are somewhat artificial and then move on to the impo
     \end{align*}
 \end{definition}
 
+\begin{proposition}{}{}
+    For all $\bold{A}\in \C^{m\times n}, \bold{x}\in \C^n$,
+    \begin{align*}
+        ||\bold{A}\bold{x}||\leqs ||\bold{A}||_p\cdot ||\bold{x}||_p.
+    \end{align*}
+\end{proposition}
+\begin{proof}
+    By the definition of $||\bold{A}||_p$,
+    \begin{align*}
+        \frac{||\bold{A}||_p}{||\bold{x}||_p}\leqs ||\bold{A}||_p.
+    \end{align*}
+\end{proof}
+
 
 \begin{proposition}{}{}
     For any $\bold{A}\in \C^{m\times k}$ and $\bold{B}\in\C^{k\times n}$, 
@@ -366,39 +379,49 @@ $\bold{A}_{\cdot k}$ of $\bold{A}$ with columns $b_{kj}$ as the weight coefficie
     \end{align*}
 \end{proposition}
 
-\section{Subspaces associated with a matrix}
 
-\section{Matrix rank}
-
-\section{Determinant, inverses and generalized inverses}
-
-\section{Quadric form, symmetric, positive definte, eigenvalues, eigenvectors and conics}
+\section{Eigenvalues and eigenvectors}
 \begin{definition}{}{}
-    A symmetric matrix is a square matrix $\bold{Q}\in\R^{n\times n}$ with the property that $\bold{Q}^T=\bold{Q}$.
+    A real matrix $\bold{A}$ is a symmetric matrix 
+    if it equals to its own transpose, 
+    that is $\bold{A} = \bold{A}^T$.
 \end{definition}
 
 \begin{definition}{}{}
-    $\bold{Q}$ is symmetric and positive semidefinite (abbreviated SPSD and denoted by $\bold{Q}\succeq 0$) if 
+    A complex matrix $\bold{A}$ is a hermitian matrix 
+    if it equals to its own complex conjugate transpose, 
+    that is $\bold{A} = \bold{A}^H$.
+\end{definition}
+
+\begin{definition}{}{}
+    A real matrix $\bold{Q}$ is an orthogonal matrix 
+    if the inverse of $\bold{Q}$ equals to 
+    the transpose of $\bold{Q}$, $\bold{Q}^{-1} = \bold{Q}^T$
+    , that is $\bold{Q}\bold{Q}^T = \bold{Q}^T\bold{Q} = I$.
+\end{definition}
+
+\begin{definition}{}{}
+    A complex matrix $\bold{U}$ is a unitary matrix 
+    if the inverse of $\bold{U}$ equals the complex conjugate
+    transpose of $\bold{U}$, $\bold{U}^{-1} = \bold{U}^H$, 
+    that is $\bold{U}\bold{U}^H = \bold{U}^H\bold{U} = \bold{I}$.
+\end{definition}
+
+\begin{definition}{}{}
+    A hermitian matrix $\bold{Q}$ is positive semidefinite (abbreviated SPSD and denoted by $\bold{Q}\succeq 0$) if 
     \begin{align*}
-        \bold{x}^T\bold{Q}\bold{x}\geqs 0 \text{ for all } \bold{x}\in \R^n.
+        \bold{x}^H\bold{Q}\bold{x}\geqs 0 \text{ for all } \bold{x}\in \C^n.
     \end{align*}
 \end{definition}
 
 \begin{definition}{}{}
-    $\bold{Q}$ is symmetric and positive semidefinite (abbreviated SPD and denoted by $\bold{Q}\succ 0$) if 
+    A hermitian matrix $\bold{Q}$ is positive semidefinite (abbreviated SPD and denoted by $\bold{Q}\succ 0$) if 
     \begin{align*}
-        \bold{x}^T\bold{Q}\bold{x}> 0 \text{ for all } \bold{x}\in \R^n, \bold{x}\neq 0.
+        \bold{x}^H\bold{Q}\bold{x}> 0 \text{ for all } \bold{x}\in \C^n, \bold{x}\neq 0.
     \end{align*}
 \end{definition}
 
-A matrix $\bold{M}$ is an orthonormal matrix if $\bold{M}^T=\bold{M}^{-1}$.
-Note that if $\bold{M}$ is orthonormal and $\bold{y}=\bold{M}\bold{x}$, then 
-\begin{align*}
-    ||\bold{y}||^2_2=\bold{y}^T\bold{y}=\bold{x}^T\bold{M}^T\bold{M}\bold{x}=\bold{x}^T\bold{M}^{-1}\bold{M}\bold{x}=\bold{x}^T\bold{x}=||\bold{x}||^2_2,
-\end{align*}
-and so $||\bold{y}||_2^2=||\bold{x}||_2^2$.
-
-A number $\lambda\in\R$ is an eigenvalue of $\bold{M}$ if there exists 
+A number $\lambda\in\C$ is an eigenvalue of $\bold{M}$ if there exists 
 a vector $\bold{\bar{x}}\neq 0$ such that $\bold{M}\bold{\bar{x}}=\lambda \bold{\bar{x}}$.
 $\bold{\bar{x}}$ is called an eigenvector of $\bold{M}$ (and is called an eigenvector corresponding to $\lambda$).
 Note that $\lambda$ is an eigenvalue of $\bold{M}$ if and only if there exists $\bold{\bar{x}}\neq 0$ such that 
@@ -415,7 +438,11 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
 \end{proposition}
 
 \begin{proposition}{}{}
-    If $\bold{Q}$ is a real symmetric matrix, 
+    If $\bold{Q}$ is a complex hermitian matrix, all of its eigenvalues are real numbers.
+\end{proposition}
+
+\begin{proposition}{}{}
+    If $\bold{Q}$ is a hermitian matrix, 
     its eigenvectors corresponding to different eigenvalues are orthogonal.
 \end{proposition}
 
@@ -423,49 +450,155 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
     If $\bold{Q}$ is SPSD, the eigenvalues of $\bold{Q}$ are nonnegative.
 \end{proposition}
 
-\begin{theorem}{The Principal Axis Theorem}{}
-    If $\bold{Q}$ is symmetric, then $\bold{Q}=\bold{R}\bold{D}\bold{R}^T$,
-    where $\bold{R}$ is an orthonormal matrix, the columns of $\bold{R}$ are an orthonormal basis of eigenvectors of $\bold{Q}$,
-    and $\bold{D}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{Q}$.
+\begin{theorem}{}{}
+    If $\bold{A}$ is a real symmetric matrix, then $\bold{A}=\bold{Q}\bold{D}\bold{Q}^T$,
+    where $\bold{Q}$ is an orthonormal matrix, the columns of $\bold{Q}$ are an orthonormal basis of eigenvectors of $\bold{A}$,
+    and $\bold{D}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    If $\bold{A}$ is a complex hermitian matrix, then $\bold{A}=\bold{U}\bold{D}\bold{U}^H$,
+    where $\bold{U}$ is an unitary matrix, the columns of $\bold{U}$ are an orthonormal basis of eigenvectors of $\bold{A}$,
+    and $\bold{D}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
 \end{theorem}
 
 \begin{proposition}{}{}
-    If $\bold{D}$ is SPSD, the $\bold{Q}=\bold{M}^T\bold{M}$ for some matrix $\bold{M}$.
+    If $\bold{D}$ is SPSD, the $\bold{Q}=\bold{M}^H\bold{M}$ for some matrix $\bold{M}$.
 \end{proposition}
 
-
-\begin{proposition}{}{}
-    If $\bold{M}$ is $n\times n$ and symmetric, then
+\begin{definition}{}{}
+    The Rayleigh quotient of the matrix $\bold{A}\in \C^{n\times n}$ at the nonzero vector $\bold{x}\in \C^{n}$
+    is the scalar
     \begin{align*}
-        ||\bold{M}||_2=\max_{\lambda} \{|\lambda|:\lambda \text{ is an eigenvalue of } \bold{M}\}.
+        \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}\in \C.
+    \end{align*}
+\end{definition}
+\begin{remark}
+    If $(\lambda,\bold{u})$ is an eigenpair for $\bold{A}$, then notice that
+    \begin{align*}
+        \frac{\bold{u}^H\bold{A}\bold{u}}{\bold{u}^H\bold{u}}=\frac{\bold{u}^H(\lambda \bold{u})}{\bold{u}^H\bold{u}}=\lambda,
+    \end{align*}
+    so Rayleigh quotients generalize eigenvalues.
+\end{remark}
+\begin{remark}
+    For Hermitian $\bold{A}\in \C^{n\times n}$, 
+    then there exists unitary matrix $\bold{U}$ such that $A=\bold{U}\Lambda \bold{U}^H$, 
+    for any $\bold{x}\neq \bold{0}$,  it can be represented by $\bold{x}=\bold{U}\bold{c}=\sum\limits_{j=1}^{n}c_j\bold{u}_j$, then 
+    \begin{align*}
+        \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}
+        =\frac{\bold{c}^H\bold{U}^H\bold{U}\Lambda \bold{U}^H\bold{U}\bold{c}}{\bold{c}^H\bold{U}^H\bold{U}\bold{c}}
+        =\frac{c^H\Lambda c}{c^Hc}
+    \end{align*}
+    The diagonal
+    structure of $\Lambda$ allows for an illuminating refinement,
+    \begin{align*}
+        \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}=\frac{\lambda_1 |c_1|^2+...+\lambda_n |c_n|^2}{|c_1|^2+...+|c_n|^2}.
+    \end{align*}
+    As the numerator and denominator are both real, notice that the Rayleigh
+    quotients for a Hermitian matrix is always real. We can say more: if the eigenvalues are ordered, $\lambda_1\leqs ... \leqs \lambda_n$,
+    \begin{align*}
+        \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}=\frac{\lambda_1 |c_1|^2+...+\lambda_n |c_n|^2}{|c_1|^2+...+|c_n|^2}\geqs \frac{\lambda_1 (|c_1|^2+...+|c_n|^2)}{|c_1|^2+...+|c_n|^2}=\lambda_1,
+    \end{align*}
+    and similarly,
+    \begin{align*}
+        \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}=\frac{\lambda_1 |c_1|^2+...+\lambda_n |c_n|^2}{|c_1|^2+...+|c_n|^2}\leqs \frac{\lambda_n (|c_1|^2+...+|c_n|^2)}{|c_1|^2+...+|c_n|^2}=\lambda_n.
+    \end{align*}
+\end{remark}
+
+\begin{proposition}{}{the range of the Rayleigh quotient}
+    For a Hermitian matrix $\bold{A}\in \C^{n\times n}$ with eigenvalues $\lambda_1\leqs ...\leqs \lambda_n$,
+    the Rayleigh quotient for nonzero $\bold{x}\in \C^{n\times n}$ satisfies
+    \begin{align*}
+        \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}\in [\lambda_1,\lambda_n].
     \end{align*}
 \end{proposition}
 
 \begin{proposition}{}{}
-    If $\bold{M}$ is $m\times n$ with $m<n$ and $\bold{M}$ has rank $m$, then 
+    If $\bold{A}\in \C^{m\times n}$ with $m<n$ and $\bold{A}$ has rank $m$, then 
     \begin{align*}
-        ||\bold{M}||_2=\sqrt{\lambda_{\max}(\bold{M}\bold{M}^T)},
+        ||\bold{A}||_2=\sqrt{\lambda_{\max}(\bold{A}^H\bold{A})}=\sqrt{\lambda_{\max}(\bold{A}\bold{A}^H)},
     \end{align*}
-    where $\lambda_{\max}(\bold{A})$ denotes the largest eigenvalue of a matrix $\bold{A}$.
+    where $\lambda_{\max}(\bold{M})$ denotes the largest eigenvalue of a matrix $\bold{M}$.
 \end{proposition}
+
+\begin{proof}
+    \begin{align*}
+        ||\bold{A}||_2^2=\sup_{\bold{x}\in\C^n,||\bold{x}||\neq 0} \frac{||\bold{Ax}||_2^2}{||\bold{x}||_2^2}
+        =\sup_{\bold{x}\in\C^n,||\bold{x}||\neq 0}\frac{\inner{\bold{Ax}}{\bold{Ax}}}{\inner{\bold{x}}{\bold{x}}}
+        =\sup_{\bold{x}\in\C^n,||\bold{x}||\neq 0}\frac{\bold{x}\bold{A}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}
+        =\lambda_{\text{max}}(\bold{A}^H\bold{A}).
+    \end{align*}
+\end{proof}
 
 \begin{proposition}{}{}
-    Suppose that $\bold{M}$ is a symmetric matrix. Then the following are equivalent:
+    If $\bold{A}\in \C^{n\times n}$ is a hermitian matrix, then 
     \begin{align*}
-        &\text{(a) } h>0 \text{ satisfies } ||\bold{M}^{-1}||_2\leqs \frac{1}{h}.\\
-        &\text{(b) } h>0 \text{ satisfies } ||\bold{M}\bold{x}||_2 \geqs h\cdot ||\bold{x}||_2 \text{ for any vector } \bold{x}\\
-        &\text{(c) } h>0 \text{ satisfies } |\lambda_i(\bold{M})|\geqs h \text{ for every eigenvalue } \lambda_i(\bold{M}) \text{ of } \bold{M}, i=1,...,m.
+        ||\bold{A}||_2= |\lambda_{\max}(\bold{A})|.
     \end{align*}
 \end{proposition}
 
+\begin{proof}
+    Since $\bold{A}$ is a hermitian matrix, we have $\bold{A}=\bold{U}^H\Lambda \bold{U}$ where $\bold{U}$ is an unitary matrix and $\Lambda$ is a diagonal matrix containing the eigenvalue of $\bold{A}$.
+    Let $\bold{y}=\bold{Ux}$, then $||\bold{y}||_2=||\bold{Ux}||_2$. Hence 
+    \begin{align*}
+        ||\bold{A}||_2^2=\max_{||\bold{x}||_2=1} ||\bold{Ax}||_2^2 = \max_{||\bold{x}||_2=1} \inner{\bold{Ax}}{\bold{Ax}}
+        = \max_{||\bold{x}||_2=1} \bold{x}^H\bold{A}^H\bold{A}\bold{x} =\max_{||\bold{y}||_2=1} \bold{y}^H\Lambda\bold{y}=(\lambda_{\max}(\bold{A}))^2.
+    \end{align*}
+\end{proof}
 
+
+\begin{proposition}{}{}
+    Suppose that $\bold{A}\in\R^{n\times n}$ is a SPSD. Then the following are equivalent:
+    \begin{align*}
+        &\text{(a) } h>0 \text{ satisfies } ||\bold{A}^{-1}||_2\leqs \frac{1}{h}.\\
+        &\text{(b) } h>0 \text{ satisfies } ||\bold{A}\bold{x}||_2 \geqs h\cdot ||\bold{x}||_2 \text{ for any vector } \bold{x}\\
+        &\text{(c) } h>0 \text{ satisfies } |\lambda_i(\bold{A})|\geqs h \text{ for every eigenvalue } \lambda_i(\bold{A}) \text{ of } \bold{A}, i=1,...,m.
+    \end{align*}
+\end{proposition}
+\begin{proof}
+    By proposition \ref{prop:the range of the Rayleigh quotient}, 
+    we have for all $\bold{x}\neq 0$,
+    \begin{align*}
+        \frac{||\bold{Ax}||_2}{||\bold{x}||_2}\in [\lambda_{\min}(\bold{A}),\lambda_{\max}(\bold{A})].
+    \end{align*}
+    Firstly, we claim that 
+    \begin{align*}
+        ||\bold{A}^{-1}||_2 =  \frac{1}{\lambda_{\min}(\bold{A})}.
+    \end{align*}
+    In fact, 
+    \begin{align*}
+        ||\bold{A}^{-1}||_2 &=  \max_{\bold{x}\neq 0} \frac{||\bold{A}^{-1}\bold{x}||_2}{||\bold{x}||_2}
+        =\max_{\bold{Ax}\neq 0} \frac{||\bold{A}^{-1}\bold{A}x||_2}{||\bold{Ax}||_2} \\
+        &=\max_{\bold{Ax}\neq 0} \frac{||\bold{x}||_2}{||\bold{Ax}||_2}
+        = \max_{\bold{x}\neq 0} \frac{||\bold{x}||_2}{||\bold{Ax}||_2}\\
+        &=\frac{1}{\min_{\bold{x}\neq 0} \frac{||\bold{Ax}||_2}{||\bold{x}||_2}}
+        =\frac{1}{\lambda_{\min}(\bold{A})},
+    \end{align*}
+    the second and forth equality follows from the fact that $\bold{x}\neq 0$
+    if and only if $\bold{Ax}\neq 0$ since $\bold{A}$ is nonsingular. 
+    \par
+    (a) $\Rightarrow$ (b) \quad $\frac{1}{\lambda_{\min}(\bold{A})}=||\bold{A}^{-1}||_2\leqs \frac{1}{h}$
+    $\Rightarrow \frac{||\bold{Ax}||_2}{||\bold{x}||_2}\geqs \lambda_{\min}(\bold{A})\geqs h$, $\forall \bold{x}\neq 0$.
+    \par
+    (b) $\Rightarrow$ (a) \quad $||\bold{Ax}||_2\geqs h\cdot ||x||_2$, $\forall \bold{x}$ $\Rightarrow$ $\lambda_{\min}(\bold{A})\geqs h$
+    $\Rightarrow$ $\frac{1}{\lambda_{\min}(\bold{A})} = ||\bold{A}^{-1}||_2\leqs \frac{1}{h}$.
+    \par
+    (b) $\Leftrightarrow$ (c) \quad $||\bold{Ax}||_2\geqs h\cdot ||x||_2$, $\forall \bold{x}$ $\Leftrightarrow$ $\lambda_{\min}(\bold{A})\geqs h$
+    $\Leftrightarrow$ $\lambda_i(\bold{A})\geqs h$, $i=1,...,m$.
+    \par
+\end{proof}
+
+
+\section{Generalized inverses}
 
 \section{Reference}
 \begin{itemize}
     \item \href{}{From Algebraic Structures to Tensors ch4 matrix algebra}
     \item \href{https://www.cs.utexas.edu/users/flame/Notes/NotesOnNorms.pdf}{Notes on Vector and Matrix Norms}
     \item \href{https://ocw.mit.edu/courses/15-084j-nonlinear-programming-spring-2004/resources/lec4_quad_form/}{symmetric, positive definted, eigenvalues and eigenvectors}
+    \item \href{https://www.cmor-faculty.rice.edu/~caam440/chapter2.pdf}{Rayleigh quotient}
     \item \href{https://www.math.uwaterloo.ca/~jmckinno/Math225/Week7/Lecture2m.pdf}{The Principal Axis Theorem}
     \item \href{https://staff.polito.it/ada.boralevi/didattica/Dispense_ENG.pdf}{linear algebra and geometry note}
     \item \href{http://jde27.uk/la/36_eigenapplications2.html}{eigenvalues application: ellipses}
+    \item \href{https://www.sjsu.edu/faculty/guangliang.chen/Math253S20/lec6ginverse.pdf}{Generalized inverses}
 \end{itemize}
