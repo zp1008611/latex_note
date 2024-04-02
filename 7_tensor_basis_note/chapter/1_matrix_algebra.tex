@@ -447,24 +447,35 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
 \end{proposition}
 
 \begin{proposition}{}{}
-    If $\bold{Q}$ is SPSD, the eigenvalues of $\bold{Q}$ are nonnegative.
+    If $\bold{Q}$ is SPD, the eigenvalues of $\bold{Q}$ are nonnegative.
 \end{proposition}
 
 \begin{theorem}{}{}
-    If $\bold{A}$ is a real symmetric matrix, then $\bold{A}=\bold{Q}\bold{D}\bold{Q}^T$,
+    If $\bold{A}$ is a real symmetric matrix, then $\bold{A}=\bold{Q}\bold{\Lambda}\bold{Q}^T$,
     where $\bold{Q}$ is an orthonormal matrix, the columns of $\bold{Q}$ are an orthonormal basis of eigenvectors of $\bold{A}$,
-    and $\bold{D}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
+    and $\bold{\Lambda}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
 \end{theorem}
 
 \begin{theorem}{}{}
-    If $\bold{A}$ is a complex hermitian matrix, then $\bold{A}=\bold{U}\bold{D}\bold{U}^H$,
+    If $\bold{A}$ is a complex hermitian matrix, then $\bold{A}=\bold{U}\bold{\Lambda}\bold{U}^H$,
     where $\bold{U}$ is an unitary matrix, the columns of $\bold{U}$ are an orthonormal basis of eigenvectors of $\bold{A}$,
-    and $\bold{D}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
+    and $\bold{\Lambda}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
 \end{theorem}
+
+\begin{definition}{}{}
+    The square root of a matrix $\bold{A}$ is a matrix $\bold{A}^{1/2}$ such that
+    \begin{align*}
+        \bold{A}=\bold{A}^{1/2}\bold{A}^{1/2}.
+    \end{align*}
+\end{definition}
 
 \begin{proposition}{}{}
-    If $\bold{D}$ is SPSD, the $\bold{Q}=\bold{M}^H\bold{M}$ for some matrix $\bold{M}$.
+    If $\bold{A}$ is SPSD, the $\bold{A}=\bold{M}^H\bold{M}$ for some matrix $\bold{M}$.
 \end{proposition}
+
+\begin{proof}
+    $\bold{A}=\bold{U}\bold{\Lambda}\bold{U}^H=(\bold{U}\bold{\Lambda}^{1/2}\bold{U}^H)(\bold{U}\bold{\Lambda}^{1/2}\bold{U}^H)=\bold{M}^H\bold{M}$.
+\end{proof}
 
 \begin{definition}{}{}
     The Rayleigh quotient of the matrix $\bold{A}\in \C^{n\times n}$ at the nonzero vector $\bold{x}\in \C^{n}$
@@ -504,6 +515,8 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
         \frac{\bold{x}^H\bold{A}\bold{x}}{\bold{x}^H\bold{x}}=\frac{\lambda_1 |c_1|^2+...+\lambda_n |c_n|^2}{|c_1|^2+...+|c_n|^2}\leqs \frac{\lambda_n (|c_1|^2+...+|c_n|^2)}{|c_1|^2+...+|c_n|^2}=\lambda_n.
     \end{align*}
 \end{remark}
+
+
 
 \begin{proposition}{}{the range of the Rayleigh quotient}
     For a Hermitian matrix $\bold{A}\in \C^{n\times n}$ with eigenvalues $\lambda_1\leqs ...\leqs \lambda_n$,
