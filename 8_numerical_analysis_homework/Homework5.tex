@@ -1,0 +1,298 @@
+% !Mode:: "TeX:UTF-8"
+
+\documentclass[UTF8,12pt,hyperref]{ctexart}
+
+\usepackage{amsfonts,amsmath,amssymb,mathrsfs}
+\usepackage{flafter,graphicx,xcolor}
+
+\newtheorem{algorithm}{Algorithm}
+
+% Matlab
+\usepackage{listings}
+\lstset{language=Matlab}%代码语言使用的是matlab
+\lstset{breaklines}%自动将长的代码行换行排版
+\lstset{extendedchars=false}%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{numbers=left, 
+numberstyle= \tiny,keywordstyle= \color{ blue!70},commentstyle=\color{red!50!green!50!blue!50}, 
+frame=shadowbox, rulesepcolor= \color{ red!20!green!20!blue!20}, 
+escapeinside=``} 
+%%%%%%%
+\usepackage{multicol}
+   
+ 
+\newcommand{\ep}{\hfill\rule{0.15cm}{0.35cm}\vskip 0.3cm}
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\ep\end{trivlist}} 
+
+
+%%%%%
+ \makeatletter
+\newenvironment{exercise}[1][{\color{blue}\bf Exercise}]%
+%\newenvironment{xiti}[1][{\color{blue}\bf Exercise}]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}%
+  {\color{blue}\bfseries
+#1}   }{%
+    \end{minipage}%
+    \end{lrbox}
+    \colorbox{green}{\noindent\usebox{\@tempboxa}} \end{center}  
+}
+ 
+\newenvironment{analysis}[1][\color{blue}\bf Analysis]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}
+  {\color{blue}\bfseries
+%#1} \\ \hspace*{2em} }{%
+ #1}  }{%
+    \end{minipage}%
+    \end{lrbox}
+    %\colorbox{gray}{\noindent\usebox{\@tempboxa}} \end{center}  %
+    \fbox{\usebox{\@tempboxa}}\end{center}%
+    %\colorbox{red}{\fbox{\noindent\usebox{\@tempboxa}} \end{center}
+}
+ 
+\newenvironment{solve}[1][\color{blue}\bf Solve]{\begin{trivlist}
+\item[\hskip \labelsep {\color{blue}\bfseries
+#1}]}{\hfill$\Box$\end{trivlist}}
+ \makeatother
+ 
+ 
+%%%%%%%%%
+ 
+\renewcommand{\baselinestretch}{1.38}
+ 
+ \pagestyle{plain} 
+ 
+ \textwidth  168 true mm \textheight 230 true mm \topmargin=-1.3cm
+\oddsidemargin   0pt \evensidemargin  20pt \marginparwidth  10pt
+
+\CTEXoptions[today=old]
+
+ 
+\begin{document}
+%%%================　　标　　题　　　================
+
+\begin{center}
+{\bf  THE SOUTH CHINA NORMAL UNIVERSITY\vspace{0.08cm}
+
+School of Mathematical Sciences\vspace{0.08cm}
+ 
+Numerical Analysis ( 2023-2024 The Second Term) \vspace{0.18cm}
+
+{\Large Homework 5: }\vspace{0.18cm}
+
+Due Date: \underline{April  24, 2024 (Wednesday)} }
+\end{center}\vspace{-0.16cm}
+
+\begin{center}
+  Name:\ \underline{\qquad 钟沛 \hspace{1cm}}\hspace{0.298cm}  
+  % 
+  Student No.:\ \underline{\qquad 2023021950\hspace{1cm}}  
+%
+Date:\ \ \underline{April 17, 2024} 
+ \end{center}
+ 
+ 
+%%%================　　正　　文　　　================
+
+ \begin{center}  \bf \Large
+{\S 3.4 Gaussian Elimination and Pivoting}
+\end{center} 
+
+\begin{exercise}1. \quad   
+ Find the parabola $y=A+Bx+Cx^2$ that passes through $(1, 6),(2, 5)$, and $(3, 2)$. 
+ \end{exercise}
+ 
+ \begin{solve}
+  For each point we obtain an equation relating the value of $x$ to the value of $y$.
+  The result is the linear system
+  \begin{equation}
+    \begin{aligned}
+      \begin{array}{ccccccccr}
+        A  & + & B & + & C & = & 6 & \text{\quad at (1,6)}\\
+        A  & + & 2B & + & 4C & = & 5 & \text{\quad at (2,5)}\\
+        A  & + & 3B & + & 9C & = & 2 &  \text{\quad at (3,2)}. \\
+        \end{array}
+    \end{aligned}
+  \end{equation}
+The variable $A$ is eliminated from the second and third equations by
+subtracting the first equation from them, and the resulting equivalent linear system is
+\begin{equation}
+  \begin{aligned}
+    \begin{array}{ccccccccr}
+      A  & + & B & + & C & = & 6 & \\
+        &  & B & + & 3C & = & -1 & \\
+        &  & 2B & + & 8C & = & -4. & \\
+      \end{array}
+  \end{aligned}
+  \label{eq:array2}
+\end{equation}
+The variable $B$ is eliminated from the third equation in (\ref{eq:array2}) by subtracting
+from it two times the second equation. We arrive at the equivalent
+upper-triangular system:
+\begin{equation}
+  \begin{aligned}
+    \begin{array}{ccccccccr}
+      A  & + & B & + & C & = & 6 & \\
+        &  & B & + & 3C & = & -1 & \\
+        &  &  &  & 2C & = & -2. & \\
+      \end{array}
+  \end{aligned}
+  \label{eq:array3}
+\end{equation}
+The back-substitution algorithm is now used to find the coefficients
+$C=-1,B=2,A=5$, and the
+equation of the parabola is $y=5+2x-x^2$.
+
+
+\end{solve}
+%%%%================
+%%%%================
+% 
+  
+ 
+\begin{center}  \bf \Large
+{\S 3.5 Triangular Factorization }
+\end{center} 
+%%%================　
+\begin{exercise}1. \quad
+\quad Find the triangular factorization $\boldsymbol{A}=\boldsymbol{LU}$ for the matrix
+$$
+\left[\begin{array}{rrrr}
+1 & 1 & 0 & 4  \\
+2 & -1 & 5 & 0 \\
+5 & 2 & 1 & 2  \\
+-3 & 0 & 2 & 6
+\end{array}\right]. 
+$$
+\end{exercise}
+%% 
+\begin{solve}
+  We've seen how to use elimination to convert a matrix $\boldsymbol{A}$ into an upper
+triangular matrix $\boldsymbol{U}$. This leads to the factorization $\boldsymbol{A} = \boldsymbol{LU}$.
+we can describe the elimination of the entries of matrix $\boldsymbol{A}$ in terms of multiplication by a succession of
+elimination matrices $L_{i}$, so that $\boldsymbol{A}\longrightarrow \boldsymbol{L}_1\boldsymbol{A}\longrightarrow \boldsymbol{L}_2\boldsymbol{L}_{1}\boldsymbol{A}\longrightarrow \dots \boldsymbol{U}$.
+The first step of Gaussian elimination looks like this: twice the first row is subtracted from
+the second one,  five times the first row is subtracted from the third one, and three times 
+first row is added to forth one. This can be written as:
+\begin{align*}
+  \boldsymbol{L}_1\boldsymbol{A} = \left[\begin{array}{rrrr}
+    1 & 0 & 0 & 0  \\
+    -2 & 1 & 0 & 0 \\
+    -5 &0 & 1 & 0  \\
+    3 & 0 & 0 & 1
+    \end{array}\right]\boldsymbol{A}=\left[\begin{array}{rrrr}
+      1 & 1 & 0 & 4  \\
+      0 & -3 & 5 & -8 \\
+      0 & -3 & 1 & -18  \\
+      0 & 3 & 2 & 18
+      \end{array}\right]
+\end{align*}
+Next we subtract the second row from the third and add it to the fourth row:
+\begin{align*}
+  \boldsymbol{L}_2\boldsymbol{L}_1\boldsymbol{A} =
+  \left[\begin{array}{rrrr}
+    1 & 0 & 0 & 0  \\
+    0 & 1 & 0 & 0 \\
+    0 & -1 & 1 & 0  \\
+    0 & 1 & 0 & 1
+    \end{array}\right]
+    \left[\begin{array}{rrrr}
+      1 & 1 & 0 & 4  \\
+      0 & -3 & 5 & -8 \\
+      0 & -3 & 1 & -18  \\
+      0 & 3 & 2 & 18
+      \end{array}\right]=\left[\begin{array}{rrrr}
+      1 & 1 & 0 & 4  \\
+      0 & -3 & 5 & -8 \\
+      0 & 0 & -4 & -10  \\
+      0 & 0 & 7 & 10
+      \end{array}\right]
+\end{align*}
+Finally we eliminate the fourth row:
+\begin{align*}
+  \boldsymbol{L}_3\boldsymbol{L}_2\boldsymbol{L}_1\boldsymbol{A}=
+  \left[\begin{array}{rrrr}
+    1 & 0 & 0 & 0  \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0  \\
+    0 & 0 & \frac{7}{4} & 1
+    \end{array}\right]
+  \left[\begin{array}{rrrr}
+    1 & 1 & 0 & 4  \\
+    0 & -3 & 5 & -8 \\
+    0 & 0 & -4 & -10  \\
+    0 & 0 & 7 & 10
+    \end{array}\right]=
+    \left[\begin{array}{rrrr}
+      1 & 1 & 0 & 4  \\
+      0 & -3 & 5 & -8 \\
+      0 & 0 & -4 & -10  \\
+      0 & 0 & 0 & -\frac{15}{2}
+      \end{array}\right]
+\end{align*}
+To exhibit the full factorization $\boldsymbol{A}=\boldsymbol{L}\boldsymbol{U}$ we need to compute the product
+$\boldsymbol{L}=\boldsymbol{L}_1^{-1}\boldsymbol{L}_2^{-1}\boldsymbol{L}_3^{-1}$.
+And the inverse of $L_j$, $j=1,2,3$ is just $L_j$ itself, but with each entry below the diagonal negated:
+\begin{align*}
+  \boldsymbol{L}_1^{-1} = 
+  \left[\begin{array}{rrrr}
+    1 & 0 & 0 & 0  \\
+    2 & 1 & 0 & 0 \\
+    5 &0 & 1 & 0  \\
+    -3 & 0 & 0 & 1
+    \end{array}\right],
+    \boldsymbol{L}_2^{-1} = 
+    \left[\begin{array}{rrrr}
+      1 & 0 & 0 & 0  \\
+      0 & 1 & 0 & 0 \\
+      0 & 1 & 1 & 0  \\
+      0 & -1 & 0 & 1
+      \end{array}\right],
+    \boldsymbol{L}_3^{-1} = 
+      \left[\begin{array}{rrrr}
+        1 & 0 & 0 & 0  \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0  \\
+        0 & 0 & -\frac{7}{4} & 1
+        \end{array}\right]
+\end{align*}
+
+The product $\boldsymbol{L}_1^{-1}\boldsymbol{L}_2^{-1}\boldsymbol{L}_3^{-1}$
+is just the unit lower-triangular matrix with the nonzero
+subdiagonal entries of $\boldsymbol{L}_1^{-1},\boldsymbol{L}_2^{-1}$ and $\boldsymbol{L}_3^{-1}$ 
+inserted in the appropriate places:
+\begin{align*}
+  \boldsymbol{L} = \left[\begin{array}{rrrr}
+    1 & 0 & 0 & 0  \\
+    2 & 1 & 0 & 0 \\
+    5 & 1 & 1 & 0  \\
+    -3 & -1 & -\frac{7}{4} & 1
+    \end{array}\right]
+\end{align*}
+Together we have
+\begin{align*}
+  \boldsymbol{A} = 
+  \left[\begin{array}{rrrr}
+    1 & 0 & 0 & 0  \\
+    2 & 1 & 0 & 0 \\
+    5 & 1 & 1 & 0  \\
+    -3 & -1 & -\frac{7}{4} & 1
+    \end{array}\right]\left[\begin{array}{rrrr}
+      1 & 1 & 0 & 4  \\
+      0 & -3 & 5 & -8 \\
+      0 & 0 & -4 & -10  \\
+      0 & 0 & 0 & -\frac{15}{2}
+      \end{array}\right]=\boldsymbol{L}\boldsymbol{U}.
+\end{align*}
+
+\end{solve}
+
+
+
+\end{document}
+
+ 
+ 

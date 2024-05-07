@@ -78,6 +78,60 @@
 \section{Transformations: Bivariate Random Variables}
 
 \section{Conditional Distributions and Expectations}
+We now introduce a parameter $\rho$ of the joint distribution of $(X,Y)$ 
+which quantifies the dependence between $X$ and $Y$ (so that $\rho=0$ when $X$ and $Y$ are independent).
+We assume the existence of all expectation under discussion.
+
+\begin{definition}{}{}
+    Let $(X,Y)$ have a joint distribution. Denote the means of $X$ and $Y$
+    respectively by $\mu_1$ and $\mu_2$ and their respective variances by $\sigma_1^2$ and $\sigma_2^2$.
+    The covariance of $(X,Y)$ is 
+    \begin{align*}
+        \text{cov}(X,Y) = E[(X-\mu_1)(Y-\mu_2)].
+    \end{align*}
+\end{definition}
+
+\begin{remark}
+    Since the expectation operator is linear, then
+    \begin{align*}
+        \text{cov}(X,Y) &= E[XY-\mu_2X-\mu_1Y+\mu_1\mu_2] = E[XY] - \mu_2E[X] - \mu_1 E[Y] +\mu_1\mu_2\\
+                        &= E[XY] - \mu_1\mu_2-\mu_1\mu_2+\mu_1\mu_2 = E[XY] - \mu_1\mu_2. 
+    \end{align*}
+\end{remark}
+
+\begin{definition}{}{}
+    If each of $\sigma_1$ and $\sigma_2$ is positive then the correlation coefficient between $X$ and $Y$ is 
+    \begin{align*}
+        \rho = \frac{E[(X-\mu_1)(Y-\mu_2)]}{\sigma_1\sigma_2} = \frac{\text{cov}(X,Y)}{\sigma_1\sigma_2}.
+    \end{align*}
+\end{definition}
+
+\begin{remark}
+    We can relate these parameters as
+    \begin{align*}
+        E[XY]  &=\mu_1\mu_2 +\text{cov}(X,Y)\\
+            &= \mu_1\mu_2 +\rho\sigma_1\sigma_2.
+    \end{align*}
+\end{remark}
+
+\begin{theorem}{}{}
+    For all jointly distributed random variables $(X,Y)$ whose correlation coefficient $\rho$ exists
+    (so that $\sigma_1>0$ and $\sigma_2>0$ by the definition of $\rho$), we have $-1\leqs \rho \leqs 1$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    If $X$ and $Y$ are independent random variables then $\text{cov}(X,Y)=0$ and hence $\rho=0$.
+\end{theorem}
+
+\begin{theorem}{}{}
+    Suppose $(X,Y)$ have a joint distribution with the variances of $X$ and $Y$ finite and positive.
+    Denote the means and variances of $X$ and $Y$ by $\mu_1,\mu_2$ and $\sigma_1^2,\sigma_2^2$, respectively,
+    and let $\rho$ be the correlation coefficient between $X$ and $Y$. If $E[Y|X]$ is linear in $X$ then
+    \begin{align*}
+        E[Y|X] = \mu_2 + \rho \frac{\sigma_2}{\sigma_1}(X-\mu_1) \text{ and }\\
+        E[Var(Y|X)] = \sigma_2^2(1-\rho^2).
+    \end{align*}
+\end{theorem}
 
 
 
@@ -87,7 +141,7 @@
 
 \section{Homework}
 
-\begin{exercise}{}{}
+\begin{exercise}{2.3.6}{}
     Let the joint pdf of $X$ and $Y$ be given by
     \begin{align*}
         f(x,y) = \left\{\begin{matrix}
@@ -138,7 +192,7 @@
 
 
 
-\begin{exercise}{}{}
+\begin{exercise}{2.6.9}{}
     Let $X_1,X_2,X_3$ be iid with common pdf $f(x)=\exp(-x)$, $0<x<\infty$,
     zero elsewhere. Evaluste:\\
     (a) $P(X_1<X_2|X_1<2X_2)$.\\

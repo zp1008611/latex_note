@@ -1,0 +1,194 @@
+% 一个简单的LaTeX模板
+\documentclass[a4paper,cjk,12pt]{article}
+
+\usepackage{CJK}          % 使用中文
+\usepackage[T1]{fontenc}  % pei add
+\usepackage{path}         % 输入网址: \path""
+\usepackage{dsfont}       % 定于数域: \mathds{}
+\usepackage{bm}           % 加粗希腊字母: \bm
+\usepackage{amsmath}      % 行间公式: equation*
+\usepackage{amsthm}       % 数学证明
+\usepackage{color}        % 彩色
+\usepackage{graphicx}     % 插图
+\usepackage{algorithm, algorithmic} % algorithms
+
+
+\renewcommand{\baselinestretch}{1.2}
+\usepackage[paper=a4paper,dvips,top=2cm,left=2cm,right=2cm,
+    foot=1cm,bottom=3cm]{geometry}
+
+\begin{document}
+\begin{CJK*}{GBK}{song}
+
+% ===================================================================
+% 标题区：写明文章标题、作者、摘要等
+\title{{\CJKfamily{hei}一个简单的LaTeX模板}}
+\author{陈艳男 \and Yannan Chen}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+  \CJKfamily{kai}为了统一大家的LaTeX格式，形成标准，方便以后一起合作做事，我准备了本文件。特点是：最简单，没有任何不必要的LaTeX命令。
+  摘要概述本文的主要工作和创新点，要求：语言凝练，言简意赅，亮点突出。篇幅为一段话，着重说优点。
+
+  \medskip\textbf{Key words.} 希望读者通过寥寥数个关键词可以查到本文
+
+  \medskip\textbf{MSC 2020.} 查阅网站\path"https://zbmath.org/classification/"
+\end{abstract}
+
+
+% ===================================================================
+% 预定义变量
+\newcommand{\REAL}{\mathds{R}}
+\newcommand{\COPX}{\mathds{C}}
+\newcommand{\av}{\mathbf{a}}
+\newcommand{\bv}{\mathbf{b}}
+\newcommand{\cv}{\mathbf{c}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\alphav}{{\bm\alpha}}
+\newcommand{\Am}{\mathbf{A}}
+\newcommand{\Bm}{\mathbf{B}}
+\newcommand{\Cm}{\mathbf{C}}
+\newcommand{\Sigmam}{\mathbf{\Sigma}}
+\newcommand{\At}{\mathcal{A}}
+\newcommand{\Bt}{\mathcal{B}}
+\newcommand{\Ct}{\mathcal{C}}
+
+\newcommand{\rank}{\mathrm{rank}}
+
+\newtheorem{Thm}{Theorem}[section]
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+
+\numberwithin{equation}{section}
+\newcommand{\argmin}{\mathop{\arg\,\min}}
+
+% ===================================================================
+% 正文
+\section{Introduction}
+
+首先，引言（绪论）部分写什么？
+
+一、介绍本文研究的问题、相关背景。注意点：本节尽量用语言描述，少写（或不写数学公式）。
+
+二、写发展动态与研究进展，分门别类地逐项写清楚，注意要写明参考文献，免得后面再回头重复找一遍。
+    尽可能找到更多的参考文献进行泛读，每篇论文的阅读顺序是：标题、摘要、结论、引言、正文。如果你读完标题和摘要，知道怎么写了，可以不用往后面读了。尽量每篇文章用一句话写明（相对于本文的）要点。
+    做文献综述，能帮助我们找到自己文章在整个学科发展过程中的定位，凝练创新点和科学价值，方便写第三部分。
+
+三、写作本文的研究动机、主要研究内容、创新点（重点阐述，可以等文章完成主体之后写）。
+
+四、最后，Outline介绍文章的章节结构。
+
+参考文献的整理使用bibtex，见文末\cite{KB09,HJ91-book}。
+请按照作者名排序，需写明所有的作者、标题、杂志、年份、卷、期、页码。
+多个作者名之间用\verb| and | 隔开\cite{SDF17}，页码之间是2个横线\verb|1--17|，文章标题中英文的大写字母用花括号 \verb|{L}evenberg--{M}arquardt method|保护\cite{CZQX21}，杂志名统一缩写或者统一不缩写。
+
+
+\section{Preliminary}
+
+简明扼要地介绍数学符号，和必要的基础知识。
+
+实数域用$\REAL$，复数域用$\COPX$。常用的可以文章开始处预定义。
+标量用小写字母$a,b,c,\dots$或者希腊字母$\alpha,\beta,\dots$，
+向量用加粗的小写字母$\av,\bv,\cv,\xv,\alphav,\dots$，矩阵用加粗的大写字母$\Am,\Bm,\Cm,\Sigmam,\dots$，
+张量用大写的花体字母$\At,\Bt,\Ct$。
+
+数学公式有行内公式和行间公式。例如：
+Let $\theta\in[0,2\pi)$ be an angle. It is well-known that
+\begin{equation}\label{eq:2-1}
+  \sin^2\theta+\cos^2\theta=1.
+\end{equation}
+简短的数学公式写在行内公式里，比较长的或者重要的公式写在行间公式里，重要的公式需加编号。英文的逗号和句号之后有一个空格，这点与中文不同。尤其注意，行间的数学公式也要在结尾处加标点符号，按语言习惯用逗号或者句号。
+
+行间公式分单行公式和多行公式，如
+\begin{equation*}
+  \|\av\|_2-\|\bv\|_2 \le \|\av+\bv\|_2 \le \|\av\|_2+\|\bv\|_2
+\end{equation*}
+and
+\begin{eqnarray}
+  \sum_{i=1}^{10} i^i &=& 1+2^2+3^3+4^4+5^5+6^6+7^7+8^8+9^9+10^{10} \nonumber\\
+    &=& 10,405,071,317. \label{eq:2-2}
+\end{eqnarray}
+
+引用公式：According to the identical equation \eqref{eq:2-1}, if an acute angle $\theta$ satisfying $\cos\theta=\frac{\sqrt{3}}{2}$, we have $\sin\theta=\frac{1}{2}$. 标点符号之后有1个空格。注意不能写chinese English，此处不要加then。
+
+
+
+
+\section{正文：理论部分}
+
+模型：写明模型中各个部分的具体涵义，有哪些优点。分析模型的理论性质。
+
+算法：分步骤依次写算法设计，分析计算复杂度等。
+
+收敛性分析：总体收敛性、局部收敛率等
+
+这三部分会涉及数学理论的写作。
+
+\begin{Def}\label{Def:3.1}
+  Let 
+  \begin{equation}\label{prox}
+    \xv^{k+1} := \argmin_{\xv\in\REAL^n}~f(\xv)+\frac{1}{2\mu}\|\xv-\xv^k\|^2.
+  \end{equation}
+\end{Def}
+
+\begin{Lem}\label{Lem:3.2}
+  一般结果、中间结果用引理。关键的重要的结果用{\color{red}定理}。中间穿插解释性语言，增强阅读性，帮助读者理解。
+\end{Lem}
+\begin{proof}
+  数学的证明要用简单直接的语言写，不要在数学证明中秀英语，让人看不懂。不要写太长的数学推导，如果一个数学推导式很长（超过5 个等号或不等号），应当根据证明要点拆分成多个公式。每推导出一个中间结论，果断用句号，不要把连续推导出的多个结论写在一个句子里。
+\end{proof}
+
+\begin{Thm}\label{Thm:3.3}
+  The rank of a generic $I\times J$ matrix $\Am$ is $\rank(\Am)=\min(I,J)$. 
+\end{Thm}
+
+\begin{Cor}\label{Cor:3.4}
+  This is Corollary \ref{Cor:3.4}.
+\end{Cor}
+
+
+\begin{algorithm}[t]
+\caption{算法}\label{Alg}
+\renewcommand{\algorithmicrequire}{ \textbf{Input.}}    %Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{ \textbf{Output.}}    %UseOutput in the format of Algorithm
+\begin{algorithmic}[1]
+  \REQUIRE 输入变量
+  \ENSURE  输出结果
+
+  \STATE 初始化
+  \STATE 执行步骤
+  \IF{条件判断}
+    \STATE 条件满足，执行该步。
+  \ELSE
+    \STATE 条件不满足，执行该步。
+  \ENDIF
+  \FOR{循环准则}
+    \STATE 循环执行该步。
+  \ENDFOR
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\section{正文：数值部分}
+
+数值实验：数值检验模型的有效性，算法的计算效率，实际问题中的应用等等
+
+% \begin{figure}[th]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{video-iteration.jpg}
+%   \caption{简单介绍一下该图。}\label{Fig:A}
+% \end{figure}
+
+
+
+
+\bibliographystyle{siam}
+\bibliography{myrefs}
+
+\end{CJK*}
+\end{document}

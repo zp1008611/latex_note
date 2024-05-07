@@ -1,0 +1,212 @@
+\documentclass[10pt,cjk]{beamer}
+%命令行输入texdoc beamer可得到beamer官方介绍文档！！！
+
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+%\usepackage[backend=bibtex,style=verbose-trad2]{biblatex}
+\addbibresource{example.bib} %BibTeX数据文件及位置
+\setbeamerfont{footnote}{size=\tiny}
+
+\usetheme{Madrid}
+
+%\usepackage[UTF8]{ctex}
+\usepackage{graphicx}%插入
+\graphicspath{{picture/}}
+\usepackage{amsmath}
+\usepackage{color}
+
+\useinnertheme{circles}%设置内部环境的序号形状
+%\useoutertheme[height=0\textwidth,width=0.18\textwidth,hideothersubsections]{sidebar}$左侧目录
+
+\usecolortheme{whale}%颜色主题设置
+
+  
+%\setbeamerfont{frametitle}{family=\ttfamily}%设置字体，{frametitle}设置的是页标题字体
+
+
+
+\begin{document}
+	\newcommand{\mx}[1]{\boldsymbol{#1}}
+	\newcommand{\vr}[1]{\vec{\boldsymbol{#1}}}
+	\newcommand{\qn}[1]{\boldsymbol{#1}}
+	\newcommand{\dqn}[1]{\breve{\boldsymbol{#1}}}
+	\newcommand{\m}{~\mathrm{m}}
+	\newcommand{\rad}{~\mathrm{rad}}
+	\newcommand{\opvec}{\mathrm{vec}}
+	\newcommand{\opdqvec}{\mathrm{\breve{v}ec}}
+	
+	\newtheorem{Thm}{Theorem}[section]
+	\newtheorem{Def}[Thm]{Definition}
+	\newtheorem{Ass}[Thm]{Assumption}
+	\newtheorem{Lem}[Thm]{Lemma}
+	\newtheorem{Cor}[Thm]{Corollary}
+	\newtheorem{Exm}[Thm]{Example}
+
+	\title{Literature Review}
+	\subtitle{}
+	\author{Baoying Shi}
+	%\institute{School of Mathematical Sciences,South China Normal University}
+	\date{\today}
+	\frame{\titlepage}
+	
+	\begin{frame}
+		\tableofcontents  
+	\end{frame}
+	
+	\begin{frame}{New Model}
+		\begin{equation}\label{newmodel}
+			\begin{aligned}
+				\min ~&f\left(y\right)\\
+				\mathrm{s.t.}~~ &Ax=y
+			\end{aligned}
+		\end{equation}
+		where $f\left(y\right)=\sum\limits_{i=1}^{m}\Vert \dqn{r}_{i}\Vert_{s}+i_{\Omega}\left(\dqn{p}\right)$ and $A$ has full column rank.
+	\end{frame}
+	
+	\begin{frame}{Assumption}
+		\begin{block}{title}
+			for $\forall k$,
+			\begin{equation}\label{ass}
+				\Vert A^{T}\left(Ax^{k}-y^{k}\right)\Vert\ge\xi\Vert Ax^{k}-y^{k}\Vert
+			\end{equation}
+		\end{block}
+		
+	\end{frame}
+	\begin{frame}{Literature Review}
+		\printbibliography
+	\end{frame}
+	\begin{frame}{Hand-eye Calibration Literature Review}
+		\section{Literature Review}
+		The first hand-eye calibration methods were published by
+		Shiu and Ahmad\footfullcite{shiu1987calibration} and Tsai and Lenz\footfullcite{tsai1989new} who used  axis/angle representation.
+		\\ \hspace*{\fill} \\ 
+		Quaternions were used by
+		Chou and Kamel\footfullcite{chou1991finding} and Horaud and Dornaika\footfullcite{horaud1995hand}.
+		\\ \hspace*{\fill} \\ 
+		Wang\footfullcite{wang1992extrinsic} used  canonical
+		matrix representation. 
+	\end{frame}
+	
+	\begin{frame}{Dual Quaternion Literature Review}
+		Dual quaternions are an extension of the real quaternions by means of the dual numbers\footfullcite{study1891bewegungen}$^{,}$ \footfullcite{blaschke1960kinematik}, and were first introduced by Clifford\footfullcite{Clifford1871PreliminarySO}.
+		\\ \hspace*{\fill} \\ 
+		Daniilidis\footfullcite{daniilidis1999hand} first used dual quaternions to solve the hand-eye calibration problem.
+	\end{frame}
+	
+	\begin{frame}{Data Selection Literature Review}
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Convergence Analysis Literature Review}
+		
+		Our paper needs to prove the convergence of the classic ADMM for our nonconvex optimization problems(\ref{newmodel}).A very important technique to prove the convergence for nonconvex optimization problems relies on the assumption that the objective functions satisfy the Kurdyka-Łojasiewicz inequality which our problem satisfies. 
+		\\ \hspace*{\fill} \\ 
+		
+		These facts originate in the pioneering and fundamental works of Łojasiewicz\footfullcite{lojasiewicz1963propriete} and Kurdyka\footfullcite{kurdyka1998gradients}.
+		Bolte	\footfullcite{bolte2007lojasiewicz}$^{,}$\footfullcite{bolte2007clarke} extended Kurdyka-Łojasiewicz inequality to nonsmooth functions.
+	\end{frame}
+	
+	\begin{frame}{Convergence Analysis Literature Review}
+		Hong et al.\footfullcite{hong2016convergence}, Wang et al\footfullcite{wang2014convergence}. and Li and Pong\footfullcite{li2015global} make the contribution on 
+		ADMM algorithm used to solve nonconvex problems.
+		
+		
+		Li and Pong proved the convergence analysis of ADMM  in nonconvex optimization problems which the objective functions is
+		required to be twice continuously differentiable with bounded Hessian.
+		\\ \hspace*{\fill} \\ 
+		In Guo,Han and Wu\footfullcite{guo2017convergence},they proved the convergence analysis and rete of alternating direction mothod in nonconvex optimization problems using Kurdyka-Łojasiewicz inequality.
+		\\ \hspace*{\fill} \\ 
+		Bot and Nguyen\footfullcite{boct2020proximal} gave the convergence analysis and rete of proximal alternating direction mothod in nonconvex optimization problems using Kurdyka-Łojasiewicz inequality.
+	\end{frame}
+	
+
+	
+	\begin{frame}{Kurdyka-Łojasiewicz inequality}
+		Let $f: \mathcal{R}^n \rightarrow \mathcal{R} \cup\{+\infty\}$ be a proper lower semicontinuous function. For $-\infty<\eta_1<\eta_2 \leq+\infty$, set
+		$$
+		\left[\eta_1<f<\eta_2\right]=\left\{x \in \mathcal{R}^n: \eta_1<f\left(x\right)<\eta_2\right\} .
+		$$
+		
+		We say that function $f$ has the $\mathrm{KL}$ property at $x^* \in \operatorname{dom} \partial f$ if there exist $\eta \in(0,+\infty]$, a neighborhood $U$ of $x^*$, and a continuous concave function $\varphi:[0, \eta) \rightarrow \mathcal{R}_{+}$, such that
+		
+		(i). $\varphi\left(0\right)=0$;
+		
+		(ii). $\varphi$ is $C^1$ on $\left(0, \eta\right)$ and continuous at 0 ;
+		
+		(iii). $\varphi^{\prime}\left(s\right)>0, \forall s \in\left(0, \eta\right)$;
+		
+		(iv). for all $x$ in $U \cap\left[f\left(x^*\right)<f<f\left(x^*\right)+\eta\right]$, the Kurdyka-Łojasiewicz inequality holds:
+		$$
+		\varphi^{\prime}\left(f\left(x\right)-f\left(x^*\right)\right) d\left(0, \partial f\left(x\right)\right) \ge 1 .
+		$$
+	\end{frame}
+	
+	\begin{frame}{Uniformized KL property}
+		Let $\Omega$ be a compact set and let $f: \mathcal{R}^n \rightarrow \mathcal{R} \cup\{+\infty\}$ be a proper and lower semicontinuous function. Assume that $f$ is constant on $\Omega$ and satisfies the KL property at each point of $\Omega$. Then, there exist $\epsilon>0, \eta>0$, and $\varphi \in \Phi_\eta$ such that for all $\bar{x} \in \Omega$ and for all $x$ in the following intersection
+		$$
+		\left\{x \in \mathcal{R}^n: d\left(x, \Omega\right)<\epsilon\right\} \cap\left[f\left(\bar{x}\right)<f<f\left(\bar{x}\right)+\eta\right]
+		$$
+		one has,
+		$$
+		\varphi^{\prime}\left(f\left(x\right)-f\left(\bar{x}\right)\right) d\left(0, \partial f\left(x\right)\right) \geq 1 .
+		$$
+	\end{frame}
+	
+	\begin{frame}{Convergence Analysis Lemma1}
+		Let $\{\omega^{k}=\left(x^{k},y^{k},\lambda^{k}\right)\}$ be the sequence generated by ADMM.Define $x_{k+1}^{*}=\left(-2\sigma+2\mu\right)\left(x^{k+1}-x^{k}\right)+A^{T}\left(\lambda^{k+1}-\lambda^{k}\right)$,$x_{k}^{*}=-2\mu\left(x^{k+1}-x^{k}\right)$,$y_{k+1}^{*}=-\beta A\left(x^{k+1}-x^{k}\right)-\left(\lambda^{k+1}-\lambda^{k}\right)$ and $\lambda_{k+1}^{*}=\frac{1}{\beta}\left(\lambda^{k+1}-\lambda^{k}\right)$.Then we have $\left(x_{k+1}^{*},y_{k+1}^{*},\lambda_{k+1}^{*},x_{k}^{*}\right)\in \partial\Phi_{\beta,\mu}\left(\omega^{k+1},x^{k}\right)$.Moreover,we can get
+		$$d\left(0,\partial\Phi_{\beta,\mu}\left(\omega^{k+1},x^{k}\right)\right)\le\left(\zeta_{1}+\frac{2\sigma\zeta_{2}}{\xi}\right)\Vert x^{k+1}-x^{k}\Vert+\frac{2\sigma\zeta_{2}}{\xi}\Vert x^{k}-x^{k-1}\Vert.$$
+	\end{frame}
+	
+	\begin{frame}{Convergence Analysis Lemma2}
+		Let $\{\omega^{k}=\left(x^{k},y^{k},\lambda^{k}\right)\}$ be the sequence generated by ADMM.Let $S\left(\omega^0\right)$ denote the set of its limit points of ${\left(x^{k},y^{k},\lambda^{k}\right)}$ and $S^{'}\left(\omega^{1},x^{0}\right)$ denote the set of its limit points of  ${\left(x^{k+1},y^{k+1},\lambda^{k+1},x^{k}\right)}.$ Then
+		
+		(i) $S^{'}\left(\omega^{1},x^{0}\right)$ is a nonempty compact set, and
+		$$
+		d\left(\left(\omega^k,x^k\right), S^{'}\left(\omega^{1},x^{0}\right)\right) \rightarrow 0, \text { as } k \rightarrow+\infty ;
+		$$
+		
+		(ii) $S\left(\omega^0\right) \subset \operatorname{crit} \mathcal{L}_\beta$;
+		
+		(iii) $\Phi_{\beta,\mu}\left(\cdot\right)$ is finite and constant on $S\left(\omega^1,x^0\right)$, equal to $$\inf\limits_{k \in N} \Phi_{\beta,\mu}\left(\omega^{k+1},x^{k}\right)=\lim\limits_{k \rightarrow+\infty} \Phi_{\beta,\mu}\left(\omega^{k+1},x^{k}\right).$$
+	\end{frame}
+	
+	
+	\begin{frame}{Convergence Analysis}
+		\section{Convergence Analysis}
+		Let $\{\omega^{k}=\left(x^{k},y^{k},\lambda^{k}\right)\}$ be the sequence generated by ADMM. From that $f$ satisfies the KL property, then $\{\omega^{k+1}.x^{k}\}$ has finite length, that is
+		$$
+		\sum_{k=0}^{+\infty}\Vert \omega^{k+1}-\omega^k\Vert<+\infty,
+		$$
+		and as a consequence, $\{\omega^{k+1},x^{k}\}$ converges to a critical point of $\Phi_{\beta,\mu}\left(\cdot\right)$.
+	\end{frame}
+	
+	
+	\begin{frame}{Convergence Rate Lemma}
+		Let $\triangle_{k}$ be a noninscreasing sequence in $\mathbb{R}$ converging 0.Assume futher that there exist $k_{0}$ such that for every $k>k_{0}$,
+		$$\triangle_{k}\le\triangle_{k-2}-\triangle_{k}+\alpha\left(\triangle_{k-2}-\triangle_{k}\right)^{\frac{1-\theta}{\theta}},$$
+		where $\alpha>0$ and $\theta\in[0,1)$,then following statements are true:
+		
+		(i)If $\theta\in(0,\frac{1}{2}]$,then there exist $c>0$ and $\tau\in[0,1)$,such that
+		$$\triangle_{k}\le c\tau^{k}.$$
+		
+		(ii)If $\theta\in\left(\frac{1}{2},1\right)$,then there exists $c>0$,such that
+		$$\triangle_{k}\le ck^{\frac{\theta-1}{2\theta-1}}.$$
+	\end{frame}
+	
+	\begin{frame}{Convergence Rate}
+		\section{Convergence Rate}
+		Let $\{\omega^{k}=\left(x^{k},y^{k},\lambda^{k}\right)\}$ be the sequence generated by ADMM and converges to $\{\omega^{*}=\left(x^{*},y^{*},\lambda^{*}\right)\}.$ Assume that $\Phi_{\beta,\mu}\left(\cdot\right)$ has the KL property at $\left(\omega^{*},x^{*}\right)$ with $\varphi\left(s\right)=cs^{1-\theta},\theta\in\left(0,1\right),c>0$.Then the following estimations hold:
+		
+		(i)If $\theta=0$,then the sequence $\{\omega^{k}=\left(x^{k},y^{k},\lambda^{k}\right)\}$ converges in a finite number of steps.
+		
+		(ii)If $\theta\in(0,\frac{1}{2}]$,then there exist $c>0$ and $\tau\in[0,1)$,such that
+		$$\Vert\left(x^{k},y^{k},\lambda^{k}\right)-\left(x^{*},y^{*},\lambda^{*}\right)\Vert\le c\tau^{k}.$$
+		
+		(iii)If $\theta\in\left(\frac{1}{2},1\right)$,then there exists $c>0$,such that
+		$$\Vert\left(x^{k},y^{k},\lambda^{k}\right)-\left(x^{*},y^{*},\lambda^{*}\right)\Vert\le ck^{\frac{\theta-1}{2\theta-1}}.$$
+	\end{frame}
+
+\end{document}
+
+

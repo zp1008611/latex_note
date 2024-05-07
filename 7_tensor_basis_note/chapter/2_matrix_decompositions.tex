@@ -40,7 +40,7 @@ $\bold{U}^H\bold{A}\bold{V} = \bold{\Sigma }$ or equivalently, $\bold{A} = \bold
     The result follows since $r(\bold{A}\bold{A}^H)=r(\bold{A}^H\bold{A})$.
 \end{proof}
 
-\begin{theorem}{}{}
+\begin{theorem}{}{SVD}
     Let $\bold{A}\in \C^{m\times n}$ and denote $p=\min\{m,n\}$.
     Denote the rank of $\bold{A}$ by $r$ ($0\leqs r\leqs p$).
     Then there are unitary matrices $\bold{U}\in \C^{m\times m}$ and $\bold{V}\in \C^{n\times n}$
@@ -130,23 +130,94 @@ This tells us how to find the matrix $\bold{U}: \bold{u}_i =\frac{1}{\sigma_i}\b
     \end{align*}
     Then $\bold{u}_1,...,\bold{u}_r$ are orthonormal vectors. To see this,
     \begin{align*}
-        \bold{u}_i^H\bold{u}_j &= (\frac{1}{\sigma_i} \bold{A}\bold{v}_i)^H (\frac{1}{\sigma_j}\bold{A}\bold{v}_j) = \frac{1}{\sigma_i\sigma_j} \bold{v}_i^H\bold{A}^H\bold{A}\bold{v}_j\\
-        &= \frac{1}{\sigma_i\sigma_j} \bold{v}_i^H(\lambda_jv)
+        \bold{u}_i^H\bold{u}_j &= (\frac{1}{\sigma_i} \bold{A}\bold{v}_i)^H (\frac{1}{\sigma_j}\bold{A}\bold{v}_j) = \frac{1}{\sigma_i\sigma_j} \bold{v}_i^H\bold{A}^H\bold{A}\bold{v}_j
+        = \frac{1}{\sigma_i\sigma_j} \bold{v}_i^H\bold{C}\bold{v}_j\\
+        &= \frac{1}{\sigma_i\sigma_j} \bold{v}_i^H(\lambda_j\bold{v}_j) & (\lambda_j=\sigma_j^2)
+        &= \frac{\sigma_j}{\sigma_i} \bold{v}_i^H\bold{v}_j\\
+        &= \left\{\begin{matrix}
+            1 &  i=j\\
+            0 &  i\neq j.
+           \end{matrix}\right.
     \end{align*}
+    Choose $\bold{u}_{r+1},...,\bold{u}_n\in\C^n$ (through basis completion) such that
+    \begin{align*}
+        \bold{U} = \begin{pmatrix}
+            \bold{u}_1 &...&\bold{u}_r&\bold{u}_{r+1}&...&\bold{u}_m
+        \end{pmatrix}\in \C^{m\times m}
+    \end{align*}
+    is an orthogonal matrix.
+    It remains to verify that $\bold{AV}=\bold{U\Sigma}$, i.e.,
+    \begin{align*}
+        \bold{A}\begin{pmatrix}
+            \bold{v}_1&...&\bold{v}_r&...&\bold{v}_{r+1}&...&\bold{v}_n
+        \end{pmatrix}
+        =\begin{pmatrix}
+            \bold{u}_1&...&\bold{u}_r&...&\bold{u}_{r+1}&...&\bold{u}_m
+        \end{pmatrix}\begin{bmatrix}
+            \sigma_{1} & & &\\
+            & \ddots & &\\
+            & & \sigma_{r} &\\
+            & & & \\
+            & & &
+          \end{bmatrix}.
+    \end{align*}
+    Consider two cases:\\
+     (a) $1\leqs i\leqs r$: $\bold{A}\bold{v}_i=\sigma_i\bold{u}_i$ by construction.\\
+     (b) $i>r$: $\bold{A}\bold{v}_i=\bold{0}$, which is due to $\bold{A}^T\bold{A}\bold{v}_i=\bold{C}\bold{v}_i=0\bold{v}_i=\bold{0}$.\\
+    Consequently, we have obtained that $\bold{A}=\bold{U\Sigma}\bold{V}^H$.
+    \par
+    Since $\sigma_1,...\sigma_p$ is uniquely determined by $\bold{A}^T\bold{A}$,
+    $\Sigma$ is uniquely determined by $\bold{A}$.
 \end{proof}
+
+\begin{remark}
+    $\bold{U}$ and $\bold{V}$ is not unique (this is mainly due to
+    different choices of orthogonal basis for each eigenspace)
+\end{remark}
+
+
+
 
 \subsection{Geometric interpretation of SVD}
 
+\begin{theorem}{Real SVD}{Real SVD}
+    If $\bold{A}\in \R^{m\times n}$, then it has a real SVD
+    \begin{align*}
+        \bold{A}=\bold{U\Sigma}\bold{V}^T,
+    \end{align*}
+    where $\bold{U}\in\R^{m\times m}$ and $\bold{V}\in \R^{n\times n}$ are real orthogonal matrices.
+\end{theorem}
+\begin{proof}
+    Proof is just a repetition of the proof in theorem\ref{thm:SVD},
+    except $\bold{v}_1,...,\bold{v}_n$ and $\bold{u}_1,...,\bold{u}_m$ must be real vectors.
+\end{proof}
+
+Given any matrix $\bold{A}\in \R^{m\times n}$, it defines a linear transformation:
+\begin{align*}
+    f:\R^n\mapsto \R^m \text{ with } f(\bold{x})=\bold{Ax}.
+\end{align*}
+The SVD of $\bold{A}\in\R^{m\times n}$ indicates that the linear transformation $f$ can be decomposed into a sequence of three operations:
+\begin{align*}
+    \underbrace{\bold{Ax}}_{\text{full transformation}} = \underbrace{\bold{U}}_{\text{rotation}}\cdot \underbrace{\bold{\Sigma}}_{\text{rescaling}}\cdot \underbrace{\bold{V}^H\bold{x}}_{\text{rotation}}.
+\end{align*}
+
+
 \subsection{Applications of Singular-Value Decomposition}
+
+\subsubsection{Least square problem}
+
 
 \section{Reference}
 
 \begin{itemize}
     \item \href{http://users.ece.northwestern.edu/~mya671/files/Matrix_YM_.pdf}{Matrix Decomposition}
-    \item \href{https://math.berkeley.edu/~hutching/teach/54-2017/svd-notes.pdf}{SVD notes}
     \item \href{https://www.sjsu.edu/faculty/guangliang.chen/Math253S20.html}{Mathematical Methods for Data Visualization}
     \item \href{https://kuidu.github.io/nla/nla02.pdf}{SVD notes XMUT}
     \item \href{https://people.cas.uab.edu/~mosya/teaching/660new3.pdf}{Singular Value Decomposition}
     \item \href{https://www2.math.uconn.edu/~leykekhman/courses/MATH3795/Lectures/Lecture_9_Linear_least_squares_SVD.pdf}{least squares svd}
     \item \href{https://math.ucsd.edu/sites/math.ucsd.edu/files/undergrad/honors-program/honors-theses/2017-2018/Zecheng_Kuang_Honors_Thesis.pdf}{svd application}
+    \item \href{https://www.epfl.ch/labs/anchp/wp-content/uploads/2018/10/lecture1-slides.pdf}{Low rank approximation l1}
+    \item \href{https://arxiv.org/pdf/1507.00333.pdf}{Notes on Low-rank Matrix Factorization}
+    \item \href{https://appsrv.cse.cuhk.edu.hk/~byu/CMSC5743/2021Fall/slides/Lec04-decomp.pdf}{Lecture 04: Low Rank Decomposition}
 \end{itemize}
+

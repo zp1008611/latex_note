@@ -1,0 +1,204 @@
+% !Mode:: "TeX:UTF-8"
+
+\documentclass[UTF8,12pt,hyperref]{ctexart}
+
+\usepackage{amsfonts,amsmath,amssymb,mathrsfs}
+\usepackage{flafter,graphicx,xcolor}
+
+\newtheorem{algorithm}{Algorithm}
+ 
+ \newtheorem{theorem}{Theorem}
+% Matlab
+\usepackage{listings}
+\lstset{language=Matlab}%代码语言使用的是matlab
+\lstset{breaklines}%自动将长的代码行换行排版
+\lstset{extendedchars=false}%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{numbers=left, 
+numberstyle= \tiny,keywordstyle= \color{ blue!70},commentstyle=\color{red!50!green!50!blue!50}, 
+frame=shadowbox, rulesepcolor= \color{ red!20!green!20!blue!20}, 
+escapeinside=``} 
+%%%%%%%
+\usepackage{multicol}
+   
+ 
+\newcommand{\ep}{\hfill\rule{0.15cm}{0.35cm}\vskip 0.3cm}
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\ep\end{trivlist}} 
+
+
+%%%%%
+ \makeatletter
+\newenvironment{exercise}[1][{\color{blue}\bf Exercise}]%
+%\newenvironment{xiti}[1][{\color{blue}\bf Exercise}]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}%
+  {\color{blue}\bfseries
+#1}   }{%
+    \end{minipage}%
+    \end{lrbox}
+    \colorbox{green}{\noindent\usebox{\@tempboxa}} \end{center}  
+}
+ 
+\newenvironment{analysis}[1][\color{blue}\bf Analysis]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}
+  {\color{blue}\bfseries
+%#1} \\ \hspace*{2em} }{%
+ #1}  }{%
+    \end{minipage}%
+    \end{lrbox}
+    %\colorbox{gray}{\noindent\usebox{\@tempboxa}} \end{center}  %
+    \fbox{\usebox{\@tempboxa}}\end{center}%
+    %\colorbox{red}{\fbox{\noindent\usebox{\@tempboxa}} \end{center}
+}
+ 
+\newenvironment{solve}[1][\color{blue}\bf Solve]{\begin{trivlist}
+\item[\hskip \labelsep {\color{blue}\bfseries
+#1}]}{\hfill$\Box$\end{trivlist}}
+ \makeatother
+ 
+ 
+%%%%%%%%%
+ 
+\renewcommand{\baselinestretch}{1.38}
+ 
+ \pagestyle{plain} 
+ 
+ \textwidth  168 true mm \textheight 230 true mm \topmargin=-1.3cm
+\oddsidemargin   0pt \evensidemargin  20pt \marginparwidth  10pt
+
+\CTEXoptions[today=old]
+
+ 
+\begin{document}
+%%%================　　标　　题　　　================
+
+\begin{center}
+{\bf  THE SOUTH CHINA NORMAL UNIVERSITY\vspace{0.08cm}
+
+School of Mathematical Sciences\vspace{0.08cm}
+ 
+Numerical Analysis ( 2022-2023 The Second Term) \vspace{0.18cm}
+
+{\Large Homework 7: }\vspace{0.18cm}
+
+Due Date: \underline{May 8, 2024 (Wednesday)} }
+\end{center}\vspace{-0.16cm}
+
+\begin{center}
+  Name:\ \underline{\qquad 钟沛 \hspace{1cm}}\hspace{0.298cm}  
+  % 
+  Student No.:\ \underline{\qquad 2023021950\hspace{1cm}} 
+%
+Date:\ \ \underline{April 28, 2024} 
+ \end{center}
+ 
+ 
+%%%================　　正　　文　　　================
+
+\section*{\S 4.3 Exercise for Lagrange Approximation}
+
+%%%%%% Exercise 1
+  
+\begin{exercise}1.\qquad
+  Find Lagrange polynomials that approximate $f (x) = x^3$. 
+\begin{description}
+\item[(a)] Find the linear interpolation polynomial $P_1(x)$ using the nodes $x_0 = - 1$ and $x_1=0$. 
+\item[(b)] Find the quadratic interpolation polynomial $P_2(x)$ using the nodes $x_0 = - 1, x_1=0$, and $x_2=1$. 
+\item[(c)] Find the cubic interpolation polynomial $P_3(x)$ using the nodes $x_0 = - 1, x_1=0, x_2=1$, and $x_3=2$.
+\end{description}
+\end{exercise}   
+  
+\begin{solve}
+  A Lagrange polynomial $P_N(x)$ of degree at most $N$ that passes through 
+  the $N+1$ points $(x_0,y_0),(x_1,y_1),\dots,(x_N,y_N)$ has the form
+  \begin{equation}
+    P_N(x) = \sum\limits_{k=0}^{N} y_k\cdot L_{N,k}(x),
+  \end{equation} 
+  where $L_{N,k}$ is the Lagrange coefficient polynomial based on these nodes:
+  \begin{equation}
+    L_{N,k}(x)=\frac{(x-x_0)\dots(x-x_{k-1})(x-x_{k+1})\dots(x-x_N)}{(x_k-x_0)\dots(x_k-x_{k-1})(x_k-x_{k+1}\dots(x_k-x_N))}.
+    \label{eq:lpcoefficients}
+  \end{equation}
+
+  (a) Using (\ref{eq:lpcoefficients}) with the abscisas $x_0=-1$ and $x_1=0$
+  and the ordinates $y_0=f(x_0)=-1$ and $y_1=f(x_1)=0$,
+  we can produce 
+  \begin{align*}
+    P_1(x) &= y_0\frac{x-x_1}{x_0-x_1} + y_1\frac{x-x_0}{x_1-x_0}\\
+          &= -1\frac{x-0}{-1}+0\\
+          &= x.
+  \end{align*}
+  (b) Using (\ref{eq:lpcoefficients}) with the abscisas $x_0 = - 1, x_1=0$, and $x_2=1$
+  and the ordinates $y_0=f(x_0)=-1$ , $y_1=f(x_1)=0$ and $y_2=f(x_2)=1$,
+  we can produce 
+  \begin{align*}
+    P_2(x) &= y_0\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)} + y_1\frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}+y_2\frac{(x-x_0)(x-x_1)}{(x_2-x_0)(x_2-x_1)}\\
+          &= -1\frac{x(x-1)}{-1(-1-1)} + 0 + 1\frac{(x+1)x}{(1+1)1}\\
+          &= -\frac{x(x-1)}{2} + \frac{x(x+1)}{2}\\
+          &= \frac{2x}{2} = x.
+  \end{align*}
+  (c) Using (\ref{eq:lpcoefficients}) with the abscisas $x_0 = - 1, x_1=0, x_2=1$, and $x_3=2$
+  and the ordinates $y_0=f(x_0)=-1$ , $y_1=f(x_1)=0$, $y_2=f(x_2)=1$ and $y_3=f(x_3)=8$,
+  we can produce 
+  \begin{align*}
+    P_2(x) &= y_0\frac{(x-x_1)(x-x_2)(x-x_3)}{(x_0-x_1)(x_0-x_2)(x_0-x_3)} 
+    +y_1\frac{(x-x_0)(x-x_2)(x-x_3)}{(x_1-x_0)(x_1-x_2)(x_1-x_3)}\\
+    &\quad +y_2\frac{(x-x_0)(x-x_1)(x-x_3)}{(x_2-x_0)(x_2-x_1)(x_2-x_3)}
+    +y_3\frac{(x-x_0)(x-x_1)(x-x_2)}{(x_3-x_0)(x_3-x_1)(x_3-x_2)}\\
+          &= -1\frac{x(x-1)(x-2)}{-1(-1-1)(-1-2)} + 0 + 1\frac{(x+1)x(x-2)}{(1+1)1(1-2)} + 8\frac{(x+1)x(x-1)}{(2+1)2(2-1)}\\
+          &= \frac{x(x-1)(x-2)}{6}-\frac{x(x+1)(x-2)}{2}+\frac{4x(x+1)(x-1)}{3}\\
+          &= \frac{x(x^2-3x+2)-3x(x^2-x-2)+8x(x^2-1)}{6}\\
+          &= \frac{6x^3}{6}= x^3.
+  \end{align*}
+\end{solve}
+  
+ %%%%%%%%%% 
+ 
+
+ \section*{\S  4.4 Exercises for Newton Polynomials}
+ 
+ 
+ %%%%%% Exercise 1
+  
+\begin{exercise}1.\qquad
+Use the centers $x_0, x_1, x_2$, and $x_3$ and the coefficients $a_0, a_1, a_2, a_3$, and $a_4$ to find the Newton polynomials $P_1 (x), P_2(x)$ and $P_3(x)$, and evaluate them at the value $x = c$. 
+ $$
+\begin{array}{ l l l l l}
+  a_0=4 & a_1=-1 & a_2=0.4 & a_3=0.01  \\
+  x_0=1 & x_1=3 & x_2=4   & c=2.5   
+\end{array}
+$$
+\end{exercise} 
+
+\begin{solve}
+  A Newton polynomial $P_N(x)$ of degree at most $N$ has the form 
+  \begin{equation}
+    \begin{aligned}
+    P_N(x)&=a_0+a_1(x-x_0)+a_2(x-x_0)(x-x_1)+\dots\\
+      &\quad +a_N(x-x_0)(x-x_1)\dots(x-x_{N-1}).
+    \end{aligned}
+  \end{equation}
+  Then we have
+  \begin{align*}
+    P_1(x)&=4-(x-1)\\
+    P_2(x)&=4-(x-1)+0.4(x-1)(x-3)\\
+    P_3(x)&=4-(x-1)+0.4(x-1)(x-3)+0.01(x-1)(x-3)(x-4)
+  \end{align*}
+  Evatuating the polynomials at $c = 2.5$ results in
+  \begin{align*}
+    P_1(x)&=4-(2.5-1)=4-1.5=2.5\\
+    P_2(x)&=4-(2.5-1)+0.4(2.5-1)(2.5-3)=4-1.5-0.3=2.2\\
+    P_3(x)&=4-(2.5-1)+0.4(2.5-1)(2.5-3)+0.01(2.5-1)(2.5-3)(2.5-4)\\
+          &=4-1.5-0.3+0.01125=2.21125.
+  \end{align*}
+\end{solve}
+ 
+\end{document}
+
+
+ 
+ 
+ 

@@ -21,20 +21,20 @@ $j\in \langle{J} \rangle=\{1,2,...,J\}$.
 A matrix $A\in\K^{I\times J}$ is written in the form:
 \begin{align*}
     \begin{pmatrix}
-        a_{11}& a_{12} & ... & a_{1J} \\
-        a_{12}& a_{22} & ... & a_{2J} \\
-        ...& ...  & ... & ...\\
-        a_{I1}& a_{I2}  & ... & a_{IJ}
+        a_{11}& a_{12} & \dots & a_{1J} \\
+        a_{12}& a_{22} & \dots & a_{2J} \\
+        \vdots& \vdots  & \ddots & \vdots\\
+        a_{I1}& a_{I2}  & \dots & a_{IJ}
       \end{pmatrix}
 \end{align*} 
 The special cases $I=1$ and $J=1$ correspond respectively to row vectors of dimension $J$ 
 and to column vectors of dimension $I$:
 \begin{align*}
     \bold{v}=\begin{pmatrix}
-        v_1& v_{2} & ... & v_{J} 
+        v_1& v_{2} & \dots & v_{J} 
       \end{pmatrix}\in \K^{1\times J},
     \bold{u}=\begin{pmatrix}
-        u_1\\ u_{2} \\ ... \\ u_{I} 
+        u_1\\ u_{2} \\ \vdots \\ u_{I} 
       \end{pmatrix}\in \K^{I\times 1}.
 \end{align*}
 In the following, for column vectors, $\K^{I}$ will be used instead of $\K^{I\times 1}$.
@@ -49,11 +49,11 @@ in which element is equal to $1$ at position $(i,j)$ and $0s$ elsewhere.
 \section{Transposition and conjugate transposition}
 \begin{definition}{transpose and the conjugate transpose of a column vector}{transpose and the conjugate transpose of a column vector}
     The transpose and the conjugate transpose (also called transconjugate) of a column
-    vector $\bold{u}=\begin{pmatrix}u_1\\ u_{2} \\ ... \\ u_{I} \end{pmatrix}\in \C^{I}$, 
+    vector $\bold{u}=\begin{pmatrix}u_1\\ u_{2} \\ \vdots \\ u_{I} \end{pmatrix}\in \C^{I}$, 
     denoted by $\bold{u}^{T}$ and $\bold{u}^{H}$, respectively, are the row vectors defined as:
     \begin{align*}
-        \bold{u}^T=\begin{pmatrix}u_1\\ u_{2} \\ ... \\ u_{I} \end{pmatrix}\text{ and } 
-        \bold{u}^H=\begin{pmatrix}u_1^*& u_{2}^* & ... & u_{I}^* \end{pmatrix},
+        \bold{u}^T=\begin{pmatrix}u_1\\ u_{2} \\ \vdots \\ u_{I} \end{pmatrix}\text{ and } 
+        \bold{u}^H=\begin{pmatrix}u_1^*& u_{2}^* & \dots & u_{I}^* \end{pmatrix},
     \end{align*}
     where $u_i^*$ is the conjugate of $u_i$ also denoted by $\overline{u}_i$.
 \end{definition}
@@ -138,7 +138,7 @@ on top of each other to form a column vector of dimension $JI$:
         \bold{A}_{\cdot 1}& \bold{A}_{\cdot 2} & ... & \bold{A}_{\cdot J}
     \end{pmatrix}\in \K^{I\times J}
     \Rightarrow \text{vec}(\bold{A}) = \begin{pmatrix}
-        \bold{A}_{\cdot 1} \\ \bold{A}_{\cdot 2}\\ ...\\ \bold{A}
+        \bold{A}_{\cdot 1} \\ \bold{A}_{\cdot 2}\\ \vdots\\ \bold{A}
         _{\cdot J}
     \end{pmatrix}\in \K^{JI}.
 \end{align*}
@@ -343,10 +343,10 @@ Every element $c_{ij}$ of $\bold{C}$ is the
 dot product of row vector $\bold{A}_{i\cdot}$ and column vector $\bold{B}_{\cdot j}$.
 \begin{align*}
     \bold{A}&=\begin{pmatrix}
-        \bold{A}_{1\cdot}^T\\ ...\\\bold{A}_{m\cdot}^T
+        \bold{A}_{1\cdot}^T\\ \vdots\\\bold{A}_{m\cdot}^T
     \end{pmatrix},\bold{A}_{k\cdot}\in\R^r\\
     \bold{B}&=\begin{pmatrix}
-        \bold{B}_{\cdot 1}&...\bold{B}_{\cdot n}
+        \bold{B}_{\cdot 1}&\dots&\bold{B}_{\cdot n}
     \end{pmatrix},\bold{B}_{\cdot k}\in\R^r\\
     \bold{C}&=(c_{ij}),c_{ij}=\bold{A}_{i\cdot}^T\bold{B}_{\cdot j}=\sum\limits_{k=1}^{r}a_{ik}b_{kj}.
 \end{align*}
@@ -452,7 +452,7 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
 
 \begin{theorem}{}{}
     If $\bold{A}$ is a real symmetric matrix, then $\bold{A}=\bold{Q}\bold{\Lambda}\bold{Q}^T$,
-    where $\bold{Q}$ is an orthonormal matrix, the columns of $\bold{Q}$ are an orthonormal basis of eigenvectors of $\bold{A}$,
+    where $\bold{Q}$ is an orthogonal matrix, the columns of $\bold{Q}$ are an orthonormal basis of eigenvectors of $\bold{A}$,
     and $\bold{\Lambda}$ is a diagonal matrix of the corresponding eigenvalues of $\bold{A}$.
 \end{theorem}
 
@@ -602,7 +602,96 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
 \end{proof}
 
 
-\section{Generalized inverses}
+\section{Generalized inverse and pseudoinverse}
+When $\bold{A}$ is a square matrix of full rank, 
+the system of linear equations $\bold{Ax}=\bold{b}$ has a unique solution. 
+When $\bold{A}$ is a square of nonfull rank or rectangular matrix, 
+$\bold{A}^{-1}$ does not exist. Can we express the solution of 
+the linear equation system $\bold{Ax}=\bold{b}$ in a similar way as an inverse matrix?
+\subsection{Generalized inverse}
+
+\begin{definition}{}{}
+    Let $\bold{A}\in\C^{m\times n}$ be any matrix. We call the matrix $\bold{G}\in \C^{n\times n}$ a generalized inverse of $\bold{A}$ if it satisfies
+    \begin{align*}
+        \bold{AGA}=\bold{A}
+    \end{align*} 
+\end{definition}
+
+\begin{remark}
+    If $\bold{A}$ is square and invertible, then it has one and only one generalized
+    inverse which must coincide with the ordinary inverse $\bold{A}^{-1}$.
+    To see this, first observe that $\bold{A}^{-1}$ apparently satisfies the definition and thus is a generalized inverse.
+    Conversely, if $\bold{A}$ has a generalized inverse $\bold{G}$,
+    then from the equation $\bold{AGA}=\bold{A}$ we get 
+    \begin{align*}
+        \bold{G} = \bold{A}^{-1} (\bold{AGA}) \bold{A}^{-1} = \bold{A}^{-1} (\bold{A}) \bold{A}^{-1} = \bold{A}^{-1}.
+    \end{align*}
+    This thus justifies the term "generalized inverse".
+\end{remark}
+
+\begin{remark}
+    For a general matrix $\bold{A}\in \C^{m\times n}$, its generalized inverse always exists but might not be unique.
+\end{remark}
+
+
+\subsection{property of generalized inverse and pseudoinverse}
+% \begin{definition}{}{}
+%     A square matrix $\bold{P}$ is called a projection matrix if $\bold{P}=\bold{P}^2$.
+% \end{definition}
+% \begin{remark}
+%     Projection matrices must have a determinant of $0$ or $1$, because
+%     \begin{align*}
+%         \text{det}(\bold{P}) = \text{det}(\bold{P}^2) = (\text{det}(\bold{P}))^2.
+%     \end{align*}
+% \end{remark}
+
+% \begin{remark}
+%     The following statements explain what a projection matrix does:\\
+%     (a) A projection matrix $\bold{P}\in \C^{n\times n}$ projects any vector in $\C^n$ onto its range (column space).
+%     To see this, let $\bold{x}\in \C^n$. Then
+%     \begin{align*}
+%         \bold{Px}=\begin{pmatrix}
+%             \bold{p}_1&\dots&\bold{p}_n
+%         \end{pmatrix}
+%         \begin{pmatrix}
+%             x_1\\
+%             \vdots\\
+%             x_n
+%         \end{pmatrix}=\sum x_i\bold{p}_i\in\text{Col}(\bold{P}) \equiv \text{Range}(\bold{P}).
+%     \end{align*}
+%     (b) A projection matrix keeps all points from its range in their original places. 
+%     To see this, let $\bold{v}\in\text{Range}(\bold{P})$. Then
+%     \begin{align*}
+%         \bold{Pv}=\bold{P(Px)} = \bold{P}^2\bold{x} = \bold{P}\bold{x}=\bold{v}.
+%     \end{align*}
+% \end{remark}
+
+
+\subsection{Pseudoinverse}
+
+Briefly speaking, the matrix pseudoinverse is a generalized inverse with more constraints.
+
+\begin{definition}{}{}
+    Let $\bold{A}\in\C^{m\times n}$. We call the matrix $\bold{B}\in \C^{n\times m}$ the pseudoinverse of $\bold{A}$ 
+    if it satisfies all four conditions below:\\
+    (a) $\bold{ABA}=\bold{A}$\quad ($\bold{B}$ is a generalized inverse of $\bold{A}$)\\
+    (b) $\bold{BAB}=\bold{B}$\quad ($\bold{A}$ is a generalized inverse of $\bold{B}$)\\
+    (c) $(\bold{AB})^H = \bold{AB}$ \quad ($\bold{AB}$ is hermitian)\\
+    (d) $(\bold{BA})^H = \bold{BA}$ \quad ($\bold{BA}$ is hermitian)
+\end{definition}
+
+\begin{remark}
+    \\
+    (1) If $\bold{B}$ satisfies Condition (a), it is known as a generalized inverse of $\bold{A}$;
+    if $\bold{B}$ satisfies Conditions (a) and (b), it is called a reflexive generalized inverse.
+    Only when $\bold{B}$ satisfies all 4 conditions, it is called the pseudoinverse of $\bold{A}$.\\
+    (2) It can be shown that for any matrix $\bold{A}\in \C^{m\times n}$,
+    the pseudoinverse always exists and is unique. We denote the pseudoinverse of $\bold{A}$ as $\bold{A}^{\dagger}$.\\
+    (3) A pseudoinverse is sometimes called the Moore-Penrose inverse, after the pioneering works by E. H. Moore and Roger Penrose.\\
+    (4) The hermitian form of the definition implies $\bold{B}=\bold{A}^{\dagger}$ and $\bold{A}=\bold{B}^{\dagger}$, and thus, $\bold{A}=(\bold{A}^{\dagger})^{\dagger}$.
+\end{remark}
+
+
 
 \section{Reference}
 \begin{itemize}
@@ -614,4 +703,7 @@ including multiplicities. These roots are the eigenvalues of $\bold{M}$.
     \item \href{https://staff.polito.it/ada.boralevi/didattica/Dispense_ENG.pdf}{linear algebra and geometry note}
     \item \href{http://jde27.uk/la/36_eigenapplications2.html}{eigenvalues application: ellipses}
     \item \href{https://www.sjsu.edu/faculty/guangliang.chen/Math253S20/lec6ginverse.pdf}{Generalized inverses}
+    \item \href{http://buzzard.ups.edu/courses/2014spring/420projects/math420-UPS-spring-2014-macausland-pseudo-inverse.pdf}{The Moore-Penrose Inverse and
+    Least Squares}
+    
 \end{itemize}

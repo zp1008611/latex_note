@@ -1,0 +1,183 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[T1]{fontenc}  % pei add
+\usepackage{path}         % 输入网址: \path""
+\usepackage{dsfont}       % 定于数域: \mathds{}
+\usepackage{bm}           % 加粗希腊字母: \bm
+\usepackage{amsmath}      % 行间公式: equation*
+\usepackage{amsthm}       % 数学证明
+\usepackage{color}        % 彩色
+\usepackage{graphicx}     % 插图
+\usepackage{algorithm, algorithmic} % algorithms
+
+
+
+\renewcommand{\baselinestretch}{1.2}
+\usepackage[paper=a4paper,dvips,top=2cm,left=2cm,right=2cm,
+    foot=1cm,bottom=3cm]{geometry}
+
+\begin{document}
+% ===================================================================
+% 标题区：写明文章标题、作者、摘要等
+\title{A Simple Latex Template}
+\author{Pei Zhong}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+  summary
+
+  \medskip\textbf{Key words.} hope be helpful for you
+
+  \medskip\textbf{MSC 2020.} reference: \path"https://zbmath.org/classification/"
+\end{abstract}
+
+
+% ===================================================================
+% 预定义变量
+\newcommand{\REAL}{\mathds{R}}
+\newcommand{\COPX}{\mathds{C}}
+\newcommand{\av}{\mathbf{a}}
+\newcommand{\bv}{\mathbf{b}}
+\newcommand{\cv}{\mathbf{c}}
+\newcommand{\xv}{\mathbf{x}}
+\newcommand{\alphav}{{\bm\alpha}}
+\newcommand{\Am}{\mathbf{A}}
+\newcommand{\Bm}{\mathbf{B}}
+\newcommand{\Cm}{\mathbf{C}}
+\newcommand{\Sigmam}{\mathbf{\Sigma}}
+\newcommand{\At}{\mathcal{A}}
+\newcommand{\Bt}{\mathcal{B}}
+\newcommand{\Ct}{\mathcal{C}}
+
+\newcommand{\rank}{\mathrm{rank}}
+
+\newtheorem{Thm}{Theorem}[section]
+\newtheorem{Def}[Thm]{Definition}
+\newtheorem{Lem}[Thm]{Lemma}
+\newtheorem{Cor}[Thm]{Corollary}
+
+
+\numberwithin{equation}{section}
+\newcommand{\argmin}{\mathop{\arg\,\min}}
+
+% ===================================================================
+% 正文
+\section{Introduction}
+
+First, what's in the introduction?
+
+1) Introduce the research problem and related background of this paper. Note: In this section, try to use language instead of math.
+
+2) Write development trends and research progress, and write clearly one by one in different categories. Pay attention to the references, so as to avoid repeating them later.
+Find as many references as possible to read extensively. 
+The order of reading each paper is: title, abstract, conclusion, introduction, body. 
+Once you've read the title and abstract and know how to write it, you can stop reading. Try to state the main points (relative to this article) in one sentence per article.
+Doing literature review can help us find the positioning of our article in the whole process of discipline development, condensing innovation points and scientific value, and facilitating the writing of the third part.
+
+3) The research motivation, main research content and innovation points of this paper (the emphasis can be written after the main body of the article is completed).
+
+4) Finally, the Outline introduces the chapter structure of the article.
+
+References were arranged using bibtex; see \cite{KB09,HJ91-book} 
+at the end of this article. 
+Please sort by author name, including all author, title, magazine, year, volume, issue, and page number. 
+multiple authors name should be separated by {\tt  and} \cite{SDF17}.
+\section{Preliminary}
+
+A concise introduction to mathematical notation, and the necessary basics.
+
+We use $\REAL$ for the real number field and $\COPX$ for the complex number field. Commonly used can be predefined at the beginning of the article.
+Scalars are denoted by lowercase letters $a,b,c,\dots$or the Greek letters $\alpha,\beta,\dots$,
+Vector with bold lowercase $\av, \bv, \cv, \xv, \dots$, 
+matrix in bold capital letters $\Am, \Bm, \Cm, \Sigmam, \dots$,
+tensors are denoted with capital fancy letters $\At,\Bt,\Ct$.
+
+Mathematical formulas have inline formulas and inter-line formulas. For example:
+Let $\theta\in[0,2\pi)$be an angle. It is well-known that
+\begin{equation}\label{eq:2-1}
+\sin^2\theta+\cos^2\theta=1.
+\end{equation}
+Short mathematical formulas are written in inline formulas. Longer or important formulas are written in inline formulas. Important formulas are numbered. In English, commas and periods are followed by a space, which is different from Chinese. In particular, the mathematical formulas between lines should also be punctuated at the end, using commas or periods, depending on language conventions.
+
+Inter-line formulas are divided into single-line formulas and multi-line formulas, such as
+\begin{equation*}
+\|\av\|_2-\|\bv\|_2 \le \|\av+\bv\|_2 \le \|\av\|_2+\|\bv\|_2
+\end{equation*}
+and
+\begin{eqnarray}
+\sum_{i=1}^{10} i^i &=& 1+2^2+3^3+4^4+5^5+6^6+7^7+8^8+9^9+10^{10} \nonumber\\
+&= &10,405,071,317. \label{eq:2-2}
+\end{eqnarray}
+
+Reference formula: According to the identical equation \eqref{eq:2-1},  if an acute angle $\theta$ satisfying $\cos\theta=\frac{\sqrt{3}}{2}$, we have $\sin\theta=\frac{1}{2}$.  There is 1 space after the punctuation mark. You can't write chinese English, so don't add then here.
+
+
+\section{theory}
+
+
+\begin{Def}\label{Def:3.1}
+  Let 
+  \begin{equation}\label{prox}
+    \xv^{k+1} := \argmin_{\xv\in\REAL^n}~f(\xv)+\frac{1}{2\mu}\|\xv-\xv^k\|^2.
+  \end{equation}
+\end{Def}
+
+\begin{Lem}\label{Lem:3.2}
+  Lemma for general results, intermediate results. The key important result is the {\color{red} theorem}. Interlaced with explanatory language to enhance readability and help readers understand.
+\end{Lem}
+\begin{proof}
+  The proof of mathematics should be written in simple and direct language, do not show English in the mathematical proof, so that people do not understand. Do not write long mathematical derivations. If a mathematical derivation is very long (more than 5 equals or inequality signs), it should be broken into multiple formulas according to the point of the proof. Every time you derive an intermediate conclusion, use a full stop. Don't write multiple consecutive conclusions in a sentence.
+\end{proof}
+
+\begin{Thm}\label{Thm:3.3}
+  The rank of a generic $I\times J$ matrix $\Am$ is $\rank(\Am)=\min(I,J)$. 
+\end{Thm}
+
+\begin{Cor}\label{Cor:3.4}
+  This is Corollary \ref{Cor:3.4}.
+\end{Cor}
+
+
+\begin{algorithm}[t]
+\caption{Algorithm}\label{Alg}
+\renewcommand{\algorithmicrequire}{ \textbf{Input.}}    %Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{ \textbf{Output.}}    %UseOutput in the format of Algorithm
+\begin{algorithmic}[1]
+  \REQUIRE Input variables
+  \ENSURE  Output result
+
+  \STATE initial
+  \STATE conduct
+  \IF{judgement}
+    \STATE yes
+  \ELSE
+    \STATE no
+  \ENDIF
+  \FOR{for statement}
+    \STATE for conduction
+  \ENDFOR
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\section{Numercial Experiment}
+
+
+
+% \begin{figure}[th]
+%   \centering
+%   \includegraphics[width=0.7\textwidth]{video-iteration.jpg}
+%   \caption{简单介绍一下该图。}\label{Fig:A}
+% \end{figure}
+
+
+
+% \bibliographystyle{ieeetr}
+\bibliographystyle{siam}
+\bibliography{myrefs}
+
+
+\end{document}
