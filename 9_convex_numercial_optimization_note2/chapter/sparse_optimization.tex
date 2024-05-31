@@ -1,0 +1,119 @@
+\chapter{Sparse Optimization}
+
+\section{Sparse optimization: motivation}
+
+Many applications need structured, approximate solutions of optimization
+formulations, rather than exact solutions.
+\begin{itemize}
+    \item More Useful, More Credible
+    \begin{itemize}
+        \item Structured solutions are easier to understand.
+        \item They correspond better to prior knowledge about the solution.
+        \item They may be easier to use and actuate.
+        \item Extract just the essential meaning from the data set, not the less
+        important effects.
+    \end{itemize}
+    \item Less Data Needed
+    \begin{itemize}
+        \item Structured solution lies in lower-dimensional spaces $\Rightarrow$ need to gather /
+        sample less data to capture it.
+        \item Choose good structure instead of “overfitting” to a particular sample.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Sparse problem formulations}
+The structural requirements have deep implications for how we formulate
+and solve these problems. A common type of desired structure is sparsity: 
+We would like the approx
+solution $x \in \R^n$ to have few nonzero components. 
+A sparse formulation of "$\min_{x} f (x)$" could be
+"Find an approximate minimizer $\overline{x} \in \R^n$ 
+of $f$ such that $||x||_0 \leqslant k$,
+where $||x||_0$ denotes cardinality: the number of nonzeros in $x$.
+But the zero-norm is a nonconvex discontinuous function, 
+problems are hard to be solved. Use of $||x||_1$ has long been known to promote sparsity in $x$. 
+Also, it can solve without discrete variables and maintains convexity. 
+You can search the Internet to find out the rigorous justification of why does $\ell_1$ Work.
+
+\noindent{\bf$\ell_1$-Constrained Formulation:}
+\begin{equation}
+    \begin{aligned}
+        \min_{x\in X} f(x)\\
+    \text{s.t.} ||x||_1 \leqslant T,
+    \end{aligned}
+\end{equation}
+for some $T > 0$. Generally, smaller $T$ $\Rightarrow$ sparser $x$.
+
+
+\noindent{\bf Function-Constrained Formulation:}
+\begin{equation}
+    \begin{aligned}
+        \min_{x\in X} ||x||_1\\
+        \text{s.t.} f(x) \leqslant f
+    \end{aligned}
+\end{equation}
+for some $f \geqs \min f(x)$.
+
+\noindent{\bf Penalty Formulation:}
+\begin{equation}
+    \begin{aligned}
+        \min_{x\in X} f(x) + \lambda ||x||_1
+    \end{aligned}
+\end{equation}
+for some parameter $\lambda \geqs 0$. 
+Generally, larger $\lambda$ $\Rightarrow$ sparser $x$.
+
+
+
+\section{Application: LASSO problem}
+
+\section{Application: matrix completion problem}
+
+The Matrix Completion Problem is a fundamental optimization and machine learning problem with a wide range of applications. The goal is to recover a complete low-rank matrix from a partially observed or sampled matrix.
+
+Formally, let $M \in \mathbb{R}^{m \times n}$ be the partially observed matrix, where only a subset of the entries are known. The index set of the known entries is denoted as $\Omega \subset [m] \times [n]$. The objective is to find a low-rank matrix $X \in \mathbb{R}^{m \times n}$ that best approximates the known entries of $M$, while having low-rank structure.
+
+The standard formulation of the Matrix Completion Problem is as follows:
+
+\[
+\min_{X \in \mathbb{R}^{m \times n}} \|P_\Omega(X) - P_\Omega(M)\|_F^2 + \lambda \|X\|_*
+\]
+
+Here, $P_\Omega(X)$ is the projection operator that keeps the entries of $X$ in the set $\Omega$ and sets the rest to zero. The first term, $\|P_\Omega(X) - P_\Omega(M)\|_F^2$, is the data fidelity term that encourages the recovered matrix $X$ to match the known entries of $M$. The second term, $\|X\|_*$, is the nuclear norm of $X$, which serves as a convex surrogate for the rank of $X$, encouraging a low-rank solution. The parameter $\lambda > 0$ controls the trade-off between these two terms.
+
+The Matrix Completion Problem arises in a variety of applications, such as:
+
+1. Recommender systems: Predicting user preferences for unrated items based on the partially observed user-item rating matrix.
+2. Image processing: Recovering missing pixels in an image based on the known pixel values.
+3. Signal processing: Reconstructing a signal from a limited number of measurements.
+4. Bioinformatics: Inferring missing entries in biological data matrices, such as gene expression profiles.
+
+Numerous algorithms have been developed to solve the Matrix Completion Problem, including convex optimization methods, low-rank matrix factorization, and iterative thresholding techniques. These approaches have demonstrated strong theoretical guarantees and practical performance in various applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://www.math.unipd.it/~rinaldi/teaching/talk.pdf}{Methods for Sparse Optimization}
+    \item \href{https://pages.cs.wisc.edu/~swright/talks/sjw-siopt11.pdf}{Sparse Optimization}
+    \item \href{http://dsp.ee.cuhk.edu.hk/eleg5481/Lecture%20notes/13-%20compressive%20sensing/cs.pdf}{Sparse Optimization}
+\end{itemize}

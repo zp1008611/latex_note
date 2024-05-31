@@ -1,0 +1,163 @@
+
+ 
+ 
+% !Mode:: "TeX:UTF-8"
+
+\documentclass[UTF8,12pt,hyperref]{ctexart}
+
+\usepackage{amsfonts,amsmath,amssymb,mathrsfs}
+\usepackage{flafter,graphicx,xcolor}
+
+\newtheorem{algorithm}{Algorithm}
+ 
+ \newtheorem{theorem}{Theorem}
+% Matlab
+\usepackage{listings}
+\lstset{language=Matlab}%代码语言使用的是matlab
+\lstset{breaklines}%自动将长的代码行换行排版
+\lstset{extendedchars=false}%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{numbers=left, 
+numberstyle= \tiny,keywordstyle= \color{ blue!70},commentstyle=\color{red!50!green!50!blue!50}, 
+frame=shadowbox, rulesepcolor= \color{ red!20!green!20!blue!20}, 
+escapeinside=``} 
+%%%%%%%
+\usepackage{multicol}
+   
+ 
+\newcommand{\ep}{\hfill\rule{0.15cm}{0.35cm}\vskip 0.3cm}
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\ep\end{trivlist}} 
+
+
+%%%%%
+ \makeatletter
+\newenvironment{exercise}[1][{\color{blue}\bf Exercise}]%
+%\newenvironment{xiti}[1][{\color{blue}\bf Exercise}]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}%
+  {\color{blue}\bfseries
+#1}   }{%
+    \end{minipage}%
+    \end{lrbox}
+    \colorbox{green}{\noindent\usebox{\@tempboxa}} \end{center}  
+}
+ 
+\newenvironment{analysis}[1][\color{blue}\bf Analysis]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}
+  {\color{blue}\bfseries
+%#1} \\ \hspace*{2em} }{%
+ #1}  }{%
+    \end{minipage}%
+    \end{lrbox}
+    %\colorbox{gray}{\noindent\usebox{\@tempboxa}} \end{center}  %
+    \fbox{\usebox{\@tempboxa}}\end{center}%
+    %\colorbox{red}{\fbox{\noindent\usebox{\@tempboxa}} \end{center}
+}
+ 
+\newenvironment{solve}[1][\color{blue}\bf Solve]{\begin{trivlist}
+\item[\hskip \labelsep {\color{blue}\bfseries
+#1}]}{\hfill$\Box$\end{trivlist}}
+ \makeatother
+ 
+ 
+%%%%%%%%%
+ 
+\renewcommand{\baselinestretch}{1.38}
+ 
+ \pagestyle{plain} 
+ 
+ \textwidth  168 true mm \textheight 230 true mm \topmargin=-1.3cm
+\oddsidemargin   0pt \evensidemargin  20pt \marginparwidth  10pt
+
+\CTEXoptions[today=old]
+
+ 
+\begin{document}
+%%%================　　标　　题　　　================
+
+\begin{center}
+{\bf  THE SOUTH CHINA NORMAL UNIVERSITY\vspace{0.08cm}
+
+School of Mathematical Sciences\vspace{0.08cm}
+ 
+Numerical Analysis ( 2023-2024 The Second Term) \vspace{0.18cm}
+
+{\Large Homework 8: }\vspace{0.18cm}
+
+Due Date: \underline{May 15, 2022 (Wednesday)} }
+\end{center}\vspace{-0.16cm}
+
+\begin{center}
+  Name:\ \underline{\qquad 钟沛 \hspace{1cm}}\hspace{0.298cm}  
+  % 
+  Student No.:\ \underline{\qquad 2023021950\hspace{1cm}} 
+%
+Date:\ \ \underline{May 9, 2022} 
+ \end{center}
+ 
+ 
+%%%================　　正　　文　　　================
+
+\section*{\S 5.1 Exercises for Least-squares Line}
+  
+\begin{exercise}1.\qquad
+ Derive the normal equations for finding the least-squares parabola 
+  $$
+ y=Ax^2+B.
+ $$ 
+ \end{exercise}   
+  
+\begin{solve}
+  Suppose that $\{(x_k,y_k)\}_{k=1}^N$ are $N$ points, where the abscissas $\{x_k\}_{k=1}^N$ are distinct.
+  The coefficients $A$ and $B$ will minimize the quantity:
+  \begin{align*}
+    E(A,B) = \sum\limits_{k=1}^N(Ax_k^2+B-y_k)^2.
+  \end{align*}
+  The partial derivatives $\partial E/\partial A$ and $\partial E/\partial B$ must all be zero.
+  This results in 
+  \begin{align}
+    0&=\frac{\partial E(A,B)}{\partial A}= 2\sum\limits_{k=1}^N (Ax_k^2+B-y_k)x_k^2,\label{eq:partial A}\\
+    0&=\frac{\partial E(A,B)}{\partial B}= 2\sum\limits_{k=1}^N (Ax_k^2+B-y_k).\label{eq:partial B}
+  \end{align}
+  Equations (\ref{eq:partial A}) and (\ref{eq:partial B}) can be rearranged in the standard form for a system
+  and result in the normal equations:
+  \begin{align}
+    (\sum\limits_{k=1}^{N}x_k^4)A+(\sum\limits_{k=1}^Nx_k^2)B&=\sum\limits_{k=1}^N x_k^2y_k,\\
+    (\sum\limits_{k=1}^{N}x_k^2)A+NB&=\sum\limits_{k=1}^N y_k.
+  \end{align}
+\end{solve}
+
+%%%================　　正　　文　　　================
+
+\section*{\S  5.2 Exercises for Curve Fitting}
+  
+\begin{exercise}1.\qquad
+Carry out the indicated change of variables in Table 5.6, and derive the Iinearized form for the following functions:
+$$
+\displaystyle y=\dfrac{D}{x+C}.
+$$
+\end{exercise} 
+
+\begin{solve}
+  If $C\neq 0$, then 
+  \begin{align*}
+    y=\frac{D}{x+C} \Leftrightarrow xy+Cy=D \Leftrightarrow y=-\frac{1}{C}xy + \frac{D}{C}.
+  \end{align*}
+  Let $X=xy$, $Y=y$, $A=-\frac{1}{C}$, $B=\frac{D}{C}$. This results in a linear relation between the new variables $X$ and $Y$:
+    $Y=AX+B$. 
+  If $C=0$, then
+  \begin{align*}
+    y=\frac{D}{x+C}=\frac{D}{x}.
+  \end{align*}
+  Let $X=\frac{1}{x}$, $Y=y$ , $A=D$, $B=0$. This results in a linear relation between the new variables $X$ and $Y$:
+    $Y=AX+B$.
+\end{solve}
+
+\end{document}
+
+
+ 
+ 

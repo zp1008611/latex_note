@@ -1,0 +1,231 @@
+% !Mode:: "TeX:UTF-8"
+
+\documentclass[UTF8,12pt,hyperref]{ctexart}
+
+\usepackage{amsfonts,amsmath,amssymb,mathrsfs}
+\usepackage{flafter,graphicx,xcolor}
+
+\newtheorem{algorithm}{Algorithm}
+ 
+ \newtheorem{theorem}{Theorem}
+% Matlab
+\usepackage{listings}
+\lstset{language=Matlab}%代码语言使用的是matlab
+\lstset{breaklines}%自动将长的代码行换行排版
+\lstset{extendedchars=false}%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{numbers=left, 
+numberstyle= \tiny,keywordstyle= \color{ blue!70},commentstyle=\color{red!50!green!50!blue!50}, 
+frame=shadowbox, rulesepcolor= \color{ red!20!green!20!blue!20}, 
+escapeinside=``} 
+%%%%%%%
+\usepackage{multicol}
+   
+ 
+\newcommand{\ep}{\hfill\rule{0.15cm}{0.35cm}\vskip 0.3cm}
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\ep\end{trivlist}} 
+
+
+%%%%%
+ \makeatletter
+\newenvironment{exercise}[1][{\color{blue}\bf Exercise}]%
+%\newenvironment{xiti}[1][{\color{blue}\bf Exercise}]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}%
+  {\color{blue}\bfseries
+#1}   }{%
+    \end{minipage}%
+    \end{lrbox}
+    \colorbox{green}{\noindent\usebox{\@tempboxa}} \end{center}  
+}
+ 
+\newenvironment{analysis}[1][\color{blue}\bf Analysis]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}
+  {\color{blue}\bfseries
+%#1} \\ \hspace*{2em} }{%
+ #1}  }{%
+    \end{minipage}%
+    \end{lrbox}
+    %\colorbox{gray}{\noindent\usebox{\@tempboxa}} \end{center}  %
+    \fbox{\usebox{\@tempboxa}}\end{center}%
+    %\colorbox{red}{\fbox{\noindent\usebox{\@tempboxa}} \end{center}
+}
+
+   \newtheorem{corollary}{Corollary}
+ 
+\newenvironment{solve}[1][\color{blue}\bf Solve]{\begin{trivlist}
+\item[\hskip \labelsep {\color{blue}\bfseries
+#1}]}{\hfill$\Box$\end{trivlist}}
+ \makeatother
+ 
+ 
+%%%%%%%%%
+ 
+\renewcommand{\baselinestretch}{1.38}
+ 
+ \pagestyle{plain} 
+ 
+ \textwidth  168 true mm \textheight 230 true mm \topmargin=-1.3cm
+\oddsidemargin   0pt \evensidemargin  20pt \marginparwidth  10pt
+
+\CTEXoptions[today=old]
+
+ 
+\begin{document}
+%%%================　　标　　题　　　================
+
+\begin{center}
+{\bf  THE SOUTH CHINA NORMAL UNIVERSITY\vspace{0.08cm}
+
+School of Mathematical Sciences\vspace{0.08cm}
+ 
+Numerical Analysis ( 2022-2023 The Second Term) \vspace{0.18cm}
+
+{\Large Homework 9: }\vspace{0.18cm}
+
+Due Date: \underline{May 22, 2022 (Wednesday)} }
+\end{center}\vspace{-0.16cm}
+
+\begin{center}
+   Name:\ \underline{\qquad 钟沛 \hspace{1cm}}\hspace{0.298cm}  
+   % 
+   Student No.:\ \underline{\qquad 2023021950\hspace{1cm}} 
+ %
+Date:\ \ \underline{May 16, 2024} 
+ \end{center}
+ 
+ 
+%%%================　　正　　文　　　================
+ 
+
+ 
+ %%%%%% Exercise 1
+  
+
+
+　%%%=========== 
+
+\section*{\S 5.3 Exercises for Interpolation by Spline Functions}
+
+\begin{exercise} 1     \quad  %  1
+ Consider the polynomial $S(x)=a_0 + a_1x + a_2x^2 + a_3x^3$.
+\begin{description}
+\item[(a)] Show that the conditions $S(1)=1$, $S^{\prime}(1)=0$, $S(2) =2$, and $S^{\prime}(2)=0$ produce the system of equations
+$$
+\begin{array}{rcrcrcrcr}
+a_0 & + & a_1   &+ & a_2 & +  & a_3 &=&1   \\
+        &    & a_1 & + & 2a_2 &+  & 3a_3 &=&0  \\
+a_0 & + & 2a_1 &+ & 4a_2& + & 8a_3 &=&2  \\
+        &    & a_1& +  & 4a_2 &+ & 12a_3 &=&0
+\end{array}
+$$
+
+\item[(b)] Solve the system in part (a).
+\end{description}
+\end{exercise}
+
+\begin{solve}
+   (a) Since $S(x)=a_0+a_1x+a_2x^2+a_3x^3$, by the conditions $S(1)=1$ and $S(2)=2$, we obtain $a_0+a_1+a_2+a_3=1$ and $a_0+2a_1+4a_2+8a_3=2$.
+      Since $S'(x)=a_1+2a_2x+3a_3x^2$, by the conditions $S'(1)=0$ and $S'(2)=0$, we obtain $a_1+2a_2+3a_3=0$ and $a_1+4a_2+12a_3=0$.\\
+   (b) We can use Gaussian Elimination Method and back-substitution algorithm to solve the system
+   \begin{equation}
+      \begin{aligned}
+         \begin{array}{rcrcrcrcr}
+         a_0 & + & a_1   &+ & a_2 & +  & a_3 &=&1   \\
+         a_0 & + & 2a_1 &+ & 4a_2& + & 8a_3 &=&2  \\
+               &    & a_1 & + & 2a_2 &+  & 3a_3 &=&0  \\
+               &    & a_1& +  & 4a_2 &+ & 12a_3 &=&0
+         \end{array}
+      \end{aligned}
+      \label{eq:formula1}
+   \end{equation}
+   The variable $a_0$ is eliminated from the second equation in (\ref{eq:formula1}) by
+   subtracting the first equation from it.
+   \begin{equation}
+      \begin{aligned}
+      \begin{array}{rcrcrcrcr}
+         a_0 & + & a_1   &+ & a_2 & +  & a_3 &=&1   \\
+                 &    & a_1 &+ & 3a_2& + & 7a_3 &=&1  \\
+                 &    & a_1 & + & 2a_2 &+  & 3a_3 &=&0  \\
+                 &    & a_1& +  & 4a_2 &+ & 12a_3 &=&0
+         \end{array}
+      \end{aligned}
+      \label{eq:formula2}
+   \end{equation} 
+   The variable $a_1$ is eliminated from the third and forth equations in (\ref{eq:formula2}) by 
+   subtracting the second equation from them.
+   \begin{equation}
+      \begin{aligned}
+      \begin{array}{rcrcrcrcr}
+         a_0 & + & a_1   &+ & a_2 & +  & a_3 &=&1   \\
+                 &    & a_1 &+ & 3a_2& + & 7a_3 &=&1  \\
+                 &    &  &  & -a_2 &+  & -4a_3 &=&-1  \\
+                 &    & &  & a_2 &+ & 5a_3 &=&-1
+         \end{array}
+      \end{aligned}
+      \label{eq:formula3}
+   \end{equation}
+   The variable $a_2$ is eliminated from the forth equation in (\ref{eq:formula3}) by 
+   adding the third equation from it. Finally, we Multiply the third equation by $-1$ and arrive at the equivalent
+   upper-triangular system:
+   \begin{equation}
+      \begin{aligned}
+      \begin{array}{rcrcrcrcr}
+         a_0 & + & a_1   &+ & a_2 & +  & a_3 &=&1   \\
+                 &    & a_1 &+ & 3a_2& + & 7a_3 &=&1  \\
+                 &    &  &  & a_2 &+  & 4a_3 &=&1  \\
+                 &    & &  &  & & a_3 &=&-2
+         \end{array}
+      \end{aligned}
+      \label{eq:formula4}
+   \end{equation}
+   Using back-substitution algorithm, we obtain
+   $a_3=-2,a_2=9,a_1=-12,a_0=6$.
+\end{solve}
+   
+
+%%%================　　正　　文　　　================\section*{\S 4.3 Exercise for Lagrange Approximation}
+
+\section*{\S 6.1  Exercises for Approximating The Derivative}
+
+
+\begin{corollary}\label{Cor:6-1b}\vspace{-0.18cm} 
+Assume that $f \in C^3[a, b]$, $x- h, x, x+h\in [a, b]$, and that numerical computations are made. If $|e_{-1}| \leq \epsilon, |e_1| \leq \epsilon$, and $M = \max_{a \leq x \leq b}\{|f^{(3)}(x)|\}$, then
+\begin{equation}\label{Eqn:6-1-20}
+|E(f, h)| \leq \dfrac{\epsilon}{h} + \dfrac{Mh^2}{6},  
+\end{equation}
+and the value of $h$ that minimizes the right-hand side of \eqref{Eqn:6-1-20} is \vspace{-0.28cm} 
+\begin{equation}\label{Eqn:6-1-21}
+h = \left( \dfrac{3\epsilon}{M} \right)^{1/3}. 
+\end{equation}
+\end{corollary}  
+ 
+
+\begin{exercise}1.\qquad
+ Show that \eqref{Eqn:6-1-21} is the value of $h$ that minimizes the right-hand side of \eqref{Eqn:6-1-20}.
+\end{exercise}   
+
+\begin{solve}
+   Let $g(h)=\frac{\epsilon}{h}+\frac{Mh^2}{6}$, which is the right-hand side formula of (\ref{Eqn:6-1-20}).
+   Since $g'(h)=-\frac{\epsilon}{h^2}+\frac{Mh}{3}$ and for $x,y\in (0,+\infty)$, 
+   \begin{align*}
+      (g'(x)-g'(y))(x-y) &=  (-\frac{\epsilon}{x^2}+\frac{Mx}{3}+\frac{\epsilon}{y^2}-\frac{My}{3})(x-y)\\
+      &=\frac{\epsilon(x^2-y^2)(x-y)}{x^2y^2} + \frac{M(x-y)^2}{3}\\
+      &=\frac{\epsilon(x-y)^2(x+y)}{x^2y^2} + \frac{M(x-y)^2}{3}\\
+      &\geqslant 0,
+   \end{align*}
+   $g(h)$ is convex. Hence, the local minimizer of $g(h)$ is a global minimizer.
+   Solve $g'(h)=0$, we obtain $h = \left( \dfrac{3\epsilon}{M} \right)^{1/3}$. Hence, 
+   $h = \left( \dfrac{3\epsilon}{M} \right)^{1/3}$ is the value that minimizes the right-hand side of \eqref{Eqn:6-1-20}.
+  
+\end{solve}
+ 
+\end{document}
+
+　
+
+ 
+ 

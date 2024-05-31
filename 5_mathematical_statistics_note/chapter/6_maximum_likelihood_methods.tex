@@ -1,0 +1,42 @@
+\chapter{Maximum Likelihood Methods}
+
+\section{Rao-Cram\'er Lower Bound and Efficiency}
+
+
+
+\section{Homework}
+
+\begin{exercise}{6.1.4}{}
+    Suppose $X_1,\dots,X_n$ are iid with pdf $f(x;\theta)=\frac{2x}{\theta^2},0<x\leqs \theta$, zero elsewhere. Note this is a nonregular case. Find:\\
+    (a) The mle $\hat{\theta}$ for $\theta$.\\
+    (b) The constant $c$ so that $E(c\hat{\theta})=\theta$.\\
+    (c) The mle for the median of the distribution. Show that it is a consistent estimator.
+\end{exercise}
+
+\begin{exercise}{6.2.8}{}
+    Let $X$ be $N(0,\theta)$, $0<\theta<\infty$.\\
+    (a) Find the Fisher information $I(\theta)$.\\
+    (b) If $X_1,X_2,\dots,X_n$ is a random sample from this distribution,
+    show that the mle of $\theta$ is an efficient estimator of $\theta$.\\
+    (c) What is the asymptotic distribution of $\sqrt{n}(\hat{\theta}-\theta)$?
+\end{exercise}
+
+\begin{exercise}{6.2.11}{}
+    Let $\overline{X}$ be the mean of a random sample of size $n$ from a $N(\theta,\sigma^2)$ 
+    distribution, $-\infty<\theta<\infty,\sigma^2>0$. Assume that $\sigma^2$ is known. Show that $\overline{X}^2-\frac{\sigma^2}{n}$ 
+    is an unbiased estimator of $\theta^2$ and find its efficiency.
+\end{exercise}
+
+
+\begin{exercise}{6.4.3}{}
+    Let $X_1,X_2,\dots,X_n$ be iid, each with the distribution having pdf $f(x;\theta_1,\theta_2)=(1/\theta_2)e^{-(x-\theta_1)/\theta_2}, \theta_1\leqs x<\infty, -\infty<\theta_2<\infty$,
+    zero elsewhere. Find the maximum likelihood estimators of $\theta_1$ and $\theta_2$. 
+\end{exercise}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://www.stat.purdue.edu/~tlzhang/stat517/chapter6_517.pdf}{Maximum Likelihood Methods}
+    \item \href{https://tomoki-okuno.com/files/math/Ch6_sol.pdf}{ex6.1.4}
+    \item \href{https://tomoki-okuno.com/files/math/Ch6_sol.pdf}{ex6.2.8}
+\end{itemize}

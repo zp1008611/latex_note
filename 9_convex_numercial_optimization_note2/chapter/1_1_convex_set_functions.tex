@@ -1,0 +1,83 @@
+\chapter{Convex Sets and Convex Functions}
+
+\noindent{This chapter mainly introduces} \\
+(1) The definition of convex set and convex function \\
+(2) The continuous property of convex function \\
+(3) Methods for testing convex functions\\
+
+
+\section{Convex Sets and Convex Functions}
+
+\begin{definition}{Convex Sets and Functions: The Epi-graphical Perspective}{}
+    (1) A set $C\subset \R^n$ is said to be a convex set if for every $x,y\in C$ and $\lambda\in [0,1]$, one has
+    \begin{align}
+        (1-\lambda)x+\lambda y \in C.
+    \end{align}
+    (2) Let $C$ be a convex subset of $\R^n$. 
+    (2) Given an extended real-valued function $f:\R^n\rightarrow \R_e:=\R\cup {\pm \infty}$,
+    the epi-graph and domain of $f$ are given by
+    \begin{align}
+        \text{epi}(f) := \{(x,r)\in \R^n\times \R|f(x)\leqs r\} \\
+        \text{dom}(f) := \{x\in \R^n|f(x)\leqs +\infty\},
+    \end{align}
+    respectively.\\
+    (3) The function $f:\R^n\rightarrow \R_e$ is said to be convex if $\text{epi}(f)$ is convex.
+\end{definition}
+
+\begin{lemma}{Convexity and Secant Lines}{}
+    The function $f:\R^n\rightarrow \overline{\R}:=\R\cup \{+\infty\}$ is convex if and only if,
+    for every $x,y\in \text{dom} f$ and $\lambda\in [0,1]$, we have
+    \begin{align}
+        f((1-\lambda)x+\lambda y) \leqs (1-\lambda) f(x) +\lambda f(y).
+        \label{eq:Convexity and Secant Lines}
+    \end{align}
+    That is, the secant line connecting $(x,f(x))$ and $(y,f(y))$ lies above the graph of $f$.
+\end{lemma}
+
+\begin{proof}
+    ($\Rightarrow$): If $f$ is convex, then $\text{epi}(f)$ is convex. That is, 
+    for $(x,f(x)),(y,f(y))\in \text{epi}(f)$ and $\lambda\in [0,1]$, 
+    \begin{align*}
+        (1-\lambda) (x,f(x)) +\lambda (y,f(y))\in \text{epi}(f).
+    \end{align*}
+    That is,
+    \begin{align*}
+        f((1-\lambda)x+\lambda y)\leqs (1-\lambda)f(x)+\lambda f(y).
+    \end{align*}
+    ($\Leftarrow$):
+    Let $(x,r_1),(y,r_2)\in \text{epi}(f)$ and $\lambda\in [0,1]$. If (\ref{eq:Convexity and Secant Lines}) holds, then 
+    \begin{align*}
+        f((1-\lambda)x+\lambda y)\leqs (1-\lambda)f(x)+\lambda f(x)\leqs (1-\lambda)r_1+\lambda r_2.
+    \end{align*}
+    Therefore, $((1-\lambda)x+\lambda y, (1-\lambda)r_1+\lambda r_2)\in \text{epi}(f)$. Then 
+    $(1-\lambda) (x,r_1) + \lambda (y,r_2)\in \text{epi}(f)$. So $\text{epi}(f)$ is convex and $f$ is convex.
+\end{proof}
+
+\section{Local Lipschitz Continuity of Convex Functions}
+
+Recall that a function $F:\R^n\rightarrow \R^m$ is said to be Lipschitz continuous on a set $S\subset \R^n$
+if there is a constant $L>0$ such that 
+\begin{align*}
+    ||F(x)-F(y)||\leqs L||x-y|| \quad \forall x,y\in S.
+\end{align*}
+The function $F$ is said to be locally Lipschitz on an open set $V\subset \R^n$ if for every $\overline{x}\in V$ there is an $\epsilon>0$ and $L>0$ such that 
+\begin{align*}
+    ||F(x)-F(y)||\leqs L||x-y|| \quad \forall x,y\in \overline{x}+\epsilon \mathbb{B}\subset V,
+\end{align*}
+where $\mathbb{B}:=\{x:||x||\leqs 1\}$. In this section we establish the remarkable fact that a convex function is locally Lipschitz continuous
+on the interior of its domain. It is possible to generalize this results to convex functions whose domains
+have no interior. But this requires an understanding of the relative topology of convex sets. We begin by
+establishing the local boundedness of a convex function on the interior of its domain.
+
+\section{Tests for Convexity}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://www.math.cuhk.edu.hk/course_builder/1920/math4230/}{convex analysis cuhk}
+    \item \href{https://ocw.mit.edu/courses/6-253-convex-analysis-and-optimization-spring-2012/resources/mit6_253s12_lec02/}{Convex Analysis and Optimization, Lecture 2}
+    \item \href{https://link.springer.com/content/pdf/10.1007/0-387-31082-7_1.pdf}{Convex sets and convex functions:
+    the fundamentals}
+    \item \href{https://sites.math.washington.edu/~burke/crs/408/notes/Math408_W2020/math408text.pdf}{nonlinear optimization 5.1}
+    \item \href{https://sites.math.washington.edu/~burke/crs/408/notes/Math408_W2020/math408text.pdf}{nonlinear optimization 5.3}
+    \item \href{https://sites.math.washington.edu/~burke/crs/408/notes/Math408_W2020/math408text.pdf}{nonlinear optimization 5.4}
+\end{itemize}

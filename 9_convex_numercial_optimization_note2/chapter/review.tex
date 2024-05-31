@@ -1,0 +1,58 @@
+\chapter{Knowledge review}
+
+\section{Taylor Expansion}
+\begin{theorem}{taylor formula for Peano-type remainder of a binary function}{taylor formula for Peano-type remainder of a binary function}
+    $f(x,y)$ is a function which is continuously derivable up to order $n$ in some neighborhood of point $(x_0,y_0)$. 
+    Then as $\rho = \sqrt{h^2+k^2}\rightarrow 0$, 
+    \begin{equation}
+        \begin{aligned}
+            f(x_0+h,y_0+k)&=f(x_0,y_0)+(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y})f(x_0,y_0)
+            +\frac{1}{2!}(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y})^2f(x_0,y_0)\\
+            &\quad +\dots+
+            \frac{1}{n!}(h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y})^n f(x_0,y_0) + o(\rho^n)
+        \end{aligned}
+        \label{eq:taylor formula for Peano-type remainder of a binary function}
+    \end{equation}
+    holds. (\ref{eq:taylor formula for Peano-type remainder of a binary function}) 
+    is called the taylor formula of order $n$ with Peano-type remainder of $f$ at $(x_0,y_0)$.
+\end{theorem}
+
+
+\begin{proposition}{}{}
+    Let $f:X\rightarrow \R^n$, where $X\subset \R^n$ is open. 
+    $f$ is differentiable at $\overline{x}$, then there exists a vector $\nabla f(\overline{x})$ 
+    and a function $\alpha(\overline{x},y):\R^n\rightarrow \R$ satisfying $\lim_{y\rightarrow 0}\alpha(\overline{x},y)=0$, such that for each $x\in X$
+    \begin{align}
+        f(x) = f(\overline{x}) +\nabla f(\overline{x})^T(x-\overline{x}) + ||x-\overline{x}||\alpha(\overline{x},x-\overline{x}).
+        \label{eq:differentiable taylor}
+    \end{align} 
+\end{proposition}
+\begin{proof}
+    Extending Theorem \ref{thm:taylor formula for Peano-type remainder of a binary function} to $n$ dimensions,
+    we can get 
+    \begin{align*}
+        f(x) = f(\overline{x}) + (\frac{\partial f(\overline{x})}{\partial x_1},\frac{\partial f(\overline{x})}{\partial x_2},\dots,\frac{\partial f(\overline{x})}{\partial x_n}) (x-\overline{x})+o(||x-\overline{x}||).
+    \end{align*}
+    Since $o(||x-\overline{x}||)=||x-\overline{x}||o(1)(x\rightarrow \overline{x})$, let $\alpha(\overline{x},y)=o(1)(y=x-\overline{x}\rightarrow 0)$,
+    $\lim_{y\rightarrow 0}\alpha(\overline{x},y)=0$. And let $\nabla f(x)^T = (\frac{\partial f(\overline{x})}{\partial x_1},\frac{\partial f(\overline{x})}{\partial x_2},\dots,\frac{\partial f(\overline{x})}{\partial x_n})$, 
+    then (\ref{eq:differentiable taylor}) holds.
+\end{proof}
+
+\begin{proposition}{}{}
+    Let $f:X\rightarrow \R^n$, where $X\subset \R^n$ is open. 
+    $f$ is twice differentiable at $\overline{x}$, then there exists a vector $\nabla f(\overline{x})$ 
+    , an $n\times n$ symmetric matrix $H(\overline{x})$ and a function $\alpha(\overline{x},y):\R^n\rightarrow \R$ satisfying $\lim_{y\rightarrow 0}\alpha(\overline{x},y)=0$, such that for each $x\in X$
+    \begin{align}
+        f(x) = f(\overline{x}) +\nabla f(\overline{x})^T(x-\overline{x}) + \frac{1}{2}(x-\overline{x})^TH(\overline{x})(x-\overline{x}) + ||x-\overline{x}||^2\alpha(\overline{x},x-\overline{x}).
+        \label{eq:differentiable taylor}
+    \end{align} 
+\end{proposition}
+
+\section{Row space, column space and nullspace of matrix}
+
+
+\section{Reference}
+\begin{itemize}
+    \item \href{}{mathematical analysis SCNU version}
+    \item \href{}{IOE 511/Math 652: Continuous Optimization Methods ch2}
+\end{itemize}

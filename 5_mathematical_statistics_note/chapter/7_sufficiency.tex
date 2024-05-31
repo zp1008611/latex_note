@@ -1,0 +1,30 @@
+\chapter{Sufficiency}
+
+\begin{exercise}{7.1.2}{}
+    Let $X_1,X_2,\dots,X_n$ denote a random sample from a normal distribution with mean zero and variance $\theta$, $0<\theta<\infty$.
+    Show that $\sum\limits_{i=1}^{n} X_i^2/n$ is an unbiased estimator of $\theta$ and has variance $2\theta^2/n$.
+\end{exercise}
+
+\begin{exercise}{7.1.6}{}
+    Let $X_1,X_2,\dots,X_n$ denote a random sample from a Poisson distribution with parameter $\theta$, 
+    $0<\theta<\infty$. Let $Y=\sum\limits_{i=1}^{n}X_i$ and let $\mathcal{L}[\theta,\delta(y)]=[\theta-\delta(y)]^2$. 
+    If we restrict our considerations to decision functions of the form $\delta(y)=b+y/n$, where $b$ does not depend on $y$,
+    show that $R(\theta,\delta)=b^2+\theta/n$. What decision function of this form yields a uniformly smaller risk than every other 
+    decision function of this form?
+    With this solution, say $\delta$, and $0<\theta<\infty$, determine $\max_{\theta} R(\theta,\delta)$ if it exists.
+\end{exercise}
+
+\begin{exercise}{7.3.3}{}
+    If $X_1$,$X_2$ is a random sample of size $2$ from a distribution having pdf $f(x;\theta)=(1/\theta)e^{-x/\theta}$,
+    $0<x<\infty$,$0<\theta<\infty$,zero elsewhere, find the joint pdf of the sufficient statistic $Y_1=X_1+X_2$ for $\theta$
+    and $Y_2=X_2$. Show that $Y_2$ is an unbiased estimator of $\theta$ with variance $\theta^2$. Find $E(Y_2|y_1)=\phi(y_1)$ and 
+    the variance of $\phi(Y_1)$.
+\end{exercise}
+
+\section{Reference}
+
+\begin{itemize}
+    \item \href{https://www.stat.purdue.edu/~tlzhang/stat517/chapter7_517.pdf}{Sufficiency}
+    \item \href{https://tomoki-okuno.com/files/math/Ch7_sol.pdf}{7.1.2}
+    \item \href{https://zhuanlan.zhihu.com/p/570096188}{7.1.6}
+\end{itemize}

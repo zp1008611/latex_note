@@ -117,10 +117,11 @@
 % }
 
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter % 按每个 chapter 分别编号
 ]{definition% 环境名
 }{Definition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
+  enhanced, breakable, % 允许跨页
   sharp corners, % 直角；默认是圆角
   colback=Green!5,
   colframe=Green!50!black,
@@ -129,48 +130,39 @@
 }
 
 
-% 计数器设置
-\makeatletter
-\renewcommand\theHtcb@cnt@definition{\thechapter.\arabic{tcb@cnt@definition}}
-\makeatother
-
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter % 按每个 chapter 分别编号
 ]{theorem% 环境名
 }{Theorem% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
+  enhanced, breakable, % 允许跨页
   sharp corners, % 直角；默认是圆角
   colback=yellow!10,
   colframe=yellow!50!black,
   fonttitle=\sffamily\small
 }{thm% label 前缀
 }
-% 计数器设置
-\makeatletter
-\renewcommand\theHtcb@cnt@theorem{\thechapter.\arabic{tcb@cnt@theorem}}
-\makeatother
+
 
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter % 按每个 chapter 分别编号
 ]{proposition% 环境名
 }{Proposition% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
+  enhanced, breakable, % 允许跨页
   sharp corners, % 直角；默认是圆角
   colback=Red!5,
   colframe=Red!50!black,
   fonttitle=\sffamily\small
 }{prop% label 前缀
 }
-% 计数器设置
-\makeatletter
-\renewcommand\theHtcb@cnt@proposition{\thechapter.\arabic{tcb@cnt@proposition}}
-\makeatother
 
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter % 按每个 chapter 分别编号
 ]{corollary% 环境名
 }{Corollary% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
+  enhanced, breakable, % 允许跨页
   sharp corners, % 直角；默认是圆角
   colback=Blue!5,
   colframe=Blue!50!black,
@@ -178,16 +170,12 @@
 }{cor% label 前缀
 }
 
-% 计数器设置
-\makeatletter
-\renewcommand\theHtcb@cnt@corollary{\thechapter.\arabic{tcb@cnt@corollary}}
-\makeatother
-
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter, % 按每个 chapter 分别编号
 ]{lemma% 环境名
 }{Lemma% 这个参数可以设成“定理”“引理”“推论”等，编号就会变成“定理 1.1”“引理 1.1”“推论 1.1”等
 }{
+  enhanced, breakable, % 允许跨页
   sharp corners, % 直角；默认是圆角
   colback=Gray!10,
   colframe=Gray!50!black,
@@ -195,14 +183,9 @@
 }{lem% label 前缀
 }
 
-% 计数器设置
-\makeatletter
-\renewcommand\theHtcb@cnt@lemma{\thechapter.\arabic{tcb@cnt@lemma}}
-\makeatother
-
 
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter % 按每个 chapter 分别编号
 ]{example}
 {Example}%
   {
@@ -214,14 +197,9 @@
   }
 {exa}
 
-% 计数器设置
-\makeatletter
-\renewcommand\theHtcb@cnt@example{\thechapter.\arabic{tcb@cnt@example}}
-\makeatother
-
 
 \newtcbtheorem[
-  auto counter,number within = chapter % 按每个 chapter 分别编号
+  number within = chapter % 按每个 chapter 分别编号
 ]{exercise}
 {Exercise}%
   {

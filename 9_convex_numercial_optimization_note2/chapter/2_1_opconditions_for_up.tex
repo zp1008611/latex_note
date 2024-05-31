@@ -1,0 +1,105 @@
+\chapter{Optimality conditions for unconstrained problems}
+
+
+\section{Introduction}
+The definitions of global and local solutions of optimization problems are intuitive, 
+but usually impossible to check directly. 
+Hence, we will derive easily verifiable conditions that are either
+necessary for a point to be a local minimizer (thus helping us to identify candidates for minimizers),
+or sufficient (thus allowing us to confirm that the point being considered is a local minimizer), or,
+sometimes, both.
+
+\section{Optimality conditions: the necessary and the sufficient}
+
+
+\begin{align*}
+    (\text{P})\quad \min_{\vect{x}\in\R^n} f(\vect{x})
+\end{align*}
+where $f(x):\R^n\rightarrow\R$.
+
+Necessary condition for local optimality: "if $\overline{x}$ is a local minimizer of (P), 
+then $\overline{x}$ must satisfy\dots"
+Such conditions help us identify all candidates for local optimizers.
+
+\begin{definition}{Directional Derivative}{}
+    Let $f:\R^n\rightarrow \R$ and $x,d\in \R$. The directional derivative of $f$ at $x$ in the direction $d$ defined as 
+    \begin{align}
+        f'(x;d)=\lim_{t\downarrow 0} \frac{f(x+td)-f(x)}{t}.
+    \end{align}
+    It is important to observe that this is a one sided derivative since $t\downarrow 0$.
+\end{definition}
+
+\begin{lemma}{}{}
+    Let $f:\R^n\rightarrow \R$ and let $\overline{x}\in \R^n$ be a local solution to the problem $\min_{x\in \R^n} f(x)$. Then
+    \begin{align}
+        f'(x;d)\geqs 0
+    \end{align}
+    for every direction $d\in \R^n$ for which $f'(x;d)$ exists.
+\end{lemma}
+
+\begin{proof}
+Since $\overline{x}$ is a local solution, there exists $\epsilon > 0$ such that for all $x\in B(\overline{x},\epsilon)$, we have
+\[
+f(x) \geqs f(\overline{x})
+\]
+
+This means that for any sufficiently small $t > 0$, we have
+\[
+\frac{f(\overline{x}+td) - f(\overline{x})}{t} \geqs 0
+\]
+
+Since $f'(x;d)$ exists, as $t\to 0^+$, we have
+\[
+f'(\overline{x};d) = \lim_{t\to 0^+} \frac{f(\overline{x}+td) - f(\overline{x})}{t} \geqs 0.
+\]
+\end{proof}
+
+\begin{remark}
+    If $f$ is differentiable at $x$, we have $f' (x; d)  = \nabla f(x)^Td$ for all $d \in R^n$.
+    let's prove the statement: Since $f$ is differentiable at $x$, we can use the gradient $\nabla f(x)$ to represent the linear approximation of $f$ around $x$
+    \begin{align*}
+        f(x + h) = f(x) + \nabla f(x)^T h + o(\|h\|)
+    \end{align*}
+    Then 
+    \begin{align*}
+        f' (x; d) &= \lim_{t \to 0^+} \frac{f(x+td)-f(x)}{t} \\
+                  &= \lim_{t\to 0^+}\frac{\nabla f(x)^T (td) + o(t\|d\|)}{t} \\
+                  &= \nabla f(x)^Td + \lim_{t\to 0^+}\frac{\|d\|o(t)}{t} = \nabla f(x)^Td.
+    \end{align*}
+\end{remark}
+
+
+\begin{theorem}{First-Order necessary condition for local optimality of Differentiable Functions}{}
+    Let $f:\R^n\to \R$ be differentiable at a point $\overline{x}\in \R^n$. If $\overline{x}$ is a local minimum of $f$, 
+    then $\nabla f(\overline{x})=0$.
+\end{theorem}
+
+\begin{proof}
+    Since $f$ is differentiable at $\overline{x}$, we have $f'(\overline{x};d)=\nabla f(x)^Td$ for all $d\in \R^n$. Then 
+    \begin{align*}
+        0\leqs f'(\overline{x};d)=\nabla f(\overline{x})^Td \text{for all} d\in \R^n.
+    \end{align*}
+    Taking $f=-\nabla f(\overline{x})$ we get 
+    \begin{align*}
+        0\leqs -\nabla f(\overline{x})^T\nabla f(\overline{x})=-\|\nabla f(\overline{x})\|^2\leqs 0.
+    \end{align*}
+    Therefore, $\nabla f(\overline{x})=0$.
+\end{proof}
+
+\begin{theorem}{Second-Order necessary condition for local optimality of Differentiable Functions}{}
+    Let $f:\R^n\to \R$ be twice continuously differentiable at a point $\overline{x}\in \R^n$. If $\overline{x}$ is a local minimum of $f$, 
+    then $\nabla f(\overline{x})=0$ and $\nabla^2f(x)$ is positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+    1
+\end{proof}
+
+Necessary conditions only allow us to come up with a list of candidate points for minimizers.
+Sufficient condition for local optimality: "if $\overline{x}$ satisfies \dots, then $\overline{x}$ is a local minimizer of (P).
+
+\section{Reference}
+\begin{itemize}
+    \item \href{}{IOE 511/Math 652: Continuous Optimization Methods ch4}
+    \item \href{https://sites.math.washington.edu/~burke/crs/408/notes/Math408_W2020/math408text.pdf}{nonlinear optimization 4.2,4.3}
+\end{itemize}

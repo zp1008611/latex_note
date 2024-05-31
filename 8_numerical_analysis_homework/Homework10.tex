@@ -1,0 +1,182 @@
+% !Mode:: "TeX:UTF-8"
+
+\documentclass[UTF8,12pt,hyperref]{ctexart}
+
+\usepackage{amsfonts,amsmath,amssymb,mathrsfs}
+\usepackage{flafter,graphicx,xcolor}
+
+\newtheorem{algorithm}{Algorithm}
+ 
+ \newtheorem{theorem}{Theorem}
+% Matlab
+\usepackage{listings}
+\lstset{language=Matlab}%代码语言使用的是matlab
+\lstset{breaklines}%自动将长的代码行换行排版
+\lstset{extendedchars=false}%解决代码跨页时，章节标题，页眉等汉字不显示的问题
+\lstset{numbers=left, 
+numberstyle= \tiny,keywordstyle= \color{ blue!70},commentstyle=\color{red!50!green!50!blue!50}, 
+frame=shadowbox, rulesepcolor= \color{ red!20!green!20!blue!20}, 
+escapeinside=``} 
+%%%%%%%
+\usepackage{multicol}
+   
+ 
+\newcommand{\ep}{\hfill\rule{0.15cm}{0.35cm}\vskip 0.3cm}
+\newenvironment{proof}[1][Proof.]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\ep\end{trivlist}} 
+
+
+%%%%%
+ \makeatletter
+\newenvironment{exercise}[1][{\color{blue}\bf Exercise}]%
+%\newenvironment{xiti}[1][{\color{blue}\bf Exercise}]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}%
+  {\color{blue}\bfseries
+#1}   }{%
+    \end{minipage}%
+    \end{lrbox}
+    \colorbox{green}{\noindent\usebox{\@tempboxa}} \end{center}  
+}
+ 
+\newenvironment{analysis}[1][\color{blue}\bf Analysis]%
+{%
+ \begin{center}   \begin{lrbox}{\@tempboxa}%
+    \begin{minipage}{\textwidth}
+  {\color{blue}\bfseries
+%#1} \\ \hspace*{2em} }{%
+ #1}  }{%
+    \end{minipage}%
+    \end{lrbox}
+    %\colorbox{gray}{\noindent\usebox{\@tempboxa}} \end{center}  %
+    \fbox{\usebox{\@tempboxa}}\end{center}%
+    %\colorbox{red}{\fbox{\noindent\usebox{\@tempboxa}} \end{center}
+}
+ 
+\newenvironment{solve}[1][\color{blue}\bf Solve]{\begin{trivlist}
+\item[\hskip \labelsep {\color{blue}\bfseries
+#1}]}{\hfill$\Box$\end{trivlist}}
+ \makeatother
+ 
+ 
+%%%%%%%%%
+ 
+\renewcommand{\baselinestretch}{1.38}
+ 
+ \pagestyle{plain} 
+ 
+ \textwidth  168 true mm \textheight 230 true mm \topmargin=-1.3cm
+\oddsidemargin   0pt \evensidemargin  20pt \marginparwidth  10pt
+
+\CTEXoptions[today=old]
+
+ 
+\begin{document}
+%%%================　　标　　题　　　================
+
+\begin{center}
+{\bf  THE SOUTH CHINA NORMAL UNIVERSITY\vspace{0.08cm}
+
+School of Mathematical Sciences\vspace{0.08cm}
+ 
+Numerical Analysis ( 2023-2024 The Second Term) \vspace{0.18cm}
+
+{\Large Homework 10: }\vspace{0.18cm}
+
+Due Date: \underline{May 29, 2024 (Wednesday)} }
+\end{center}\vspace{-0.16cm}
+
+\begin{center}
+  Name:\ \underline{\qquad 钟沛 \hspace{1cm}}\hspace{0.298cm}  
+  % 
+  Student No.:\ \underline{\qquad 2023021950\hspace{1cm}} 
+%
+Date:\ \ \underline{May 23, 2024} 
+ \end{center}
+ 
+ 
+%%%================　　正　　文　　　================
+%%%================　　正　　文　　　================
+
+\section*{\S 7.1  Exercises for Introduction to Quadrature}
+
+\begin{exercise}1.    \quad %3  
+ Consider a general interval $[a, b]$. Show that Simpson's rule produces exact results for the functions $f(x) =x^2$, that is, 
+$$
+\displaystyle\int_a^bx^2 \mathrm{d} x=\dfrac{b^3}{3}-\dfrac{a^3}{3}.
+$$  
+\end{exercise}  
+ 
+
+\begin{solve}
+  For Simpson's rule, $h=\frac{b-a}{2}$, and we get
+  \begin{align*}
+    I &=\frac{h}{3}(f_0+4f_1+f_2)\\
+    &= \frac{b-a}{6}(a^2+4(\frac{a+b}{2})^2+b^2)-\frac{h^5}{90}f^{(4)}(c)\\
+    &= \frac{b-a}{6}(a^2+(a^2+2ab+b^2)+b^2)\\
+    &= \frac{a^2b-a^3+a^2b+2ab^2+b^3-a^3-2a^2b-ab^2+b^3-ab^2}{6}\\
+    &= \frac{-2a^3+2b^3}{6}=\frac{b^3}{3}-\frac{a^3}{3}.
+  \end{align*}
+  Using Newton Leibniz theorem, we get 
+  \begin{align*}
+    \int_{a}^{b} x^2dx = \frac{b^3}{3}-\frac{a^3}{3}.
+  \end{align*}
+  Hence, $I=\int_{a}^{b}x^2dx$ and so the Simpson's rule produces exact results for the functions $f(x) =x^2$.
+\end{solve}
+  
+%%%%%%%%%% Exercise 2.10
+ \vspace{0.38cm}
+
+ \section*{\S  7.2  Exercises for Composite Trapezoidal and Simpson's Rule}
+  
+\begin{exercise}1.    \quad %4   
+\begin{description}
+\item[(a)] Verify that the trapezoidal rule $(M =1, h = 1)$ is exact for polynomials of degree $\leqslant 1$ of the form $f(x) =c_1x +c_0$ over $[0, 1]$. 
+
+\item[(b)] Use the integrand $f(x) =c_2x^2$ and verify that the error term for the trapezoidal rule $(M =1, h =1)$ over the interval $[0, 1]$ is
+$$
+E_T(f, h)=\dfrac{-(b-a)f^{(2)}(c)h^2}{12}. 
+$$
+\end{description}  
+ \end{exercise} 
+ 
+\begin{solve}
+  (a) For the trapezoidal rule, $h=1$, and we get
+  \begin{align*}
+    I &=\frac{h}{2}(f_0+f_1)\\
+    &= \frac{1}{2}(c_0+c_1+c_0)\\
+    &= \frac{c_1+2c_0}{2}.
+  \end{align*}
+  Using Newton Leibniz theorem, we get 
+  \begin{align*}
+    \int_{0}^{1} c_1x+c_0dx = \frac{c_1}{2}x^2+c_0x\mid_{x=0}^{x=1}=\frac{c_1+2c_0}{2}.
+  \end{align*}
+  Hence, $I=\int_{0}^{1}f(x)dx$ and so the trapezoidal rule is exact for polynomials of 
+  degree $\leqslant 1$ of the form $f(x) =c_1x +c_0$ over $[0, 1]$.
+  \par
+  (b) Integrating the Lagrange polynomial $P_1(x)$ and its remainder over $[0,1]$ yields
+  \begin{align*}
+    \int_{0}^{1} f(x) dx &= \int_{0}^{1} P_1(x)dx + \int_{0}^{1} \frac{x(x-1)f^{(2)}(c(x))}{2!}dx\\
+    &=\int_{0}^{1} f_0\frac{x-1}{0-1}+f_1\frac{x-0}{1-0}dx + \int_{0}^{1} \frac{x(x-1)f^{(2)}(c(x))}{2!}dx\\
+    &=\int_{0}^{1} c_2xdx + \int_{0}^{1} \frac{x(x-1)f^{(2)}(c(x))}{2!}dx\\
+    &=\frac{c_2x^2}{2}\mid_{x=0}^{x=1} + \int_{0}^{1} \frac{x(x-1)f^{(2)}(c(x))}{2!}dx\\
+    &=\frac{c_2}{2} + \int_{0}^{1} \frac{x(x-1)f^{(2)}(c(x))}{2!}dx.
+  \end{align*}
+  The term $x(x-1)$ does not change sign on $[x_0,x_1]$, and $f^{(2)}(c(x))$ is continuous. Hence 
+  the second Mean Value Theorem for integrals implies that there exits a value $c$ so that 
+  \begin{align*}
+    \int_{0}^{1} f(x)dx &= \frac{c_2}{2}+f^{(2)}(c)\int_{0}^{1} \frac{x(x-1)}{2!}dx\\
+    &=\frac{c_2}{2} + f^{(2)}(c)\cdot (\frac{x^3}{6}-\frac{x^2}{4}\mid_{x=0}^{x=1})\\
+    &=\frac{c_2}{2} + \frac{-f^{(2)}(c)}{12}\\
+    &=\frac{h}{2}(f_0+f_1) + \frac{-(b-a)f^{(2)}(c)h^2}{12}\\
+    &=T(f,h)+E_{T}(f,h).
+  \end{align*}
+  Hence the error term for the trapezoidal rule $(M =1, h =1)$ over the interval $[0, 1]$ is
+  $E_T(f, h)=\dfrac{-(b-a)f^{(2)}(c)h^2}{12}$. 
+\end{solve}
+\end{document}
+
+ 
+ 
+ 

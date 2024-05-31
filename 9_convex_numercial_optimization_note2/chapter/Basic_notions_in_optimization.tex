@@ -1,16 +1,38 @@
-\chapter{Basic notions in optimization}
+\chapter{Basic Notions in Optimization}
 
 \section{Types of optimization problems}
 \noindent{\bf Unconstrained Optimization problem:}
 \begin{align*}
-    (\text{P})\quad \min_{\vect{x}} f(\vect{x})\\
-    s.t.\  \vect{x}\in X,
+    (\text{P})\quad \min_{\vect{x}\in \R^n} f(\vect{x})
 \end{align*}
-where $\vect{x}=(x_1,\dots,x_n)^T\in\R^n$, $f(x):\R^n\rightarrow\R$, and $X$ is an open set (usually $X=\R^n$).
+where $f(\vect{x}):\R^n\rightarrow\R$.
+
+\section{Constraints and feasible regions}
 
 
+
+\section{Types of optimal solutions}
+Consider a general optimization problem 
+\begin{align}
+    (\text{P})\quad \min_{x\in S} f(x).
+\end{align}
+Recall: an $\epsilon$-neighborhood of $\overline{x}$, or a ball centered at $\overline{x}$ 
+with radius $\epsilon$ is the set:
+$B(\overline{x}, \epsilon) := \{x : || x - \overline{x}|| \leqs \epsilon \}$.
+We have the following definitions of local/global, strict/non-strict minimizers.
+\begin{definition}{}{}
+    In the optimization problem $(\text{P})$,
+    \begin{itemize}
+        \item $x\in S$ is a global minimizer of $(\text{P})$ if $f(x)\leqs f(y)$ for all $y\in S$.
+        \item $x\in S$ is a strict global minimizer of $(\text{P})$ if $f(x)< f(y)$ for all $y\in S$, $y\neq x$.
+        \item $x\in S$ is a local minimizer of $(\text{P})$ if there exists $\epsilon>0$ such that $f(x)\leqs f(y)$ for all $y\in B(x,\epsilon)\cap S$.
+        \item $x\in S$ is a strict local minimizer of $(\text{P})$ if there exists $\epsilon>0$ such that $f(x)< f(y)$ for all $y\in B(x,\epsilon)\cap S$, $y\neq x$.
+    \end{itemize}
+\end{definition}
+\section{Existence of solutions of optimization problems}
 
 \section{Reference}
 \begin{itemize}
     \item \href{}{IOE 511/Math 652: Continuous Optimization Methods ch3}
 \end{itemize}
+

@@ -1,0 +1,51 @@
+\chapter{Consistency and
+Limiting Distributions}
+
+
+\section{Homework}
+
+\begin{exercise}{5.1.7}{}
+    Let $X_1,...,X_n$ be iid random variables with common pdf
+    \begin{align*}
+        f(x)=\left\{\begin{matrix}
+            e^{-(x-\theta)} & x>\theta,-\infty<\theta<\infty\\
+           0 & \text{elsewhere}.
+           \end{matrix}\right.
+    \end{align*}
+    This pdf is called the shifted exponential. Let $Y_n=\min\{X_1,...,X_n\}$.
+    Prove that $Y_n\rightarrow \theta$ in probability by first obtaining the cdf of $Y_n$.
+\end{exercise}
+
+\begin{exercise}{5.1.9}{}
+    For Exercise 5.1.7, obtain the mean of $Y_n$. Is $Y_n$ an unbiased estimator of $\theta$? Obtain an unbiased estimator of $\theta$ based on $Y_n$.
+\end{exercise}
+
+\begin{exercise}{5.2.17}{}
+    Let $\overline{X}_n$ denote the mean of a random sample of size $n$ from a distribution that has pdf 
+    $f(x)=e^{-x},0<x<\infty$, zero elsewhere.\\
+    (a) Show that the mgf $M_{Y_n}(t)$ of $Y_n=\sqrt{n}(\overline{X}_n-1)$ is 
+    \begin{align*}
+        M_{Y_n}(t) = [e^{t/\sqrt{n}}-(t/\sqrt{n})e^{t/\sqrt{n}}]^{-n}, \quad t<\sqrt{n}.
+    \end{align*} 
+    (b) Find the Limiting distribution of $Y_n$ as $n\rightarrow \infty$.
+\end{exercise}
+
+\begin{exercise}{5.3.8}{}
+    Let $Y$ be $b(n,0.55)$. Find the smallest value of $n$ such that (approximately) $P(\frac{Y}{n}>\frac{1}{2})\geqs 0.95$.
+\end{exercise}
+
+\begin{exercise}{5.3.14}{}
+    Assume that $X_1,\dots,X_n$ is a random sample from a $\Gamma(1,\beta)$ distribution. 
+    Determine the asymptotic distribution of $\sqrt{n}(\overline{X}-\beta)$. Then find a transformation $g(\overline{X})$
+    whose asymptotic variance is free of $\beta$.
+\end{exercise}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://www.stat.purdue.edu/~tlzhang/stat517/chapter5_517.pdf}{Chapter 5: Consistency and Limiting Distributions}
+    \item \href{https://tomoki-okuno.com/files/math/Ch5_sol.pdf}{ex5.1.7}
+    \item \href{https://tomoki-okuno.com/files/math/Ch5_sol.pdf}{ex5.1.9}
+    \item \href{https://tomoki-okuno.com/files/math/Ch5_sol.pdf}{ex5.2.17}
+    \item \href{https://tomoki-okuno.com/files/math/Ch5_sol.pdf}{ex5.3.8}
+    \item \href{https://tomoki-okuno.com/files/math/Ch5_sol.pdf}{ex5.3.14}
+\end{itemize}

@@ -1,0 +1,46 @@
+\chapter{The Directional Derivative and The Subdifferential}
+
+\noindent{This chapter mainly introduces the separation theorem, the existence theorem of subdifferentials and the relation 
+between directional derivative and the subdifferential. }
+
+\section{Relative Interior}
+
+\section{Convex Separation}
+
+\section{Conjugate Functions}
+
+\section{Subgradient of Convex Function}
+
+\section{Directional Derivative}
+
+\begin{lemma}{Sublinearity of $f'(x;d)$}{}
+    Let $f:\R^n\rightarrow \overline{\R}$ be convex.\\
+    (1) Given $x\in \text{dom}f$ and $d\in \R^n$ the difference quotient
+    \begin{align*}
+        \frac{f(x+td)-f(x)}{t}
+    \end{align*}
+    is a non-decreasing function of $t$ on $(0,+\infty)$.\\
+    (2) For every $x\in\text{dom}f$ and $d\in \R^n$ the directional derivative $f'(x;d)$ always exists and is given by 
+    \begin{align*}
+        f'(x;d):=\inf_{t>0} \frac{f(x+td)-f(x)}{t}.
+    \end{align*} 
+    (3) For every $x\in \text{dom}f$, the function $f'(x;\cdot)$ is sublinear, i.e. $f'(x;\cdot)$ is positively homogeneous,
+    \begin{align*}
+        f'(x;\alpha d)=\alpha f'(x;d) \quad \forall d\in \R^n,0\leqs \alpha,
+    \end{align*}
+    and subadditive,
+    \begin{align*}
+        f'(x;u+v)\leqs f'(x;u)+f'(x;v).
+    \end{align*}
+    In particular, for all $x\in \text{dom}f$, $f'(x;d)$ is a convex function of $d$.
+\end{lemma}
+
+\section{Reference}
+\begin{itemize}
+    \item \href{https://www.math.cuhk.edu.hk/course_builder/1920/math4230/}{convex analysis cuhk}
+    \item \href{https://www.u.arizona.edu/~mwalker/econ519/Econ519LectureNotes/ConvexAnalysis.pdf}{Separating and Supporting Hyperplanes}
+    \item \href{https://web.stanford.edu/class/ee364b/lectures/subgradients_notes.pdf}{subgradient}
+    \item \href{https://link.springer.com/content/pdf/10.1007/0-387-31082-7_3.pdf}{The derivatives and the subdifferential}
+    \item \href{https://sites.math.washington.edu/~burke/crs/408/notes/Math408_W2020/math408text.pdf}{nonlinear optimization 5.2}
+\end{itemize}
+

@@ -77,7 +77,70 @@
 
 \section{Transformations: Bivariate Random Variables}
 
+We now consider transformations of random vectors, say $Y = g(X_1, X_2)$. We
+desire to find the cumulative distribution function of $Y$ . We give several examples,
+but state no new theorems.
+\par
+Let $(X_1, X_2)$ have a jointly continuous distribution with pdf $f_{X_1,X_2} (x_1, x_2)$ and
+support set $\mathcal{S}$. Consider the transformed random vector $(Y_1, Y_2) = T (X_1, X_2)$ 
+where $T$ is a one-to-one continuous transformation. Let $\mathcal{T} = T (S)$ denote the support of
+$(Y_1, Y_2)$. The transformation is depicted in Figure \ref{fig:transformation_S_T}. Rewrite the transformation in terms of its components as $(Y_1, Y_2) = T (X_1, X_2)=(u_1(X_1, X_2), u_2(X_1, X_2))$,
+where the functions $y_1 = u_1(x_1, x_2)$ and $y_2 = u_2(x1, x2)$ define $T$ . 
+Since the transformation is one-to-one, the inverse transformation $T^{-1}$ exists. We write it as
+$x_1 = w_1(y_1, y_2), x_2 = w_2(y_1, y_2)$. 
+Finally, we need the Jacobian of the transformation which is the determinant of order $2$ given by
+
+\begin{align*}
+    J=\begin{vmatrix}
+        \frac{\partial x_1}{\partial y_1} & \frac{\partial x_1}{\partial y_2}\\ 
+        \frac{\partial x_2}{\partial y_1} & \frac{\partial x_2}{\partial y_2} \notag
+    \end{vmatrix}
+\end{align*}
+
+Note that $J$ plays the role of $dx/dy$ in the univariate case. We assume that these
+first-order partial derivatives are continuous and that the Jacobian $J$ is not identically 
+equal to zero in $T$.
+Let $B$ be any region in $T$ and let $A = T^{-1}(B)$ as shown in Figure \ref{fig:transformation_S_T}.
+Because the transformation $T$ is one-to-one, $P[(X_1, X_2) \in A] = P[T (X_1, X_2) \in T(A)] = P[(Y_1, Y_2) \in B]$. 
+Then we have
+\begin{align*}
+    P[(X_1,X_2)\in A] &= \iint_{A} f_{X_1,X_2}(x_1,x_2) dx_1dx_2\\
+                      &= \iint_{T(A)} f_{X_1,X_2}[T^{-1}(y_1,y_2)]|J|dy_1dy_2\\
+                      &= \iint_{B} f_{X_1,X_2}[w_1(y_1,y_2),w_2(y_1,y_2)]|J| dy_1dy_2\\
+                      &= \iint_{B} f_{X_1,X_2}[w_1(y_1,y_2),w_2(y_1,y_2)]|J| dy_1dy_2.
+\end{align*}
+Since $B$ is arbitrary, the last integrand must be the joint pdf 
+of $(Y_1, Y_2)$. That is the pdf of $(Y_1, Y_2)$ is
+
+\begin{align*}
+    f_{Y_1,Y_2}(y_1,y_2) = \left\{\begin{matrix}
+       f_{X_1,X_2}[w_1(y_1,y_2),w_2(y_1,y_2)]|J|& (y_1,y_2)\in\mathcal{T} \\
+        0 & \text{elsewhere}.
+       \end{matrix}\right.
+\end{align*}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figure/transformation_S_T.png}
+    \caption{}
+    \label{fig:transformation_S_T}
+\end{figure}
+
+
 \section{Conditional Distributions and Expectations}
+In Section 2.1 we introduced the joint probability distribution of a pair of random
+variables. We also showed how to recover the individual (marginal) distributions
+for the random variables from the joint distribution. In this section, we discuss
+conditional distributions, i.e., the distribution of one of the random variables when
+the other has assumed a specific value.
+
+Let the joint pmf of a discrete random vector $(X_1,X_2)$ be $p(x_1,x_2)$,
+then the conditional pmf of $X_2$, given $X_1=x_1$, is
+\begin{align*}
+    p_{X_2|X_1}(x_2|x_1) = P(X_2=x_2|X_1=x_1)=\frac{P(X_1=x_1,X_2=x_2)}{P(X_1=x_1)}=\frac{p(x_1,x_2)}{p_{X_1}(x_1)},
+\end{align*}
+
+
 We now introduce a parameter $\rho$ of the joint distribution of $(X,Y)$ 
 which quantifies the dependence between $X$ and $Y$ (so that $\rho=0$ when $X$ and $Y$ are independent).
 We assume the existence of all expectation under discussion.
